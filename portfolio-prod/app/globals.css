@@ -1,3 +1,12 @@
+/* Register JetBrains Mono directly so PostCSS/Tailwind doesn't need to resolve an import from /app */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
 :root {
@@ -14,7 +23,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #E8E8E8;
     --foreground: #ededed;
   }
 }
@@ -22,5 +31,6 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Use the JetBrains Mono font, falling back to the Geist mono variable and then sans-serif */
+  font-family: 'JetBrains Mono', var(--font-geist-mono), sans-serif;
 }
