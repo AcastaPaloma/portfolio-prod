@@ -5,7 +5,6 @@ import TopLeftPath from '../TopLeftPath'
 import LineNumbers from '../layout/LineNumbers'
 
 import React, { useRef } from 'react'
-
 const KuanYiWang = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
