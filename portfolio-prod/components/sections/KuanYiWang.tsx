@@ -1,7 +1,7 @@
 "use client"
 
 /// ========== Components ========== //
-import TopLeftPath from './TopLeftPath'
+import TopLeftPath from '../TopLeftPath'
 import LineNumbers from '../layout/LineNumbers'
 
 import React, { useRef } from 'react'
