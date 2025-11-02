@@ -1,6 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0a0a0a] text-white py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 mt-auto">
+    <footer id="contact" className="w-full bg-[#0a0a0a] text-white py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-12 mt-auto scroll-mt-24">
+      <hr className="w-[75vw] mx-auto my-6 rounded-xl border-0 h-0.25 bg-white" />
       <div className="max-w-7xl mx-auto relative">
         {/* Contact Object - freely positionable */}
         <div className="font-mono text-xs sm:text-sm md:text-base lg:text-lg w-fit">
@@ -21,8 +22,13 @@ export default function Footer() {
             {/* Email */}
             <div className="flex flex-wrap items-start sm:items-center">
               <span className="text-white">&quot;email&quot;:</span>
-              <span className="text-[#FFB86C] ml-1 sm:ml-2 break-all">&quot;kuanyi.wang0906@gmail.com&quot;</span>
-              <span className="text-white">,</span>
+              <a
+                href="mailto:kuanyi.wang0906@gmail.com"
+                className="text-blue-400 ml-1 sm:ml-2 break-all hover:underline"
+              >
+                kuanyi.wang0906@gmail.com
+              </a>
+            <span className="text-white">,</span>
             </div>
 
             {/* Website */}

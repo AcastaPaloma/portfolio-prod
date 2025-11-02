@@ -6,7 +6,7 @@ import React from 'react'
 
 const WhatsUp = () => {
   return (
-    <section className="min-h-screen w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:pb-12 md:pb-16 lg:pb-20 pt-0 flex flex-col">
+    <section id="projects" className="min-h-screen w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:pb-12 md:pb-16 lg:pb-20 pt-0 flex flex-col scroll-mt-24">
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col">
         <TopLeftPath path={["portfolio", "app", "page.tsx", "Projects"]} />
 

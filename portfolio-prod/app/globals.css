@@ -34,3 +34,7 @@ body {
   /* Use the JetBrains Mono font, falling back to the Geist mono variable and then sans-serif */
   font-family: 'JetBrains Mono', var(--font-geist-mono), sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
