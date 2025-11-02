@@ -253,7 +253,7 @@ const KuanYiWang = () => {
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">27</span>
                 <div className="flex-1 min-w-0">
                   <a
-                    href="https://www.linkedin.com/in/kuanyi-wang"
+                    href="https://www.linkedin.com/in/kuan-yi-wang-443871319/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-300 hover:underline"
@@ -268,7 +268,7 @@ const KuanYiWang = () => {
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">28</span>
                 <div className="flex-1 min-w-0">
                   <a
-                    href="https://www.instagram.com/kuanyi.wang"
+                    href="https://www.instagram.com/kuanus_"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-pink-300 hover:underline"
@@ -283,7 +283,7 @@ const KuanYiWang = () => {
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">29</span>
                 <div className="flex-1 min-w-0">
                   <a
-                    href="https://lu.ma/kuanyi"
+                    href="https://luma.com/user/kuans"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-300 hover:underline"
@@ -298,7 +298,7 @@ const KuanYiWang = () => {
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">30</span>
                 <div className="flex-1 min-w-0">
                   <a
-                    href="https://github.com/kuanyi"
+                    href="https://github.com/AcastaPaloma"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-yellow-300 hover:underline"
