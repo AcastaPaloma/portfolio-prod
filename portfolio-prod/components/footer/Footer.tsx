@@ -15,7 +15,7 @@ export default function Footer() {
             {/* Phone */}
             <div className="flex flex-wrap items-start sm:items-center">
               <span className="text-white">&quot;nbr&quot;:</span>
-              <span className="text-[#FFB86C] ml-1 sm:ml-2">&quot;438-722-0688&quot;</span>
+              <span className="text-[#FFB86C] ml-1 sm:ml-2">&quot;(+1) 438-722-0688&quot;</span>
               <span className="text-white">,</span>
             </div>
 
@@ -35,6 +35,32 @@ export default function Footer() {
             <div className="flex flex-wrap items-start sm:items-center">
               <span className="text-white">&quot;website&quot;:</span>
               <span className="text-[#FFB86C] ml-1 sm:ml-2 break-all">&quot;www.kuant.space&quot;</span>
+              <span className="text-white">,</span>
+            </div>
+
+            {/* More links */}
+            <div className="flex flex-wrap items-start sm:items-center">
+              <span className="text-white">"more_links":</span>
+              <span className="text-[#FFB86C] ml-1 sm:ml-2 break-all">
+                [
+                <a
+                  href="https://www.pinatapitch.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline"
+                >
+                  "www.pinatapitch.tech"
+                </a>,&nbsp;
+                <a
+                  href="https://www.unfounders.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline"
+                >
+                  "www.unfounders.com"
+                </a>
+                ]
+              </span>
             </div>
           </div>
 

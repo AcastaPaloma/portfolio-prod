@@ -6,7 +6,7 @@ import React from 'react'
 
 const WorkExperience = () => {
   return (
-    <section id="experience" className="min-h-screen w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:pb-12 md:pb-16 lg:pb-20 pt-0 flex flex-col scroll-mt-24">
+    <section id="experience" className="min-h-screen w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:pb-30 md:pb-50 lg:pb-100 pt-0 flex flex-col scroll-mt-24">
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col">
         <TopLeftPath path={["portfolio", "app", "page.tsx", "WorkExperience"]} />
 
@@ -248,7 +248,7 @@ const WorkExperience = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">31</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 truncate">Re-Pair Genomics</span>
+                  <span className="text-green-400 truncate">Re:Pair Genomics</span>
                   <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">February 2025 - April 2025</span>
                 </div>
               </div>

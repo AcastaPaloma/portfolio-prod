@@ -32,9 +32,9 @@ const Header = () => {
                   onClick={(e) => handleNavClick(e, item.href)}
                   className="flex flex-col items-center relative group cursor-pointer transition-transform hover:scale-110 active:scale-95"
                 >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 sm:w-4 sm:h-4 md:w-7 md:h-7 lg:w-10 lg:h-10 flex items-center justify-center shrink-0">
                     <Image
-                      src="/assets/ball.svg"
+                      src="/assets/ball3.svg"
                       alt=""
                       width={56}
                       height={56}
@@ -43,7 +43,7 @@ const Header = () => {
                   </div>
 
                   {/* Label below, spaced tightly */}
-                  <span className="text-[10px] sm:text-xs md:text-sm font-mono text-gray-700 group-hover:text-gray-400 mt-1 sm:mt-1.5 text-center transition-colors">
+                  <span className="text-[10px] sm:text-xs md:text-sm font-mono text-white group-hover:text-gray-400 mt-1 sm:mt-1.5 text-center transition-colors">
                     {item.name}
                   </span>
                 </a>
@@ -52,7 +52,7 @@ const Header = () => {
                 {index < navItems.length - 1 && (
                   <div className="relative flex items-center">
                     {/* Adjust bar position slightly upward */}
-                    <div className="w-10 sm:w-12 md:w-16 lg:w-20 h-1.5 sm:h-2 rounded-xl bg-gray-800 -translate-y-2 sm:-translate-y-3" />
+                    <div className="w-10 sm:w-12 md:w-16 lg:w-24 h-1.5 sm:h-2 rounded-xl bg-white -translate-y-2 sm:-translate-y-3" />
                   </div>
                 )}
               </React.Fragment>

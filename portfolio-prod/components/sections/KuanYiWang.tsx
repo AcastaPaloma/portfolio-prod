@@ -9,7 +9,7 @@ const KuanYiWang = () => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="about" className="min-h-screen w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:pb-12 md:pb-16 lg:pb-20 pt-0 flex flex-col scroll-mt-24">
+    <section id="about" className="min-h-screen w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:pb-30 md:pb-50 lg:pb-100 sm:pt-6 md:pt-10 lg:pt-15 pt-0 flex flex-col scroll-mt-24">
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col">
         <TopLeftPath path={["portfolio", "app", "page.tsx", "Home"]} />
 
