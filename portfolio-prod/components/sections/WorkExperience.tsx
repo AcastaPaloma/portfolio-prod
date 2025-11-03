@@ -184,8 +184,19 @@ const WorkExperience = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">22</span>
                 <div className="flex-1 min-w-0 truncate">
-                  <span className="text-gray-300">• Contributed to CART, optimizing the segmentation and annotation speed of Magnetic</span>
-                </div>
+                <span className="text-gray-300">
+                  • Contributed to{" "}
+                  <a
+                    href="https://github.com/SomeoneInParticular/CART"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#FFB86C] hover:underline"
+                  >
+                    CART
+                  </a>
+                  , optimizing the segmentation and annotation speed of Magnetic
+                </span>
+              </div>
               </div>
 
               {/* Line 23 */}

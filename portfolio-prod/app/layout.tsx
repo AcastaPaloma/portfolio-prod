@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Kuan Yi Wang",
-  description: "Kuant.",
+  description: "Kuan ∈ medtech | startups | golf",
 };
 
 export default function RootLayout({

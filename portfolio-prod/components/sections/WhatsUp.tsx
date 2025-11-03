@@ -174,7 +174,7 @@ const WhatsUp = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">22</span>
                 <div className="flex-1 min-w-0 truncate">
-                  <span className="text-red-300">some fiddling around here and there, currently learning quantum computing...</span>
+                  <span className="text-[#FFB86C] ">some fiddling around here and there, currently learning quantum computing...</span>
                 </div>
               </div>
 

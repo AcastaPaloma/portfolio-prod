@@ -47,7 +47,7 @@ export default function Footer() {
                   href="https://www.pinatapitch.tech"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:underline"
+                  className="text-[#FFB86C]  hover:underline"
                 >
                   "www.pinatapitch.tech"
                 </a>,&nbsp;
@@ -55,7 +55,7 @@ export default function Footer() {
                   href="https://www.unfounders.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:underline"
+                  className="text-[#FFB86C]  hover:underline"
                 >
                   "www.unfounders.com"
                 </a>
