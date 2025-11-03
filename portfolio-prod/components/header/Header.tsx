@@ -34,7 +34,7 @@ const Header = () => {
                 >
                   <div className="w-8 h-8 sm:w-4 sm:h-4 md:w-7 md:h-7 lg:w-10 lg:h-10 flex items-center justify-center shrink-0">
                     <Image
-                      src="/assets/ball3.svg"
+                      src="/assets/ball4.svg"
                       alt=""
                       width={56}
                       height={56}
@@ -52,7 +52,7 @@ const Header = () => {
                 {index < navItems.length - 1 && (
                   <div className="relative flex items-center">
                     {/* Adjust bar position slightly upward */}
-                    <div className="w-10 sm:w-12 md:w-16 lg:w-24 h-1.5 sm:h-2 rounded-xl bg-white -translate-y-2 sm:-translate-y-3" />
+                    <div className="w-10 sm:w-12 md:w-16 lg:w-24 sm:h-1 rounded-xl bg-white -translate-y-2 sm:-translate-y-3" />
                   </div>
                 )}
               </React.Fragment>

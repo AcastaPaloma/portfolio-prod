@@ -53,7 +53,7 @@ const KuanYiWang = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">3</span>
                 <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0">
-                  <span className="text-blue-400">Python</span>
+                  <span className="text-blue-400">Python, Sci-kit Learn</span>
                   <span className="text-gray-300">,</span>
                 </div>
               </div>
@@ -62,7 +62,7 @@ const KuanYiWang = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">4</span>
                 <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 truncate">
-                  <span className="text-yellow-400">Firebase</span>
+                  <span className="text-yellow-400">Google Firebase</span>
                   <span className="text-gray-300">, </span>
                   <span className="text-green-400">Cloud Functions</span>
                   <span className="text-gray-300">, </span>
