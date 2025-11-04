@@ -22,7 +22,7 @@ const KuanYiWang = () => {
             </h1>
 
             {/* Code content with inline line numbers */}
-            <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base">
+            <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base overflow-x-auto">
               {/* Line 1 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">1</span>
@@ -36,7 +36,7 @@ const KuanYiWang = () => {
               {/* Line 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">2</span>
-                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 truncate">
+                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-blue-400">TypeScript</span>
                   <span className="text-gray-300">, </span>
                   <span className="text-green-400">JavaScript</span>
@@ -61,7 +61,7 @@ const KuanYiWang = () => {
               {/* Line 4 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">4</span>
-                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 truncate">
+                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-yellow-400">Google Firebase</span>
                   <span className="text-gray-300">, </span>
                   <span className="text-green-400">Cloud Functions</span>
@@ -110,7 +110,7 @@ const KuanYiWang = () => {
               {/* Line 9 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">9</span>
-                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 truncate">
+                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-blue-400">Cursor</span>
                   <span className="text-gray-300">, </span>
                   <span className="text-blue-400">GitHub Copilot</span>
@@ -122,7 +122,7 @@ const KuanYiWang = () => {
               {/* Line 10 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">10</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">&#125; </span>
                   <span className="text-gray-300">from</span>{' '}
                   <span className="text-gray-300">&apos;my_more_useful_tech_stack&apos;</span>
@@ -157,7 +157,7 @@ const KuanYiWang = () => {
               {/* Line 15 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 bg-red-900/20 hover:bg-red-900/30 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">15</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">What&apos;s up - My name is Kuan, currently hosting Piñata Pitch,</span>
                 </div>
               </div>
@@ -165,7 +165,7 @@ const KuanYiWang = () => {
               {/* Line 16 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">16</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">Montreal&apos;s largest student tech pitch competition.</span>
                 </div>
               </div>
@@ -181,7 +181,7 @@ const KuanYiWang = () => {
               {/* Line 18 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">18</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">I love Learning Languages (1000 day streak on Duolingo, German)</span>
                 </div>
               </div>
@@ -209,7 +209,7 @@ const KuanYiWang = () => {
               {/* Line 22 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">22</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">
                     438-722-0688 |{" "}
                     <a
@@ -243,7 +243,7 @@ const KuanYiWang = () => {
               {/* Line 26 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">26</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">i literally can&apos;t stop talking:</span>
                 </div>
               </div>

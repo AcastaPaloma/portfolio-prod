@@ -19,12 +19,12 @@ const WorkExperience = () => {
             </h1>
 
             {/* Code content with inline line numbers */}
-            <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base">
+            <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base overflow-x-auto">
               {/* Line 1 - Global Talent Forum header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">1</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 truncate">Global Talent Forum</span>
+                  <span className="text-green-400 whitespace-nowrap">Global Talent Forum</span>
                   <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">November 2024 - Present</span>
                 </div>
               </div>
@@ -32,7 +32,7 @@ const WorkExperience = () => {
               {/* Line 2 - Role */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">2</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">Co-Founder & Head of Communications</span>
                 </div>
               </div>
@@ -46,7 +46,7 @@ const WorkExperience = () => {
               {/* Line 4 - Bullet 1 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">4</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Co-founded GTF, a platform dedicated to identifying talent and empowering student</span>
                 </div>
               </div>
@@ -54,7 +54,7 @@ const WorkExperience = () => {
               {/* Line 5 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">5</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  entrepreneurs.</span>
                 </div>
               </div>
@@ -62,7 +62,7 @@ const WorkExperience = () => {
               {/* Line 6 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">6</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Communications for Piñata Pitch ($17k raised, 450+ students, supported by Pear</span>
                 </div>
               </div>
@@ -70,7 +70,7 @@ const WorkExperience = () => {
               {/* Line 7 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">7</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  VC, Harvard & Berkeley) and Unfounders at a16z Tech Week, 500+ participants, with</span>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const WorkExperience = () => {
               {/* Line 8 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">8</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  backing from Cluely, Pally AI (YC S25), Foundess, OpenNote (YC S25).</span>
                 </div>
               </div>
@@ -86,7 +86,7 @@ const WorkExperience = () => {
               {/* Line 9 - Bullet 3 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">9</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Designed the CRM system for 500+ students part of the GTF.</span>
                 </div>
               </div>
@@ -94,7 +94,7 @@ const WorkExperience = () => {
               {/* Line 10 - Bullet 4 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">10</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Lead Organizer of AI BUILD DAY w/ Piñata Pitch x <span className="text-green-400">Shopify</span> x </span>
                   <span className="text-gray-300">ElanTech</span>
                   <span className="text-gray-300">.</span>
@@ -137,7 +137,7 @@ const WorkExperience = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">16</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 truncate">Neuropoly, Polytechnique Montréal</span>
+                  <span className="text-green-400 whitespace-nowrap">Neuropoly, Polytechnique Montréal</span>
                   <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">June 2024 - Present</span>
                 </div>
               </div>
@@ -145,7 +145,7 @@ const WorkExperience = () => {
               {/* Line 17 - Role */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">17</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">Research & Development Intern</span>
                 </div>
               </div>
@@ -159,7 +159,7 @@ const WorkExperience = () => {
               {/* Line 19 - Bullet 1 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">19</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Trained and fine-tuned various nn-UNet models to automate the segmentation of</span>
                 </div>
               </div>
@@ -167,7 +167,7 @@ const WorkExperience = () => {
               {/* Line 20 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">20</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  spinal cord multiple sclerosis lesions on contrast and modality agnostic medical</span>
                 </div>
               </div>
@@ -175,7 +175,7 @@ const WorkExperience = () => {
               {/* Line 21 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">21</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  images.</span>
                 </div>
               </div>
@@ -183,7 +183,7 @@ const WorkExperience = () => {
               {/* Line 22 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">22</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                 <span className="text-gray-300">
                   • Contributed to{" "}
                   <a
@@ -202,7 +202,7 @@ const WorkExperience = () => {
               {/* Line 23 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">23</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  Resonance Imaging (MRI) and Computed Tomography (CT) images by over 80%.</span>
                 </div>
               </div>
@@ -210,7 +210,7 @@ const WorkExperience = () => {
               {/* Line 24 - Bullet 3 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">24</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Engaged in quality control of segmentation mask inferences on lesions of the</span>
                 </div>
               </div>
@@ -218,7 +218,7 @@ const WorkExperience = () => {
               {/* Line 25 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">25</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  spinal cord.</span>
                 </div>
               </div>
@@ -259,7 +259,7 @@ const WorkExperience = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">31</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 truncate">Re:Pair Genomics</span>
+                  <span className="text-green-400 whitespace-nowrap">Re:Pair Genomics</span>
                   <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">February 2025 - April 2025</span>
                 </div>
               </div>
@@ -267,7 +267,7 @@ const WorkExperience = () => {
               {/* Line 32 - Role */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">32</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">Web Development Intern</span>
                 </div>
               </div>
@@ -281,7 +281,7 @@ const WorkExperience = () => {
               {/* Line 34 - Bullet 1 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">34</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Designed and revamped company website to highlight recent achievements and</span>
                 </div>
               </div>
@@ -289,7 +289,7 @@ const WorkExperience = () => {
               {/* Line 35 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">35</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  products.</span>
                 </div>
               </div>
@@ -297,7 +297,7 @@ const WorkExperience = () => {
               {/* Line 36 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">36</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Refactored back-end of website using cloud-based and serverless emailing</span>
                 </div>
               </div>
@@ -305,7 +305,7 @@ const WorkExperience = () => {
               {/* Line 37 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">37</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">  solutions.</span>
                 </div>
               </div>
@@ -313,7 +313,7 @@ const WorkExperience = () => {
               {/* Line 38 - Bullet 3 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">38</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Curated documentation for future development and future interns.</span>
                 </div>
               </div>

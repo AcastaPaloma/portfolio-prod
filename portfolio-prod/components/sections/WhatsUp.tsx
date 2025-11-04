@@ -19,12 +19,12 @@ const WhatsUp = () => {
             </h1>
 
             {/* Code content with inline line numbers */}
-            <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base">
+            <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base overflow-x-auto">
               {/* Line 1 - Twin header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">1</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 truncate">Twin</span>
+                  <span className="text-green-400 whitespace-nowrap">Twin</span>
                   <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">October 2025 - Present</span>
                 </div>
               </div>
@@ -32,7 +32,7 @@ const WhatsUp = () => {
               {/* Line 2 - Role */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">2</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">Lead Developer @HackTheNorth &apos;25</span>
                 </div>
               </div>
@@ -46,7 +46,7 @@ const WhatsUp = () => {
               {/* Line 4 - Bullet 1 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">4</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Submitted and pitched at Hack The North, Canada&apos;s most prestigious hackathon.</span>
                 </div>
               </div>
@@ -54,7 +54,7 @@ const WhatsUp = () => {
               {/* Line 5 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">5</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Launched Twin v.0, an agentic AI system looking over your shoulder, always.</span>
                 </div>
               </div>
@@ -95,7 +95,7 @@ const WhatsUp = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">11</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 truncate">Tempulse</span>
+                  <span className="text-green-400 whitespace-nowrap">Tempulse</span>
                   <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">April 2025 - Present</span>
                 </div>
               </div>
@@ -103,7 +103,7 @@ const WhatsUp = () => {
               {/* Line 12 - Role */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">12</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">Lead Developer</span>
                 </div>
               </div>
@@ -117,7 +117,7 @@ const WhatsUp = () => {
               {/* Line 14 - Bullet 1 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">14</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Served as lead developer of Tempulse, a productivity app providing time insights.</span>
                 </div>
               </div>
@@ -125,7 +125,7 @@ const WhatsUp = () => {
               {/* Line 15 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">15</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Launched to local community in Montreal, in alpha version.</span>
                 </div>
               </div>
@@ -133,7 +133,7 @@ const WhatsUp = () => {
               {/* Line 16 - Bullet 3 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">16</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">• Pitched and gathered waitlist at Shopify&apos;s Builder Sundays.</span>
                 </div>
               </div>
@@ -173,7 +173,7 @@ const WhatsUp = () => {
               {/* Line 22 - Fun text */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">22</span>
-                <div className="flex-1 min-w-0 truncate">
+                <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-[#FFB86C] ">some fiddling around here and there, currently learning quantum computing...</span>
                 </div>
               </div>
