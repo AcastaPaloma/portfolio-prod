@@ -20,12 +20,12 @@ const WhatsUp = () => {
 
             {/* Code content with inline line numbers */}
             <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base overflow-x-auto">
-              {/* Line 1 - Twin header */}
+              {/* Line 1 - Brain Tumor MRI Platform header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">1</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 whitespace-nowrap">Twin</span>
-                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">October 2025 - Present</span>
+                  <span className="text-green-400 whitespace-nowrap">Brain Tumor MRI Platform</span>
+                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">February 2026 - Present</span>
                 </div>
               </div>
 
@@ -33,7 +33,7 @@ const WhatsUp = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">2</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">Lead Developer @HackTheNorth &apos;25</span>
+                  <span className="text-gray-300">Lead Developer</span>
                 </div>
               </div>
 
@@ -47,7 +47,7 @@ const WhatsUp = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">4</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Submitted and pitched at Hack The North, Canada&apos;s most prestigious hackathon.</span>
+                  <span className="text-gray-300">• Privacy-preserving decision support for MRI tumor segmentation.</span>
                 </div>
               </div>
 
@@ -55,34 +55,48 @@ const WhatsUp = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">5</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Launched Twin v.0, an agentic AI system looking over your shoulder, always.</span>
+                  <span className="text-gray-300">• 3D U-Net + Swin UNETR on BraTS with MONAI/PyTorch.</span>
                 </div>
               </div>
 
-              {/* Line 6 - empty */}
+              {/* Line 6 - Bullet 3 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">6</span>
-                <div className="flex-1 min-w-0"></div>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• FastAPI + Docker serving, Next.js UI with slice overlays.</span>
+                </div>
               </div>
 
-              {/* Line 7 - empty */}
+              {/* Line 7 - Bullet 4 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">7</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">
+                    • Repo:{' '}
+                    <a
+                      href="https://github.com/AcastaPaloma/integrative-project"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#FFB86C] hover:underline"
+                    >
+                      github.com/AcastaPaloma/integrative-project
+                    </a>
+                  </span>
+                </div>
+              </div>
+
+              {/* Line 8 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">8</span>
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 8 - SEPARATOR */}
+              {/* Line 9 - SEPARATOR */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">8</span>
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">9</span>
                 <div className="flex-1 flex justify-center">
                   <span className="text-gray-300">// SEPARATOR //</span>
                 </div>
-              </div>
-
-              {/* Line 9 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">9</span>
-                <div className="flex-1 min-w-0"></div>
               </div>
 
               {/* Line 10 - empty */}
@@ -91,50 +105,48 @@ const WhatsUp = () => {
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 11 - Tempulse header */}
+              {/* Line 11 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">11</span>
-                <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 whitespace-nowrap">Tempulse</span>
-                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">April 2025 - Present</span>
-                </div>
-              </div>
-
-              {/* Line 12 - Role */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">12</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">Lead Developer</span>
-                </div>
-              </div>
-
-              {/* Line 13 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">13</span>
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 14 - Bullet 1 */}
+              {/* Line 12 - Twin header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">14</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Served as lead developer of Tempulse, a productivity app providing time insights.</span>
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">12</span>
+                <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-green-400 whitespace-nowrap">Twin</span>
+                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">October 2025 - Present</span>
                 </div>
               </div>
 
-              {/* Line 15 - Bullet 2 */}
+              {/* Line 13 - Role */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">13</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">Lead Developer @HackTheNorth &apos;25</span>
+                </div>
+              </div>
+
+              {/* Line 14 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">14</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 15 - Bullet 1 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">15</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Launched to local community in Montreal, in alpha version.</span>
+                  <span className="text-gray-300">• Hack The North &apos;25 submission and live pitch.</span>
                 </div>
               </div>
 
-              {/* Line 16 - Bullet 3 */}
+              {/* Line 16 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">16</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Pitched and gathered waitlist at Shopify&apos;s Builder Sundays.</span>
+                  <span className="text-gray-300">• Agentic dev co-pilot that tracks context and intent.</span>
                 </div>
               </div>
 
@@ -144,18 +156,18 @@ const WhatsUp = () => {
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 18 - empty */}
+              {/* Line 18 - SEPARATOR */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">18</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
-
-              {/* Line 19 - SEPARATOR */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">19</span>
                 <div className="flex-1 flex justify-center">
                   <span className="text-gray-300">// SEPARATOR //</span>
                 </div>
+              </div>
+
+              {/* Line 19 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">19</span>
+                <div className="flex-1 min-w-0"></div>
               </div>
 
               {/* Line 20 - empty */}
@@ -164,23 +176,147 @@ const WhatsUp = () => {
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 21 - empty */}
+              {/* Line 21 - Tempulse header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">21</span>
-                <div className="flex-1 min-w-0"></div>
+                <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-green-400 whitespace-nowrap">Tempulse</span>
+                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">April 2025 - Present</span>
+                </div>
               </div>
 
-              {/* Line 22 - Fun text */}
+              {/* Line 22 - Role */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">22</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-[#FFB86C] ">some fiddling around here and there, currently learning quantum computing...</span>
+                  <span className="text-gray-300">Lead Developer</span>
                 </div>
               </div>
 
               {/* Line 23 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">23</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 24 - Bullet 1 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">24</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Productivity app for time insights and focus analytics.</span>
+                </div>
+              </div>
+
+              {/* Line 25 - Bullet 2 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">25</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Launched alpha in Montreal; built waitlist at Shopify Builder Sundays.</span>
+                </div>
+              </div>
+
+              {/* Line 26 - Bullet 3 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">26</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Led product, engineering, and pitch storytelling.</span>
+                </div>
+              </div>
+
+              {/* Line 27 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">27</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 28 - SEPARATOR */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">28</span>
+                <div className="flex-1 flex justify-center">
+                  <span className="text-gray-300">// SEPARATOR //</span>
+                </div>
+              </div>
+
+              {/* Line 29 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">29</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 30 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">30</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 31 - Brave Hearts Alliance header */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">31</span>
+                <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-green-400 whitespace-nowrap">Brave Hearts Alliance</span>
+                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">February 2025</span>
+                </div>
+              </div>
+
+              {/* Line 32 - Role */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">32</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">Full-Stack Developer</span>
+                </div>
+              </div>
+
+              {/* Line 33 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">33</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 34 - Bullet 1 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">34</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Built full e-commerce site for a Montreal non-profit.</span>
+                </div>
+              </div>
+
+              {/* Line 35 - Bullet 2 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">35</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Stack: Next.js 15, Stripe, Supabase, TypeScript, Tailwind CSS.</span>
+                </div>
+              </div>
+
+              {/* Line 36 - Bullet 3 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">36</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Reservation RPCs, Stripe webhooks, and production security middleware.</span>
+                </div>
+              </div>
+
+              {/* Line 37 - Bullet 4 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">37</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">
+                    • Live:{' '}
+                    <a
+                      href="https://www.braveheartsalliance.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#FFB86C] hover:underline"
+                    >
+                      braveheartsalliance.org
+                    </a>
+                  </span>
+                </div>
+              </div>
+
+              {/* Line 38 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">38</span>
                 <div className="flex-1 min-w-0"></div>
               </div>
             </div>

@@ -20,12 +20,12 @@ const WorkExperience = () => {
 
             {/* Code content with inline line numbers */}
             <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base overflow-x-auto">
-              {/* Line 1 - Global Talent Forum header */}
+              {/* Line 1 - QEC Research header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">1</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 whitespace-nowrap">Global Talent Forum</span>
-                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">November 2024 - Present</span>
+                  <span className="text-green-400 whitespace-nowrap">QEC Research, ISEF</span>
+                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">October 2025 - Present</span>
                 </div>
               </div>
 
@@ -33,7 +33,7 @@ const WorkExperience = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">2</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">Co-Founder & Head of Communications</span>
+                  <span className="text-gray-300">Researcher</span>
                 </div>
               </div>
 
@@ -47,186 +47,201 @@ const WorkExperience = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">4</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Co-founded GTF, a platform dedicated to identifying talent and empowering student</span>
+                  <span className="text-gray-300">• Sparse GNN decoders for surface codes; scalable inference.</span>
                 </div>
               </div>
 
-              {/* Line 5 */}
+              {/* Line 5 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">5</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  entrepreneurs.</span>
+                  <span className="text-gray-300">• GraphSAGE hit 74.3% at d=13 with 5-7x fewer params vs MLP.</span>
                 </div>
               </div>
 
-              {/* Line 6 - Bullet 2 */}
+              {/* Line 6 - Bullet 3 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">6</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Communications for Piñata Pitch ($17k raised, 450+ students, supported by Pear</span>
+                  <span className="text-gray-300">
+                    • Mixed-distance training +8.9%; Team Canada at{' '}
+                    <a
+                      href="https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#FFB86C] hover:underline"
+                    >
+                      ISEF
+                    </a>
+                    .
+                  </span>
                 </div>
               </div>
 
-              {/* Line 7 */}
+              {/* Line 7 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">7</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  VC, Harvard & Berkeley) and Unfounders at a16z Tech Week, 500+ participants, with</span>
-                </div>
+                <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 8 */}
+              {/* Line 8 - SEPARATOR */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">8</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  backing from Cluely, Pally AI (YC S25), Foundess, OpenNote (YC S25).</span>
-                </div>
-              </div>
-
-              {/* Line 9 - Bullet 3 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">9</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Designed the CRM system for 500+ students part of the GTF.</span>
-                </div>
-              </div>
-
-              {/* Line 10 - Bullet 4 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">10</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Lead Organizer of AI BUILD DAY w/ Piñata Pitch x <span className="text-green-400">Shopify</span> x </span>
-                  <span className="text-gray-300">ElanTech</span>
-                  <span className="text-gray-300">.</span>
-                </div>
-              </div>
-
-              {/* Line 11 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">11</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
-
-              {/* Line 12 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">12</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
-
-              {/* Line 13 - SEPARATOR */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">13</span>
                 <div className="flex-1 flex justify-center">
                   <span className="text-gray-300">// SEPARATOR //</span>
                 </div>
               </div>
 
-              {/* Line 14 - empty */}
+              {/* Line 9 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">14</span>
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">9</span>
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 15 - empty */}
+              {/* Line 10 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">15</span>
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">10</span>
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 16 - Neuropoly header */}
+              {/* Line 11 - Neuropoly header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">16</span>
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">11</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 whitespace-nowrap">Neuropoly, Polytechnique Montréal</span>
+                  <span className="text-green-400 whitespace-nowrap">Neuropoly, Polytechnique Montreal</span>
                   <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">June 2024 - Present</span>
                 </div>
               </div>
 
-              {/* Line 17 - Role */}
+              {/* Line 12 - Role */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">17</span>
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">12</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
                   <span className="text-gray-300">Research & Development Intern</span>
                 </div>
               </div>
 
-              {/* Line 18 - empty */}
+              {/* Line 13 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">18</span>
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">13</span>
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 19 - Bullet 1 */}
+              {/* Line 14 - Bullet 1 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">14</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Trained nnU-Net models for MS spinal cord lesion segmentation.</span>
+                </div>
+              </div>
+
+              {/* Line 15 - Bullet 2 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">15</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Accelerated MRI/CT annotation in{' '}
+                    <a
+                      href="https://github.com/SomeoneInParticular/CART"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#FFB86C] hover:underline"
+                    >
+                      CART
+                    </a>
+                    {' '}by 80%.
+                  </span>
+                </div>
+              </div>
+
+              {/* Line 16 - Bullet 3 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">16</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Performed QA on lesion masks and model inferences.</span>
+                </div>
+              </div>
+
+              {/* Line 17 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">17</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 18 - SEPARATOR */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">18</span>
+                <div className="flex-1 flex justify-center">
+                  <span className="text-gray-300">// SEPARATOR //</span>
+                </div>
+              </div>
+
+              {/* Line 19 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">19</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Trained and fine-tuned various nn-UNet models to automate the segmentation of</span>
-                </div>
+                <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 20 */}
+              {/* Line 20 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">20</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  spinal cord multiple sclerosis lesions on contrast and modality agnostic medical</span>
-                </div>
+                <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 21 */}
+              {/* Line 21 - MariHacks header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">21</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  images.</span>
+                <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-green-400 whitespace-nowrap">MariHacks</span>
+                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">April 2025 - Present</span>
                 </div>
               </div>
 
-              {/* Line 22 - Bullet 2 */}
+              {/* Line 22 - Role */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">22</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                <span className="text-gray-300">
-                  • Contributed to{" "}
-                  <a
-                    href="https://github.com/SomeoneInParticular/CART"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#FFB86C] hover:underline"
-                  >
-                    CART
-                  </a>
-                  , optimizing the segmentation and annotation speed of Magnetic
-                </span>
-              </div>
-              </div>
-
-              {/* Line 23 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">23</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  Resonance Imaging (MRI) and Computed Tomography (CT) images by over 80%.</span>
+                  <span className="text-gray-300">Lead Organizer</span>
                 </div>
               </div>
 
-              {/* Line 24 - Bullet 3 */}
+              {/* Line 23 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">23</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 24 - Bullet 1 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">24</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Engaged in quality control of segmentation mask inferences on lesions of the</span>
+                  <span className="text-gray-300">• Organized Marianopolis College's flagship hackathon (300 participants).</span>
                 </div>
               </div>
 
-              {/* Line 25 */}
+              {/* Line 25 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">25</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  spinal cord.</span>
+                  <span className="text-gray-300">• Built sponsor, mentorship, and challenge tracks across project streams.</span>
                 </div>
               </div>
 
-              {/* Line 26 - empty */}
+              {/* Line 26 - Bullet 3 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">26</span>
-                <div className="flex-1 min-w-0"></div>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">
+                    • Project:{' '}
+                    <a
+                      href="https://www.marihacks.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#FFB86C] hover:underline"
+                    >
+                      marihacks.com
+                    </a>
+                  </span>
+                </div>
               </div>
 
               {/* Line 27 - empty */}
@@ -255,12 +270,12 @@ const WorkExperience = () => {
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 31 - Re-Pair Genomics header */}
+              {/* Line 31 - Global Talent Forum header */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">31</span>
                 <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
-                  <span className="text-green-400 whitespace-nowrap">Re:Pair Genomics</span>
-                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">February 2025 - April 2025</span>
+                  <span className="text-green-400 whitespace-nowrap">Global Talent Forum</span>
+                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">November 2024 - Present</span>
                 </div>
               </div>
 
@@ -268,7 +283,7 @@ const WorkExperience = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">32</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">Web Development Intern</span>
+                  <span className="text-gray-300">Co-Founder & Head of Communications</span>
                 </div>
               </div>
 
@@ -282,45 +297,102 @@ const WorkExperience = () => {
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">34</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Designed and revamped company website to highlight recent achievements and</span>
+                  <span className="text-gray-300">• Built GTF to surface student talent and founder pipelines.</span>
                 </div>
               </div>
 
-              {/* Line 35 */}
+              {/* Line 35 - Bullet 2 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">35</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  products.</span>
+                  <span className="text-gray-300">• Led comms for Piñata Pitch and a16z Tech Week activations.</span>
                 </div>
               </div>
 
-              {/* Line 36 - Bullet 2 */}
+              {/* Line 36 - Bullet 3 */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">36</span>
                 <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Refactored back-end of website using cloud-based and serverless emailing</span>
+                  <span className="text-gray-300">• Designed CRM for 500+ students and community ops.</span>
                 </div>
               </div>
 
-              {/* Line 37 */}
+              {/* Line 37 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">37</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">  solutions.</span>
-                </div>
+                <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 38 - Bullet 3 */}
+              {/* Line 38 - SEPARATOR */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">38</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">• Curated documentation for future development and future interns.</span>
+                <div className="flex-1 flex justify-center">
+                  <span className="text-gray-300">// SEPARATOR //</span>
                 </div>
               </div>
 
               {/* Line 39 - empty */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">39</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 40 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">40</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 41 - Re:Pair Genomics header */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">41</span>
+                <div className="flex-1 flex items-center justify-between min-w-0 gap-2 sm:gap-3 md:gap-4">
+                  <span className="text-green-400 whitespace-nowrap">Re:Pair Genomics</span>
+                  <span className="text-gray-300 text-right shrink-0 whitespace-nowrap text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs lg:text-sm">February 2025 - April 2025</span>
+                </div>
+              </div>
+
+              {/* Line 42 - Role */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">42</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">Web Development Intern</span>
+                </div>
+              </div>
+
+              {/* Line 43 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">43</span>
+                <div className="flex-1 min-w-0"></div>
+              </div>
+
+              {/* Line 44 - Bullet 1 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">44</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Redesigned the company site to highlight new products.</span>
+                </div>
+              </div>
+
+              {/* Line 45 - Bullet 2 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">45</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Refactored backend services with serverless email workflows.</span>
+                </div>
+              </div>
+
+              {/* Line 46 - Bullet 3 */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">46</span>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">• Delivered developer handoff docs for future interns.</span>
+                </div>
+              </div>
+
+              {/* Line 47 - empty */}
+              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
+                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">47</span>
                 <div className="flex-1 min-w-0"></div>
               </div>
             </div>

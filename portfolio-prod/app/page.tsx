@@ -12,9 +12,7 @@ import Image from "next/image";
 export default function Home() {
   return (
    <main className="text-black">
-    <div className="hidden md:block">
-      <Header />
-    </div>
+    <Header />
     <KuanYiWang />
     <WorkExperience />
     <WhatsUp />
