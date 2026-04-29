@@ -23,10 +23,10 @@ export default function Footer() {
             <div className="flex flex-wrap items-start sm:items-center">
               <span className="text-white">&quot;email&quot;:</span>
               <a
-                href="mailto:kuanyi.wang0906@gmail.com"
+                href="mailto:kuanyi.wang0807@gmail.com"
                 className="text-blue-400 ml-1 sm:ml-2 break-all hover:underline"
               >
-                kuanyi.wang0906@gmail.com
+                kuanyi.wang0807@gmail.com
               </a>
             <span className="text-white">,</span>
             </div>

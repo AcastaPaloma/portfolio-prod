@@ -142,10 +142,22 @@ const KuanYiWang = () => {
                 <div className="flex-1 min-w-0"></div>
               </div>
 
-              {/* Line 13 - empty */}
+              {/* Line 13 - CV download */}
               <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
                 <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">13</span>
-                <div className="flex-1 min-w-0"></div>
+                <div className="flex-1 min-w-0 whitespace-nowrap">
+                  <span className="text-gray-300">
+                    MY CV:	&nbsp;
+                    <a
+                      href="/WANG_KUANYI_MAY2026.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#FFB86C] hover:underline"
+                    >
+                      WANG_KUANYI_MAY2026.pdf
+                    </a>
+                  </span>
+                </div>
               </div>
 
               {/* Line 14 - empty */}
@@ -213,10 +225,10 @@ const KuanYiWang = () => {
                   <span className="text-gray-300">
                     438-722-0688 |{" "}
                     <a
-                      href="mailto:kuanyi.wang0906@gmail.com"
+                      href="mailto:kuanyi.wa807@gmail.com"
                       className="text-blue-400 hover:underline"
                     >
-                      kuanyi.wang0906@gmail.com
+                      kuanyi.wang0807@gmail.com
                     </a>
                   </span>
                 </div>
