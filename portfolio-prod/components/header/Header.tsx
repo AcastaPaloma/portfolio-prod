@@ -23,6 +23,10 @@ const Header = () => {
     <header className="hidden md:block w-full py-6 sm:py-8 md:py-10 lg:py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
         <nav className="flex flex-col items-center gap-3 sm:gap-4">
+          <div className="font-mono text-xs sm:text-sm md:text-base text-white tracking-normal">
+            CS @Waterloo
+          </div>
+
           <div className="flex flex-wrap items-center justify-center gap-2">
             {navItems.map((item, index) => (
               <React.Fragment key={item.name}>

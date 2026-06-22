@@ -40,7 +40,7 @@ export default function Footer() {
 
             {/* More links */}
             <div className="flex flex-wrap items-start sm:items-center">
-              <span className="text-white">"more_links":</span>
+              <span className="text-white">&quot;more_links&quot;:</span>
               <span className="text-[#FFB86C] ml-1 sm:ml-2 break-all">
                 [
                 <a
@@ -49,7 +49,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-[#FFB86C]  hover:underline"
                 >
-                  "www.pinatapitch.tech"
+                  &quot;www.pinatapitch.tech&quot;
                 </a>,&nbsp;
                 <a
                   href="https://www.unfounders.com"
@@ -57,7 +57,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-[#FFB86C]  hover:underline"
                 >
-                  "www.unfounders.com"
+                  &quot;www.unfounders.com&quot;
                 </a>
                 ]
               </span>

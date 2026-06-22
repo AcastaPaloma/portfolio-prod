@@ -2,228 +2,168 @@
 
 /// ========== Components ========== //
 import TopLeftPath from '../TopLeftPath'
-import LineNumbers from '../layout/LineNumbers'
 
-import React, { useRef } from 'react'
+import React from 'react'
+
+const rowClass = 'min-h-3 xs:min-h-[14px] sm:min-h-4 md:min-h-5 lg:min-h-[22px] flex items-baseline gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 leading-[1.35] hover:bg-blue-500/10 transition-colors'
+
+const CodeLine = ({ number, children, className = '' }: { number: number; children?: React.ReactNode; className?: string }) => (
+  <div className={`${rowClass} ${className}`}>
+    <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs leading-[inherit] tabular-nums">
+      {number}
+    </span>
+    {children ?? <div className="flex-1 min-w-0" />}
+  </div>
+)
+
 const KuanYiWang = () => {
-  const contentRef = useRef<HTMLDivElement>(null);
-
   return (
     <section id="about" className="min-h-screen w-full px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:pb-30 md:pb-50 lg:pb-100 sm:pt-6 md:pt-10 lg:pt-15 pt-0 flex flex-col scroll-mt-24">
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col">
         <TopLeftPath path={["portfolio", "app", "page.tsx", "Home"]} />
 
-        {/* Section content with line numbers */}
         <div className="flex-1 flex flex-col justify-between pt-2 sm:pt-3 md:pt-4 pb-2 sm:pb-3 md:pb-4">
-          {/* Opening tag */}
           <div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-mono mb-4 sm:mb-5 md:mb-6 text-white">
               &lt;KuanYiWang
             </h1>
 
-            {/* Code content with inline line numbers */}
-            <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base overflow-x-auto">
-              {/* Line 1 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">1</span>
+            <div className="font-mono text-[8px] xs:text-[9px] pt-4 sm:text-xs md:text-sm lg:text-base">
+              <CodeLine number={1}>
                 <div className="flex-1 min-w-0">
-                  <span className="text-gray-300">import</span>{' '}
+                  <span className="text-pink-300">import</span>{' '}
                   <span className="text-blue-400">React</span>
                   <span className="text-gray-300">, &#123;</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 2 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">2</span>
-                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-blue-400">TypeScript</span>
+              <CodeLine number={2}>
+                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 break-words">
+                  <span className="text-gray-300">TypeScript</span>
                   <span className="text-gray-300">, </span>
-                  <span className="text-green-400">JavaScript</span>
+                  <span className="text-gray-300">JavaScript</span>
                   <span className="text-gray-300">, </span>
-                  <span className="text-orange-400">HTML</span>
+                  <span className="text-gray-300">HTML</span>
                   <span className="text-gray-300">, </span>
-                  <span className="text-cyan-400">TailWind CSS</span>
+                  <span className="text-gray-300">TailWind CSS</span>
                   <span className="text-gray-300">, </span>
                   <span className="text-gray-300">Next.js</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 3 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">3</span>
-                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0">
-                  <span className="text-blue-400">Python, Sci-kit Learn</span>
+              <CodeLine number={3}>
+                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 break-words">
+                  <span className="text-gray-300">Python</span>
+                  <span className="text-gray-300">, </span>
+                  <span className="text-red-400">PyTorch, U-Net, TensorFlow</span>
+                </div>
+              </CodeLine>
+
+              <CodeLine number={4}>
+                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 break-words">
+                  <span className="text-gray-300">Google Firebase</span>
+                  <span className="text-gray-300">, </span>
+                  <span className="text-gray-300">Cloud Functions</span>
+                  <span className="text-gray-300">, </span>
+                  <span className="text-gray-300">FastAPI</span>
                   <span className="text-gray-300">,</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 4 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">4</span>
-                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-yellow-400">Google Firebase</span>
-                  <span className="text-gray-300">, </span>
-                  <span className="text-green-400">Cloud Functions</span>
-                  <span className="text-gray-300">, </span>
-                  <span className="text-cyan-400">FastAPI</span>
-                  <span className="text-gray-300">,</span>
-                </div>
-              </div>
-
-              {/* Line 5 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">5</span>
+              <CodeLine number={5}>
                 <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0">
-                  <span className="text-green-400">Supabase</span>
+                  <span className="text-gray-300">Supabase</span>
                   <span className="text-gray-300">, </span>
-                  <span className="text-blue-400">SQL</span>
+                  <span className="text-gray-300">SQL</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 6 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">6</span>
+              <CodeLine number={6}>
                 <div className="flex-1 min-w-0">
                   <span className="text-gray-300">&#125; </span>
-                  <span className="text-gray-300">from</span>{' '}
-                  <span className="text-gray-300">&apos;my_tech_stack&apos;</span>
+                  <span className="text-pink-300">from</span>{' '}
+                  <span className="text-[#FFB86C]">&apos;my_tech_stack&apos;</span>
                   <span className="text-gray-300">;</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 7 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">7</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
+              <CodeLine number={7} />
 
-              {/* Line 8 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">8</span>
+              <CodeLine number={8}>
                 <div className="flex-1 min-w-0">
-                  <span className="text-gray-300">import</span>{' '}
+                  <span className="text-pink-300">import</span>{' '}
                   <span className="text-gray-300">&#123;</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 9 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">9</span>
-                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-blue-400">Cursor</span>
+              <CodeLine number={9}>
+                <div className="pl-2 xs:pl-3 sm:pl-4 md:pl-8 flex-1 min-w-0 break-words">
+                  <span className="text-gray-300">Claude Code</span>
                   <span className="text-gray-300">, </span>
-                  <span className="text-blue-400">GitHub Copilot</span>
+                  <span className="text-gray-300">OpenClaw</span>
                   <span className="text-gray-300">, </span>
-                  <span className="text-cyan-400">Figma</span>
+                  <span className="text-gray-300">Figma</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 10 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">10</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
+              <CodeLine number={10}>
+                <div className="flex-1 min-w-0 break-words">
                   <span className="text-gray-300">&#125; </span>
-                  <span className="text-gray-300">from</span>{' '}
-                  <span className="text-gray-300">&apos;my_more_useful_tech_stack&apos;</span>
+                  <span className="text-pink-300">from</span>{' '}
+                  <span className="text-[#FFB86C]">&apos;my_more_useful_tech_stack&apos;</span>
                   <span className="text-gray-300">;</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 11 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">11</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
+              <CodeLine number={11} />
+              <CodeLine number={12} />
 
-              {/* Line 12 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">12</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
-
-              {/* Line 13 - CV download */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">13</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
+              <CodeLine number={13}>
+                <div className="flex-1 min-w-0 break-words">
                   <span className="text-gray-300">
-                    MY CV:	&nbsp;
+                    MY CV:&nbsp;
                     <a
-                      href="/WANG_KUANYI_MAY2026.pdf"
+                      href="/WANG_KUANYI.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#FFB86C] hover:underline"
                     >
-                      WANG_KUANYI_MAY2026.pdf
+                      WANG_KUANYI.pdf
                     </a>
                   </span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 14 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">14</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
+              <CodeLine number={14} />
 
-              {/* Line 15 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 bg-red-900/20 hover:bg-red-900/30 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">15</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">What&apos;s up - My name is Kuan, currently hosting Piñata Pitch,</span>
+              <CodeLine number={15} className="bg-red-900/20 hover:bg-red-900/30">
+                <div className="flex-1 min-w-0 break-words">
+                  <span className="text-gray-300">Hosting Pi&ntilde;ata Pitch w/ Startupfest</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 16 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">16</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">Montreal&apos;s largest student tech pitch competition.</span>
+              <CodeLine number={16}>
+                <div className="flex-1 min-w-0 break-words">
+                  <span className="text-gray-300">Curr. @ Morgan Stanley &amp; </span>
+                  <span className="text-cyan-300">CS @ Waterloo</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 17 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">17</span>
-                <div className="flex-1 min-w-0">
-                  <span className="text-gray-300">I Golf</span>
+              <CodeLine number={17}>
+                <div className="flex-1 min-w-0 break-words">
+                  <span className="text-gray-300">Loving MedTech &amp; Golfing</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 18 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">18</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
-                  <span className="text-gray-300">I love Learning Languages (1000 day streak on Duolingo, German)</span>
-                </div>
-              </div>
+              <CodeLine number={18} />
+              <CodeLine number={19} />
+              <CodeLine number={20} />
+              <CodeLine number={21} />
 
-              {/* Line 19 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">19</span>
-                <div className="flex-1 min-w-0">
-                  <span className="text-gray-300">Loving MedTech.</span>
-                </div>
-              </div>
-
-              {/* Line 20 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">20</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
-
-              {/* Line 21 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">21</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
-
-              {/* Line 22 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">22</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
+              <CodeLine number={22}>
+                <div className="flex-1 min-w-0 break-words">
                   <span className="text-gray-300">
-                    438-722-0688 |{" "}
+                    438-722-0688 |{' '}
                     <a
                       href="mailto:kuanyi.wa807@gmail.com"
                       className="text-blue-400 hover:underline"
@@ -232,37 +172,19 @@ const KuanYiWang = () => {
                     </a>
                   </span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 23 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">23</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
+              <CodeLine number={23} />
+              <CodeLine number={24} />
+              <CodeLine number={25} />
 
-              {/* Line 24 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">24</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
-
-              {/* Line 25 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">25</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
-
-              {/* Line 26 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">26</span>
-                <div className="flex-1 min-w-0 whitespace-nowrap">
+              <CodeLine number={26}>
+                <div className="flex-1 min-w-0 break-words">
                   <span className="text-gray-300">i literally can&apos;t stop talking:</span>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 27 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">27</span>
+              <CodeLine number={27}>
                 <div className="flex-1 min-w-0">
                   <a
                     href="https://www.linkedin.com/in/kuan-yi-wang-443871319/"
@@ -273,11 +195,9 @@ const KuanYiWang = () => {
                     LinkedIn
                   </a>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 28 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">28</span>
+              <CodeLine number={28}>
                 <div className="flex-1 min-w-0">
                   <a
                     href="https://www.instagram.com/kuanus_"
@@ -288,11 +208,9 @@ const KuanYiWang = () => {
                     Instagram
                   </a>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 29 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">29</span>
+              <CodeLine number={29}>
                 <div className="flex-1 min-w-0">
                   <a
                     href="https://luma.com/user/kuans"
@@ -303,11 +221,9 @@ const KuanYiWang = () => {
                     Lu.ma
                   </a>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 30 */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">30</span>
+              <CodeLine number={30}>
                 <div className="flex-1 min-w-0">
                   <a
                     href="https://github.com/AcastaPaloma"
@@ -315,20 +231,15 @@ const KuanYiWang = () => {
                     rel="noopener noreferrer"
                     className="text-yellow-300 hover:underline"
                   >
-                    GitHub 🤫
+                    GitHub
                   </a>
                 </div>
-              </div>
+              </CodeLine>
 
-              {/* Line 31 - empty */}
-              <div className="h-3 xs:h-[14px] sm:h-4 md:h-5 lg:h-[22px] flex items-center gap-2 xs:gap-2.5 sm:gap-3 md:gap-5 lg:gap-6 hover:bg-blue-500/10 transition-colors">
-                <span className="text-gray-500 select-none w-3 xs:w-3.5 sm:w-4 md:w-6 text-right shrink-0 text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs">31</span>
-                <div className="flex-1 min-w-0"></div>
-              </div>
+              <CodeLine number={31} />
             </div>
           </div>
 
-          {/* Closing tag at bottom */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-mono mt-8 sm:mt-10 md:mt-12 text-white">
             /&gt;
           </h1>
