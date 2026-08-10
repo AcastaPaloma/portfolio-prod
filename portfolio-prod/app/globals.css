@@ -1,40 +1,6 @@
-/* Register JetBrains Mono directly so PostCSS/Tailwind doesn't need to resolve an import from /app */
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@import "tailwindcss";
-
-:root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  /* Use the JetBrains Mono font, falling back to the Geist mono variable and then sans-serif */
-  font-family: 'JetBrains Mono', var(--font-geist-mono), sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+@font-face { font-family:"JetBrains Mono"; src:url("/fonts/JetBrainsMono-Regular.ttf") format("truetype"); font-display:swap; } @font-face { font-family:"HW4"; src:url("/fonts/Hw4-Regular.ttf") format("truetype"); font-display:swap; }
+:root { --paper:#f1f0e9; --ink:#171c18; --muted:#6a6f67; --violet:#a782ff; --acid:#dfff50; --line:#b8bbb3; } *{box-sizing:border-box} html{scroll-behavior:smooth;background:var(--paper)} body{margin:0;background:var(--paper);color:var(--ink);font-family:"JetBrains Mono",monospace} a{color:inherit;text-decoration:none}.portal-page{overflow:hidden}.portal-nav{height:72px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 4vw;border-bottom:1px solid var(--line);font-size:11px}.portal-logo{font-size:15px;font-weight:700;letter-spacing:-.08em}.portal-logo span{color:var(--violet)}.portal-nav nav{display:flex;gap:25px}.nav-status{text-align:right;color:var(--muted);font-size:9px}.portal-nav a:hover,.portal-actions a:hover,.contact-rail a:hover,.portal-projects a:hover{color:#7150cc}
+.portal-hero{min-height:calc(100svh - 72px);padding:5vh 4vw 7vh;display:grid;grid-template-columns:minmax(0,.88fr) minmax(370px,1.12fr);gap:4vw;align-items:center}.portal-intro{position:relative;z-index:2;max-width:620px}.handline{margin:0 0 16px;color:#7150cc;font-family:"HW4","JetBrains Mono",cursive;font-size:clamp(25px,3vw,42px);line-height:.85;transform:rotate(-3deg)}h1,h2,h3,p{margin-top:0}h1{margin-bottom:25px;font-size:clamp(64px,10vw,152px);line-height:.75;letter-spacing:-.085em;font-weight:400}.portal-intro>p:not(.handline){max-width:34ch;font-size:clamp(17px,2vw,26px);line-height:1.35;letter-spacing:-.055em}.portal-actions{display:flex;flex-wrap:wrap;gap:20px 30px;margin-top:36px;font-size:12px}.portal-actions a{padding-bottom:7px;border-bottom:1px solid currentColor}.portal-shell{position:relative;min-height:590px;overflow:hidden;background:var(--ink);box-shadow:15px 18px 0 var(--acid)}.portal-shell::before,.portal-shell::after{content:"";position:absolute;z-index:2;width:11px;height:11px;background:var(--paper)}.portal-shell::before{top:0;left:0}.portal-shell::after{right:0;bottom:0}.portal-shell canvas{display:block;width:100%;height:590px}.portal-annotation{position:absolute;z-index:3;right:13px;top:13px;color:var(--acid);font-size:9px;writing-mode:vertical-rl}.portal-telemetry{padding:18px 4vw;display:flex;gap:17px;overflow:auto;white-space:nowrap;background:var(--ink);color:#fff;font-size:10px}.portal-telemetry b{color:var(--acid)}
+.portal-section{padding:clamp(92px,13vw,185px) 4vw}.portal-heading{display:grid;grid-template-columns:29% minmax(0,1fr);gap:28px;margin-bottom:70px}.portal-heading .handline{font-size:clamp(23px,2.7vw,35px)}h2{max-width:14ch;margin:0;font-size:clamp(40px,5.4vw,81px);line-height:.9;letter-spacing:-.08em;font-weight:400}.work-stream{max-width:1140px;margin-left:auto;border-top:1px solid var(--line)}.work-stream article{position:relative;display:grid;grid-template-columns:20% minmax(0,1fr) 15px;gap:28px;padding:31px 0 43px;border-bottom:1px solid var(--line)}.work-stream article>span{color:#7150cc;font-size:10px}.work-stream h3,.portal-projects h3{margin-bottom:8px;font-size:clamp(21px,2.25vw,31px);line-height:1.05;letter-spacing:-.06em;font-weight:400}.item-role{margin-bottom:17px;color:#7150cc;font-size:10px;line-height:1.55}.work-stream p:not(.item-role),.portal-projects p:not(.item-role){max-width:76ch;margin-bottom:0;font-size:12px;line-height:1.68}.work-stream i{display:block;width:10px;height:10px;margin-top:5px;background:var(--acid);border-radius:50%}.project-section{padding-top:0;background:#e6e5dd}.portal-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}.portal-projects article{min-height:410px;padding:28px;background:var(--paper);position:relative}.project-code{display:flex;align-items:center;justify-content:space-between;margin-bottom:57px;color:#7150cc;font-size:10px}.project-code i{height:1px;width:50px;background:var(--violet)}.medical .project-code i{background:var(--acid)}.agent .project-code i{background:var(--ink)}.portal-projects a{position:absolute;left:28px;bottom:28px;padding-bottom:6px;border-bottom:1px solid currentColor;font-size:11px}.portal-contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.85fr);gap:6vw;padding:clamp(95px,14vw,190px) 4vw;background:var(--acid)}.portal-contact h2{font-size:clamp(62px,8vw,119px)}.contact-rail{display:grid;align-content:center;gap:14px}.contact-rail a{width:fit-content;padding-bottom:7px;border-bottom:1px solid rgba(23,28,24,.45);font-size:clamp(14px,1.4vw,18px)}footer{display:flex;justify-content:space-between;gap:20px;padding:20px 4vw;color:var(--muted);font-size:9px}
+@media(max-width:780px){.portal-nav{height:60px;padding:0 20px;grid-template-columns:1fr auto}.portal-nav nav{gap:14px}.nav-status{display:none}.portal-hero{grid-template-columns:1fr;min-height:auto;padding:58px 20px 34px}h1{font-size:clamp(62px,19vw,118px)}.portal-shell{min-height:430px;box-shadow:9px 11px 0 var(--acid)}.portal-shell canvas{height:430px}.portal-section{padding-left:20px;padding-right:20px}.portal-heading{grid-template-columns:1fr;gap:12px;margin-bottom:43px}.work-stream article{grid-template-columns:1fr 13px;gap:12px}.work-stream article>div{grid-column:1}.work-stream article>i{grid-column:2;grid-row:1}.portal-projects{grid-template-columns:1fr}.portal-projects article{min-height:325px}.portal-contact{grid-template-columns:1fr;padding-left:20px;padding-right:20px;gap:50px}footer{padding:18px 20px;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
