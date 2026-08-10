@@ -1,32 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Kuan Yi Wang",
-  description: "Kuan ∈ medtech | startups | golf",
+  title: "Kuan Yi Wang — portfolio",
+  description: "Computer science, medtech, research, startups, and golf.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const directionContract = `<!--
+THESIS: A personal portfolio as a living specimen ledger, refusing the generic project-card grid.
+OWN-WORLD: Chalk-white paper, graphite rules, moss measurements, JetBrains Mono records, and small HW4 marginalia.
+STORY: A first-time visitor meets Kuan's work in research, medtech, technology, and community, then can inspect projects or make contact.
+FIRST VIEWPORT: Oversized name and direct invitation occupy the left; a scroll-scrubbed dither llama specimen moves in the right field; project and contact actions sit at the lower left.
+FORM: Pale Specimen Ledger, selected visual world, seed d16a4779.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->`;
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="h-full">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full flex flex-col`}
-      >
+    <html lang="en">
+      <body>
+        <template data-direction-contract="pale-specimen-ledger" dangerouslySetInnerHTML={{ __html: directionContract }} />
         {children}
       </body>
     </html>
