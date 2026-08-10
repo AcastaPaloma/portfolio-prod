@@ -1,34 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Kuan Yi Wang",
-  description: "Kuan ∈ medtech | startups | golf",
+  title: "Kuan Yi Wang — paper cut portfolio",
+  description: "Computer science, medtech, research, startups, and golf.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" className="h-full">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full flex flex-col`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+const directionContract = `<!--
+THESIS: A portfolio assembled as a paper-cut field board, refusing the fixed hero plus uniform card stack.
+OWN-WORLD: White stock, cobalt and citrus cut sheets, deep navy cut lines, soft cast-paper shadows, JetBrains Mono facts, HW4 notes.
+STORY: A visitor sees Kuan's threads—research, medical imaging, startup rooms, and play—converge, then follows them to evidence and contact.
+FIRST VIEWPORT: Huge hand-marked name sits on the left of a full paper-cut composition; a llama, orbital path, MRI slice, and golf club shift through depth with scroll; actions sit beneath the introduction.
+FORM: Layered Paper Cut, selected visual world, seed d16a4779.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->`;
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><body><template data-direction-contract="layered-paper-cut" dangerouslySetInnerHTML={{ __html: directionContract }} />{children}</body></html>;
 }
