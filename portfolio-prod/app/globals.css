@@ -38,3 +38,292 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+:root {
+  --void: #d8d0c3;
+  --ink: #28231f;
+  --quiet-ink: #5b5147;
+  --line: rgb(47 41 35 / 22%);
+  --slab-white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  background: var(--void);
+}
+
+body {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+}
+
+.portfolio {
+  isolation: isolate;
+  position: relative;
+  width: 100%;
+  height: 185vh;
+  min-height: 34rem;
+  background: var(--void);
+}
+
+.portfolio-stage {
+  isolation: isolate;
+  position: sticky;
+  top: 0;
+  display: grid;
+  width: 100%;
+  height: 100dvh;
+  min-height: 34rem;
+  overflow: hidden;
+  background: var(--void);
+}
+
+.scene {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  touch-action: pan-y;
+}
+
+.scene canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.scene-shell {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.resume-vector-face,
+.resume-vector-frame,
+.resume-vector-document {
+  display: block;
+  width: 2448px;
+  height: 3168px;
+}
+
+.resume-vector-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--slab-white);
+}
+
+.resume-vector-document {
+  border: 0;
+  background: var(--slab-white);
+  backface-visibility: hidden;
+  image-rendering: auto;
+}
+
+.resume-highlights {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 2448px;
+  height: 3168px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.document-detail {
+  position: absolute;
+  z-index: 1;
+  top: 24%;
+  left: clamp(1.5rem, 5vw, 5.5rem);
+  width: min(15.25rem, 19vw);
+  pointer-events: none;
+}
+
+.detail-card {
+  margin: 0;
+  padding: 0.42rem;
+  border: 1px solid rgb(47 41 35 / 20%);
+  background: rgb(255 255 255 / 24%);
+}
+
+.detail-card-image {
+  position: relative;
+  aspect-ratio: 0.82;
+  overflow: hidden;
+  isolation: isolate;
+  background: #f7f4ed;
+}
+
+.detail-card-noise,
+.detail-card-dither {
+  position: absolute;
+  inset: 0;
+}
+
+.detail-card-noise {
+  z-index: 1;
+}
+
+.detail-card-dither {
+  z-index: 2;
+}
+
+.detail-card-shader,
+.detail-card-shader canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.detail-card-shader {
+  position: absolute !important;
+  inset: 0;
+}
+
+.detail-card figcaption {
+  padding: 0.65rem 0.2rem 0.22rem;
+  color: var(--quiet-ink);
+}
+
+.detail-card figcaption p {
+  margin: 0;
+  font-size: 0.73rem;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.control-rail {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: min(100% - 3rem, 72rem);
+  margin: 0 auto;
+  padding: 1.1rem 0 1.35rem;
+  color: var(--quiet-ink);
+  font-size: 0.73rem;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+.control-rail p {
+  margin: 0;
+}
+
+.control-rail a {
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  pointer-events: auto;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.control-rail a:hover {
+  color: var(--ink);
+  border-color: currentColor;
+}
+
+.control-rail a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+@media (max-width: 42rem) and (orientation: portrait) {
+  .portfolio,
+  .portfolio-stage {
+    min-height: 30rem;
+  }
+
+  .control-rail {
+    align-items: flex-end;
+    width: calc(100% - 2rem);
+    padding-bottom: 1rem;
+    font-size: 0.73rem;
+  }
+
+  .control-rail p {
+    max-width: 12rem;
+  }
+}
+
+@media (max-width: 47.99rem) and (orientation: portrait) {
+  .portfolio {
+    height: 100dvh;
+  }
+
+  .portfolio-stage {
+    position: relative;
+  }
+
+  .document-detail {
+    display: none;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 47.99rem) {
+  .portfolio,
+  .portfolio-stage {
+    min-height: 100svh;
+  }
+
+  .document-detail {
+    top: 1.1rem;
+    left: 1.25rem;
+    width: min(11rem, 22vw);
+  }
+
+  .control-rail {
+    width: calc(100% - 2rem);
+    padding-bottom: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control-rail a {
+    transition: none;
+  }
+}
+
+.webgl-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+  padding: 2rem;
+  background: var(--void);
+  color: var(--quiet-ink);
+  font-size: 0.73rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.webgl-fallback p {
+  width: min(26rem, 100%);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.webgl-fallback a {
+  text-underline-offset: 0.2em;
+}
