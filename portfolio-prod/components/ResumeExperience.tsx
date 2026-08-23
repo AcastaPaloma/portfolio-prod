@@ -831,7 +831,7 @@ function DitherBackdrop() {
     <div className="dither-backdrop" aria-hidden="true">
       <ImageDithering
         className="dither-backdrop-shader"
-        image="/resume/spinal-mri-background.jpg"
+        image="/resume/spinal-mri-sagittal.jpg"
         colorBack="#d9d1c5"
         colorFront="#242321"
         colorHighlight="#756d61"
