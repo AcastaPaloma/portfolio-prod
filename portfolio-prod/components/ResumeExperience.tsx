@@ -284,7 +284,6 @@ function RoughMarkerCircle({
   }, [target]);
   const exitDelay = (PROJECT_MARKER_TARGETS.length - index - 1) * 0.1;
   const delay = reducedMotion ? 0 : active ? target.delay : exitDelay;
-  const duration = reducedMotion ? 0 : active ? 1.05 : 0.52;
 
   return (
     <g aria-label={`${target.label} marker circle`}>
@@ -298,15 +297,36 @@ function RoughMarkerCircle({
           strokeLinecap="round"
           strokeLinejoin="round"
           initial={false}
-          animate={{
-            pathLength: active ? 1 : 0,
-            opacity: active ? stroke.opacity : 0,
-          }}
-          transition={{
-            duration,
-            delay: delay + (reducedMotion ? 0 : strokeIndex * 0.055),
-            ease: active ? AUTHORED_EASE : RETURN_EASE,
-          }}
+          animate={reducedMotion
+            ? {
+                pathLength: active ? 1 : 0,
+                opacity: active ? stroke.opacity : 0,
+              }
+            : active
+              ? {
+                  pathLength: [0, 1, 1, 0],
+                  opacity: [0, stroke.opacity, stroke.opacity, 0],
+                }
+              : {
+                  pathLength: 0,
+                  opacity: 0,
+                }}
+          transition={reducedMotion
+            ? { duration: 0 }
+            : active
+              ? {
+                  duration: 2.7,
+                  delay: delay + strokeIndex * 0.07,
+                  times: [0, 0.42, 0.66, 1],
+                  ease: "linear",
+                  repeat: Infinity,
+                  repeatDelay: 0.08,
+                }
+              : {
+                  duration: 0.48,
+                  delay,
+                  ease: RETURN_EASE,
+                }}
         />
       ))}
     </g>
