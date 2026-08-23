@@ -16,7 +16,7 @@ const CINEMATIC_BREAKPOINT = "(min-width: 48rem), (orientation: landscape) and (
 const SKILLS_REVEAL_THRESHOLD = 0.2;
 const AUTHORED_EASE = [0.16, 1, 0.3, 1] as const;
 const DETAIL_SPACE_FRACTION = 0.4;
-const STAGE_ONE_YAW = Math.PI / 6;
+const STAGE_ONE_YAW = -Math.PI / 6;
 const STAGE_ONE_RIGHT_COMPENSATION = 0.34;
 
 type CinematicScrollState = {
@@ -154,7 +154,7 @@ function ResumeSlab({ skillsActive, reducedMotion }: { skillsActive: boolean; re
     const baseRotation = cinematic.enabled
       ? {
           x: THREE.MathUtils.lerp(-0.018, -0.09, stageProgress),
-          // Clockwise rotation in the X-Z plane, viewed from +Y: rotate about +Y.
+          // The negative +Y rotation is the requested visual direction in the X-Z plane.
           y: THREE.MathUtils.lerp(0.012, STAGE_ONE_YAW, stageProgress),
           z: THREE.MathUtils.lerp(0, 0.038, stageProgress),
         }
