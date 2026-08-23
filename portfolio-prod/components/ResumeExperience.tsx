@@ -19,11 +19,13 @@ const RETURN_EASE = [0.55, 0, 0.45, 1] as const;
 const DETAIL_SPACE_FRACTION = 0.4;
 const STAGE_ONE_YAW = -Math.PI / 6;
 const STAGE_TWO_YAW = 0.58;
+const STAGE_THREE_YAW = -0.42;
 const STAGE_TWO_TARGET_X = 1.22;
+const STAGE_THREE_TARGET_X = -0.72;
 const STAGE_ONE_RIGHT_COMPENSATION = 0.34;
 const FRAGMENT_LIFT = 0.52;
 
-type Stage = 0 | 1 | 2;
+type Stage = 0 | 1 | 2 | 3;
 
 type CinematicStageState = {
   enabled: boolean;
@@ -36,6 +38,18 @@ type HighlightStroke = {
   id: string;
   path: string;
   washPath: string;
+  color: string;
+};
+
+type ProjectPaintTarget = {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  color: string;
+  delay: number;
 };
 
 type ResumeExcavation = {
@@ -55,21 +69,58 @@ const HIGHLIGHT_STROKES: HighlightStroke[] = [
     id: "python",
     path: "M 105 170 C 113 168.4, 128 168.9, 141 170.1",
     washPath: "M 105.5 171.5 C 116 170.2, 130 170.1, 141 171.1",
+    color: "#f08ea8",
   },
   {
     id: "bash-shell",
     path: "M 275 170 C 287 168.6, 309 168.7, 323 170.1",
     washPath: "M 274.8 171.6 C 290 170.3, 309 170.2, 323.5 171.3",
+    color: "#e6c72d",
   },
   {
     id: "pytorch",
     path: "M 210 182.2 C 221 180.7, 238.5 181.1, 248.6 182.3",
     washPath: "M 210 183.8 C 222.4 182.6, 238 182.5, 249.2 183.7",
+    color: "#9b9892",
   },
   {
     id: "claude-code",
     path: "M 344.5 194.2 C 358 192.5, 388 192.7, 400.5 194.1",
     washPath: "M 344.8 195.8 C 360 194.5, 387.8 194.3, 401 195.4",
+    color: "#aaa69f",
+  },
+];
+
+const PROJECT_PAINT_TARGETS: ProjectPaintTarget[] = [
+  {
+    id: "silver-award",
+    label: "Silver Award",
+    x: 70.8,
+    y: 447.77,
+    width: 55.67,
+    height: 9.97,
+    color: "#18d8d3",
+    delay: 0,
+  },
+  {
+    id: "grpo",
+    label: "Group Relative Policy Optimization",
+    x: 332.34,
+    y: 529.6,
+    width: 29.68,
+    height: 9.97,
+    color: "#ef3d36",
+    delay: 0.58,
+  },
+  {
+    id: "v-jepa",
+    label: "V-JEPA",
+    x: 46.8,
+    y: 556.71,
+    width: 41.46,
+    height: 9.97,
+    color: "#72ef36",
+    delay: 1.16,
   },
 ];
 
@@ -164,27 +215,96 @@ function ResumeHighlights({ active, reducedMotion }: { active: boolean; reducedM
               <motion.path
                 d={stroke.washPath}
                 fill="none"
-                stroke="#f0db47"
+                stroke={stroke.color}
                 strokeWidth="15.5"
                 strokeLinecap="round"
                 initial={false}
-                animate={{ pathLength: active ? 1 : 0, opacity: active ? 0.42 : 0 }}
+                animate={{ pathLength: active ? 1 : 0, opacity: active ? 0.26 : 0 }}
                 transition={transition}
               />
               <motion.path
                 d={stroke.path}
                 fill="none"
-                stroke="#e6cc31"
+                stroke={stroke.color}
                 strokeWidth="10.8"
                 strokeLinecap="round"
                 initial={false}
-                animate={{ pathLength: active ? 1 : 0, opacity: active ? 0.5 : 0 }}
+                animate={{ pathLength: active ? 1 : 0, opacity: active ? 0.34 : 0 }}
                 transition={{ ...transition, delay: delay + (reducedMotion ? 0 : 0.08) }}
               />
             </g>
           );
         })}
       </g>
+    </svg>
+  );
+}
+
+function ResumeVectorDocument({
+  experienceActive,
+  projectsActive,
+  reducedMotion,
+}: {
+  experienceActive: boolean;
+  projectsActive: boolean;
+  reducedMotion: boolean;
+}) {
+  return (
+    <svg
+      className="resume-vector-document"
+      viewBox="0 0 612 792"
+      preserveAspectRatio="none"
+      role="img"
+      aria-label="Kuan Yi Wang resume"
+    >
+      <defs>
+        <mask id="resume-interaction-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="612" height="792">
+          <rect width="612" height="792" fill="white" />
+          {RESUME_EXCAVATIONS.map((excavation) => (
+            <motion.rect
+              key={excavation.id}
+              x={excavation.x - 1.2}
+              y={excavation.y - 1}
+              width={excavation.width + 2.4}
+              height={excavation.height + 2}
+              rx="0.8"
+              fill="black"
+              initial={false}
+              animate={{ opacity: experienceActive ? 1 : 0 }}
+              transition={{
+                duration: reducedMotion ? 0 : experienceActive ? 0.22 : 0.18,
+                delay: reducedMotion ? 0 : experienceActive ? excavation.delay * 0.32 : 0.68,
+                ease: experienceActive ? AUTHORED_EASE : RETURN_EASE,
+              }}
+            />
+          ))}
+          {PROJECT_PAINT_TARGETS.map((target) => (
+            <motion.rect
+              key={target.id}
+              x={target.x - 12}
+              y={target.y - 9}
+              width={target.width + 24}
+              height={target.height + 18}
+              rx="4"
+              fill="black"
+              initial={false}
+              animate={{ opacity: projectsActive ? 1 : 0 }}
+              transition={{
+                duration: reducedMotion ? 0 : 0.24,
+                delay: reducedMotion ? 0 : projectsActive ? target.delay * 0.22 : 0.46,
+                ease: projectsActive ? AUTHORED_EASE : RETURN_EASE,
+              }}
+            />
+          ))}
+        </mask>
+      </defs>
+      <image
+        href="/resume/kuan-yi-wang-resume.svg"
+        width="612"
+        height="792"
+        preserveAspectRatio="none"
+        mask="url(#resume-interaction-mask)"
+      />
     </svg>
   );
 }
@@ -459,13 +579,185 @@ function ExperienceFragments({ active, reducedMotion }: { active: boolean; reduc
   );
 }
 
+function createPaintLoopGeometry(width: number, height: number) {
+  const points = [
+    new THREE.Vector3(-width * 0.52, -height * 0.12, 0),
+    new THREE.Vector3(-width * 0.4, height * 0.56, 0.002),
+    new THREE.Vector3(width * 0.08, height * 0.64, -0.001),
+    new THREE.Vector3(width * 0.52, height * 0.2, 0.002),
+    new THREE.Vector3(width * 0.44, -height * 0.52, 0),
+    new THREE.Vector3(-width * 0.14, -height * 0.62, 0.001),
+  ];
+  const curve = new THREE.CatmullRomCurve3(points, true, "centripetal", 0.48);
+  return new THREE.TubeGeometry(curve, 56, 0.012, 7, true);
+}
+
+function PaintExclamation({ color }: { color: string }) {
+  return (
+    <group>
+      <mesh position={[0.018, -0.012, -0.025]} castShadow>
+        <boxGeometry args={[0.068, 0.22, 0.045]} />
+        <meshStandardMaterial color="#24221f" roughness={0.62} />
+      </mesh>
+      <mesh position={[0.018, -0.16, -0.025]} castShadow>
+        <sphereGeometry args={[0.043, 16, 12]} />
+        <meshStandardMaterial color="#24221f" roughness={0.62} />
+      </mesh>
+      <mesh castShadow>
+        <boxGeometry args={[0.066, 0.22, 0.05]} />
+        <meshPhysicalMaterial color={color} roughness={0.28} clearcoat={0.72} clearcoatRoughness={0.2} />
+      </mesh>
+      <mesh position={[0, -0.15, 0]} castShadow>
+        <sphereGeometry args={[0.04, 18, 14]} />
+        <meshPhysicalMaterial color={color} roughness={0.26} clearcoat={0.78} clearcoatRoughness={0.18} />
+      </mesh>
+    </group>
+  );
+}
+
+function ProjectPaintImpact({
+  target,
+  active,
+  reducedMotion,
+}: {
+  target: ProjectPaintTarget;
+  active: boolean;
+  reducedMotion: boolean;
+}) {
+  const dropGroup = useRef<THREE.Group>(null);
+  const strokeGroup = useRef<THREE.Group>(null);
+  const splatterGroup = useRef<THREE.Group>(null);
+  const exclamationGroup = useRef<THREE.Group>(null);
+  const progress = useMotionValue(active ? 1 : 0);
+  const width = (target.width / 612) * PLATE_WIDTH + 0.12;
+  const height = (target.height / 792) * PLATE_HEIGHT + 0.1;
+  const x = pdfXToWorld(target.x + target.width / 2);
+  const y = pdfYToWorld(target.y + target.height / 2);
+  const loopGeometry = useMemo(() => createPaintLoopGeometry(width, height), [height, width]);
+  const splatters = useMemo(() => [
+    [-0.53, 0.18, 0.036],
+    [-0.4, -0.6, 0.025],
+    [-0.08, 0.68, 0.022],
+    [0.32, -0.64, 0.032],
+    [0.52, 0.25, 0.027],
+    [0.62, -0.2, 0.018],
+    [-0.62, -0.18, 0.017],
+  ] as const, []);
+
+  useEffect(() => () => loopGeometry.dispose(), [loopGeometry]);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      progress.set(active ? 1 : 0);
+      return;
+    }
+
+    const controls = animate(progress, active ? 1 : 0, {
+      duration: active ? 2.55 : 0.72,
+      delay: active ? target.delay : 0,
+      ease: "linear",
+    });
+
+    return () => controls.stop();
+  }, [active, progress, reducedMotion, target.delay]);
+
+  useFrame((state) => {
+    const value = progress.get();
+    const fall = THREE.MathUtils.smoothstep(value, 0.02, 0.42);
+    const impact = THREE.MathUtils.smoothstep(value, 0.36, 0.7);
+    const punctuationIn = THREE.MathUtils.smoothstep(value, 0.66, 0.76);
+    const punctuationOut = 1 - THREE.MathUtils.smoothstep(value, 0.88, 0.99);
+    const punctuationScale = punctuationIn * punctuationOut;
+
+    if (dropGroup.current) {
+      dropGroup.current.visible = value > 0.001 && value < 0.57;
+      dropGroup.current.position.z = THREE.MathUtils.lerp(1.05, 0.095, fall);
+      dropGroup.current.rotation.z = Math.sin(state.clock.elapsedTime * 7.2 + target.x) * 0.08 * (1 - fall);
+      const dropScale = 1 - THREE.MathUtils.smoothstep(value, 0.43, 0.57);
+      dropGroup.current.scale.set(dropScale, dropScale, THREE.MathUtils.lerp(1, 0.18, fall) * dropScale);
+    }
+
+    if (strokeGroup.current) {
+      strokeGroup.current.visible = impact > 0.001;
+      strokeGroup.current.scale.set(THREE.MathUtils.lerp(0.03, 1, impact), THREE.MathUtils.lerp(0.62, 1, impact), 1);
+    }
+
+    if (splatterGroup.current) {
+      splatterGroup.current.visible = impact > 0.001;
+      splatterGroup.current.scale.setScalar(impact);
+    }
+
+    if (exclamationGroup.current) {
+      exclamationGroup.current.visible = punctuationScale > 0.001;
+      exclamationGroup.current.position.z = 0.18 + punctuationScale * 0.22;
+      exclamationGroup.current.rotation.z = -0.16 + punctuationScale * 0.24;
+      exclamationGroup.current.scale.setScalar(punctuationScale);
+    }
+  });
+
+  return (
+    <group position={[x, y, PLATE_DEPTH / 2 + 0.02]}>
+      <group ref={dropGroup}>
+        <mesh rotation={[Math.PI / 2, 0, 0]} castShadow>
+          <cylinderGeometry args={[0.027, 0.034, 0.42, 18]} />
+          <meshPhysicalMaterial color={target.color} roughness={0.2} clearcoat={0.82} clearcoatRoughness={0.14} />
+        </mesh>
+        <mesh position={[width * 0.24, 0.03, -0.08]} castShadow>
+          <sphereGeometry args={[0.045, 16, 12]} />
+          <meshPhysicalMaterial color={target.color} roughness={0.22} clearcoat={0.76} clearcoatRoughness={0.16} />
+        </mesh>
+        <mesh position={[-width * 0.2, -0.02, 0.1]} castShadow>
+          <sphereGeometry args={[0.032, 16, 12]} />
+          <meshPhysicalMaterial color={target.color} roughness={0.22} clearcoat={0.76} clearcoatRoughness={0.16} />
+        </mesh>
+      </group>
+
+      <group ref={strokeGroup}>
+        <mesh geometry={loopGeometry} castShadow>
+          <meshPhysicalMaterial color={target.color} roughness={0.24} clearcoat={0.7} clearcoatRoughness={0.18} />
+        </mesh>
+      </group>
+
+      <group ref={splatterGroup}>
+        {splatters.map(([offsetX, offsetY, size], index) => (
+          <mesh
+            key={`${target.id}-splat-${index}`}
+            position={[offsetX * width, offsetY * height, 0.012 + index * 0.001]}
+            scale={[size * 1.35, size, 0.009]}
+            castShadow
+          >
+            <sphereGeometry args={[1, 14, 10]} />
+            <meshPhysicalMaterial color={target.color} roughness={0.25} clearcoat={0.74} clearcoatRoughness={0.17} />
+          </mesh>
+        ))}
+      </group>
+
+      <group ref={exclamationGroup} position={[width * 0.58, height * 1.12, 0.18]}>
+        <PaintExclamation color={target.color} />
+      </group>
+    </group>
+  );
+}
+
+function ProjectPaint({ active, reducedMotion }: { active: boolean; reducedMotion: boolean }) {
+  return (
+    <group>
+      {PROJECT_PAINT_TARGETS.map((target) => (
+        <ProjectPaintImpact key={target.id} target={target} active={active} reducedMotion={reducedMotion} />
+      ))}
+    </group>
+  );
+}
+
 function ResumeSlab({
   skillsActive,
   experienceActive,
+  projectsActive,
   reducedMotion,
 }: {
   skillsActive: boolean;
   experienceActive: boolean;
+  projectsActive: boolean;
   reducedMotion: boolean;
 }) {
   const sceneGroup = useRef<THREE.Group>(null);
@@ -494,17 +786,20 @@ function ResumeSlab({
     const authoredStage = cinematic.reducedMotion ? cinematic.stage : cinematic.stageProgress.get();
     const stageProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage, 0, 1) : 0;
     const experienceProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage - 1, 0, 1) : 0;
+    const projectsProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage - 2, 0, 1) : 0;
     const easing = reducedMotion || cinematic.reducedMotion ? 50 : 18;
-    const cameraTargetX = THREE.MathUtils.lerp(
+    const stageTwoCameraTargetX = THREE.MathUtils.lerp(
       THREE.MathUtils.lerp(0, 0.62, stageProgress),
       STAGE_TWO_TARGET_X,
       experienceProgress,
     );
-    const cameraTargetY = THREE.MathUtils.lerp(
+    const stageTwoCameraTargetY = THREE.MathUtils.lerp(
       THREE.MathUtils.lerp(1.62, 1.1, stageProgress),
       0.5,
       experienceProgress,
     );
+    const cameraTargetX = THREE.MathUtils.lerp(stageTwoCameraTargetX, STAGE_THREE_TARGET_X, projectsProgress);
+    const cameraTargetY = THREE.MathUtils.lerp(stageTwoCameraTargetY, -0.78, projectsProgress);
     viewportTarget.set(cameraTargetX, cameraTargetY, 0);
     const liveViewport = state.viewport.getCurrentViewport(state.camera, viewportTarget);
     const preExperienceScale = scale * THREE.MathUtils.lerp(1.1, 1.36, stageProgress);
@@ -513,13 +808,23 @@ function ResumeSlab({
       0.82,
       1.5,
     );
-    const sceneScale = THREE.MathUtils.lerp(preExperienceScale, experienceFitScale, experienceProgress);
+    const stageTwoScale = THREE.MathUtils.lerp(preExperienceScale, experienceFitScale, experienceProgress);
+    const projectsFitScale = THREE.MathUtils.clamp(
+      (liveViewport.width * 0.57) / (PLATE_WIDTH * Math.cos(STAGE_THREE_YAW)),
+      0.78,
+      1.42,
+    );
+    const sceneScale = THREE.MathUtils.lerp(stageTwoScale, projectsFitScale, projectsProgress);
+    const stageTwoRotation = {
+      x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(-0.018, -0.09, stageProgress), -0.13, experienceProgress),
+      y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0.012, STAGE_ONE_YAW, stageProgress), STAGE_TWO_YAW, experienceProgress),
+      z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.038, stageProgress), -0.028, experienceProgress),
+    };
     const baseRotation = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(-0.018, -0.09, stageProgress), -0.13, experienceProgress),
-          // At the industry-experience view the right edge recedes into the scene.
-          y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0.012, STAGE_ONE_YAW, stageProgress), STAGE_TWO_YAW, experienceProgress),
-          z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.038, stageProgress), -0.028, experienceProgress),
+          x: THREE.MathUtils.lerp(stageTwoRotation.x, -0.08, projectsProgress),
+          y: THREE.MathUtils.lerp(stageTwoRotation.y, STAGE_THREE_YAW, projectsProgress),
+          z: THREE.MathUtils.lerp(stageTwoRotation.z, 0.018, projectsProgress),
         }
       : { x: -0.12, y: -0.32, z: 0 };
 
@@ -530,7 +835,10 @@ function ResumeSlab({
       + THREE.MathUtils.lerp(0, STAGE_ONE_RIGHT_COMPENSATION, stageProgress);
     const experienceProjectedWidth = PLATE_WIDTH * sceneScale * Math.cos(STAGE_TWO_YAW);
     const experienceSceneX = cameraTargetX - liveViewport.width * 0.41 + experienceProjectedWidth / 2;
-    const reservedSceneX = THREE.MathUtils.lerp(skillsSceneX, experienceSceneX, experienceProgress);
+    const stageTwoSceneX = THREE.MathUtils.lerp(skillsSceneX, experienceSceneX, experienceProgress);
+    const projectsProjectedWidth = PLATE_WIDTH * sceneScale * Math.cos(STAGE_THREE_YAW);
+    const projectsSceneX = cameraTargetX - liveViewport.width * 0.1 + projectsProjectedWidth / 2;
+    const reservedSceneX = THREE.MathUtils.lerp(stageTwoSceneX, projectsSceneX, projectsProgress);
 
     sceneGroup.current.position.x = THREE.MathUtils.damp(
       sceneGroup.current.position.x,
@@ -540,7 +848,11 @@ function ResumeSlab({
     );
     sceneGroup.current.position.y = THREE.MathUtils.damp(
       sceneGroup.current.position.y,
-      THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.08, stageProgress), 0.02, experienceProgress),
+      THREE.MathUtils.lerp(
+        THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.08, stageProgress), 0.02, experienceProgress),
+        0,
+        projectsProgress,
+      ),
       easing,
       delta,
     );
@@ -588,6 +900,7 @@ function ResumeSlab({
           </mesh>
           <ResumeFace />
           <ExperienceFragments active={experienceActive} reducedMotion={reducedMotion} />
+          <ProjectPaint active={projectsActive} reducedMotion={reducedMotion} />
 
           <Html
             transform
@@ -601,20 +914,19 @@ function ResumeSlab({
             <motion.div
               className="resume-vector-frame"
               initial={false}
-              animate={{ opacity: experienceActive ? 0 : 1 }}
+              animate={{ opacity: projectsActive ? 0 : 1 }}
               transition={{
-                duration: reducedMotion ? 0 : experienceActive ? 0.2 : 0.28,
-                delay: reducedMotion || experienceActive ? 0 : 0.78,
-                ease: experienceActive ? AUTHORED_EASE : RETURN_EASE,
+                duration: reducedMotion ? 0 : projectsActive ? 0.24 : 0.5,
+                delay: reducedMotion || projectsActive ? 0 : 0.34,
+                ease: projectsActive ? AUTHORED_EASE : RETURN_EASE,
               }}
             >
-                <object
-                  className="resume-vector-document"
-                  data="/resume/kuan-yi-wang-resume.svg"
-                  type="image/svg+xml"
-                  aria-label="Kuan Yi Wang resume"
-                />
-                <ResumeHighlights active={skillsActive} reducedMotion={reducedMotion} />
+              <ResumeVectorDocument
+                experienceActive={experienceActive}
+                projectsActive={projectsActive}
+                reducedMotion={reducedMotion}
+              />
+              <ResumeHighlights active={skillsActive} reducedMotion={reducedMotion} />
             </motion.div>
           </Html>
         </group>
@@ -637,18 +949,28 @@ function CinematicCamera({ reducedMotion }: { reducedMotion: boolean }) {
     const authoredStage = cinematic.reducedMotion ? cinematic.stage : cinematic.stageProgress.get();
     const stageProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage, 0, 1) : 0;
     const experienceProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage - 1, 0, 1) : 0;
+    const projectsProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage - 2, 0, 1) : 0;
     const easing = reducedMotion || cinematic.reducedMotion ? 50 : 18;
+    const stageTwoCameraPosition = {
+      x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.9, stageProgress), 1.58, experienceProgress),
+      y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
+      z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(3.15, 3.85, stageProgress), 4.55, experienceProgress),
+    };
+    const stageTwoCameraTarget = {
+      x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), STAGE_TWO_TARGET_X, experienceProgress),
+      y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
+    };
     const cameraPosition = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.9, stageProgress), 1.58, experienceProgress),
-          y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
-          z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(3.15, 3.85, stageProgress), 4.55, experienceProgress),
+          x: THREE.MathUtils.lerp(stageTwoCameraPosition.x, -1.02, projectsProgress),
+          y: THREE.MathUtils.lerp(stageTwoCameraPosition.y, -0.78, projectsProgress),
+          z: THREE.MathUtils.lerp(stageTwoCameraPosition.z, 4.72, projectsProgress),
         }
       : { x: 0, y: 0.1, z: 8.25 };
     const cameraTarget = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), STAGE_TWO_TARGET_X, experienceProgress),
-          y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
+          x: THREE.MathUtils.lerp(stageTwoCameraTarget.x, STAGE_THREE_TARGET_X, projectsProgress),
+          y: THREE.MathUtils.lerp(stageTwoCameraTarget.y, -0.78, projectsProgress),
           z: 0,
         }
       : { x: 0, y: 0, z: 0 };
@@ -691,10 +1013,12 @@ class SceneErrorBoundary extends Component<{ children: ReactNode }, { hasError: 
 function Scene({
   skillsActive,
   experienceActive,
+  projectsActive,
   reducedMotion,
 }: {
   skillsActive: boolean;
   experienceActive: boolean;
+  projectsActive: boolean;
   reducedMotion: boolean;
 }) {
   return (
@@ -727,7 +1051,12 @@ function Scene({
         />
         <Suspense fallback={null}>
           <CinematicCamera reducedMotion={reducedMotion} />
-          <ResumeSlab skillsActive={skillsActive} experienceActive={experienceActive} reducedMotion={reducedMotion} />
+          <ResumeSlab
+            skillsActive={skillsActive}
+            experienceActive={experienceActive}
+            projectsActive={projectsActive}
+            reducedMotion={reducedMotion}
+          />
         </Suspense>
       </Canvas>
     </div>
@@ -807,7 +1136,7 @@ function DitherDetailCard({
                   type="8x8"
                   size={1.1}
                   colorSteps={3}
-                  fit="cover"
+                  fit="contain"
                   offsetX={isExperience ? -0.02 : 0.03}
                   offsetY={isExperience ? 0.08 : -0.18}
                   speed={0}
@@ -820,6 +1149,81 @@ function DitherDetailCard({
               <p>{caption}</p>
             </figcaption>
           </figure>
+        </motion.aside>
+      ) : null}
+    </AnimatePresence>
+  );
+}
+
+const PROJECT_CARDS = [
+  {
+    id: "quantum",
+    title: "GNN Quantum Error Decoder",
+    detail: "Silver Award · ISEF",
+    image: "/resume/project-quantum.png",
+  },
+  {
+    id: "cortesol",
+    title: "Cortesol",
+    detail: "Group Relative Policy Optimization",
+    image: "/resume/project-cortesol.png",
+  },
+  {
+    id: "vjepa",
+    title: "Multimodal Conversational Agent",
+    detail: "V-JEPA world model",
+    image: "/resume/project-vjepa.png",
+  },
+] as const;
+
+function ProjectCardStack({ active, reducedMotion }: { active: boolean; reducedMotion: boolean }) {
+  return (
+    <AnimatePresence initial={false}>
+      {active ? (
+        <motion.aside
+          className="project-card-stack"
+          aria-label="Project details"
+          initial={reducedMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: reducedMotion ? 0 : 0.28, ease: AUTHORED_EASE }}
+        >
+          {PROJECT_CARDS.map((project, index) => (
+            <motion.figure
+              key={project.id}
+              className="project-card"
+              initial={reducedMotion ? false : { opacity: 0, x: -24, clipPath: "inset(0 100% 0 0)" }}
+              animate={{ opacity: 1, x: 0, clipPath: "inset(0 0% 0 0)" }}
+              exit={{ opacity: 0, x: -14, clipPath: "inset(0 100% 0 0)" }}
+              transition={{
+                duration: reducedMotion ? 0 : 0.82,
+                delay: reducedMotion ? 0 : 0.18 + index * 0.2,
+                ease: AUTHORED_EASE,
+              }}
+            >
+              <div className="project-card-image" aria-hidden="true">
+                <ImageDithering
+                  className="project-card-shader"
+                  image={project.image}
+                  colorBack="#ebe5da"
+                  colorFront="#282521"
+                  colorHighlight="#797166"
+                  originalColors={false}
+                  type="8x8"
+                  size={0.72}
+                  colorSteps={3}
+                  fit="cover"
+                  speed={0}
+                  minPixelRatio={1}
+                  maxPixelCount={120000}
+                />
+              </div>
+              <figcaption>
+                <strong>{project.title}</strong>
+                <span>{project.detail}</span>
+              </figcaption>
+            </motion.figure>
+          ))}
         </motion.aside>
       ) : null}
     </AnimatePresence>
@@ -882,8 +1286,8 @@ function StageDock({
           <button type="button" onClick={() => navigate(-1)} disabled={stage === 0} aria-label="Previous resume section">
             <ArrowIcon direction="up" />
           </button>
-          <span aria-live="polite">{String(stage + 1).padStart(2, "0")} / 03</span>
-          <button type="button" onClick={() => navigate(1)} disabled={stage === 2} aria-label="Next resume section">
+          <span aria-live="polite">{String(stage + 1).padStart(2, "0")} / 04</span>
+          <button type="button" onClick={() => navigate(1)} disabled={stage === 3} aria-label="Next resume section">
             <ArrowIcon direction="down" />
           </button>
         </nav>
@@ -947,7 +1351,7 @@ export function ResumeExperience() {
     reducedMotion: false,
   });
   const navigate = useCallback((direction: -1 | 1) => {
-    setStage((current) => THREE.MathUtils.clamp(current + direction, 0, 2) as Stage);
+    setStage((current) => THREE.MathUtils.clamp(current + direction, 0, 3) as Stage);
   }, []);
 
   useEffect(() => {
@@ -1013,6 +1417,7 @@ export function ResumeExperience() {
 
   const skillsActive = stage === 1;
   const experienceActive = stage === 2;
+  const projectsActive = stage === 3;
 
   return (
     <main className="portfolio">
@@ -1033,7 +1438,12 @@ export function ResumeExperience() {
             MRI: Ian Bickle · CC BY-NC-SA 3.0
           </a>
           <SceneErrorBoundary>
-            <Scene skillsActive={skillsActive} experienceActive={experienceActive} reducedMotion={reducedMotion} />
+            <Scene
+              skillsActive={skillsActive}
+              experienceActive={experienceActive}
+              projectsActive={projectsActive}
+              reducedMotion={reducedMotion}
+            />
           </SceneErrorBoundary>
           <CoordinateGuide />
           <DitherDetailCard
@@ -1048,6 +1458,7 @@ export function ResumeExperience() {
             reducedMotion={reducedMotion}
             variant="experience"
           />
+          <ProjectCardStack active={projectsActive} reducedMotion={reducedMotion} />
           <StageDock stage={stage} navigate={navigate} reducedMotion={reducedMotion} />
         </div>
       </CinematicStageContext.Provider>
