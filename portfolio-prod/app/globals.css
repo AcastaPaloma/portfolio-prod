@@ -154,8 +154,7 @@ body {
 }
 
 .resume-vector-face,
-.resume-vector-frame,
-.resume-vector-document {
+.resume-vector-frame {
   display: block;
   width: 2448px;
   height: 3168px;
@@ -167,13 +166,6 @@ body {
   background: transparent;
   perspective: 1400px;
   transform-style: preserve-3d;
-}
-
-.resume-vector-document {
-  border: 0;
-  background: transparent;
-  backface-visibility: hidden;
-  image-rendering: auto;
 }
 
 .resume-highlights {

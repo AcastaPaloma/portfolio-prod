@@ -7,6 +7,7 @@ import { AnimatePresence, animate, motion, useMotionValue, useSpring, type Motio
 import Image from "next/image";
 import { Component, Suspense, createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import * as THREE from "three";
+import { FluidSimulation } from "three-fluid-fx";
 
 const PLATE_WIDTH = 3.18;
 const PLATE_HEIGHT = 4.12;
@@ -236,75 +237,6 @@ function ResumeHighlights({ active, reducedMotion }: { active: boolean; reducedM
           );
         })}
       </g>
-    </svg>
-  );
-}
-
-function ResumeVectorDocument({
-  experienceActive,
-  projectsActive,
-  reducedMotion,
-}: {
-  experienceActive: boolean;
-  projectsActive: boolean;
-  reducedMotion: boolean;
-}) {
-  return (
-    <svg
-      className="resume-vector-document"
-      viewBox="0 0 612 792"
-      preserveAspectRatio="none"
-      role="img"
-      aria-label="Kuan Yi Wang resume"
-    >
-      <defs>
-        <mask id="resume-interaction-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="612" height="792">
-          <rect width="612" height="792" fill="white" />
-          {RESUME_EXCAVATIONS.map((excavation) => (
-            <motion.rect
-              key={excavation.id}
-              x={excavation.x - 1.2}
-              y={excavation.y - 1}
-              width={excavation.width + 2.4}
-              height={excavation.height + 2}
-              rx="0.8"
-              fill="black"
-              initial={false}
-              animate={{ opacity: experienceActive ? 1 : 0 }}
-              transition={{
-                duration: reducedMotion ? 0 : experienceActive ? 0.22 : 0.18,
-                delay: reducedMotion ? 0 : experienceActive ? excavation.delay * 0.32 : 0.68,
-                ease: experienceActive ? AUTHORED_EASE : RETURN_EASE,
-              }}
-            />
-          ))}
-          {PROJECT_PAINT_TARGETS.map((target) => (
-            <motion.rect
-              key={target.id}
-              x={target.x - 12}
-              y={target.y - 9}
-              width={target.width + 24}
-              height={target.height + 18}
-              rx="4"
-              fill="black"
-              initial={false}
-              animate={{ opacity: projectsActive ? 1 : 0 }}
-              transition={{
-                duration: reducedMotion ? 0 : 0.24,
-                delay: reducedMotion ? 0 : projectsActive ? target.delay * 0.22 : 0.46,
-                ease: projectsActive ? AUTHORED_EASE : RETURN_EASE,
-              }}
-            />
-          ))}
-        </mask>
-      </defs>
-      <image
-        href="/resume/kuan-yi-wang-resume.svg"
-        width="612"
-        height="792"
-        preserveAspectRatio="none"
-        mask="url(#resume-interaction-mask)"
-      />
     </svg>
   );
 }
@@ -579,19 +511,6 @@ function ExperienceFragments({ active, reducedMotion }: { active: boolean; reduc
   );
 }
 
-function createPaintLoopGeometry(width: number, height: number) {
-  const points = [
-    new THREE.Vector3(-width * 0.52, -height * 0.12, 0),
-    new THREE.Vector3(-width * 0.4, height * 0.56, 0.002),
-    new THREE.Vector3(width * 0.08, height * 0.64, -0.001),
-    new THREE.Vector3(width * 0.52, height * 0.2, 0.002),
-    new THREE.Vector3(width * 0.44, -height * 0.52, 0),
-    new THREE.Vector3(-width * 0.14, -height * 0.62, 0.001),
-  ];
-  const curve = new THREE.CatmullRomCurve3(points, true, "centripetal", 0.48);
-  return new THREE.TubeGeometry(curve, 56, 0.012, 7, true);
-}
-
 function PaintExclamation({ color }: { color: string }) {
   return (
     <group>
@@ -625,26 +544,20 @@ function ProjectPaintImpact({
   reducedMotion: boolean;
 }) {
   const dropGroup = useRef<THREE.Group>(null);
-  const strokeGroup = useRef<THREE.Group>(null);
-  const splatterGroup = useRef<THREE.Group>(null);
+  const crownGroup = useRef<THREE.Group>(null);
   const exclamationGroup = useRef<THREE.Group>(null);
   const progress = useMotionValue(active ? 1 : 0);
   const width = (target.width / 612) * PLATE_WIDTH + 0.12;
   const height = (target.height / 792) * PLATE_HEIGHT + 0.1;
   const x = pdfXToWorld(target.x + target.width / 2);
   const y = pdfYToWorld(target.y + target.height / 2);
-  const loopGeometry = useMemo(() => createPaintLoopGeometry(width, height), [height, width]);
-  const splatters = useMemo(() => [
-    [-0.53, 0.18, 0.036],
-    [-0.4, -0.6, 0.025],
-    [-0.08, 0.68, 0.022],
-    [0.32, -0.64, 0.032],
-    [0.52, 0.25, 0.027],
-    [0.62, -0.2, 0.018],
-    [-0.62, -0.18, 0.017],
+  const crownDrops = useMemo(() => [
+    [-0.62, 0.22, 0.026],
+    [-0.46, -0.42, 0.021],
+    [-0.12, 0.56, 0.018],
+    [0.28, -0.5, 0.024],
+    [0.5, 0.32, 0.02],
   ] as const, []);
-
-  useEffect(() => () => loopGeometry.dispose(), [loopGeometry]);
 
   useEffect(() => {
     if (reducedMotion) {
@@ -663,28 +576,25 @@ function ProjectPaintImpact({
 
   useFrame((state) => {
     const value = progress.get();
-    const fall = THREE.MathUtils.smoothstep(value, 0.02, 0.42);
-    const impact = THREE.MathUtils.smoothstep(value, 0.36, 0.7);
-    const punctuationIn = THREE.MathUtils.smoothstep(value, 0.66, 0.76);
+    const fall = THREE.MathUtils.smoothstep(value, 0.02, 0.46);
+    const crownIn = THREE.MathUtils.smoothstep(value, 0.4, 0.54);
+    const crownOut = 1 - THREE.MathUtils.smoothstep(value, 0.62, 0.76);
+    const crownScale = crownIn * crownOut;
+    const punctuationIn = THREE.MathUtils.smoothstep(value, 0.62, 0.74);
     const punctuationOut = 1 - THREE.MathUtils.smoothstep(value, 0.88, 0.99);
     const punctuationScale = punctuationIn * punctuationOut;
 
     if (dropGroup.current) {
-      dropGroup.current.visible = value > 0.001 && value < 0.57;
-      dropGroup.current.position.z = THREE.MathUtils.lerp(1.05, 0.095, fall);
-      dropGroup.current.rotation.z = Math.sin(state.clock.elapsedTime * 7.2 + target.x) * 0.08 * (1 - fall);
-      const dropScale = 1 - THREE.MathUtils.smoothstep(value, 0.43, 0.57);
-      dropGroup.current.scale.set(dropScale, dropScale, THREE.MathUtils.lerp(1, 0.18, fall) * dropScale);
+      dropGroup.current.visible = value > 0.001 && value < 0.55;
+      dropGroup.current.position.z = THREE.MathUtils.lerp(0.92, 0.045, fall);
+      dropGroup.current.rotation.z = Math.sin(state.clock.elapsedTime * 6.4 + target.x) * 0.045 * (1 - fall);
+      const dropScale = 1 - THREE.MathUtils.smoothstep(value, 0.45, 0.55);
+      dropGroup.current.scale.set(dropScale, dropScale, THREE.MathUtils.lerp(1.25, 0.32, fall) * dropScale);
     }
 
-    if (strokeGroup.current) {
-      strokeGroup.current.visible = impact > 0.001;
-      strokeGroup.current.scale.set(THREE.MathUtils.lerp(0.03, 1, impact), THREE.MathUtils.lerp(0.62, 1, impact), 1);
-    }
-
-    if (splatterGroup.current) {
-      splatterGroup.current.visible = impact > 0.001;
-      splatterGroup.current.scale.setScalar(impact);
+    if (crownGroup.current) {
+      crownGroup.current.visible = crownScale > 0.001;
+      crownGroup.current.scale.setScalar(crownScale);
     }
 
     if (exclamationGroup.current) {
@@ -698,36 +608,30 @@ function ProjectPaintImpact({
   return (
     <group position={[x, y, PLATE_DEPTH / 2 + 0.02]}>
       <group ref={dropGroup}>
-        <mesh rotation={[Math.PI / 2, 0, 0]} castShadow>
-          <cylinderGeometry args={[0.027, 0.034, 0.42, 18]} />
-          <meshPhysicalMaterial color={target.color} roughness={0.2} clearcoat={0.82} clearcoatRoughness={0.14} />
+        <mesh scale={[0.05, 0.07, 0.13]} castShadow>
+          <icosahedronGeometry args={[1, 2]} />
+          <meshPhysicalMaterial color={target.color} roughness={0.16} clearcoat={0.92} clearcoatRoughness={0.1} />
         </mesh>
-        <mesh position={[width * 0.24, 0.03, -0.08]} castShadow>
-          <sphereGeometry args={[0.045, 16, 12]} />
-          <meshPhysicalMaterial color={target.color} roughness={0.22} clearcoat={0.76} clearcoatRoughness={0.16} />
+        <mesh position={[width * 0.22, 0.025, 0.12]} scale={[0.025, 0.034, 0.052]} castShadow>
+          <icosahedronGeometry args={[1, 1]} />
+          <meshPhysicalMaterial color={target.color} roughness={0.18} clearcoat={0.9} clearcoatRoughness={0.11} />
         </mesh>
-        <mesh position={[-width * 0.2, -0.02, 0.1]} castShadow>
-          <sphereGeometry args={[0.032, 16, 12]} />
-          <meshPhysicalMaterial color={target.color} roughness={0.22} clearcoat={0.76} clearcoatRoughness={0.16} />
-        </mesh>
-      </group>
-
-      <group ref={strokeGroup}>
-        <mesh geometry={loopGeometry} castShadow>
-          <meshPhysicalMaterial color={target.color} roughness={0.24} clearcoat={0.7} clearcoatRoughness={0.18} />
+        <mesh position={[-width * 0.18, -0.018, -0.08]} scale={[0.019, 0.027, 0.04]} castShadow>
+          <icosahedronGeometry args={[1, 1]} />
+          <meshPhysicalMaterial color={target.color} roughness={0.18} clearcoat={0.9} clearcoatRoughness={0.11} />
         </mesh>
       </group>
 
-      <group ref={splatterGroup}>
-        {splatters.map(([offsetX, offsetY, size], index) => (
+      <group ref={crownGroup}>
+        {crownDrops.map(([offsetX, offsetY, size], index) => (
           <mesh
-            key={`${target.id}-splat-${index}`}
-            position={[offsetX * width, offsetY * height, 0.012 + index * 0.001]}
-            scale={[size * 1.35, size, 0.009]}
+            key={`${target.id}-crown-${index}`}
+            position={[offsetX * width, offsetY * height, 0.035 + index * 0.009]}
+            scale={[size * 1.2, size * 0.72, size]}
             castShadow
           >
-            <sphereGeometry args={[1, 14, 10]} />
-            <meshPhysicalMaterial color={target.color} roughness={0.25} clearcoat={0.74} clearcoatRoughness={0.17} />
+            <icosahedronGeometry args={[1, 1]} />
+            <meshPhysicalMaterial color={target.color} roughness={0.18} clearcoat={0.9} clearcoatRoughness={0.12} />
           </mesh>
         ))}
       </group>
@@ -739,9 +643,185 @@ function ProjectPaintImpact({
   );
 }
 
+const FLUID_VERTEX_SHADER = `
+  varying vec2 vUv;
+
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+const FLUID_FRAGMENT_SHADER = `
+  uniform sampler2D uDye;
+  uniform sampler2D uDensity;
+  uniform float uOpacity;
+  uniform vec2 uTexel;
+  varying vec2 vUv;
+
+  float pigmentAt(vec2 uv) {
+    vec3 dye = texture2D(uDye, uv).rgb;
+    return max(dye.r, max(dye.g, dye.b));
+  }
+
+  void main() {
+    vec3 rawDye = texture2D(uDye, vUv).rgb;
+    float pigment = max(rawDye.r, max(rawDye.g, rawDye.b));
+    if (pigment < 0.002 || uOpacity < 0.002) discard;
+
+    float left = pigmentAt(vUv - vec2(uTexel.x, 0.0));
+    float right = pigmentAt(vUv + vec2(uTexel.x, 0.0));
+    float down = pigmentAt(vUv - vec2(0.0, uTexel.y));
+    float up = pigmentAt(vUv + vec2(0.0, uTexel.y));
+    vec3 wetNormal = normalize(vec3((left - right) * 8.0, (down - up) * 8.0, 1.0));
+    vec3 lightDirection = normalize(vec3(-0.35, 0.58, 1.0));
+    float diffuse = 0.78 + 0.22 * max(dot(wetNormal, lightDirection), 0.0);
+    float specular = pow(max(dot(reflect(-lightDirection, wetNormal), vec3(0.0, 0.0, 1.0)), 0.0), 34.0);
+    float edge = smoothstep(0.002, 0.026, pigment) - smoothstep(0.09, 0.28, pigment);
+    vec3 paint = clamp(rawDye / max(pigment, 0.025), 0.0, 1.0);
+    paint = paint * diffuse + vec3(specular * (0.1 + edge * 0.22));
+    float alpha = smoothstep(0.0008, 0.028, pigment) * (0.42 + edge * 0.18) * uOpacity;
+
+    gl_FragColor = vec4(paint, alpha);
+  }
+`;
+
+function createProjectFluid(renderer: THREE.WebGLRenderer) {
+  const fluidRenderer = renderer as unknown as ConstructorParameters<typeof FluidSimulation>[0];
+  const fluid = new FluidSimulation(fluidRenderer, {
+    profile: "balanced",
+    pressureIterations: 10,
+    densityDissipation: 0.992,
+    velocityDissipation: 0.982,
+    dyeDissipation: 0.9998,
+    curlStrength: 0.72,
+    enableVorticity: true,
+    bfecc: true,
+    reflectWalls: false,
+  });
+  fluid.enableDye = true;
+  fluid.resize(612, 792);
+  return fluid;
+}
+
+function FluidProjectPaint({ active, reducedMotion }: { active: boolean; reducedMotion: boolean }) {
+  const { gl } = useThree();
+  const fluidRef = useRef<FluidSimulation | null>(null);
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
+  const firedRef = useRef(PROJECT_PAINT_TARGETS.map(() => false));
+  const progress = useMotionValue(active ? 1 : 0);
+  const opacity = useMotionValue(active ? 1 : 0);
+  const uniforms = useMemo(() => ({
+    uDye: { value: null as THREE.Texture | null },
+    uDensity: { value: null as THREE.Texture | null },
+    uOpacity: { value: 0 },
+    uTexel: { value: new THREE.Vector2(1 / 512, 1 / 512) },
+  }), []);
+
+  useEffect(() => {
+    fluidRef.current = createProjectFluid(gl);
+    return () => {
+      fluidRef.current?.dispose();
+    };
+  }, [gl]);
+
+  useEffect(() => {
+    if (active) {
+      fluidRef.current?.dispose();
+      fluidRef.current = createProjectFluid(gl);
+      firedRef.current.fill(false);
+      progress.set(0);
+    }
+
+    if (reducedMotion) {
+      progress.set(active ? 1 : 0);
+      opacity.set(active ? 1 : 0);
+      return;
+    }
+
+    const progressControls = animate(progress, active ? 1 : 0, {
+      duration: active ? 2.7 : 0.54,
+      ease: active ? "linear" : RETURN_EASE,
+    });
+    const opacityControls = animate(opacity, active ? 1 : 0, {
+      duration: active ? 0.22 : 0.4,
+      ease: active ? AUTHORED_EASE : RETURN_EASE,
+    });
+
+    return () => {
+      progressControls.stop();
+      opacityControls.stop();
+    };
+  }, [active, gl, opacity, progress, reducedMotion]);
+
+  useFrame((_, delta) => {
+    const fluid = fluidRef.current;
+    if (!fluid) return;
+
+    const value = progress.get();
+    PROJECT_PAINT_TARGETS.forEach((target, index) => {
+      const trigger = 0.17 + target.delay / 2.7;
+      if (value < trigger || firedRef.current[index]) return;
+      firedRef.current[index] = true;
+
+      const color = new THREE.Color(target.color);
+      const dyeColor: [number, number, number] = [color.r * 2.1, color.g * 2.1, color.b * 2.1];
+      const centerX = (target.x + target.width / 2) / 612;
+      const centerY = 1 - (target.y + target.height / 2) / 792;
+      const span = Math.max(target.width / 612, 0.045);
+
+      for (let splatIndex = 0; splatIndex < 7; splatIndex += 1) {
+        const spread = (splatIndex - 3) / 3;
+        const jitter = Math.sin((index + 1) * (splatIndex + 2) * 2.17);
+        fluid.addSplat(
+          centerX + spread * span * 0.46,
+          centerY + jitter * 0.0045,
+          spread * 0.052 + jitter * 0.012,
+          (splatIndex % 2 === 0 ? 1 : -1) * (0.055 + Math.abs(jitter) * 0.025),
+          {
+            radius: 0.00013 + (splatIndex % 3) * 0.000035,
+            color: [0.24, 0.18, 0.12],
+            dyeColor,
+          },
+        );
+      }
+    });
+
+    if (active || opacity.get() > 0.002) {
+      fluid.step(Math.min(delta, 1 / 30));
+    }
+
+    if (materialRef.current) {
+      materialRef.current.uniforms.uDye.value = fluid.dyeTexture;
+      materialRef.current.uniforms.uDensity.value = fluid.densityTexture;
+      materialRef.current.uniforms.uOpacity.value = opacity.get();
+    }
+  });
+
+  return (
+    <mesh
+      position={[0, 0, PLATE_DEPTH / 2 + 0.022]}
+      renderOrder={6}
+    >
+      <planeGeometry args={[PLATE_WIDTH, PLATE_HEIGHT]} />
+      <shaderMaterial
+        ref={materialRef}
+        vertexShader={FLUID_VERTEX_SHADER}
+        fragmentShader={FLUID_FRAGMENT_SHADER}
+        uniforms={uniforms}
+        transparent
+        depthWrite={false}
+        toneMapped={false}
+        side={THREE.FrontSide}
+      />
+    </mesh>
+  );
+}
+
 function ProjectPaint({ active, reducedMotion }: { active: boolean; reducedMotion: boolean }) {
   return (
     <group>
+      <FluidProjectPaint active={active} reducedMotion={reducedMotion} />
       {PROJECT_PAINT_TARGETS.map((target) => (
         <ProjectPaintImpact key={target.id} target={target} active={active} reducedMotion={reducedMotion} />
       ))}
@@ -911,23 +991,9 @@ function ResumeSlab({
             className="resume-vector-face"
             pointerEvents="none"
           >
-            <motion.div
-              className="resume-vector-frame"
-              initial={false}
-              animate={{ opacity: projectsActive ? 0 : 1 }}
-              transition={{
-                duration: reducedMotion ? 0 : projectsActive ? 0.24 : 0.5,
-                delay: reducedMotion || projectsActive ? 0 : 0.34,
-                ease: projectsActive ? AUTHORED_EASE : RETURN_EASE,
-              }}
-            >
-              <ResumeVectorDocument
-                experienceActive={experienceActive}
-                projectsActive={projectsActive}
-                reducedMotion={reducedMotion}
-              />
+            <div className="resume-vector-frame">
               <ResumeHighlights active={skillsActive} reducedMotion={reducedMotion} />
-            </motion.div>
+            </div>
           </Html>
         </group>
       </group>
