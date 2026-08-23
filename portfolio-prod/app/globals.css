@@ -151,6 +151,56 @@ a {
   pointer-events: none;
 }
 
+.coordinate-guide {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1.2rem, 4vh, 3rem);
+  left: clamp(1.2rem, 3.2vw, 4rem);
+  width: min(6rem, 12vw);
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.coordinate-guide svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.coordinate-guide .axis,
+.coordinate-guide .axis-head {
+  fill: none;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.coordinate-guide .axis-x {
+  fill: #9f7470;
+  stroke: #9f7470;
+}
+
+.coordinate-guide .axis-y {
+  fill: #79916f;
+  stroke: #79916f;
+}
+
+.coordinate-guide .axis-z {
+  fill: #6e899f;
+  stroke: #6e899f;
+}
+
+.coordinate-guide .axis-label {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.coordinate-guide .axis-origin {
+  fill: rgb(47 41 35 / 66%);
+}
+
 .detail-card {
   margin: 0;
   padding: 0.42rem;
@@ -276,6 +326,10 @@ a {
 
   .document-detail {
     display: none;
+  }
+
+  .coordinate-guide {
+    width: 4.7rem;
   }
 }
 

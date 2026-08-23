@@ -416,6 +416,28 @@ function DitherDetailCard({
   );
 }
 
+function CoordinateGuide() {
+  return (
+    <aside className="coordinate-guide" aria-label="Temporary orientation guide: positive X points right, positive Y points up, and positive Z points toward the viewer.">
+      <svg viewBox="0 0 116 116" aria-hidden="true">
+        <line className="axis axis-x" x1="28" y1="75" x2="99" y2="75" />
+        <path className="axis-head axis-x" d="M 99 75 L 91 70 M 99 75 L 91 80" />
+        <text className="axis-label axis-x" x="103" y="79">X</text>
+
+        <line className="axis axis-y" x1="28" y1="75" x2="28" y2="15" />
+        <path className="axis-head axis-y" d="M 28 15 L 23 23 M 28 15 L 33 23" />
+        <text className="axis-label axis-y" x="23" y="11">Y</text>
+
+        <line className="axis axis-z" x1="28" y1="75" x2="75" y2="105" />
+        <path className="axis-head axis-z" d="M 75 105 L 66 104 M 75 105 L 70 97" />
+        <text className="axis-label axis-z" x="79" y="110">Z</text>
+
+        <circle className="axis-origin" cx="28" cy="75" r="2.6" />
+      </svg>
+    </aside>
+  );
+}
+
 export function ResumeExperience() {
   const portfolioRef = useRef<HTMLElement>(null);
   const skillsStageRef = useRef(false);
@@ -494,6 +516,7 @@ export function ResumeExperience() {
           <SceneErrorBoundary>
             <Scene skillsActive={skillsActive} reducedMotion={reducedMotion} />
           </SceneErrorBoundary>
+          <CoordinateGuide />
           <DitherDetailCard key={skillsSequence} active={skillsActive} sequence={skillsSequence} reducedMotion={reducedMotion} />
           <footer className="control-rail" aria-label="Resume navigation">
             <p>Scroll to move through the document.</p>
@@ -506,4 +529,3 @@ export function ResumeExperience() {
     </main>
   );
 }
-
