@@ -15,6 +15,9 @@ const VECTOR_RENDER_SCALE = 4;
 const CINEMATIC_BREAKPOINT = "(min-width: 48rem), (orientation: landscape) and (min-width: 40rem)";
 const SKILLS_REVEAL_THRESHOLD = 0.2;
 const AUTHORED_EASE = [0.16, 1, 0.3, 1] as const;
+const DETAIL_SPACE_FRACTION = 0.4;
+const STAGE_ONE_YAW = Math.PI / 6;
+const STAGE_ONE_RIGHT_COMPENSATION = 0.34;
 
 type CinematicScrollState = {
   enabled: boolean;
@@ -151,14 +154,18 @@ function ResumeSlab({ skillsActive, reducedMotion }: { skillsActive: boolean; re
     const baseRotation = cinematic.enabled
       ? {
           x: THREE.MathUtils.lerp(-0.018, -0.09, stageProgress),
-          y: THREE.MathUtils.lerp(0.012, 0.29, stageProgress),
+          // Clockwise rotation in the X-Z plane, viewed from +Y: rotate about +Y.
+          y: THREE.MathUtils.lerp(0.012, STAGE_ONE_YAW, stageProgress),
           z: THREE.MathUtils.lerp(0, 0.038, stageProgress),
         }
       : { x: -0.12, y: -0.32, z: 0 };
 
     const cameraTargetX = THREE.MathUtils.lerp(0, 0.62, stageProgress);
     const plateHalfWidth = (PLATE_WIDTH * sceneScale) / 2;
-    const reservedSceneX = cameraTargetX + plateHalfWidth - viewport.width * 0.1 + 0.14;
+    const reservedSceneX = cameraTargetX
+      + plateHalfWidth
+      - viewport.width * (0.5 - DETAIL_SPACE_FRACTION)
+      + THREE.MathUtils.lerp(0, STAGE_ONE_RIGHT_COMPENSATION, stageProgress);
 
     sceneGroup.current.position.x = THREE.MathUtils.damp(
       sceneGroup.current.position.x,
