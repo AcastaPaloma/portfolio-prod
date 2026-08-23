@@ -1,5 +1,9 @@
 import { ResumeExperience } from "@/components/ResumeExperience";
 
 export default function ResumePage() {
-  return <ResumeExperience />;
+  return (
+    <div className="resume-route">
+      <ResumeExperience />
+    </div>
+  );
 }

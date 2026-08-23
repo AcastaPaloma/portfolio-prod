@@ -39,15 +39,23 @@ html {
   scroll-behavior: smooth;
 }
 
-:root {
+.resume-route {
   --void: #d8d0c3;
   --ink: #28231f;
   --quiet-ink: #5b5147;
   --line: rgb(47 41 35 / 22%);
   --slab-white: #fff;
+  --axis-x: #9f7470;
+  --axis-y: #79916f;
+  --axis-z: #6e899f;
+  min-height: 100dvh;
+  background: var(--void);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-* {
+.resume-route,
+.resume-route * {
   box-sizing: border-box;
 }
 
@@ -56,15 +64,9 @@ body {
   width: 100%;
   min-height: 100%;
   margin: 0;
-  background: var(--void);
 }
 
-body {
-  color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-a {
+.resume-route a {
   color: inherit;
 }
 
@@ -177,18 +179,18 @@ a {
 }
 
 .coordinate-guide .axis-x {
-  fill: #9f7470;
-  stroke: #9f7470;
+  fill: var(--axis-x);
+  stroke: var(--axis-x);
 }
 
 .coordinate-guide .axis-y {
-  fill: #79916f;
-  stroke: #79916f;
+  fill: var(--axis-y);
+  stroke: var(--axis-y);
 }
 
 .coordinate-guide .axis-z {
-  fill: #6e899f;
-  stroke: #6e899f;
+  fill: var(--axis-z);
+  stroke: var(--axis-z);
 }
 
 .coordinate-guide .axis-label {
