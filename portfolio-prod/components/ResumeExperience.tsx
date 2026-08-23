@@ -14,9 +14,13 @@ const VECTOR_DOCUMENT_SCALE = 0.195;
 const VECTOR_RENDER_SCALE = 4;
 const CINEMATIC_BREAKPOINT = "(min-width: 48rem), (orientation: landscape) and (min-width: 40rem)";
 const SKILLS_REVEAL_THRESHOLD = 0.2;
+const EXPERIENCE_TRANSITION_START = 0.48;
+const EXPERIENCE_TRANSITION_WINDOW = 0.16;
+const EXPERIENCE_REVEAL_THRESHOLD = EXPERIENCE_TRANSITION_START + EXPERIENCE_TRANSITION_WINDOW;
 const AUTHORED_EASE = [0.16, 1, 0.3, 1] as const;
 const DETAIL_SPACE_FRACTION = 0.4;
 const STAGE_ONE_YAW = -Math.PI / 6;
+const STAGE_TWO_YAW = 0.44;
 const STAGE_ONE_RIGHT_COMPENSATION = 0.34;
 
 type CinematicScrollState = {
@@ -29,6 +33,17 @@ type HighlightStroke = {
   id: string;
   path: string;
   washPath: string;
+};
+
+type ResumeExcavation = {
+  id: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  liftX: number;
+  liftY: number;
+  delay: number;
 };
 
 const HIGHLIGHT_STROKES: HighlightStroke[] = [
@@ -54,13 +69,53 @@ const HIGHLIGHT_STROKES: HighlightStroke[] = [
   },
 ];
 
+const RESUME_EXCAVATIONS: ResumeExcavation[] = [
+  {
+    id: "parallel-agent-execution",
+    x: 260.6,
+    y: 285.9,
+    width: 107.2,
+    height: 16.5,
+    liftX: 14,
+    liftY: -27,
+    delay: 0.1,
+  },
+  {
+    id: "three-d-unets",
+    x: 255.5,
+    y: 358.2,
+    width: 47.4,
+    height: 15.8,
+    liftX: -11,
+    liftY: -36,
+    delay: 0.38,
+  },
+  {
+    id: "mri-and-ct-images",
+    x: 338.8,
+    y: 368.8,
+    width: 94.2,
+    height: 16.7,
+    liftX: 19,
+    liftY: -21,
+    delay: 0.65,
+  },
+];
+
 const CinematicScrollContext = createContext<React.MutableRefObject<CinematicScrollState> | null>(null);
 
-function getCinematicProgress(progress: number) {
-  const transitionWindow = 0.22;
-  const transitionProgress = THREE.MathUtils.clamp(progress / transitionWindow, 0, 1);
+function getSnapProgress(progress: number, start: number, duration: number) {
+  const transitionProgress = THREE.MathUtils.clamp((progress - start) / duration, 0, 1);
 
   return 1 - 2 ** (-10 * transitionProgress);
+}
+
+function getCinematicProgress(progress: number) {
+  return getSnapProgress(progress, 0, 0.22);
+}
+
+function getExperienceProgress(progress: number) {
+  return getSnapProgress(progress, EXPERIENCE_TRANSITION_START, EXPERIENCE_TRANSITION_WINDOW);
 }
 
 function createFloatingShadowTexture() {
@@ -129,7 +184,87 @@ function ResumeHighlights({ active, reducedMotion }: { active: boolean; reducedM
   );
 }
 
-function ResumeSlab({ skillsActive, reducedMotion }: { skillsActive: boolean; reducedMotion: boolean }) {
+function ResumeExcavations({ active, reducedMotion }: { active: boolean; reducedMotion: boolean }) {
+  const particlePositions = [
+    { left: "17%", delay: 0.1, distance: 26 },
+    { left: "46%", delay: 0.24, distance: 39 },
+    { left: "78%", delay: 0.38, distance: 31 },
+  ];
+
+  return (
+    <div className={`resume-excavations${active ? " is-active" : ""}`} aria-hidden="true">
+      {RESUME_EXCAVATIONS.map((excavation) => {
+        const boxStyle = {
+          left: `${(excavation.x / 612) * 100}%`,
+          top: `${(excavation.y / 792) * 100}%`,
+          width: `${(excavation.width / 612) * 100}%`,
+          height: `${(excavation.height / 792) * 100}%`,
+        };
+        const revealDuration = reducedMotion ? 0 : 1.08;
+        const revealDelay = reducedMotion ? 0 : excavation.delay;
+
+        return (
+          <div className="resume-excavation-set" style={boxStyle} key={excavation.id}>
+            <motion.span
+              className="resume-excavation-cavity"
+              initial={false}
+              animate={{ opacity: active ? 1 : 0, scale: active ? 1.08 : 1 }}
+              transition={{ duration: reducedMotion ? 0 : 0.32, delay: revealDelay + 0.12, ease: AUTHORED_EASE }}
+            />
+            <motion.div
+              className="resume-excavation"
+              initial={false}
+              animate={active
+                ? {
+                    opacity: 1,
+                    x: reducedMotion ? 0 : [0, excavation.liftX * 1.08, excavation.liftX],
+                    y: reducedMotion ? 0 : [0, excavation.liftY * 1.08, excavation.liftY],
+                    z: reducedMotion ? 0 : [0, 46, 42],
+                    scale: reducedMotion ? 1 : [1, 1.2, 1.15],
+                    rotateZ: reducedMotion ? 0 : [0, excavation.liftX > 0 ? 1.8 : -1.8, excavation.liftX > 0 ? 0.8 : -0.8],
+                  }
+                : { opacity: 0, x: 0, y: 0, z: 0, scale: 1, rotateZ: 0 }}
+              transition={{ duration: revealDuration, delay: revealDelay, times: [0, 0.76, 1], ease: AUTHORED_EASE }}
+            >
+              <span className="resume-excavation-shadow" />
+              <span className="resume-excavation-tremor">
+                <svg viewBox={`0 0 ${excavation.width} ${excavation.height}`} preserveAspectRatio="none">
+                  <image
+                    href="/resume/kuan-yi-wang-resume.svg"
+                    x={-excavation.x}
+                    y={-excavation.y}
+                    width="612"
+                    height="792"
+                  />
+                </svg>
+              </span>
+              {active && !reducedMotion ? (
+                <span className="resume-rock-particles">
+                  {particlePositions.map((particle, index) => (
+                    <i
+                      key={`${excavation.id}-${index}`}
+                      style={{ left: particle.left, animationDelay: `${excavation.delay + particle.delay}s`, "--fall-distance": `${particle.distance}px` } as React.CSSProperties}
+                    />
+                  ))}
+                </span>
+              ) : null}
+            </motion.div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function ResumeSlab({
+  skillsActive,
+  experienceActive,
+  reducedMotion,
+}: {
+  skillsActive: boolean;
+  experienceActive: boolean;
+  reducedMotion: boolean;
+}) {
   const sceneGroup = useRef<THREE.Group>(null);
   const orientationGroup = useRef<THREE.Group>(null);
   const rollGroup = useRef<THREE.Group>(null);
@@ -149,23 +284,30 @@ function ResumeSlab({ skillsActive, reducedMotion }: { skillsActive: boolean; re
 
     const cinematic = cinematicScrollRef.current;
     const stageProgress = cinematic.enabled ? getCinematicProgress(cinematic.progress) : 0;
+    const experienceProgress = cinematic.enabled ? getExperienceProgress(cinematic.progress) : 0;
     const easing = reducedMotion || cinematic.reducedMotion ? 50 : 22;
-    const sceneScale = scale * THREE.MathUtils.lerp(1.1, 1.36, stageProgress);
+    const sceneScale = scale * THREE.MathUtils.lerp(
+      THREE.MathUtils.lerp(1.1, 1.36, stageProgress),
+      1.29,
+      experienceProgress,
+    );
     const baseRotation = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(-0.018, -0.09, stageProgress),
-          // The negative +Y rotation is the requested visual direction in the X-Z plane.
-          y: THREE.MathUtils.lerp(0.012, STAGE_ONE_YAW, stageProgress),
-          z: THREE.MathUtils.lerp(0, 0.038, stageProgress),
+          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(-0.018, -0.09, stageProgress), -0.13, experienceProgress),
+          // At the industry-experience view the right edge recedes into the scene.
+          y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0.012, STAGE_ONE_YAW, stageProgress), STAGE_TWO_YAW, experienceProgress),
+          z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.038, stageProgress), -0.028, experienceProgress),
         }
       : { x: -0.12, y: -0.32, z: 0 };
 
-    const cameraTargetX = THREE.MathUtils.lerp(0, 0.62, stageProgress);
+    const cameraTargetX = THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), 1.34, experienceProgress);
     const plateHalfWidth = (PLATE_WIDTH * sceneScale) / 2;
-    const reservedSceneX = cameraTargetX
+    const skillsSceneX = cameraTargetX
       + plateHalfWidth
       - viewport.width * (0.5 - DETAIL_SPACE_FRACTION)
       + THREE.MathUtils.lerp(0, STAGE_ONE_RIGHT_COMPENSATION, stageProgress);
+    const experienceSceneX = cameraTargetX - plateHalfWidth + viewport.width * 0.07;
+    const reservedSceneX = THREE.MathUtils.lerp(skillsSceneX, experienceSceneX, experienceProgress);
 
     sceneGroup.current.position.x = THREE.MathUtils.damp(
       sceneGroup.current.position.x,
@@ -175,7 +317,7 @@ function ResumeSlab({ skillsActive, reducedMotion }: { skillsActive: boolean; re
     );
     sceneGroup.current.position.y = THREE.MathUtils.damp(
       sceneGroup.current.position.y,
-      THREE.MathUtils.lerp(0, -0.08, stageProgress),
+      THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.08, stageProgress), 0.02, experienceProgress),
       easing,
       delta,
     );
@@ -243,6 +385,7 @@ function ResumeSlab({ skillsActive, reducedMotion }: { skillsActive: boolean; re
                 aria-label="Kuan Yi Wang resume"
               />
               <ResumeHighlights active={skillsActive} reducedMotion={reducedMotion} />
+              <ResumeExcavations active={experienceActive} reducedMotion={reducedMotion} />
             </div>
           </Html>
         </group>
@@ -263,18 +406,19 @@ function CinematicCamera({ reducedMotion }: { reducedMotion: boolean }) {
     const camera = state.camera as THREE.PerspectiveCamera;
     const cinematic = cinematicScrollRef.current;
     const stageProgress = cinematic.enabled ? getCinematicProgress(cinematic.progress) : 0;
+    const experienceProgress = cinematic.enabled ? getExperienceProgress(cinematic.progress) : 0;
     const easing = reducedMotion || cinematic.reducedMotion ? 50 : 22;
     const cameraPosition = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(0, -0.9, stageProgress),
-          y: THREE.MathUtils.lerp(1.62, 1.1, stageProgress),
-          z: THREE.MathUtils.lerp(3.15, 3.85, stageProgress),
+          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.9, stageProgress), 2.12, experienceProgress),
+          y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
+          z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(3.15, 3.85, stageProgress), 4.28, experienceProgress),
         }
       : { x: 0, y: 0.1, z: 8.25 };
     const cameraTarget = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(0, 0.62, stageProgress),
-          y: THREE.MathUtils.lerp(1.62, 1.1, stageProgress),
+          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), 1.34, experienceProgress),
+          y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
           z: 0,
         }
       : { x: 0, y: 0, z: 0 };
@@ -314,7 +458,15 @@ class SceneErrorBoundary extends Component<{ children: ReactNode }, { hasError: 
   }
 }
 
-function Scene({ skillsActive, reducedMotion }: { skillsActive: boolean; reducedMotion: boolean }) {
+function Scene({
+  skillsActive,
+  experienceActive,
+  reducedMotion,
+}: {
+  skillsActive: boolean;
+  experienceActive: boolean;
+  reducedMotion: boolean;
+}) {
   return (
     <div
       className="scene-shell"
@@ -332,7 +484,7 @@ function Scene({ skillsActive, reducedMotion }: { skillsActive: boolean; reduced
         <directionalLight color="#fff9ed" intensity={2.9} position={[1.2, 7, 3.8]} />
         <Suspense fallback={null}>
           <CinematicCamera reducedMotion={reducedMotion} />
-          <ResumeSlab skillsActive={skillsActive} reducedMotion={reducedMotion} />
+          <ResumeSlab skillsActive={skillsActive} experienceActive={experienceActive} reducedMotion={reducedMotion} />
         </Suspense>
       </Canvas>
     </div>
@@ -343,23 +495,31 @@ function DitherDetailCard({
   active,
   sequence,
   reducedMotion,
+  variant,
 }: {
   active: boolean;
   sequence: number;
   reducedMotion: boolean;
+  variant: "skills" | "experience";
 }) {
   const [noiseComplete, setNoiseComplete] = useState(false);
+  const isExperience = variant === "experience";
+  const horizontalOffset = isExperience ? 26 : -26;
+  const image = isExperience ? "/resume/experience-detail.png" : "/resume/skills-detail.png";
+  const caption = isExperience
+    ? "Industry experience, read as material rather than interface."
+    : "The technical vocabulary arrives as an annotated document, not a separate interface.";
 
   return (
     <AnimatePresence initial={false}>
       {active ? (
         <motion.aside
           key={sequence}
-          className="document-detail"
-          aria-label="Skills section detail"
-          initial={reducedMotion ? false : { opacity: 0, x: -26 }}
+          className={`document-detail document-detail--${variant}`}
+          aria-label={`${isExperience ? "Industry experience" : "Skills"} section detail`}
+          initial={reducedMotion ? false : { opacity: 0, x: horizontalOffset }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -18 }}
+          exit={{ opacity: 0, x: horizontalOffset * 0.7 }}
           transition={{ duration: reducedMotion ? 0 : 0.48, ease: AUTHORED_EASE }}
         >
           <figure className="detail-card">
@@ -396,7 +556,7 @@ function DitherDetailCard({
               >
                 <ImageDithering
                   className="detail-card-shader"
-                  image="/resume/skills-detail.png"
+                  image={image}
                   colorBack="#eee9df"
                   colorFront="#2f2a24"
                   colorHighlight="#857967"
@@ -405,8 +565,8 @@ function DitherDetailCard({
                   size={1.1}
                   colorSteps={3}
                   fit="cover"
-                  offsetX={0.03}
-                  offsetY={-0.18}
+                  offsetX={isExperience ? -0.02 : 0.03}
+                  offsetY={isExperience ? 0.08 : -0.18}
                   speed={0}
                   minPixelRatio={1}
                   maxPixelCount={260000}
@@ -414,7 +574,7 @@ function DitherDetailCard({
               </motion.div>
             </div>
             <figcaption>
-              <p>The technical vocabulary arrives as an annotated document, not a separate interface.</p>
+              <p>{caption}</p>
             </figcaption>
           </figure>
         </motion.aside>
@@ -448,6 +608,7 @@ function CoordinateGuide() {
 export function ResumeExperience() {
   const portfolioRef = useRef<HTMLElement>(null);
   const skillsStageRef = useRef(false);
+  const experienceStageRef = useRef(false);
   const cinematicScrollRef = useRef<CinematicScrollState>({
     enabled: false,
     progress: 0,
@@ -455,6 +616,8 @@ export function ResumeExperience() {
   });
   const [skillsActive, setSkillsActive] = useState(false);
   const [skillsSequence, setSkillsSequence] = useState(0);
+  const [experienceActive, setExperienceActive] = useState(false);
+  const [experienceSequence, setExperienceSequence] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -472,7 +635,10 @@ export function ResumeExperience() {
       const rawProgress = enabled
         ? THREE.MathUtils.clamp((window.scrollY - portfolio.offsetTop) / scrollRange, 0, 1)
         : 0;
-      const nextSkillsActive = enabled && rawProgress >= SKILLS_REVEAL_THRESHOLD;
+      const nextSkillsActive = enabled
+        && rawProgress >= SKILLS_REVEAL_THRESHOLD
+        && rawProgress < EXPERIENCE_TRANSITION_START;
+      const nextExperienceActive = enabled && rawProgress >= EXPERIENCE_REVEAL_THRESHOLD;
       const nextReducedMotion = reducedMotionMedia.matches;
 
       cinematicScrollRef.current.enabled = enabled;
@@ -485,6 +651,15 @@ export function ResumeExperience() {
 
         if (nextSkillsActive) {
           setSkillsSequence((current) => current + 1);
+        }
+      }
+
+      if (nextExperienceActive !== experienceStageRef.current) {
+        experienceStageRef.current = nextExperienceActive;
+        setExperienceActive(nextExperienceActive);
+
+        if (nextExperienceActive) {
+          setExperienceSequence((current) => current + 1);
         }
       }
 
@@ -521,10 +696,23 @@ export function ResumeExperience() {
       <CinematicScrollContext.Provider value={cinematicScrollRef}>
         <div className="portfolio-stage">
           <SceneErrorBoundary>
-            <Scene skillsActive={skillsActive} reducedMotion={reducedMotion} />
+            <Scene skillsActive={skillsActive} experienceActive={experienceActive} reducedMotion={reducedMotion} />
           </SceneErrorBoundary>
           <CoordinateGuide />
-          <DitherDetailCard key={skillsSequence} active={skillsActive} sequence={skillsSequence} reducedMotion={reducedMotion} />
+          <DitherDetailCard
+            key={`skills-${skillsSequence}`}
+            active={skillsActive}
+            sequence={skillsSequence}
+            reducedMotion={reducedMotion}
+            variant="skills"
+          />
+          <DitherDetailCard
+            key={`experience-${experienceSequence}`}
+            active={experienceActive}
+            sequence={experienceSequence}
+            reducedMotion={reducedMotion}
+            variant="experience"
+          />
           <footer className="control-rail" aria-label="Resume navigation">
             <p>Scroll to move through the document.</p>
             <a href="/resume/kuan-yi-wang-resume.pdf" target="_blank" rel="noreferrer">
