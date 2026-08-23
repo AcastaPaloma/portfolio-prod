@@ -1,10 +1,11 @@
 "use client";
 
 import { Dithering, ImageDithering } from "@paper-design/shaders-react";
-import { Edges, Html, RoundedBox, useTexture } from "@react-three/drei";
+import { Edges, Html, useTexture } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { AnimatePresence, animate, motion, useMotionValue, useSpring, type MotionValue } from "motion/react";
-import { Component, Suspense, createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import Image from "next/image";
+import { Component, Suspense, createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import * as THREE from "three";
 
 const PLATE_WIDTH = 3.18;
@@ -12,22 +13,20 @@ const PLATE_HEIGHT = 4.12;
 const PLATE_DEPTH = 0.075;
 const VECTOR_DOCUMENT_SCALE = 0.195;
 const VECTOR_RENDER_SCALE = 4;
-const CINEMATIC_BREAKPOINT = "(min-width: 48rem), (orientation: landscape) and (min-width: 40rem)";
-const SKILLS_REVEAL_THRESHOLD = 0.2;
-const EXPERIENCE_TRANSITION_START = 0.48;
-const EXPERIENCE_TRANSITION_WINDOW = 0.16;
-const EXPERIENCE_REVEAL_THRESHOLD = EXPERIENCE_TRANSITION_START + EXPERIENCE_TRANSITION_WINDOW + 0.04;
+const CINEMATIC_BREAKPOINT = "(min-width: 48rem)";
 const AUTHORED_EASE = [0.16, 1, 0.3, 1] as const;
 const DETAIL_SPACE_FRACTION = 0.4;
 const STAGE_ONE_YAW = -Math.PI / 6;
-const STAGE_TWO_YAW = 0.62;
+const STAGE_TWO_YAW = 0.78;
 const STAGE_ONE_RIGHT_COMPENSATION = 0.34;
-const FRAGMENT_LIFT = 0.24;
+const FRAGMENT_LIFT = 0.52;
 
-type CinematicScrollState = {
+type Stage = 0 | 1 | 2;
+
+type CinematicStageState = {
   enabled: boolean;
-  progress: number;
-  smoothedProgress: MotionValue<number>;
+  stage: Stage;
+  stageProgress: MotionValue<number>;
   reducedMotion: boolean;
 };
 
@@ -115,21 +114,12 @@ const RESUME_FACE_TILES = [
   { texture: "/resume/resume-tile-bottom-right.png", position: [PLATE_WIDTH / 4, -PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
 ];
 
-const CinematicScrollContext = createContext<React.MutableRefObject<CinematicScrollState> | null>(null);
+const RESUME_CUTOUT_FACE_TILES = RESUME_FACE_TILES.map((tile) => ({
+  ...tile,
+  texture: tile.texture.replace("resume-tile", "resume-cutout-tile"),
+}));
 
-function getSnapProgress(progress: number, start: number, duration: number) {
-  const transitionProgress = THREE.MathUtils.clamp((progress - start) / duration, 0, 1);
-
-  return 1 - 2 ** (-10 * transitionProgress);
-}
-
-function getCinematicProgress(progress: number) {
-  return getSnapProgress(progress, 0, 0.22);
-}
-
-function getExperienceProgress(progress: number) {
-  return getSnapProgress(progress, EXPERIENCE_TRANSITION_START, EXPERIENCE_TRANSITION_WINDOW);
-}
+const CinematicStageContext = createContext<React.MutableRefObject<CinematicStageState> | null>(null);
 
 function createFloatingShadowTexture() {
   const size = 512;
@@ -207,7 +197,7 @@ function prepareTexture(texture: THREE.Texture, maxAnisotropy: number) {
 }
 
 function ResumeFace() {
-  const textures = useTexture(RESUME_FACE_TILES.map((tile) => tile.texture));
+  const textures = useTexture(RESUME_CUTOUT_FACE_TILES.map((tile) => tile.texture));
   const { gl } = useThree();
 
   useEffect(() => {
@@ -218,9 +208,52 @@ function ResumeFace() {
   return RESUME_FACE_TILES.map((tile, index) => (
     <mesh key={tile.texture} position={tile.position} receiveShadow>
       <planeGeometry args={[PLATE_WIDTH / 2, PLATE_HEIGHT / 2]} />
-      <meshStandardMaterial map={textures[index]} roughness={0.68} metalness={0} />
+      <meshBasicMaterial
+        map={textures[index]}
+        toneMapped={false}
+        transparent
+        alphaTest={0.45}
+      />
     </mesh>
   ));
+}
+
+function createPerforatedSlabGeometry() {
+  const outer = new THREE.Shape();
+  outer.moveTo(-PLATE_WIDTH / 2, -PLATE_HEIGHT / 2);
+  outer.lineTo(PLATE_WIDTH / 2, -PLATE_HEIGHT / 2);
+  outer.lineTo(PLATE_WIDTH / 2, PLATE_HEIGHT / 2);
+  outer.lineTo(-PLATE_WIDTH / 2, PLATE_HEIGHT / 2);
+  outer.closePath();
+
+  RESUME_EXCAVATIONS.forEach((excavation) => {
+    const insetX = (1.2 / 612) * PLATE_WIDTH;
+    const insetY = (1 / 792) * PLATE_HEIGHT;
+    const left = pdfXToWorld(excavation.x) - insetX;
+    const right = pdfXToWorld(excavation.x + excavation.width) + insetX;
+    const top = pdfYToWorld(excavation.y) + insetY;
+    const bottom = pdfYToWorld(excavation.y + excavation.height) - insetY;
+    const hole = new THREE.Path();
+
+    hole.moveTo(left, bottom);
+    hole.lineTo(left, top);
+    hole.lineTo(right, top);
+    hole.lineTo(right, bottom);
+    hole.closePath();
+    outer.holes.push(hole);
+  });
+
+  const geometry = new THREE.ExtrudeGeometry(outer, {
+    depth: PLATE_DEPTH,
+    bevelEnabled: true,
+    bevelSegments: 2,
+    bevelSize: 0.006,
+    bevelThickness: 0.006,
+    curveSegments: 2,
+  });
+  geometry.translate(0, 0, -PLATE_DEPTH / 2);
+  geometry.computeVertexNormals();
+  return geometry;
 }
 
 function pdfXToWorld(x: number) {
@@ -287,10 +320,6 @@ function ExperienceFragment({
 
   return (
     <group position={[x, y, 0]}>
-      <mesh position={[0, 0, PLATE_DEPTH / 2 + 0.002]} receiveShadow>
-        <planeGeometry args={[width * 1.012, height * 1.05]} />
-        <meshStandardMaterial color="#fbfbf9" roughness={0.76} metalness={0} />
-      </mesh>
       <group ref={fragmentGroup}>
         <mesh castShadow receiveShadow>
           <boxGeometry args={[width, height, PLATE_DEPTH]} />
@@ -305,7 +334,7 @@ function ExperienceFragment({
         </mesh>
         <mesh position={[0, 0, PLATE_DEPTH / 2 + 0.001]} receiveShadow>
           <planeGeometry args={[width, height]} />
-          <meshStandardMaterial map={texture} roughness={0.68} metalness={0} />
+          <meshBasicMaterial map={texture} toneMapped={false} />
         </mesh>
       </group>
     </group>
@@ -440,25 +469,29 @@ function ResumeSlab({
   const sceneGroup = useRef<THREE.Group>(null);
   const orientationGroup = useRef<THREE.Group>(null);
   const rollGroup = useRef<THREE.Group>(null);
-  const cinematicScrollRef = useContext(CinematicScrollContext);
+  const cinematicStageRef = useContext(CinematicStageContext);
   const shadowTexture = useMemo(() => createFloatingShadowTexture(), []);
+  const perforatedGeometry = useMemo(() => createPerforatedSlabGeometry(), []);
   const { viewport } = useThree();
   const scale = Math.min(1, (viewport.width - 0.28) / PLATE_WIDTH);
 
-  if (!cinematicScrollRef) {
-    throw new Error("ResumeSlab must be rendered within the cinematic scroll provider.");
+  if (!cinematicStageRef) {
+    throw new Error("ResumeSlab must be rendered within the cinematic stage provider.");
   }
 
-  useEffect(() => () => shadowTexture.dispose(), [shadowTexture]);
+  useEffect(() => () => {
+    shadowTexture.dispose();
+    perforatedGeometry.dispose();
+  }, [perforatedGeometry, shadowTexture]);
 
   useFrame((_, delta) => {
     if (!sceneGroup.current || !orientationGroup.current || !rollGroup.current) return;
 
-    const cinematic = cinematicScrollRef.current;
-    const scrollProgress = cinematic.reducedMotion ? cinematic.progress : cinematic.smoothedProgress.get();
-    const stageProgress = cinematic.enabled ? getCinematicProgress(scrollProgress) : 0;
-    const experienceProgress = cinematic.enabled ? getExperienceProgress(scrollProgress) : 0;
-    const easing = reducedMotion || cinematic.reducedMotion ? 50 : 22;
+    const cinematic = cinematicStageRef.current;
+    const authoredStage = cinematic.reducedMotion ? cinematic.stage : cinematic.stageProgress.get();
+    const stageProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage, 0, 1) : 0;
+    const experienceProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage - 1, 0, 1) : 0;
+    const easing = reducedMotion || cinematic.reducedMotion ? 50 : 18;
     const sceneScale = scale * THREE.MathUtils.lerp(
       THREE.MathUtils.lerp(1.1, 1.36, stageProgress),
       1.29,
@@ -480,7 +513,7 @@ function ResumeSlab({
       - viewport.width * (0.5 - DETAIL_SPACE_FRACTION)
       + THREE.MathUtils.lerp(0, STAGE_ONE_RIGHT_COMPENSATION, stageProgress);
     const experienceProjectedWidth = PLATE_WIDTH * sceneScale * Math.cos(STAGE_TWO_YAW);
-    const experienceSceneX = cameraTargetX - viewport.width * 0.47 + experienceProjectedWidth / 2;
+    const experienceSceneX = cameraTargetX - viewport.width * 0.46 + experienceProjectedWidth / 2;
     const reservedSceneX = THREE.MathUtils.lerp(skillsSceneX, experienceSceneX, experienceProgress);
 
     sceneGroup.current.position.x = THREE.MathUtils.damp(
@@ -527,22 +560,16 @@ function ResumeSlab({
             <meshBasicMaterial map={shadowTexture} transparent opacity={0.46} depthWrite={false} />
           </mesh>
 
-          <RoundedBox
-            args={[PLATE_WIDTH, PLATE_HEIGHT, PLATE_DEPTH]}
-            radius={0.025}
-            smoothness={5}
-            castShadow
-            receiveShadow
-          >
+          <mesh geometry={perforatedGeometry} castShadow receiveShadow>
             <meshPhysicalMaterial
-              color="#fbfbf9"
+              color="#ffffff"
               roughness={0.31}
               metalness={0}
               clearcoat={0.18}
               clearcoatRoughness={0.62}
             />
             <Edges color="#8f8e89" threshold={18} scale={1.002} transparent opacity={0.24} />
-          </RoundedBox>
+          </mesh>
           <ResumeFace />
           <ExperienceFragments active={experienceActive} reducedMotion={reducedMotion} />
 
@@ -574,30 +601,30 @@ function ResumeSlab({
 }
 
 function CinematicCamera({ reducedMotion }: { reducedMotion: boolean }) {
-  const cinematicScrollRef = useContext(CinematicScrollContext);
+  const cinematicStageRef = useContext(CinematicStageContext);
   const lookAt = useRef(new THREE.Vector3(0, 1.62, 0));
 
-  if (!cinematicScrollRef) {
-    throw new Error("CinematicCamera must be rendered within the cinematic scroll provider.");
+  if (!cinematicStageRef) {
+    throw new Error("CinematicCamera must be rendered within the cinematic stage provider.");
   }
 
   useFrame((state, delta) => {
     const camera = state.camera as THREE.PerspectiveCamera;
-    const cinematic = cinematicScrollRef.current;
-    const scrollProgress = cinematic.reducedMotion ? cinematic.progress : cinematic.smoothedProgress.get();
-    const stageProgress = cinematic.enabled ? getCinematicProgress(scrollProgress) : 0;
-    const experienceProgress = cinematic.enabled ? getExperienceProgress(scrollProgress) : 0;
-    const easing = reducedMotion || cinematic.reducedMotion ? 50 : 22;
+    const cinematic = cinematicStageRef.current;
+    const authoredStage = cinematic.reducedMotion ? cinematic.stage : cinematic.stageProgress.get();
+    const stageProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage, 0, 1) : 0;
+    const experienceProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage - 1, 0, 1) : 0;
+    const easing = reducedMotion || cinematic.reducedMotion ? 50 : 18;
     const cameraPosition = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.9, stageProgress), 1.7, experienceProgress),
+          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.9, stageProgress), 1.58, experienceProgress),
           y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
           z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(3.15, 3.85, stageProgress), 4.28, experienceProgress),
         }
       : { x: 0, y: 0.1, z: 8.25 };
     const cameraTarget = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), 1.34, experienceProgress),
+          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), 1.22, experienceProgress),
           y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
           z: 0,
         }
@@ -651,7 +678,7 @@ function Scene({
     <div
       className="scene-shell"
       role="img"
-      aria-label="A white vector resume slab that moves through authored viewpoints as you scroll."
+      aria-label="A white vector resume slab that moves through authored viewpoints."
     >
       <Canvas
         className="scene"
@@ -661,10 +688,10 @@ function Scene({
         shadows={{ type: THREE.PCFSoftShadowMap }}
         fallback={<WebglFallback />}
       >
-        <ambientLight intensity={0.52} color="#f3ebdf" />
+        <ambientLight intensity={0.72} color="#ffffff" />
         <directionalLight
-          color="#fff9ed"
-          intensity={2.9}
+          color="#ffffff"
+          intensity={2.7}
           position={[1.2, 7, 3.8]}
           castShadow
           shadow-mapSize-width={2048}
@@ -776,6 +803,87 @@ function DitherDetailCard({
   );
 }
 
+function DitherBackdrop() {
+  return (
+    <div className="dither-backdrop" aria-hidden="true">
+      <ImageDithering
+        className="dither-backdrop-shader"
+        image="/resume/spinal-mri-background.jpg"
+        colorBack="#d9d1c5"
+        colorFront="#393733"
+        colorHighlight="#887f72"
+        originalColors={false}
+        type="8x8"
+        size={1.3}
+        colorSteps={3}
+        fit="cover"
+        offsetX={-0.22}
+        offsetY={0.04}
+        speed={0}
+        minPixelRatio={1}
+        maxPixelCount={460000}
+      />
+      <div className="dither-backdrop-veil" />
+    </div>
+  );
+}
+
+function ArrowIcon({ direction }: { direction: "up" | "down" }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d={direction === "up" ? "M5 14.5 12 7.5l7 7" : "M5 9.5l7 7 7-7"} />
+    </svg>
+  );
+}
+
+function StageDock({
+  stage,
+  navigate,
+  reducedMotion,
+}: {
+  stage: Stage;
+  navigate: (direction: -1 | 1) => void;
+  reducedMotion: boolean;
+}) {
+  return (
+    <motion.footer
+      className="stage-dock"
+      aria-label="Resume navigation"
+      initial={false}
+      animate={{ height: stage === 0 ? "50dvh" : "5.75rem" }}
+      transition={{ duration: reducedMotion ? 0 : 0.74, ease: AUTHORED_EASE }}
+    >
+      <div className="stage-dock-bar">
+        <p>Use the up and down arrows to view.</p>
+        <nav aria-label="Move between resume sections">
+          <button type="button" onClick={() => navigate(-1)} disabled={stage === 0} aria-label="Previous resume section">
+            <ArrowIcon direction="up" />
+          </button>
+          <span aria-live="polite">{String(stage + 1).padStart(2, "0")} / 03</span>
+          <button type="button" onClick={() => navigate(1)} disabled={stage === 2} aria-label="Next resume section">
+            <ArrowIcon direction="down" />
+          </button>
+        </nav>
+      </div>
+    </motion.footer>
+  );
+}
+
+function MobileResume() {
+  return (
+    <main className="mobile-resume">
+      <header>
+        <p>Portfolio / résumé</p>
+        <h1>Kuan Yi Wang</h1>
+        <a href="/resume/kuan-yi-wang-resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+      </header>
+      <section aria-label="Resume preview">
+        <Image src="/resume/kuan-yi-wang-resume.svg" alt="Kuan Yi Wang résumé" width={612} height={792} unoptimized />
+      </section>
+    </main>
+  );
+}
+
 function CoordinateGuide() {
   return (
     <aside className="coordinate-guide" aria-label="Temporary orientation guide: positive X points right, positive Y points up, and positive Z points toward the viewer.">
@@ -799,130 +907,127 @@ function CoordinateGuide() {
 }
 
 export function ResumeExperience() {
-  const portfolioRef = useRef<HTMLElement>(null);
-  const scrollProgress = useMotionValue(0);
-  const smoothedScrollProgress = useSpring(scrollProgress, {
-    stiffness: 135,
-    damping: 27,
-    mass: 0.68,
-    restDelta: 0.0001,
+  const stageTarget = useMotionValue(0);
+  const stageProgress = useSpring(stageTarget, {
+    stiffness: 96,
+    damping: 22,
+    mass: 0.82,
+    restDelta: 0.0005,
   });
-  const skillsStageRef = useRef(false);
-  const experienceStageRef = useRef(false);
-  const cinematicScrollRef = useRef<CinematicScrollState>({
-    enabled: false,
-    progress: 0,
-    smoothedProgress: smoothedScrollProgress,
+  const [stage, setStage] = useState<Stage>(0);
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const cinematicStageRef = useRef<CinematicStageState>({
+    enabled: true,
+    stage: 0,
+    stageProgress,
     reducedMotion: false,
   });
-  const [skillsActive, setSkillsActive] = useState(false);
-  const [skillsSequence, setSkillsSequence] = useState(0);
-  const [experienceActive, setExperienceActive] = useState(false);
-  const [experienceSequence, setExperienceSequence] = useState(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const navigate = useCallback((direction: -1 | 1) => {
+    setStage((current) => THREE.MathUtils.clamp(current + direction, 0, 2) as Stage);
+  }, []);
 
   useEffect(() => {
-    const portfolio = portfolioRef.current;
-
-    if (!portfolio) return;
-
     const desktop = window.matchMedia(CINEMATIC_BREAKPOINT);
     const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let animationFrame = 0;
+    const updateMedia = () => {
+      const desktopMatches = desktop.matches;
+      const reducedMotionMatches = reducedMotionMedia.matches;
 
-    const updateScrollState = () => {
-      const enabled = desktop.matches;
-      const scrollRange = Math.max(1, portfolio.offsetHeight - window.innerHeight);
-      const rawProgress = enabled
-        ? THREE.MathUtils.clamp((window.scrollY - portfolio.offsetTop) / scrollRange, 0, 1)
-        : 0;
-      const nextSkillsActive = enabled
-        && rawProgress >= SKILLS_REVEAL_THRESHOLD
-        && rawProgress < EXPERIENCE_TRANSITION_START;
-      const nextExperienceActive = enabled && rawProgress >= EXPERIENCE_REVEAL_THRESHOLD;
-      const nextReducedMotion = reducedMotionMedia.matches;
-
-      cinematicScrollRef.current.enabled = enabled;
-      cinematicScrollRef.current.progress = rawProgress;
-      cinematicScrollRef.current.reducedMotion = nextReducedMotion;
-      scrollProgress.set(rawProgress);
-
-      if (nextSkillsActive !== skillsStageRef.current) {
-        skillsStageRef.current = nextSkillsActive;
-        setSkillsActive(nextSkillsActive);
-
-        if (nextSkillsActive) {
-          setSkillsSequence((current) => current + 1);
-        }
-      }
-
-      if (nextExperienceActive !== experienceStageRef.current) {
-        experienceStageRef.current = nextExperienceActive;
-        setExperienceActive(nextExperienceActive);
-
-        if (nextExperienceActive) {
-          setExperienceSequence((current) => current + 1);
-        }
-      }
-
-      setReducedMotion((current) => (current === nextReducedMotion ? current : nextReducedMotion));
+      setIsDesktop(desktopMatches);
+      setReducedMotion(reducedMotionMatches);
+      cinematicStageRef.current.enabled = desktopMatches;
+      cinematicStageRef.current.reducedMotion = reducedMotionMatches;
     };
 
-    const requestUpdate = () => {
-      window.cancelAnimationFrame(animationFrame);
-      animationFrame = window.requestAnimationFrame(updateScrollState);
-    };
-
-    updateScrollState();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-    desktop.addEventListener("change", requestUpdate);
-    reducedMotionMedia.addEventListener("change", requestUpdate);
+    updateMedia();
+    desktop.addEventListener("change", updateMedia);
+    reducedMotionMedia.addEventListener("change", updateMedia);
 
     return () => {
-      window.cancelAnimationFrame(animationFrame);
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-      desktop.removeEventListener("change", requestUpdate);
-      reducedMotionMedia.removeEventListener("change", requestUpdate);
+      desktop.removeEventListener("change", updateMedia);
+      reducedMotionMedia.removeEventListener("change", updateMedia);
     };
-  }, [scrollProgress]);
+  }, []);
+
+  useEffect(() => {
+    cinematicStageRef.current.stage = stage;
+    stageTarget.set(stage);
+  }, [stage, stageTarget]);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
+    const preventScroll = (event: WheelEvent | TouchEvent) => event.preventDefault();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+      if (event.repeat) return;
+      event.preventDefault();
+      navigate(event.key === "ArrowDown" ? 1 : -1);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.scrollTo({ top: 0, behavior: "instant" });
+    window.addEventListener("wheel", preventScroll, { passive: false });
+    window.addEventListener("touchmove", preventScroll, { passive: false });
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isDesktop, navigate]);
+
+  if (isDesktop === null) {
+    return <div className="resume-loading" aria-hidden="true" />;
+  }
+
+  if (!isDesktop) {
+    return <MobileResume />;
+  }
+
+  const skillsActive = stage === 1;
+  const experienceActive = stage === 2;
 
   return (
-    <main ref={portfolioRef} className="portfolio">
+    <main className="portfolio">
       <noscript>
         <p>
           Your browser needs JavaScript to display the three-dimensional resume. <a href="/resume/kuan-yi-wang-resume.pdf">Open the PDF.</a>
         </p>
       </noscript>
-      <CinematicScrollContext.Provider value={cinematicScrollRef}>
+      <CinematicStageContext.Provider value={cinematicStageRef}>
         <div className="portfolio-stage">
+          <DitherBackdrop />
+          <a
+            className="dither-credit"
+            href="https://nccommons.org/wiki/File:Normal_cervical_spine_MRI_%28Radiopaedia_80146-93454_Axial_T2_2%29.jpg"
+            target="_blank"
+            rel="noreferrer"
+          >
+            MRI: Ian Bickle · CC BY-NC-SA 3.0
+          </a>
           <SceneErrorBoundary>
             <Scene skillsActive={skillsActive} experienceActive={experienceActive} reducedMotion={reducedMotion} />
           </SceneErrorBoundary>
           <CoordinateGuide />
           <DitherDetailCard
-            key={`skills-${skillsSequence}`}
             active={skillsActive}
-            sequence={skillsSequence}
+            sequence={1}
             reducedMotion={reducedMotion}
             variant="skills"
           />
           <DitherDetailCard
-            key={`experience-${experienceSequence}`}
             active={experienceActive}
-            sequence={experienceSequence}
+            sequence={2}
             reducedMotion={reducedMotion}
             variant="experience"
           />
-          <footer className="control-rail" aria-label="Resume navigation">
-            <p>Scroll to move through the document.</p>
-            <a href="/resume/kuan-yi-wang-resume.pdf" target="_blank" rel="noreferrer">
-              Open PDF
-            </a>
-          </footer>
+          <StageDock stage={stage} navigate={navigate} reducedMotion={reducedMotion} />
         </div>
-      </CinematicScrollContext.Provider>
+      </CinematicStageContext.Provider>
     </main>
   );
 }

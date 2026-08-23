@@ -74,15 +74,15 @@ body {
   isolation: isolate;
   position: relative;
   width: 100%;
-  height: 285vh;
+  height: 100dvh;
   min-height: 34rem;
   background: var(--void);
+  overflow: hidden;
 }
 
 .portfolio-stage {
   isolation: isolate;
-  position: sticky;
-  top: 0;
+  position: relative;
   display: grid;
   width: 100%;
   height: 100dvh;
@@ -94,9 +94,9 @@ body {
 .scene {
   position: absolute !important;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  touch-action: pan-y;
+  touch-action: none;
 }
 
 .scene canvas {
@@ -108,8 +108,49 @@ body {
 .scene-shell {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
+}
+
+.dither-backdrop {
+  position: absolute;
+  inset: -18%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: scale(1.18);
+}
+
+.dither-backdrop-shader,
+.dither-backdrop-shader canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.dither-backdrop-shader {
+  position: absolute !important;
+  inset: 0;
+  filter: contrast(0.94);
+  opacity: 0.48;
+}
+
+.dither-backdrop-veil {
+  position: absolute;
+  inset: 0;
+  background: rgb(216 208 195 / 34%);
+}
+
+.dither-credit {
+  position: absolute;
+  z-index: 3;
+  right: 1rem;
+  top: 0.75rem;
+  color: rgb(40 35 31 / 42%) !important;
+  font-size: 0.55rem;
+  font-style: italic;
+  text-decoration: none;
+  letter-spacing: 0.01em;
 }
 
 .resume-vector-face,
@@ -148,7 +189,7 @@ body {
 
 .document-detail {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 24%;
   width: min(15.25rem, 19vw);
   pointer-events: none;
@@ -165,7 +206,7 @@ body {
 
 .coordinate-guide {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: clamp(1.2rem, 4vh, 3rem);
   left: clamp(1.2rem, 3.2vw, 4rem);
   width: min(6rem, 12vw);
@@ -266,111 +307,172 @@ body {
   line-height: 1.2;
 }
 
-.control-rail {
+.stage-dock {
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: 4;
+  overflow: hidden;
+  border-top: 1px solid rgb(47 41 35 / 22%);
+  background: rgb(235 229 219 / 96%);
+  box-shadow: 0 -1.4rem 4rem rgb(54 47 40 / 8%);
+}
+
+.stage-dock-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  width: min(100% - 3rem, 72rem);
+  gap: 2rem;
+  width: min(100% - 4rem, 92rem);
+  height: 5.75rem;
   margin: 0 auto;
-  padding: 1.1rem 0 1.35rem;
   color: var(--quiet-ink);
-  font-size: 0.73rem;
+  font-size: 0.78rem;
   font-style: italic;
   line-height: 1.2;
   letter-spacing: 0.01em;
-  pointer-events: none;
 }
 
-.control-rail p {
+.stage-dock p {
   margin: 0;
 }
 
-.control-rail a {
-  padding-bottom: 0.15rem;
-  border-bottom: 1px solid var(--line);
-  text-decoration: none;
-  pointer-events: auto;
-  transition: color 180ms ease, border-color 180ms ease;
+.stage-dock nav {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 
-.control-rail a:hover {
+.stage-dock nav span {
+  min-width: 3.6rem;
+  color: rgb(40 35 31 / 58%);
+  font-size: 0.68rem;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: 0.12em;
+}
+
+.stage-dock button {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+  border: 1px solid rgb(47 41 35 / 28%);
+  border-radius: 50%;
+  background: transparent;
   color: var(--ink);
-  border-color: currentColor;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease, opacity 180ms ease;
 }
 
-.control-rail a:focus-visible {
+.stage-dock button svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stage-dock button:hover:not(:disabled) {
+  background: var(--ink);
+  color: #f5f1e9;
+}
+
+.stage-dock button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.stage-dock button:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 4px;
 }
 
-@media (max-width: 42rem) and (orientation: portrait) {
-  .portfolio,
-  .portfolio-stage {
-    min-height: 30rem;
-  }
-
-  .control-rail {
-    align-items: flex-end;
-    width: calc(100% - 2rem);
-    padding-bottom: 1rem;
-    font-size: 0.73rem;
-  }
-
-  .control-rail p {
-    max-width: 12rem;
-  }
+.resume-loading {
+  width: 100%;
+  height: 100dvh;
+  background: var(--void);
 }
 
-@media (max-width: 47.99rem) and (orientation: portrait) {
-  .portfolio {
-    height: 100dvh;
-  }
+.mobile-resume {
+  min-height: 100dvh;
+  padding: 1rem;
+  background: #181817;
+  color: #f3eee5;
+}
 
-  .portfolio-stage {
-    position: relative;
-  }
+.mobile-resume header {
+  position: relative;
+  min-height: 44svh;
+  padding: 1.1rem 0.35rem 2.2rem;
+  border-bottom: 1px solid rgb(243 238 229 / 28%);
+}
 
+.mobile-resume header p {
+  margin: 0;
+  color: rgb(243 238 229 / 60%);
+  font-size: 0.68rem;
+  font-style: italic;
+}
+
+.mobile-resume h1 {
+  position: absolute;
+  right: 0.35rem;
+  bottom: 1.85rem;
+  left: 0.35rem;
+  margin: 0;
+  font-size: clamp(3.6rem, 18vw, 6.2rem);
+  font-weight: 400;
+  line-height: 0.78;
+  letter-spacing: -0.075em;
+}
+
+.mobile-resume header a {
+  position: absolute;
+  right: 0.35rem;
+  top: 1.1rem;
+  color: inherit;
+  font-size: 0.68rem;
+  text-underline-offset: 0.25em;
+}
+
+.mobile-resume section {
+  margin: 1rem 0 0;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  background: white;
+}
+
+.mobile-resume img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 48rem) and (max-width: 64rem) {
   .document-detail {
-    display: none;
-  }
-
-  .coordinate-guide {
-    width: 4.7rem;
-  }
-}
-
-@media (orientation: landscape) and (max-width: 47.99rem) {
-  .portfolio,
-  .portfolio-stage {
-    min-height: 100svh;
+    width: min(13.5rem, 21vw);
   }
 
   .document-detail--skills {
-    top: 1.1rem;
-    left: 1.25rem;
-    width: min(11rem, 22vw);
+    left: 2rem;
   }
 
   .document-detail--experience {
-    top: 1.1rem;
-    right: 1.25rem;
-    width: min(11rem, 22vw);
+    right: 2rem;
   }
 
-  .control-rail {
-    width: calc(100% - 2rem);
-    padding-bottom: 0.85rem;
+  .stage-dock-bar {
+    width: calc(100% - 3rem);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .control-rail a {
+  .stage-dock button {
     transition: none;
   }
 }
