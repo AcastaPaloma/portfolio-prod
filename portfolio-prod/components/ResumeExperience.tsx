@@ -1,9 +1,9 @@
 "use client";
 
 import { Dithering, ImageDithering } from "@paper-design/shaders-react";
-import { Edges, Html, RoundedBox } from "@react-three/drei";
+import { Edges, Html, RoundedBox, useTexture } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, animate, motion, useMotionValue, useSpring, type MotionValue } from "motion/react";
 import { Component, Suspense, createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import * as THREE from "three";
 
@@ -16,16 +16,18 @@ const CINEMATIC_BREAKPOINT = "(min-width: 48rem), (orientation: landscape) and (
 const SKILLS_REVEAL_THRESHOLD = 0.2;
 const EXPERIENCE_TRANSITION_START = 0.48;
 const EXPERIENCE_TRANSITION_WINDOW = 0.16;
-const EXPERIENCE_REVEAL_THRESHOLD = EXPERIENCE_TRANSITION_START + EXPERIENCE_TRANSITION_WINDOW;
+const EXPERIENCE_REVEAL_THRESHOLD = EXPERIENCE_TRANSITION_START + EXPERIENCE_TRANSITION_WINDOW + 0.04;
 const AUTHORED_EASE = [0.16, 1, 0.3, 1] as const;
 const DETAIL_SPACE_FRACTION = 0.4;
 const STAGE_ONE_YAW = -Math.PI / 6;
-const STAGE_TWO_YAW = 0.44;
+const STAGE_TWO_YAW = 0.62;
 const STAGE_ONE_RIGHT_COMPENSATION = 0.34;
+const FRAGMENT_LIFT = 0.24;
 
 type CinematicScrollState = {
   enabled: boolean;
   progress: number;
+  smoothedProgress: MotionValue<number>;
   reducedMotion: boolean;
 };
 
@@ -41,9 +43,10 @@ type ResumeExcavation = {
   y: number;
   width: number;
   height: number;
-  liftX: number;
-  liftY: number;
+  texture: string;
   delay: number;
+  tiltX: number;
+  tiltY: number;
 };
 
 const HIGHLIGHT_STROKES: HighlightStroke[] = [
@@ -72,34 +75,44 @@ const HIGHLIGHT_STROKES: HighlightStroke[] = [
 const RESUME_EXCAVATIONS: ResumeExcavation[] = [
   {
     id: "parallel-agent-execution",
-    x: 260.6,
-    y: 285.9,
-    width: 107.2,
-    height: 16.5,
-    liftX: 14,
-    liftY: -27,
+    x: 261.3,
+    y: 288.2,
+    width: 106,
+    height: 11.2,
+    texture: "/resume/fragment-parallel-agent.png",
     delay: 0.1,
+    tiltX: -0.035,
+    tiltY: 0.028,
   },
   {
     id: "three-d-unets",
-    x: 255.5,
-    y: 358.2,
-    width: 47.4,
-    height: 15.8,
-    liftX: -11,
-    liftY: -36,
+    x: 256.1,
+    y: 360.6,
+    width: 45.3,
+    height: 11.1,
+    texture: "/resume/fragment-three-d-unets.png",
     delay: 0.38,
+    tiltX: -0.044,
+    tiltY: -0.036,
   },
   {
     id: "mri-and-ct-images",
-    x: 338.8,
-    y: 368.8,
-    width: 94.2,
-    height: 16.7,
-    liftX: 19,
-    liftY: -21,
+    x: 339.7,
+    y: 371.2,
+    width: 92.1,
+    height: 11.1,
+    texture: "/resume/fragment-mri-ct.png",
     delay: 0.65,
+    tiltX: -0.026,
+    tiltY: 0.042,
   },
+];
+
+const RESUME_FACE_TILES = [
+  { texture: "/resume/resume-tile-top-left.png", position: [-PLATE_WIDTH / 4, PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
+  { texture: "/resume/resume-tile-top-right.png", position: [PLATE_WIDTH / 4, PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
+  { texture: "/resume/resume-tile-bottom-left.png", position: [-PLATE_WIDTH / 4, -PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
+  { texture: "/resume/resume-tile-bottom-right.png", position: [PLATE_WIDTH / 4, -PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
 ];
 
 const CinematicScrollContext = createContext<React.MutableRefObject<CinematicScrollState> | null>(null);
@@ -184,75 +197,234 @@ function ResumeHighlights({ active, reducedMotion }: { active: boolean; reducedM
   );
 }
 
-function ResumeExcavations({ active, reducedMotion }: { active: boolean; reducedMotion: boolean }) {
-  const particlePositions = [
-    { left: "17%", delay: 0.1, distance: 26 },
-    { left: "46%", delay: 0.24, distance: 39 },
-    { left: "78%", delay: 0.38, distance: 31 },
-  ];
+function prepareTexture(texture: THREE.Texture, maxAnisotropy: number) {
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = Math.min(16, maxAnisotropy);
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.generateMipmaps = true;
+  texture.needsUpdate = true;
+}
+
+function ResumeFace() {
+  const textures = useTexture(RESUME_FACE_TILES.map((tile) => tile.texture));
+  const { gl } = useThree();
+
+  useEffect(() => {
+    const maxAnisotropy = gl.capabilities.getMaxAnisotropy();
+    textures.forEach((texture) => prepareTexture(texture, maxAnisotropy));
+  }, [gl, textures]);
+
+  return RESUME_FACE_TILES.map((tile, index) => (
+    <mesh key={tile.texture} position={tile.position} receiveShadow>
+      <planeGeometry args={[PLATE_WIDTH / 2, PLATE_HEIGHT / 2]} />
+      <meshStandardMaterial map={textures[index]} roughness={0.68} metalness={0} />
+    </mesh>
+  ));
+}
+
+function pdfXToWorld(x: number) {
+  return -PLATE_WIDTH / 2 + (x / 612) * PLATE_WIDTH;
+}
+
+function pdfYToWorld(y: number) {
+  return PLATE_HEIGHT / 2 - (y / 792) * PLATE_HEIGHT;
+}
+
+function ExperienceFragment({
+  excavation,
+  active,
+  reducedMotion,
+}: {
+  excavation: ResumeExcavation;
+  active: boolean;
+  reducedMotion: boolean;
+}) {
+  const fragmentGroup = useRef<THREE.Group>(null);
+  const texture = useTexture(excavation.texture);
+  const { gl } = useThree();
+  const lift = useMotionValue(active ? 1 : 0);
+  const width = (excavation.width / 612) * PLATE_WIDTH;
+  const height = (excavation.height / 792) * PLATE_HEIGHT;
+  const x = pdfXToWorld(excavation.x + excavation.width / 2);
+  const y = pdfYToWorld(excavation.y + excavation.height / 2);
+
+  useEffect(() => {
+    prepareTexture(texture, gl.capabilities.getMaxAnisotropy());
+  }, [gl, texture]);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      lift.set(active ? 1 : 0);
+      return;
+    }
+
+    const controls = animate(lift, active ? 1 : 0, {
+      duration: active ? 2.25 : 0.42,
+      delay: active ? excavation.delay : 0,
+      ease: AUTHORED_EASE,
+    });
+
+    return () => controls.stop();
+  }, [active, excavation.delay, lift, reducedMotion]);
+
+  useFrame((state) => {
+    if (!fragmentGroup.current) return;
+
+    const progress = lift.get();
+    const tremorStrength = active && !reducedMotion
+      ? THREE.MathUtils.smoothstep(progress, 0.72, 1) * 0.0015
+      : 0;
+    const time = state.clock.elapsedTime;
+
+    fragmentGroup.current.position.x = Math.sin(time * 17.2 + excavation.x) * tremorStrength;
+    fragmentGroup.current.position.y = Math.cos(time * 19.4 + excavation.y) * tremorStrength;
+    fragmentGroup.current.position.z = progress * FRAGMENT_LIFT;
+    fragmentGroup.current.rotation.x = excavation.tiltX * progress + Math.sin(time * 13.1) * tremorStrength * 0.8;
+    fragmentGroup.current.rotation.y = excavation.tiltY * progress + Math.cos(time * 11.7) * tremorStrength * 0.8;
+    fragmentGroup.current.rotation.z = Math.sin(time * 15.3 + excavation.width) * tremorStrength * 1.2;
+  });
 
   return (
-    <div className={`resume-excavations${active ? " is-active" : ""}`} aria-hidden="true">
-      {RESUME_EXCAVATIONS.map((excavation) => {
-        const boxStyle = {
-          left: `${(excavation.x / 612) * 100}%`,
-          top: `${(excavation.y / 792) * 100}%`,
-          width: `${(excavation.width / 612) * 100}%`,
-          height: `${(excavation.height / 792) * 100}%`,
-        };
-        const revealDuration = reducedMotion ? 0 : 1.08;
-        const revealDelay = reducedMotion ? 0 : excavation.delay;
+    <group position={[x, y, 0]}>
+      <mesh position={[0, 0, PLATE_DEPTH / 2 + 0.002]} receiveShadow>
+        <planeGeometry args={[width * 1.012, height * 1.05]} />
+        <meshStandardMaterial color="#fbfbf9" roughness={0.76} metalness={0} />
+      </mesh>
+      <group ref={fragmentGroup}>
+        <mesh castShadow receiveShadow>
+          <boxGeometry args={[width, height, PLATE_DEPTH]} />
+          <meshPhysicalMaterial
+            color="#fbfbf9"
+            roughness={0.38}
+            metalness={0}
+            clearcoat={0.12}
+            clearcoatRoughness={0.68}
+          />
+          <Edges color="#85827c" threshold={14} transparent opacity={0.24} />
+        </mesh>
+        <mesh position={[0, 0, PLATE_DEPTH / 2 + 0.001]} receiveShadow>
+          <planeGeometry args={[width, height]} />
+          <meshStandardMaterial map={texture} roughness={0.68} metalness={0} />
+        </mesh>
+      </group>
+    </group>
+  );
+}
 
-        return (
-          <div className="resume-excavation-set" style={boxStyle} key={excavation.id}>
-            <motion.span
-              className="resume-excavation-cavity"
-              initial={false}
-              animate={{ opacity: active ? 1 : 0, scale: active ? 1.08 : 1 }}
-              transition={{ duration: reducedMotion ? 0 : 0.32, delay: revealDelay + 0.12, ease: AUTHORED_EASE }}
-            />
-            <motion.div
-              className="resume-excavation"
-              initial={false}
-              animate={active
-                ? {
-                    opacity: 1,
-                    x: reducedMotion ? 0 : [0, excavation.liftX * 1.08, excavation.liftX],
-                    y: reducedMotion ? 0 : [0, excavation.liftY * 1.08, excavation.liftY],
-                    z: reducedMotion ? 0 : [0, 46, 42],
-                    scale: reducedMotion ? 1 : [1, 1.2, 1.15],
-                    rotateZ: reducedMotion ? 0 : [0, excavation.liftX > 0 ? 1.8 : -1.8, excavation.liftX > 0 ? 0.8 : -0.8],
-                  }
-                : { opacity: 0, x: 0, y: 0, z: 0, scale: 1, rotateZ: 0 }}
-              transition={{ duration: revealDuration, delay: revealDelay, times: [0, 0.76, 1], ease: AUTHORED_EASE }}
-            >
-              <span className="resume-excavation-shadow" />
-              <span className="resume-excavation-tremor">
-                <svg viewBox={`0 0 ${excavation.width} ${excavation.height}`} preserveAspectRatio="none">
-                  <image
-                    href="/resume/kuan-yi-wang-resume.svg"
-                    x={-excavation.x}
-                    y={-excavation.y}
-                    width="612"
-                    height="792"
-                  />
-                </svg>
-              </span>
-              {active && !reducedMotion ? (
-                <span className="resume-rock-particles">
-                  {particlePositions.map((particle, index) => (
-                    <i
-                      key={`${excavation.id}-${index}`}
-                      style={{ left: particle.left, animationDelay: `${excavation.delay + particle.delay}s`, "--fall-distance": `${particle.distance}px` } as React.CSSProperties}
-                    />
-                  ))}
-                </span>
-              ) : null}
-            </motion.div>
-          </div>
-        );
-      })}
-    </div>
+function RockParticle({
+  active,
+  reducedMotion,
+  origin,
+  delay,
+  duration,
+  size,
+  drift,
+  seed,
+}: {
+  active: boolean;
+  reducedMotion: boolean;
+  origin: [number, number];
+  delay: number;
+  duration: number;
+  size: number;
+  drift: number;
+  seed: number;
+}) {
+  const particle = useRef<THREE.Mesh>(null);
+  const fall = useMotionValue(0);
+
+  useEffect(() => {
+    fall.set(0);
+
+    if (!active || reducedMotion) return;
+
+    const controls = animate(fall, 1, {
+      duration,
+      delay,
+      ease: "linear",
+      repeat: Infinity,
+      repeatDelay: 0.55 + (seed % 3) * 0.22,
+    });
+
+    return () => controls.stop();
+  }, [active, delay, duration, fall, reducedMotion, seed]);
+
+  useFrame(() => {
+    if (!particle.current) return;
+
+    const progress = fall.get();
+    const visible = active && !reducedMotion && progress > 0.001 && progress < 0.998;
+    particle.current.visible = visible;
+
+    if (!visible) return;
+
+    const entrance = THREE.MathUtils.smoothstep(progress, 0, 0.08);
+    const exit = 1 - THREE.MathUtils.smoothstep(progress, 0.88, 1);
+    const particleScale = size * entrance * exit;
+
+    particle.current.position.x = origin[0] + drift * progress + Math.sin(progress * 9 + seed) * 0.015;
+    particle.current.position.y = origin[1] - 0.025 - progress * 4.8;
+    particle.current.position.z = 0.08 + Math.sin(progress * Math.PI) * 0.09;
+    particle.current.rotation.x = progress * (8 + seed * 0.4);
+    particle.current.rotation.y = progress * (11 + seed * 0.3);
+    particle.current.rotation.z = progress * (6 + seed * 0.2);
+    particle.current.scale.setScalar(particleScale);
+  });
+
+  return (
+    <mesh ref={particle} visible={false} castShadow>
+      <icosahedronGeometry args={[1, 0]} />
+      <meshStandardMaterial color={seed % 2 === 0 ? "#8d877d" : "#665f56"} roughness={0.92} metalness={0} />
+    </mesh>
+  );
+}
+
+function ExperienceFragments({ active, reducedMotion }: { active: boolean; reducedMotion: boolean }) {
+  const particles = RESUME_EXCAVATIONS.flatMap((excavation, excavationIndex) => {
+    const width = (excavation.width / 612) * PLATE_WIDTH;
+    const x = pdfXToWorld(excavation.x + excavation.width / 2);
+    const y = pdfYToWorld(excavation.y + excavation.height);
+
+    return Array.from({ length: 6 }, (_, particleIndex) => {
+      const seed = excavationIndex * 6 + particleIndex + 1;
+
+      return {
+        key: `${excavation.id}-${particleIndex}`,
+        origin: [x + ((particleIndex % 3) - 1) * width * 0.28, y] as [number, number],
+        delay: excavation.delay + 0.72 + particleIndex * 0.24,
+        duration: 3.2 + (seed % 4) * 0.34,
+        size: 0.009 + (seed % 5) * 0.0028,
+        drift: ((seed % 3) - 1) * 0.16,
+        seed,
+      };
+    });
+  });
+
+  return (
+    <group>
+      {RESUME_EXCAVATIONS.map((excavation) => (
+        <ExperienceFragment
+          key={excavation.id}
+          excavation={excavation}
+          active={active}
+          reducedMotion={reducedMotion}
+        />
+      ))}
+      {particles.map((particle) => (
+        <RockParticle
+          key={particle.key}
+          active={active}
+          reducedMotion={reducedMotion}
+          origin={particle.origin}
+          delay={particle.delay}
+          duration={particle.duration}
+          size={particle.size}
+          drift={particle.drift}
+          seed={particle.seed}
+        />
+      ))}
+    </group>
   );
 }
 
@@ -283,8 +455,9 @@ function ResumeSlab({
     if (!sceneGroup.current || !orientationGroup.current || !rollGroup.current) return;
 
     const cinematic = cinematicScrollRef.current;
-    const stageProgress = cinematic.enabled ? getCinematicProgress(cinematic.progress) : 0;
-    const experienceProgress = cinematic.enabled ? getExperienceProgress(cinematic.progress) : 0;
+    const scrollProgress = cinematic.reducedMotion ? cinematic.progress : cinematic.smoothedProgress.get();
+    const stageProgress = cinematic.enabled ? getCinematicProgress(scrollProgress) : 0;
+    const experienceProgress = cinematic.enabled ? getExperienceProgress(scrollProgress) : 0;
     const easing = reducedMotion || cinematic.reducedMotion ? 50 : 22;
     const sceneScale = scale * THREE.MathUtils.lerp(
       THREE.MathUtils.lerp(1.1, 1.36, stageProgress),
@@ -306,7 +479,8 @@ function ResumeSlab({
       + plateHalfWidth
       - viewport.width * (0.5 - DETAIL_SPACE_FRACTION)
       + THREE.MathUtils.lerp(0, STAGE_ONE_RIGHT_COMPENSATION, stageProgress);
-    const experienceSceneX = cameraTargetX - plateHalfWidth + viewport.width * 0.07;
+    const experienceProjectedWidth = PLATE_WIDTH * sceneScale * Math.cos(STAGE_TWO_YAW);
+    const experienceSceneX = cameraTargetX - viewport.width * 0.47 + experienceProjectedWidth / 2;
     const reservedSceneX = THREE.MathUtils.lerp(skillsSceneX, experienceSceneX, experienceProgress);
 
     sceneGroup.current.position.x = THREE.MathUtils.damp(
@@ -357,6 +531,8 @@ function ResumeSlab({
             args={[PLATE_WIDTH, PLATE_HEIGHT, PLATE_DEPTH]}
             radius={0.025}
             smoothness={5}
+            castShadow
+            receiveShadow
           >
             <meshPhysicalMaterial
               color="#fbfbf9"
@@ -367,27 +543,30 @@ function ResumeSlab({
             />
             <Edges color="#8f8e89" threshold={18} scale={1.002} transparent opacity={0.24} />
           </RoundedBox>
+          <ResumeFace />
+          <ExperienceFragments active={experienceActive} reducedMotion={reducedMotion} />
 
-          <Html
-            transform
-            center
-            distanceFactor={10}
-            position={[0, 0, PLATE_DEPTH / 2 + 0.003]}
-            scale={VECTOR_DOCUMENT_SCALE / VECTOR_RENDER_SCALE}
-            className="resume-vector-face"
-            pointerEvents="none"
-          >
-            <div className="resume-vector-frame">
-              <object
-                className="resume-vector-document"
-                data="/resume/kuan-yi-wang-resume.svg"
-                type="image/svg+xml"
-                aria-label="Kuan Yi Wang resume"
-              />
-              <ResumeHighlights active={skillsActive} reducedMotion={reducedMotion} />
-              <ResumeExcavations active={experienceActive} reducedMotion={reducedMotion} />
-            </div>
-          </Html>
+          {!experienceActive ? (
+            <Html
+              transform
+              center
+              distanceFactor={10}
+              position={[0, 0, PLATE_DEPTH / 2 + 0.003]}
+              scale={VECTOR_DOCUMENT_SCALE / VECTOR_RENDER_SCALE}
+              className="resume-vector-face"
+              pointerEvents="none"
+            >
+              <div className="resume-vector-frame">
+                <object
+                  className="resume-vector-document"
+                  data="/resume/kuan-yi-wang-resume.svg"
+                  type="image/svg+xml"
+                  aria-label="Kuan Yi Wang resume"
+                />
+                <ResumeHighlights active={skillsActive} reducedMotion={reducedMotion} />
+              </div>
+            </Html>
+          ) : null}
         </group>
       </group>
     </group>
@@ -405,12 +584,13 @@ function CinematicCamera({ reducedMotion }: { reducedMotion: boolean }) {
   useFrame((state, delta) => {
     const camera = state.camera as THREE.PerspectiveCamera;
     const cinematic = cinematicScrollRef.current;
-    const stageProgress = cinematic.enabled ? getCinematicProgress(cinematic.progress) : 0;
-    const experienceProgress = cinematic.enabled ? getExperienceProgress(cinematic.progress) : 0;
+    const scrollProgress = cinematic.reducedMotion ? cinematic.progress : cinematic.smoothedProgress.get();
+    const stageProgress = cinematic.enabled ? getCinematicProgress(scrollProgress) : 0;
+    const experienceProgress = cinematic.enabled ? getExperienceProgress(scrollProgress) : 0;
     const easing = reducedMotion || cinematic.reducedMotion ? 50 : 22;
     const cameraPosition = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.9, stageProgress), 2.12, experienceProgress),
+          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.9, stageProgress), 1.7, experienceProgress),
           y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
           z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(3.15, 3.85, stageProgress), 4.28, experienceProgress),
         }
@@ -478,10 +658,23 @@ function Scene({
         dpr={[1, 2]}
         camera={{ fov: 35, position: [0, 1.62, 3.15] }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        shadows={{ type: THREE.PCFSoftShadowMap }}
         fallback={<WebglFallback />}
       >
         <ambientLight intensity={0.52} color="#f3ebdf" />
-        <directionalLight color="#fff9ed" intensity={2.9} position={[1.2, 7, 3.8]} />
+        <directionalLight
+          color="#fff9ed"
+          intensity={2.9}
+          position={[1.2, 7, 3.8]}
+          castShadow
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
+          shadow-bias={-0.00035}
+          shadow-camera-left={-5}
+          shadow-camera-right={5}
+          shadow-camera-top={5}
+          shadow-camera-bottom={-5}
+        />
         <Suspense fallback={null}>
           <CinematicCamera reducedMotion={reducedMotion} />
           <ResumeSlab skillsActive={skillsActive} experienceActive={experienceActive} reducedMotion={reducedMotion} />
@@ -607,11 +800,19 @@ function CoordinateGuide() {
 
 export function ResumeExperience() {
   const portfolioRef = useRef<HTMLElement>(null);
+  const scrollProgress = useMotionValue(0);
+  const smoothedScrollProgress = useSpring(scrollProgress, {
+    stiffness: 135,
+    damping: 27,
+    mass: 0.68,
+    restDelta: 0.0001,
+  });
   const skillsStageRef = useRef(false);
   const experienceStageRef = useRef(false);
   const cinematicScrollRef = useRef<CinematicScrollState>({
     enabled: false,
     progress: 0,
+    smoothedProgress: smoothedScrollProgress,
     reducedMotion: false,
   });
   const [skillsActive, setSkillsActive] = useState(false);
@@ -644,6 +845,7 @@ export function ResumeExperience() {
       cinematicScrollRef.current.enabled = enabled;
       cinematicScrollRef.current.progress = rawProgress;
       cinematicScrollRef.current.reducedMotion = nextReducedMotion;
+      scrollProgress.set(rawProgress);
 
       if (nextSkillsActive !== skillsStageRef.current) {
         skillsStageRef.current = nextSkillsActive;
@@ -684,7 +886,7 @@ export function ResumeExperience() {
       desktop.removeEventListener("change", requestUpdate);
       reducedMotionMedia.removeEventListener("change", requestUpdate);
     };
-  }, []);
+  }, [scrollProgress]);
 
   return (
     <main ref={portfolioRef} className="portfolio">

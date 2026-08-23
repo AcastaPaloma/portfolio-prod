@@ -146,100 +146,6 @@ body {
   pointer-events: none;
 }
 
-.resume-excavations {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  perspective: inherit;
-  transform-style: preserve-3d;
-}
-
-.resume-excavation-set {
-  position: absolute;
-  transform-style: preserve-3d;
-}
-
-.resume-excavation-cavity {
-  position: absolute;
-  inset: -12% -3%;
-  display: block;
-  background: #fff;
-  box-shadow: inset 0 -1px 0 rgb(47 41 35 / 20%), 0 1px 2px rgb(47 41 35 / 12%);
-  transform-origin: center;
-}
-
-.resume-excavation {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  transform-style: preserve-3d;
-  transform-origin: center;
-  will-change: transform, filter;
-  filter: drop-shadow(0 7px 6px rgb(47 41 35 / 30%));
-}
-
-.resume-excavation-shadow {
-  position: absolute;
-  inset: 11% -6% -35%;
-  z-index: -1;
-  display: block;
-  background: rgb(47 41 35 / 28%);
-  filter: blur(3.5px);
-  opacity: 0.78;
-  transform: translate3d(-2px, 7px, -1px) scale(0.96, 0.6);
-}
-
-.resume-excavation-tremor {
-  position: absolute;
-  inset: 0;
-  display: block;
-  transform-origin: center;
-}
-
-.resume-excavations.is-active .resume-excavation-tremor {
-  animation: excavation-tremor 1.35s steps(2, end) infinite;
-}
-
-.resume-excavation svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.resume-rock-particles {
-  position: absolute;
-  inset: 0;
-  overflow: visible;
-}
-
-.resume-rock-particles i {
-  position: absolute;
-  top: 80%;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #564e45;
-  box-shadow: 0 2px 2px rgb(47 41 35 / 28%);
-  opacity: 0;
-  animation: rock-particle-fall 1.2s cubic-bezier(0.22, 0.78, 0.24, 1) infinite;
-}
-
-@keyframes excavation-tremor {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-  22% { transform: translate3d(0.65px, -0.4px, 0) rotate(0.18deg); }
-  53% { transform: translate3d(-0.55px, 0.45px, 0) rotate(-0.16deg); }
-  78% { transform: translate3d(0.3px, 0.2px, 0) rotate(0.08deg); }
-}
-
-@keyframes rock-particle-fall {
-  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.55); }
-  17% { opacity: 0.8; }
-  76% { opacity: 0.55; transform: translate3d(-3px, var(--fall-distance), 0) scale(1); }
-  100% { opacity: 0; transform: translate3d(-4px, calc(var(--fall-distance) + 9px), 0) scale(0.72); }
-}
-
 .document-detail {
   position: absolute;
   z-index: 1;
@@ -466,11 +372,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .control-rail a {
     transition: none;
-  }
-
-  .resume-excavation-tremor,
-  .resume-rock-particles i {
-    animation: none;
   }
 }
 
