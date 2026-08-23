@@ -307,11 +307,11 @@ body {
   bottom: 7.25rem;
   left: clamp(1.6rem, 3.4vw, 4.25rem);
   display: grid;
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-rows: minmax(15rem, 2.2fr) repeat(2, minmax(6rem, 1fr));
   gap: clamp(0.55rem, 1.2vh, 0.9rem);
   width: min(31vw, 23rem);
   max-height: 31rem;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .project-card {
@@ -342,6 +342,19 @@ body {
 .project-card-shader {
   position: absolute !important;
   inset: 0;
+}
+
+.project-card-image--embed {
+  background: #fff;
+}
+
+.project-card-image--embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+  color-scheme: light;
 }
 
 .project-card figcaption {

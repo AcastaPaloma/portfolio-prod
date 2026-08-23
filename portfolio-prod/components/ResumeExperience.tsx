@@ -258,29 +258,17 @@ function RoughMarkerCircle({
 }) {
   const strokes = useMemo(() => {
     const generator = rough.generator();
-    const wash = generator.ellipse(target.centerX, target.centerY, target.width, target.height, {
+    const marker = generator.ellipse(target.centerX, target.centerY, target.width, target.height, {
       seed: target.seed,
       stroke: target.color,
-      strokeWidth: 10,
-      roughness: 0.92,
-      bowing: 1.35,
-      curveFitting: 0.88,
-      disableMultiStroke: true,
-    });
-    const marker = generator.ellipse(target.centerX, target.centerY, target.width, target.height, {
-      seed: target.seed + 1,
-      stroke: target.color,
-      strokeWidth: 5.2,
+      strokeWidth: 2.8,
       roughness: 1.48,
       bowing: 1.72,
       curveFitting: 0.82,
       disableMultiStroke: false,
     });
 
-    return [
-      ...generator.toPaths(wash).map((path) => ({ ...path, opacity: 0.34 })),
-      ...generator.toPaths(marker).map((path) => ({ ...path, opacity: 0.92 })),
-    ];
+    return generator.toPaths(marker);
   }, [target]);
   const exitDelay = (PROJECT_MARKER_TARGETS.length - index - 1) * 0.1;
   const delay = reducedMotion ? 0 : active ? target.delay : exitDelay;
@@ -288,46 +276,51 @@ function RoughMarkerCircle({
   return (
     <g aria-label={`${target.label} marker circle`}>
       {strokes.map((stroke, strokeIndex) => (
-        <motion.path
-          key={`${target.id}-rough-stroke-${strokeIndex}`}
-          d={stroke.d}
-          fill="none"
-          stroke={stroke.stroke}
-          strokeWidth={stroke.strokeWidth}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={false}
-          animate={reducedMotion
-            ? {
-                pathLength: active ? 1 : 0,
-                opacity: active ? stroke.opacity : 0,
-              }
-            : active
-              ? {
-                  pathLength: [0, 1, 1, 0],
-                  opacity: [0, stroke.opacity, stroke.opacity, 0],
-                }
-              : {
-                  pathLength: 0,
-                  opacity: 0,
-                }}
-          transition={reducedMotion
-            ? { duration: 0 }
-            : active
-              ? {
-                  duration: 2.7,
-                  delay: delay + strokeIndex * 0.07,
-                  times: [0, 0.42, 0.66, 1],
+        <g key={`${target.id}-rough-stroke-${strokeIndex}`}>
+          <motion.path
+            d={stroke.d}
+            fill="none"
+            stroke={stroke.stroke}
+            strokeWidth={stroke.strokeWidth}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={false}
+            animate={{
+              pathLength: active ? 1 : 0,
+              opacity: active ? 0.58 : 0,
+            }}
+            transition={{
+              duration: reducedMotion ? 0 : active ? 0.72 : 0.42,
+              delay,
+              ease: active ? AUTHORED_EASE : RETURN_EASE,
+            }}
+          />
+          {!reducedMotion && active ? (
+            <motion.path
+              d={stroke.d}
+              fill="none"
+              stroke={stroke.stroke}
+              strokeWidth={stroke.strokeWidth}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              initial={{ pathLength: 0.24, pathOffset: 0, opacity: 0 }}
+              animate={{ pathLength: 0.24, pathOffset: [0, 1], opacity: 0.96 }}
+              transition={{
+                pathOffset: {
+                  duration: 2.25,
+                  delay: target.delay + strokeIndex * 0.08,
                   ease: "linear",
                   repeat: Infinity,
-                  repeatDelay: 0.08,
-                }
-              : {
-                  duration: 0.48,
-                  delay,
-                  ease: RETURN_EASE,
-                }}
-        />
+                },
+                opacity: {
+                  duration: 0.2,
+                  delay: target.delay,
+                  ease: AUTHORED_EASE,
+                },
+              }}
+            />
+          ) : null}
+        </g>
       ))}
     </g>
   );
@@ -1023,7 +1016,7 @@ const PROJECT_CARDS = [
     id: "quantum",
     title: "GNN Quantum Error Decoder",
     detail: "Silver Award · ISEF",
-    image: "/resume/project-quantum.png",
+    embed: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7465787183912669184?collapsed=1",
   },
   {
     id: "cortesol",
@@ -1064,22 +1057,34 @@ function ProjectCardStack({ active, reducedMotion }: { active: boolean; reducedM
                 ease: AUTHORED_EASE,
               }}
             >
-              <div className="project-card-image" aria-hidden="true">
-                <ImageDithering
-                  className="project-card-shader"
-                  image={project.image}
-                  colorBack="#ebe5da"
-                  colorFront="#282521"
-                  colorHighlight="#797166"
-                  originalColors={false}
-                  type="8x8"
-                  size={0.72}
-                  colorSteps={3}
-                  fit="cover"
-                  speed={0}
-                  minPixelRatio={1}
-                  maxPixelCount={120000}
-                />
+              <div
+                className={`project-card-image${project.id === "quantum" ? " project-card-image--embed" : ""}`}
+                aria-hidden={project.id === "quantum" ? undefined : true}
+              >
+                {project.id === "quantum" ? (
+                  <iframe
+                    src={project.embed}
+                    title="Kuan Yi Wang's GNN Quantum Error Decoder LinkedIn post"
+                    loading="lazy"
+                    allowFullScreen
+                  />
+                ) : (
+                  <ImageDithering
+                    className="project-card-shader"
+                    image={project.image}
+                    colorBack="#ebe5da"
+                    colorFront="#282521"
+                    colorHighlight="#797166"
+                    originalColors={false}
+                    type="8x8"
+                    size={0.72}
+                    colorSteps={3}
+                    fit="cover"
+                    speed={0}
+                    minPixelRatio={1}
+                    maxPixelCount={120000}
+                  />
+                )}
               </div>
               <figcaption>
                 <strong>{project.title}</strong>
