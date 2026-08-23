@@ -15,9 +15,11 @@ const VECTOR_DOCUMENT_SCALE = 0.195;
 const VECTOR_RENDER_SCALE = 4;
 const CINEMATIC_BREAKPOINT = "(min-width: 48rem)";
 const AUTHORED_EASE = [0.16, 1, 0.3, 1] as const;
+const RETURN_EASE = [0.55, 0, 0.45, 1] as const;
 const DETAIL_SPACE_FRACTION = 0.4;
 const STAGE_ONE_YAW = -Math.PI / 6;
-const STAGE_TWO_YAW = 0.78;
+const STAGE_TWO_YAW = 0.58;
+const STAGE_TWO_TARGET_X = 1.22;
 const STAGE_ONE_RIGHT_COMPENSATION = 0.34;
 const FRAGMENT_LIFT = 0.52;
 
@@ -108,10 +110,10 @@ const RESUME_EXCAVATIONS: ResumeExcavation[] = [
 ];
 
 const RESUME_FACE_TILES = [
-  { texture: "/resume/resume-tile-top-left.png", position: [-PLATE_WIDTH / 4, PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
-  { texture: "/resume/resume-tile-top-right.png", position: [PLATE_WIDTH / 4, PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
-  { texture: "/resume/resume-tile-bottom-left.png", position: [-PLATE_WIDTH / 4, -PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
-  { texture: "/resume/resume-tile-bottom-right.png", position: [PLATE_WIDTH / 4, -PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.001] as const },
+  { texture: "/resume/resume-tile-top-left.png", position: [-PLATE_WIDTH / 4, PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.014] as const },
+  { texture: "/resume/resume-tile-top-right.png", position: [PLATE_WIDTH / 4, PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.014] as const },
+  { texture: "/resume/resume-tile-bottom-left.png", position: [-PLATE_WIDTH / 4, -PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.014] as const },
+  { texture: "/resume/resume-tile-bottom-right.png", position: [PLATE_WIDTH / 4, -PLATE_HEIGHT / 4, PLATE_DEPTH / 2 + 0.014] as const },
 ];
 
 const RESUME_CUTOUT_FACE_TILES = RESUME_FACE_TILES.map((tile) => ({
@@ -293,9 +295,9 @@ function ExperienceFragment({
     }
 
     const controls = animate(lift, active ? 1 : 0, {
-      duration: active ? 2.25 : 0.42,
-      delay: active ? excavation.delay : 0,
-      ease: AUTHORED_EASE,
+      duration: active ? 2.25 : 0.9,
+      delay: active ? excavation.delay : (0.65 - excavation.delay) * 0.2,
+      ease: active ? AUTHORED_EASE : RETURN_EASE,
     });
 
     return () => controls.stop();
@@ -472,6 +474,7 @@ function ResumeSlab({
   const cinematicStageRef = useContext(CinematicStageContext);
   const shadowTexture = useMemo(() => createFloatingShadowTexture(), []);
   const perforatedGeometry = useMemo(() => createPerforatedSlabGeometry(), []);
+  const viewportTarget = useMemo(() => new THREE.Vector3(), []);
   const { viewport } = useThree();
   const scale = Math.min(1, (viewport.width - 0.28) / PLATE_WIDTH);
 
@@ -484,7 +487,7 @@ function ResumeSlab({
     perforatedGeometry.dispose();
   }, [perforatedGeometry, shadowTexture]);
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
     if (!sceneGroup.current || !orientationGroup.current || !rollGroup.current) return;
 
     const cinematic = cinematicStageRef.current;
@@ -492,11 +495,25 @@ function ResumeSlab({
     const stageProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage, 0, 1) : 0;
     const experienceProgress = cinematic.enabled ? THREE.MathUtils.clamp(authoredStage - 1, 0, 1) : 0;
     const easing = reducedMotion || cinematic.reducedMotion ? 50 : 18;
-    const sceneScale = scale * THREE.MathUtils.lerp(
-      THREE.MathUtils.lerp(1.1, 1.36, stageProgress),
-      1.29,
+    const cameraTargetX = THREE.MathUtils.lerp(
+      THREE.MathUtils.lerp(0, 0.62, stageProgress),
+      STAGE_TWO_TARGET_X,
       experienceProgress,
     );
+    const cameraTargetY = THREE.MathUtils.lerp(
+      THREE.MathUtils.lerp(1.62, 1.1, stageProgress),
+      0.5,
+      experienceProgress,
+    );
+    viewportTarget.set(cameraTargetX, cameraTargetY, 0);
+    const liveViewport = state.viewport.getCurrentViewport(state.camera, viewportTarget);
+    const preExperienceScale = scale * THREE.MathUtils.lerp(1.1, 1.36, stageProgress);
+    const experienceFitScale = THREE.MathUtils.clamp(
+      (liveViewport.width * 0.7) / (PLATE_WIDTH * Math.cos(STAGE_TWO_YAW)),
+      0.82,
+      1.5,
+    );
+    const sceneScale = THREE.MathUtils.lerp(preExperienceScale, experienceFitScale, experienceProgress);
     const baseRotation = cinematic.enabled
       ? {
           x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(-0.018, -0.09, stageProgress), -0.13, experienceProgress),
@@ -506,14 +523,13 @@ function ResumeSlab({
         }
       : { x: -0.12, y: -0.32, z: 0 };
 
-    const cameraTargetX = THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), 1.34, experienceProgress);
     const plateHalfWidth = (PLATE_WIDTH * sceneScale) / 2;
     const skillsSceneX = cameraTargetX
       + plateHalfWidth
       - viewport.width * (0.5 - DETAIL_SPACE_FRACTION)
       + THREE.MathUtils.lerp(0, STAGE_ONE_RIGHT_COMPENSATION, stageProgress);
     const experienceProjectedWidth = PLATE_WIDTH * sceneScale * Math.cos(STAGE_TWO_YAW);
-    const experienceSceneX = cameraTargetX - viewport.width * 0.46 + experienceProjectedWidth / 2;
+    const experienceSceneX = cameraTargetX - liveViewport.width * 0.41 + experienceProjectedWidth / 2;
     const reservedSceneX = THREE.MathUtils.lerp(skillsSceneX, experienceSceneX, experienceProgress);
 
     sceneGroup.current.position.x = THREE.MathUtils.damp(
@@ -573,17 +589,25 @@ function ResumeSlab({
           <ResumeFace />
           <ExperienceFragments active={experienceActive} reducedMotion={reducedMotion} />
 
-          {!experienceActive ? (
-            <Html
-              transform
-              center
-              distanceFactor={10}
-              position={[0, 0, PLATE_DEPTH / 2 + 0.003]}
-              scale={VECTOR_DOCUMENT_SCALE / VECTOR_RENDER_SCALE}
-              className="resume-vector-face"
-              pointerEvents="none"
+          <Html
+            transform
+            center
+            distanceFactor={10}
+            position={[0, 0, PLATE_DEPTH / 2 + 0.018]}
+            scale={VECTOR_DOCUMENT_SCALE / VECTOR_RENDER_SCALE}
+            className="resume-vector-face"
+            pointerEvents="none"
+          >
+            <motion.div
+              className="resume-vector-frame"
+              initial={false}
+              animate={{ opacity: experienceActive ? 0 : 1 }}
+              transition={{
+                duration: reducedMotion ? 0 : experienceActive ? 0.2 : 0.28,
+                delay: reducedMotion || experienceActive ? 0 : 0.78,
+                ease: experienceActive ? AUTHORED_EASE : RETURN_EASE,
+              }}
             >
-              <div className="resume-vector-frame">
                 <object
                   className="resume-vector-document"
                   data="/resume/kuan-yi-wang-resume.svg"
@@ -591,9 +615,8 @@ function ResumeSlab({
                   aria-label="Kuan Yi Wang resume"
                 />
                 <ResumeHighlights active={skillsActive} reducedMotion={reducedMotion} />
-              </div>
-            </Html>
-          ) : null}
+            </motion.div>
+          </Html>
         </group>
       </group>
     </group>
@@ -619,12 +642,12 @@ function CinematicCamera({ reducedMotion }: { reducedMotion: boolean }) {
       ? {
           x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, -0.9, stageProgress), 1.58, experienceProgress),
           y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
-          z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(3.15, 3.85, stageProgress), 4.28, experienceProgress),
+          z: THREE.MathUtils.lerp(THREE.MathUtils.lerp(3.15, 3.85, stageProgress), 4.55, experienceProgress),
         }
       : { x: 0, y: 0.1, z: 8.25 };
     const cameraTarget = cinematic.enabled
       ? {
-          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), 1.22, experienceProgress),
+          x: THREE.MathUtils.lerp(THREE.MathUtils.lerp(0, 0.62, stageProgress), STAGE_TWO_TARGET_X, experienceProgress),
           y: THREE.MathUtils.lerp(THREE.MathUtils.lerp(1.62, 1.1, stageProgress), 0.5, experienceProgress),
           z: 0,
         }
@@ -810,18 +833,18 @@ function DitherBackdrop() {
         className="dither-backdrop-shader"
         image="/resume/spinal-mri-background.jpg"
         colorBack="#d9d1c5"
-        colorFront="#393733"
-        colorHighlight="#887f72"
+        colorFront="#242321"
+        colorHighlight="#756d61"
         originalColors={false}
         type="8x8"
-        size={1.3}
-        colorSteps={3}
+        size={0.72}
+        colorSteps={4}
         fit="cover"
-        offsetX={-0.22}
-        offsetY={0.04}
+        offsetX={0.04}
+        offsetY={-0.03}
         speed={0}
         minPixelRatio={1}
-        maxPixelCount={460000}
+        maxPixelCount={1100000}
       />
       <div className="dither-backdrop-veil" />
     </div>
@@ -1003,7 +1026,7 @@ export function ResumeExperience() {
           <DitherBackdrop />
           <a
             className="dither-credit"
-            href="https://nccommons.org/wiki/File:Normal_cervical_spine_MRI_%28Radiopaedia_80146-93454_Axial_T2_2%29.jpg"
+            href="https://nccommons.org/wiki/File:Normal_cervical_spine_MRI_%28Radiopaedia_80146-93454_Sagittal_T2_8%29.jpg"
             target="_blank"
             rel="noreferrer"
           >
