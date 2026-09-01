@@ -1,0 +1,273 @@
+{
+  "communities": {
+    "0": [
+      "components_resume_experience",
+      "components_resume_experience_arrowicon",
+      "components_resume_experience_authored_ease",
+      "components_resume_experience_cinematiccamera",
+      "components_resume_experience_cinematicstagecontext",
+      "components_resume_experience_cinematicstagestate",
+      "components_resume_experience_coordinateguide",
+      "components_resume_experience_ditherbackdrop",
+      "components_resume_experience_ditherdetailcard",
+      "components_resume_experience_highlight_strokes",
+      "components_resume_experience_highlightstroke",
+      "components_resume_experience_mobileresume",
+      "components_resume_experience_project_cards",
+      "components_resume_experience_project_marker_targets",
+      "components_resume_experience_projectcardstack",
+      "components_resume_experience_projectmarkertarget",
+      "components_resume_experience_resume_cutout_face_tiles",
+      "components_resume_experience_resume_face_tiles",
+      "components_resume_experience_resumeexcavation",
+      "components_resume_experience_resumehighlights",
+      "components_resume_experience_resumeprojectmarkers",
+      "components_resume_experience_return_ease",
+      "components_resume_experience_rockparticle",
+      "components_resume_experience_roughmarkercircle",
+      "components_resume_experience_scene",
+      "components_resume_experience_stage",
+      "components_resume_experience_stagedock",
+      "components_resume_experience_webglfallback"
+    ],
+    "1": [
+      "motion",
+      "next",
+      "package_dependencies",
+      "package_dependencies_motion",
+      "package_dependencies_next",
+      "package_dependencies_paper_design_shaders_react",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_react_three_drei",
+      "package_dependencies_react_three_fiber",
+      "package_dependencies_roughjs",
+      "package_dependencies_three",
+      "paper_design_shaders_react",
+      "react",
+      "react_dom",
+      "react_three_drei",
+      "react_three_fiber",
+      "roughjs",
+      "three"
+    ],
+    "2": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_esnext",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target"
+    ],
+    "3": [
+      "eslint",
+      "eslint_config_next",
+      "eslint_eslintrc",
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_next",
+      "package_devdependencies_eslint_eslintrc",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "types_node",
+      "types_react",
+      "types_react_dom",
+      "typescript"
+    ],
+    "4": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_start",
+      "package_version"
+    ],
+    "5": [
+      "ref_next_dev_types_ts",
+      "ref_next_env_d_ts",
+      "ref_next_types_ts",
+      "ref_node_modules",
+      "ref_ts",
+      "ref_tsx",
+      "tsconfig",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "6": [
+      "components_resume_experience_createfloatingshadowtexture",
+      "components_resume_experience_createperforatedslabgeometry",
+      "components_resume_experience_experiencefragment",
+      "components_resume_experience_experiencefragments",
+      "components_resume_experience_pdfxtoworld",
+      "components_resume_experience_pdfytoworld",
+      "components_resume_experience_resume_excavations",
+      "components_resume_experience_resumeslab"
+    ],
+    "7": [
+      "app_layout",
+      "app_layout_metadata",
+      "app_layout_rootlayout"
+    ],
+    "8": [
+      "app_page",
+      "app_page_home",
+      "components_resume_experience_resumeexperience"
+    ],
+    "9": [
+      "components_resume_experience_sceneerrorboundary",
+      "components_resume_experience_sceneerrorboundary_getderivedstatefromerror",
+      "components_resume_experience_sceneerrorboundary_render"
+    ],
+    "10": [
+      "components_resume_experience_preparetexture",
+      "components_resume_experience_resumeface"
+    ],
+    "11": [
+      "next_config",
+      "next_config_nextconfig"
+    ],
+    "12": [
+      "next_env_d",
+      "next_env_d_rationale_6"
+    ],
+    "13": [
+      "eslint_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.07142857142857142,
+    "1": 0.10526315789473684,
+    "2": 0.10526315789473684,
+    "3": 0.13333333333333333,
+    "4": 0.2222222222222222,
+    "5": 0.2222222222222222,
+    "6": 0.35714285714285715,
+    "7": 0.6666666666666666,
+    "8": 0.6666666666666666,
+    "9": 0.6666666666666666,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "tsconfig_include",
+      "label": "include",
+      "degree": 6
+    },
+    {
+      "id": "components_resume_experience_createperforatedslabgeometry",
+      "label": "createPerforatedSlabGeometry()",
+      "degree": 5
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 5
+    },
+    {
+      "id": "components_resume_experience_pdfxtoworld",
+      "label": "pdfXToWorld()",
+      "degree": 4
+    },
+    {
+      "id": "components_resume_experience_pdfytoworld",
+      "label": "pdfYToWorld()",
+      "degree": 4
+    },
+    {
+      "id": "components_resume_experience_experiencefragment",
+      "label": "ExperienceFragment()",
+      "degree": 4
+    },
+    {
+      "id": "components_resume_experience_experiencefragments",
+      "label": "ExperienceFragments()",
+      "degree": 4
+    },
+    {
+      "id": "tsconfig_compileroptions_lib",
+      "label": "lib",
+      "degree": 4
+    },
+    {
+      "id": "components_resume_experience_resume_excavations",
+      "label": "RESUME_EXCAVATIONS",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "ExperienceFragment()",
+      "target": "prepareTexture()",
+      "source_files": [
+        "components/resume-experience.tsx",
+        "components/resume-experience.tsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 10 → community 6"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `Community 1` to `Community 4`?",
+      "why": "High betweenness centrality (0.078) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `Community 3` to `Community 4`?",
+      "why": "High betweenness centrality (0.064) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `compilerOptions` connect `Community 2` to `Community 5`?",
+      "why": "High betweenness centrality (0.042) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `metadata`, `AUTHORED_EASE`, `RETURN_EASE` to the rest of the system?",
+      "why": "61 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

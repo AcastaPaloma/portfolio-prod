@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-22T17:15:00-04:00",
+  "title": "Design System: Kuan Yi Wang Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "void": { "role": "neutral", "displayName": "Open Void", "canonical": "#d8d0c3", "tonalRamp": ["#ece6dc", "#d8d0c3", "#beb4a5"] },
+      "ink": { "role": "neutral", "displayName": "Primary Ink", "canonical": "#28231f", "tonalRamp": ["#5b5147", "#28231f", "#171310"] },
+      "slab-white": { "role": "neutral", "displayName": "Document White", "canonical": "#fff", "tonalRamp": ["#fff", "#fbfbf9", "#f1f1ee"] },
+      "slab-edge": { "role": "neutral", "displayName": "Fine Edge", "canonical": "#8f8e89", "tonalRamp": ["#c7c6c1", "#8f8e89", "#6f6e69"] }
+    },
+    "typographyMeta": {
+      "body": { "displayName": "Quiet Editorial Label", "purpose": "Control rail and fallback copy only; the resume owns its own supplied vector typography." }
+    },
+    "shadows": [
+      { "name": "suspended-projection", "value": "blur(26px) rgb(55 45 35 / 24%) at 46% opacity", "purpose": "Diffuse, offset projection beneath the floating resume slab." }
+    ],
+    "motion": [
+      { "name": "section-snap", "value": "expo-out scroll mapping within the first 22% of the chapter", "purpose": "Moves from the identity view to the technical-skills close composition, then holds for reading." },
+      { "name": "paint-and-dither", "value": "3.25 second Motion sequence", "purpose": "Draws vector-aligned highlighter strokes while a side image resolves from procedural dither noise." }
+    ],
+    "breakpoints": [
+      { "name": "touch-rail", "value": "42rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Open PDF Link",
+      "kind": "nav",
+      "refersTo": "control-rail",
+      "description": "The sole conventional action, retaining access to the original document.",
+      "html": "<a class=\"ds-pdf-link\" href=\"#\">Open PDF</a>",
+      "css": ".ds-pdf-link { color: #5b5147; padding-bottom: .15rem; border-bottom: 1px solid rgb(47 41 35 / 22%); font: italic .73rem/1.2 Georgia, 'Times New Roman', serif; text-decoration: none; transition: color 180ms ease, border-color 180ms ease; } .ds-pdf-link:hover { color: #28231f; border-color: currentColor; } .ds-pdf-link:focus-visible { outline: 2px solid #28231f; outline-offset: 4px; }"
+    },
+    {
+      "name": "Resume Slab",
+      "kind": "custom",
+      "refersTo": "resume-slab",
+      "description": "A thin white 3D document object with an outlined SVG resume face and a scroll-authored highlight overlay.",
+      "html": "<div class=\"ds-slab\" aria-label=\"White resume slab\"></div>",
+      "css": ".ds-slab { width: 160px; aspect-ratio: 612 / 792; border: 1px solid rgba(143, 142, 137, .24); border-radius: 2px; background: #fbfbf9; box-shadow: 10px 14px 20px rgba(55, 45, 35, .18); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Suspended White Resume",
+    "overview": "An Experience-mode portfolio where the supplied resume is the interface. A clean, thin white 3D slab floats in a warm beige void; its face is an outlined SVG so its supplied typography stays sharp under browser zoom. Scroll advances between close authored readings, with a vector paint annotation and dithered supporting image at the skills stop.",
+    "keyCharacteristics": ["One floating document object", "Vector resume face", "Diffuse suspended shadow", "Scroll-authored chapter views"],
+    "rules": [
+      { "name": "The One-Object Rule", "body": "White belongs to the document object; the surrounding page remains a single uninterrupted beige field.", "section": "colors" },
+      { "name": "The Suspension Rule", "body": "Keep the shadow diffuse and offset as an atmospheric projection, never as evidence of a ground plane.", "section": "elevation" }
+    ],
+    "dos": ["Do preserve the supplied PDF as the content source of truth.", "Do use the outlined SVG face to retain sharp browser zoom.", "Do retain the white slab, overhead light, fine edge, and diffuse shadow."],
+    "donts": ["Don't add marble, veins, grain, or a rasterized resume texture.", "Don't add a floor, pedestal, cards, or portfolio filler.", "Don't retype or reflow the resume contents."]
+  }
+}
