@@ -1,0 +1,9 @@
+{
+  "width": 768,
+  "height": 1032,
+  "frames": 104,
+  "fps": 12,
+  "duration": 8.666666666666666,
+  "source": "minifigure-source.mp4",
+  "technique": "Precomputed night-mode diamond dithering with local temporal threshold variation"
+}

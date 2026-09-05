@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { ColorBoundary } from "@/components/color-boundary";
+import { MinifigureLoop } from "@/components/minifigure-loop";
 import "./dither.css";
 
 const moments = [
+  { name: "after-rain", width: 1080, height: 1440, alt: "A rainy city street at dusk, with buildings catching the last pink and orange light", caption: "After the rain. September 2026." },
   { name: "off-the-clock", width: 1080, height: 810, alt: "Friends striking improbable poses together on a sunny beach", caption: "Off the clock. August 2026." },
   { name: "hills", width: 1080, height: 720, alt: "Two friends on a trail between green mountains beneath a cloudy sky", caption: "Somewhere in the hills. June 2023." },
   { name: "window", width: 1080, height: 1440, alt: "A window framing a turquoise waterfront and mountains between yellow walls", caption: "The better window. April 2024." },
@@ -24,10 +26,7 @@ export default function Home() {
           <a href="mailto:ky7wang@uwaterloo.ca">email</a>
         </nav>
       </div>
-      <figure className="dither-hero">
-        <picture><source media="(max-width: 48rem)" srcSet="/photos/after-rain-small.webp" /><Image src="/photos/after-rain.webp" alt="A rainy city street at dusk, with buildings catching the last pink and orange light" width={1080} height={1440} loading="eager" fetchPriority="high" unoptimized /></picture>
-        <figcaption>After the rain. September 2026.</figcaption>
-      </figure>
+      <MinifigureLoop />
     </section>
 
     <section className="dither-work" aria-labelledby="work">

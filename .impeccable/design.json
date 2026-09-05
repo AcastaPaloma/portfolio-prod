@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-05T05:05:20.221Z",
+  "generatedAt": "2026-09-05T06:39:34.038Z",
   "title": "Design System: Kuan Yi Wang — Words, Photographs, and Dots",
   "extensions": {
     "colorMeta": {
@@ -24,7 +24,7 @@
       },
       "name": {
         "displayName": "Compact Name",
-        "purpose": "Identity heading beside the large photograph."
+        "purpose": "Identity heading beside the animated minifigure."
       },
       "caption": {
         "displayName": "Photo Caption",
@@ -37,6 +37,11 @@
         "name": "direct-inversion",
         "value": "requestAnimationFrame during pointer movement; no autonomous animation",
         "purpose": "Move the vertical inversion boundary horizontally in response to deliberate input."
+      },
+      {
+        "name": "minifigure-turntable",
+        "value": "Precomputed 12 fps night-dither video; pauses offscreen, hidden, or for reduced motion",
+        "purpose": "A glossy personal LEGO figure turns through a full rotation with baked colored dithering."
       }
     ],
     "breakpoints": [
@@ -68,7 +73,7 @@
       "kind": "custom",
       "refersTo": "boundary-grip",
       "description": "Visual specimen of the 44px inversion slider grip; the application provides pointer capture and Arrow/Page/Home/End keyboard behavior.",
-      "html": "<div class=\"ds-grip\" role=\"slider\" tabindex=\"0\" aria-label=\"Color inversion boundary\" aria-orientation=\"horizontal\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"100\"><svg viewBox=\"0 0 32 16\" aria-hidden=\"true\"><path d=\"m8 4-4 4 4 4M24 4l4 4-4 4M13 3v10M19 3v10\"/></svg></div>",
+      "html": "<div class=\"ds-grip\" role=\"slider\" tabindex=\"0\" aria-label=\"Text and background inversion boundary\" aria-orientation=\"horizontal\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"0\"><svg viewBox=\"0 0 32 16\" aria-hidden=\"true\"><path d=\"m8 4-4 4 4 4M24 4l4 4-4 4M13 3v10M19 3v10\"/></svg></div>",
       "css": ".ds-grip{width:44px;height:44px;display:grid;place-items:center;border:1px solid #656565;border-radius:50%;background:#fff;color:#222;cursor:ew-resize}.ds-grip svg{width:28px;height:16px;fill:none;stroke:currentColor;stroke-width:1}.ds-grip:focus-visible{outline:2px solid #222;outline-offset:4px}"
     },
     {
@@ -90,14 +95,14 @@
   ],
   "narrative": {
     "northStar": "Words, Photographs, and Dots",
-    "overview": "A personal page reduced to words, photographs, and dots. The main route uses white space, black Georgia type, compact personal writing, and large colored halftone photographs. Work and camera-roll moments appear as an unboxed sequence; the images provide the visual expression while the interface recedes.\n\nThe current main-page authority is the user-pinned Lance Yan direction recorded in the layout contract `2020df78-user-pinned-lance-dither`: white, black, Georgia, colored diamond halftones, one scrolling page, and a vertical inversion boundary dragged horizontally. This replaces the former suspended-résumé visual world on `/`. The inherited PRODUCT.md describes that earlier concept and is historical context for this route; the supplied résumé remains an available document, not the page’s visual shell. The existing `/gym` route remains a separate beige paper utility, with its scoped guidance retained below.",
+    "overview": "A personal page reduced to words, photographs, and dots. The main route opens on black with light Georgia type, compact personal writing, and a glossy minifigure turning in bright colored dither. Large personal halftone photographs follow. Work and camera-roll moments appear as an unboxed sequence; the images provide the visual expression while the interface recedes.\n\nThe current main-page authority is the user-pinned Lance Yan direction recorded in the layout contract `2020df78-user-pinned-lance-dither`: white, black, Georgia, colored diamond halftones, one scrolling page, and a vertical inversion boundary dragged horizontally. This replaces the former suspended-résumé visual world on `/`. The inherited PRODUCT.md describes that earlier concept and is historical context for this route; the supplied résumé remains an available document, not the page’s visual shell. The existing `/gym` route remains a separate beige paper utility, with its scoped guidance retained below.",
     "keyCharacteristics": [
-      "Compact introduction beside a large camera-roll photograph.",
+      "Compact introduction beside a looping dithered minifigure.",
       "Georgia throughout, with regular body text and quiet underlined links.",
-      "Black and white interface; color arrives through the photographs.",
-      "Luminance-sized colored diamond dots baked into image assets.",
+      "Black and white interface; color arrives through the animation and photographs.",
+      "Fixed-size bright diamonds in the animation; luminance-sized diamonds in photographs, all baked into media assets.",
       "Unboxed work entries and a loose, staggered photo gallery.",
-      "One vertical boundary dragged horizontally to invert the viewport.",
+      "One vertical boundary dragged horizontally to invert text and page background, preserving media colors.",
       "Responsive photo assets, normal mobile scrolling, and no runtime Canvas."
     ],
     "rules": [
@@ -108,12 +113,12 @@
       },
       {
         "name": "The Inversion Rule",
-        "body": "A white overlay with `mix-blend-mode: difference` inverts the portion to the right of the boundary, including text and images together. Preserve this continuous spatial effect instead of substituting a theme toggle.",
+        "body": "A white blend overlay inverts text and the page background. Images and video remain above this layer and keep their original colors.",
         "section": "colors"
       },
       {
         "name": "The Quiet Name Rule",
-        "body": "Keep the name and prose compact so a large personal photograph can lead the first viewport.",
+        "body": "Keep the name and prose compact so a animated minifigure can lead the first viewport.",
         "section": "typography"
       },
       {
@@ -124,7 +129,7 @@
     ],
     "dos": [
       "Do follow the pinned white, black, Georgia, colored-diamond direction on the main route.",
-      "Do let the large personal photograph and compact introduction share the opening.",
+      "Do let the animated minifigure and compact introduction share the opening.",
       "Do preserve authentic photo content, captions, aspect ratios, and provenance.",
       "Do precompute image effects and serve the mobile image variants at the documented breakpoint.",
       "Do keep work and gallery content unboxed and normally scrollable.",

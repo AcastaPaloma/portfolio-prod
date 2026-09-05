@@ -1,5 +1,5 @@
 .dither-page {
-  --split: 100%;
+  --split: 0%;
   position: relative;
   isolation: isolate;
   min-height: 100svh;
@@ -12,6 +12,8 @@
   -webkit-font-smoothing: antialiased;
 }
 .dither-page *, .dither-page *::before, .dither-page *::after { box-sizing: border-box; }
+/* Media stays above the inversion layer; captions and prose remain beneath it. */
+.dither-page picture, .minifigure-media { position: relative; z-index: 21; display: block; }
 .dither-page a { color: inherit; text-decoration-color: #969696; text-underline-offset: .2em; text-decoration-thickness: 1px; }
 .dither-page a:hover { text-decoration-color: currentColor; }
 .dither-page a:focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
@@ -22,6 +24,11 @@
 .dither-links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 2.5rem; font-size: .85rem; }
 .dither-hero { margin: 0; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 2rem 3.6rem 2rem 0; }
 .dither-hero img { display: block; width: 100%; height: auto; max-height: 85svh; object-fit: contain; }
+.minifigure-media video { display: block; width: 100%; height: auto; max-height: 80svh; object-fit: contain; background: #000; }
+.minifigure-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.minifigure-caption button { min-width: 44px; min-height: 44px; margin-top: -.65rem; padding: .65rem 0 .65rem .65rem; border: 0; background: transparent; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+.minifigure-caption button:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
+.minifigure-caption button:hover { color: #202020; }
 .dither-page figcaption { padding-top: .65rem; color: #666; font-size: .73rem; line-height: 1.4; }
 .dither-work { width: min(100% - 5rem, 66rem); margin: 1rem auto 8rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 8rem; align-items: center; }
 .dither-page h2 { margin: 0 0 1.5rem; font-size: 1.3rem; line-height: 1.25; font-weight: 400; letter-spacing: -.02em; }
@@ -40,7 +47,7 @@
 .dither-footer p { margin: 0; }
 .dither-footer small { font-size: .74rem; color: #666; }
 .color-inversion { position: fixed; z-index: 20; inset: 0 0 0 var(--split); background: #fff; mix-blend-mode: difference; pointer-events: none; }
-.color-boundary { position: fixed; z-index: 21; inset-block: 0; left: clamp(22px,var(--split),calc(100% - 22px)); width: 44px; transform: translateX(-50%); cursor: ew-resize; touch-action: none; user-select: none; outline: none; }
+.color-boundary { position: fixed; z-index: 30; inset-block: 0; left: clamp(22px,var(--split),calc(100% - 22px)); width: 44px; transform: translateX(-50%); cursor: ew-resize; touch-action: none; user-select: none; outline: none; }
 .boundary-line { position: absolute; inset-block: 0; left: 50%; width: 1px; background: #858585; }
 .boundary-grip { position: absolute; top: 48%; left: 0; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #656565; border-radius: 50%; background: #fff; color: #222; }
 .boundary-grip svg { width: 28px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1; }

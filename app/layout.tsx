@@ -16,7 +16,7 @@ export default function RootLayout({
           THESIS: A personal page reduced to words, photographs, and dots.
           OWN-WORLD: White, black, Georgia, colored diamond halftones; no panels or ornamental navigation.
           STORY: Meet Kuan Yi through his work and his own camera roll, then get in touch.
-          FIRST VIEWPORT: A compact introduction on the left and a large dithered dusk photograph on the right.
+          FIRST VIEWPORT: A compact introduction on the left and a large glossy minifigure turning in colored dither on the right.
           FORM: User-pinned Lance Yan reference; one scrolling page and a vertical color-inversion boundary.
           FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
         </span>

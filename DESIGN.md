@@ -83,18 +83,18 @@ components:
 
 **Creative North Star: "Words, Photographs, and Dots"**
 
-A personal page reduced to words, photographs, and dots. The main route uses white space, black Georgia type, compact personal writing, and large colored halftone photographs. Work and camera-roll moments appear as an unboxed sequence; the images provide the visual expression while the interface recedes.
+A personal page reduced to words, photographs, and dots. The main route opens on black with light Georgia type, compact personal writing, and a glossy minifigure turning in bright colored dither. Large personal halftone photographs follow. Work and camera-roll moments appear as an unboxed sequence; the images provide the visual expression while the interface recedes.
 
 The current main-page authority is the user-pinned Lance Yan direction recorded in the layout contract `2020df78-user-pinned-lance-dither`: white, black, Georgia, colored diamond halftones, one scrolling page, and a vertical inversion boundary dragged horizontally. This replaces the former suspended-résumé visual world on `/`. The inherited PRODUCT.md describes that earlier concept and is historical context for this route; the supplied résumé remains an available document, not the page’s visual shell. The existing `/gym` route remains a separate beige paper utility, with its scoped guidance retained below.
 
 **Key Characteristics:**
 
-- Compact introduction beside a large camera-roll photograph.
+- Compact introduction beside a looping dithered minifigure.
 - Georgia throughout, with regular body text and quiet underlined links.
-- Black and white interface; color arrives through the photographs.
-- Luminance-sized colored diamond dots baked into image assets.
+- Black and white interface; color arrives through the animation and photographs.
+- Fixed-size bright diamonds in the animation; luminance-sized diamonds in photographs, all baked into media assets.
 - Unboxed work entries and a loose, staggered photo gallery.
-- One vertical boundary dragged horizontally to invert the viewport.
+- One vertical boundary dragged horizontally to invert text and page background, preserving media colors.
 - Responsive photo assets, normal mobile scrolling, and no runtime Canvas.
 
 ## Colors
@@ -103,7 +103,7 @@ The main interface is neutral. Its photographic colors are sampled from personal
 
 ### Neutral
 
-- **Paper:** the default page and inversion overlay, also the small handle and hint backing.
+- **Paper:** the underlying light page and inversion overlay, also the small handle and hint backing. The boundary begins at 0%, inverting the whole text/background layer into its night state.
 - **Ink:** main-page text and links.
 - **Quiet Ink:** project descriptions, photo captions, and small footer copy.
 - **Link Rule:** understated one-pixel underlines that become current text color on hover.
@@ -115,14 +115,14 @@ The `gym-*` frontmatter tokens belong exclusively to the retained utility: beige
 
 **The Photograph Color Rule.** Keep page chrome neutral; retain sampled image color in the diamond halftones rather than adding decorative interface accents.
 
-**The Inversion Rule.** A white overlay with `mix-blend-mode: difference` inverts the portion to the right of the boundary, including text and images together. Preserve this continuous spatial effect instead of substituting a theme toggle.
+**The Inversion Rule.** A white overlay with `mix-blend-mode: difference` inverts text and the page background to the right of the boundary. Pictures and video occupy a higher layer and retain their original colors; captions remain part of the text layer.
 
 ## Typography
 
 **Display Font:** Georgia, "Times New Roman", serif
 **Body Font:** Georgia, "Times New Roman", serif
 
-**Character:** Familiar serif typography makes the writing personal and immediate. The name is modestly larger than the body; the photograph supplies scale. There is no oversized marketing slogan or separate decorative display face.
+**Character:** Familiar serif typography makes the writing personal and immediate. The name is modestly larger than the body; the minifigure supplies scale. There is no oversized marketing slogan or separate decorative display face.
 
 ### Hierarchy
 
@@ -134,15 +134,15 @@ The `gym-*` frontmatter tokens belong exclusively to the retained utility: beige
 - **Boundary hint** (regular, 0.7rem): vertical “drag to invert” text.
 - **Mobile body and name** (16px and 2rem): a small reduction at 48rem and below, preserving the same type family and hierarchy.
 
-**The Quiet Name Rule.** Keep the name and prose compact so a large personal photograph can lead the first viewport.
+**The Quiet Name Rule.** Keep the name and prose compact so the animated minifigure can lead the first viewport.
 
 ## Layout
 
-The main route is a single normally scrolling page. At desktop widths, the first section fills at least 100svh with columns of 1.2:1: compact copy at left and the portrait dusk photograph at right. The text column is min(100% - 5rem, 29rem), vertically centered with 6rem padding above and below. The hero preserves its full aspect and stays within 85svh rather than cover-cropping.
+The main route is a single normally scrolling page. At desktop widths, the first section fills at least 100svh with columns of 1.2:1: compact copy at left and the dithered minifigure loop at right. The text column is min(100% - 5rem, 29rem), vertically centered with 6rem padding above and below. The video preserves its full aspect and stays within 80svh rather than cover-cropping.
 
 The work section is an unboxed two-column composition, min(100% - 5rem, 66rem), with an 8rem gap: a simple project list and a larger supplied LEGO photograph. The gallery widens to 72rem, with two equal columns, 5rem row gaps, 6rem column gaps, and a 7rem downward offset on even figures. Varied image proportions and the offset produce the rhythm; no tile backgrounds or card outlines are needed. The footer is a compact invitation and a small note after generous space.
 
-At 48rem and below, the introduction, work section, and gallery become single-column sequences. Copy precedes the hero; work copy precedes its image. The gallery removes its stagger and uses a 3rem gap. The right margin allows room for the inversion control; the mobile introduction uses 1.5rem left padding and 3.1rem right padding. Primary profile links have a 44px minimum height. The hero stays within 75svh and remains fully visible. Every photograph selects a 600px-wide `-small.webp` variant through a responsive picture source.
+At 48rem and below, the introduction, work section, and gallery become single-column sequences. Copy precedes the hero; work copy precedes its image. The gallery removes its stagger and uses a 3rem gap. The right margin allows room for the inversion control; the mobile introduction uses 1.5rem left padding and 3.1rem right padding. Primary profile links have a 44px minimum height. The video preserves its full aspect and stays within 80svh. A 384px-wide MP4 is selected for mobile playback. Every photograph selects a 600px-wide `-small.webp` variant through a responsive picture source.
 
 ### Retained Gym Utility
 
@@ -156,7 +156,7 @@ The main page is flat and has no content-card shadows. Depth comes from photo sc
 
 ## Shapes
 
-Photos are ordinary square-cornered rectangles at their source aspect ratios. The repeating image mark is a diamond whose size follows sampled luminance. The sole circular shape in the main-page interface is the 44px inversion grip. The one-pixel boundary spans the viewport vertically, and its 44px interaction strip stays reachable even at either edge. Gym inputs and actions retain their existing square corners and thin rules.
+Photos are ordinary square-cornered rectangles at their source aspect ratios. The repeating mark is a diamond: fixed-size with a sharp opacity threshold in the animation, sized by sampled luminance in photographs. The sole circular shape in the main-page interface is the 44px inversion grip. The one-pixel boundary spans the viewport vertically, and its 44px interaction strip stays reachable even at either edge. Gym inputs and actions retain their existing square corners and thin rules.
 
 ## Components
 
@@ -170,7 +170,7 @@ A plain list presents project names followed by small gray descriptions. Entries
 
 ### Captioned Camera-Roll Photos
 
-Use personal imagery documented in PHOTO-SOURCES.md. The lead dusk street photograph is eager-loaded with high fetch priority; all later photos load lazily, and gallery images decode asynchronously. Captions remain short and factual, beneath the image with 0.65rem top padding. Preserve the supplied image descriptions for assistive technology.
+Use personal imagery documented in PHOTO-SOURCES.md. The dusk street photograph remains in the gallery. Photographs load lazily and decode asynchronously. Captions remain short and factual, beneath the image with 0.65rem top padding. Preserve the supplied image descriptions for assistive technology.
 
 The assets come from selected personal iPhone photographs plus the existing supplied LEGO image. PHOTO-SOURCES.md records the broad thumbnail survey and chosen originals; it does not claim that every photo was individually reviewed. The web assets have EXIF and precise-location metadata stripped. Resized `-original.webp` files support regeneration and are not loaded by the page. The reference informs the rendering direction; its photographs, videos, and text are not used.
 
@@ -180,9 +180,13 @@ The build-time image script samples each source into 180 columns, with a six-pix
 
 Generate the effect before serving the page. Full assets are lossless WebP; 600px mobile variants are separate optimized WebP files. No canvas, WebGL shader, animation loop, or per-frame image processing belongs in the browser for these photographs.
 
+### Dithered Minifigure Loop
+
+The introduction features a glossy green-cap, blue-shirt LEGO minifigure inspired by the owner’s Duolingo avatar, generated and animated in the owner’s Midjourney account. It is a complete turntable loop, not a rotating flat photograph. The diamond treatment is baked into every video frame before delivery: a black field, saturated highlights, a sharp luminance threshold, small local threshold variation, and sparse dot dropout. Playback is stepped at 12 fps. DITHER-RESEARCH.md records the reference analysis and the authored flicker additions. `MinifigureLoop` uses a muted inline MP4 with a still WebP poster and an explicit Play/Pause control. Playback pauses offscreen and in hidden tabs; reduced-motion visitors see the still unless they choose Play. The browser performs no per-frame dithering or 3D rendering. The retained camera-roll photographs follow in the gallery.
+
 ### Color Inversion Boundary
 
-The control is a fixed vertical line with a 44px circular grip and the hint “drag to invert”. It starts at 100%, leaving the page in its normal white state. Dragging horizontally reveals inversion to the right. The control keeps a 44px-wide pointer area, uses pointer capture, and schedules movement through requestAnimationFrame; release updates the announced value. The blend overlay ignores pointer events so underlying links still work.
+The control is a fixed vertical line with a 44px circular grip and the hint “drag to invert”. It starts at 0%, giving the page a black background and light text. Dragging right reveals the light page treatment to the left while media keeps its own colors. The control keeps a 44px-wide pointer area, uses pointer capture, and schedules movement through requestAnimationFrame; release updates the announced value. The blend overlay ignores pointer events so underlying links still work.
 
 The control has horizontal slider semantics, a descriptive accessible name, and a text value reporting the percentage inverted. Arrow keys move two percentage points, Page keys ten, and Home/End go to the limits. Its focused grip has a two-pixel outline offset by 4px. Keep the handle reachable with its center clamped 22px from either edge. There is no autonomous animation; the effect follows deliberate user input. Both the control and inversion overlay disappear when printing.
 
@@ -205,7 +209,7 @@ Its square native fields, ink-filled primary actions, hover inversion, visible f
 ### Do:
 
 - **Do** follow the pinned white, black, Georgia, colored-diamond direction on the main route.
-- **Do** let the large personal photograph and compact introduction share the opening.
+- **Do** let the animated minifigure and compact introduction share the opening.
 - **Do** preserve authentic photo content, captions, aspect ratios, and provenance.
 - **Do** precompute image effects and serve the mobile image variants at the documented breakpoint.
 - **Do** keep work and gallery content unboxed and normally scrollable.

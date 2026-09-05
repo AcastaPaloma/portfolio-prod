@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 
 export function ColorBoundary() {
-  const [value, setValue] = useState(100);
-  const position = useRef(100);
+  const [value, setValue] = useState(0);
+  const position = useRef(0);
   const frame = useRef(0);
   const dragging = useRef(false);
   const control = useRef<HTMLDivElement>(null);
@@ -42,9 +42,9 @@ export function ColorBoundary() {
   return <>
     <div className="color-inversion" aria-hidden="true" />
     <div className="color-boundary" ref={control} role="slider" tabIndex={0}
-      aria-label="Color inversion boundary" aria-orientation="horizontal"
+      aria-label="Text and background inversion boundary" aria-orientation="horizontal"
       aria-valuemin={0} aria-valuemax={100} aria-valuenow={value}
-      aria-valuetext={`${100 - value} percent of the page inverted`}
+      aria-valuetext={`${100 - value} percent of the text and background inverted; images unchanged`}
       aria-describedby="color-boundary-help"
       onKeyDown={key}
       onPointerDown={(event) => { if (event.button !== 0) return; dragging.current = true; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.focus({ preventScroll: true }); }}
