@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Kuan Yi Wang — Portfolio",
-  description: "Kuan Yi Wang's resume as a three-dimensional object.",
+  description: "Computer science at Waterloo. Agentic systems, medical imaging, and a few things outside the résumé.",
 };
 
 export default function RootLayout({
@@ -12,14 +12,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/*
-          THESIS: The resume is the interface; reject the conventional portfolio page.
-          OWN-WORLD: A beige void, a clean white slab, hairline edges, and a single overhead light.
-          STORY: A visitor reads Kuan Yi Wang's actual resume and explores it as a physical object.
-          FIRST VIEWPORT: The white resume slab occupies the open field; a quiet lower rail explains rotation and offers the PDF.
-          FORM: A document-object portfolio, pinned by the user's supplied material and spatial direction. Seed: user-pinned-white-slab.
+        <span hidden data-design-contract="2020df78-user-pinned-lance-dither">
+          THESIS: A personal page reduced to words, photographs, and dots.
+          OWN-WORLD: White, black, Georgia, colored diamond halftones; no panels or ornamental navigation.
+          STORY: Meet Kuan Yi through his work and his own camera roll, then get in touch.
+          FIRST VIEWPORT: A compact introduction on the left and a large dithered dusk photograph on the right.
+          FORM: User-pinned Lance Yan reference; one scrolling page and a vertical color-inversion boundary.
           FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
-        */}
+        </span>
         {children}
       </body>
     </html>
