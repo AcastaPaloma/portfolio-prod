@@ -1,55 +1,144 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-22T17:15:00-04:00",
-  "title": "Design System: Kuan Yi Wang Portfolio",
+  "generatedAt": "2026-09-05T05:05:20.221Z",
+  "title": "Design System: Kuan Yi Wang — Words, Photographs, and Dots",
   "extensions": {
     "colorMeta": {
-      "void": { "role": "neutral", "displayName": "Open Void", "canonical": "#d8d0c3", "tonalRamp": ["#ece6dc", "#d8d0c3", "#beb4a5"] },
-      "ink": { "role": "neutral", "displayName": "Primary Ink", "canonical": "#28231f", "tonalRamp": ["#5b5147", "#28231f", "#171310"] },
-      "slab-white": { "role": "neutral", "displayName": "Document White", "canonical": "#fff", "tonalRamp": ["#fff", "#fbfbf9", "#f1f1ee"] },
-      "slab-edge": { "role": "neutral", "displayName": "Fine Edge", "canonical": "#8f8e89", "tonalRamp": ["#c7c6c1", "#8f8e89", "#6f6e69"] }
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink"
+      },
+      "quiet-ink": {
+        "role": "neutral",
+        "displayName": "Quiet Ink"
+      }
     },
     "typographyMeta": {
-      "body": { "displayName": "Quiet Editorial Label", "purpose": "Control rail and fallback copy only; the resume owns its own supplied vector typography." }
+      "body": {
+        "displayName": "Georgia Body",
+        "purpose": "Compact personal paragraphs."
+      },
+      "name": {
+        "displayName": "Compact Name",
+        "purpose": "Identity heading beside the large photograph."
+      },
+      "caption": {
+        "displayName": "Photo Caption",
+        "purpose": "Short factual photo titles and dates."
+      }
     },
-    "shadows": [
-      { "name": "suspended-projection", "value": "blur(26px) rgb(55 45 35 / 24%) at 46% opacity", "purpose": "Diffuse, offset projection beneath the floating resume slab." }
-    ],
+    "shadows": [],
     "motion": [
-      { "name": "section-snap", "value": "expo-out scroll mapping within the first 22% of the chapter", "purpose": "Moves from the identity view to the technical-skills close composition, then holds for reading." },
-      { "name": "paint-and-dither", "value": "3.25 second Motion sequence", "purpose": "Draws vector-aligned highlighter strokes while a side image resolves from procedural dither noise." }
+      {
+        "name": "direct-inversion",
+        "value": "requestAnimationFrame during pointer movement; no autonomous animation",
+        "purpose": "Move the vertical inversion boundary horizontally in response to deliberate input."
+      }
     ],
     "breakpoints": [
-      { "name": "touch-rail", "value": "42rem" }
+      {
+        "name": "mobile",
+        "value": "48rem"
+      }
     ]
   },
   "components": [
     {
-      "name": "Open PDF Link",
+      "name": "Text Link",
       "kind": "nav",
-      "refersTo": "control-rail",
-      "description": "The sole conventional action, retaining access to the original document.",
-      "html": "<a class=\"ds-pdf-link\" href=\"#\">Open PDF</a>",
-      "css": ".ds-pdf-link { color: #5b5147; padding-bottom: .15rem; border-bottom: 1px solid rgb(47 41 35 / 22%); font: italic .73rem/1.2 Georgia, 'Times New Roman', serif; text-decoration: none; transition: color 180ms ease, border-color 180ms ease; } .ds-pdf-link:hover { color: #28231f; border-color: currentColor; } .ds-pdf-link:focus-visible { outline: 2px solid #28231f; outline-offset: 4px; }"
+      "refersTo": "text-link",
+      "description": "Understated links retain text color and visible keyboard focus.",
+      "html": "<a class=\"ds-link\" href=\"#\">résumé</a>",
+      "css": ".ds-link{color:#202020;font:17px/1.55 Georgia,\"Times New Roman\",serif;text-decoration-color:#969696;text-underline-offset:.2em;text-decoration-thickness:1px}.ds-link:hover{text-decoration-color:currentColor}.ds-link:focus-visible{outline:1px solid currentColor;outline-offset:5px}"
     },
     {
-      "name": "Resume Slab",
+      "name": "Photo Caption",
       "kind": "custom",
-      "refersTo": "resume-slab",
-      "description": "A thin white 3D document object with an outlined SVG resume face and a scroll-authored highlight overlay.",
-      "html": "<div class=\"ds-slab\" aria-label=\"White resume slab\"></div>",
-      "css": ".ds-slab { width: 160px; aspect-ratio: 612 / 792; border: 1px solid rgba(143, 142, 137, .24); border-radius: 2px; background: #fbfbf9; box-shadow: 10px 14px 20px rgba(55, 45, 35, .18); }"
+      "refersTo": "caption",
+      "description": "A short factual caption directly below an unboxed photograph.",
+      "html": "<p class=\"ds-caption\">After the rain. September 2026.</p>",
+      "css": ".ds-caption{margin:0;padding-top:.65rem;color:#666;font:.73rem/1.4 Georgia,\"Times New Roman\",serif}"
+    },
+    {
+      "name": "Inversion Grip",
+      "kind": "custom",
+      "refersTo": "boundary-grip",
+      "description": "Visual specimen of the 44px inversion slider grip; the application provides pointer capture and Arrow/Page/Home/End keyboard behavior.",
+      "html": "<div class=\"ds-grip\" role=\"slider\" tabindex=\"0\" aria-label=\"Color inversion boundary\" aria-orientation=\"horizontal\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"100\"><svg viewBox=\"0 0 32 16\" aria-hidden=\"true\"><path d=\"m8 4-4 4 4 4M24 4l4 4-4 4M13 3v10M19 3v10\"/></svg></div>",
+      "css": ".ds-grip{width:44px;height:44px;display:grid;place-items:center;border:1px solid #656565;border-radius:50%;background:#fff;color:#222;cursor:ew-resize}.ds-grip svg{width:28px;height:16px;fill:none;stroke:currentColor;stroke-width:1}.ds-grip:focus-visible{outline:2px solid #222;outline-offset:4px}"
+    },
+    {
+      "name": "Gym Field",
+      "kind": "input",
+      "refersTo": "gym-input",
+      "description": "Retained native utility field, scoped to /gym.",
+      "html": "<label class=\"ds-field\">Weight (lb)<input type=\"number\" value=\"185\"></label>",
+      "css": ".ds-field{display:grid;gap:.34rem;color:#5b5147;font:italic .67rem Georgia,\"Times New Roman\",serif}.ds-field input{min-height:2.5rem;padding:.45rem .55rem;border:1px solid rgb(47 41 35 / 32%);border-radius:0;background:#fff;color:#28231f;font:.9rem/1.2 Georgia,\"Times New Roman\",serif}.ds-field input:focus-visible{outline:2px solid #28231f;outline-offset:3px}"
+    },
+    {
+      "name": "Gym Action",
+      "kind": "button",
+      "refersTo": "gym-button",
+      "description": "Retained square ink action, scoped to /gym.",
+      "html": "<button class=\"ds-gym-action\">Save workout</button>",
+      "css": ".ds-gym-action{min-height:2.45rem;padding:.5rem .85rem;border:1px solid #28231f;border-radius:0;background:#28231f;color:#fff;font:italic .76rem/1 Georgia,\"Times New Roman\",serif;cursor:pointer}.ds-gym-action:hover{background:#fff;color:#28231f}.ds-gym-action:focus-visible{outline:2px solid #28231f;outline-offset:3px}"
     }
   ],
   "narrative": {
-    "northStar": "The Suspended White Resume",
-    "overview": "An Experience-mode portfolio where the supplied resume is the interface. A clean, thin white 3D slab floats in a warm beige void; its face is an outlined SVG so its supplied typography stays sharp under browser zoom. Scroll advances between close authored readings, with a vector paint annotation and dithered supporting image at the skills stop.",
-    "keyCharacteristics": ["One floating document object", "Vector resume face", "Diffuse suspended shadow", "Scroll-authored chapter views"],
-    "rules": [
-      { "name": "The One-Object Rule", "body": "White belongs to the document object; the surrounding page remains a single uninterrupted beige field.", "section": "colors" },
-      { "name": "The Suspension Rule", "body": "Keep the shadow diffuse and offset as an atmospheric projection, never as evidence of a ground plane.", "section": "elevation" }
+    "northStar": "Words, Photographs, and Dots",
+    "overview": "A personal page reduced to words, photographs, and dots. The main route uses white space, black Georgia type, compact personal writing, and large colored halftone photographs. Work and camera-roll moments appear as an unboxed sequence; the images provide the visual expression while the interface recedes.\n\nThe current main-page authority is the user-pinned Lance Yan direction recorded in the layout contract `2020df78-user-pinned-lance-dither`: white, black, Georgia, colored diamond halftones, one scrolling page, and a vertical inversion boundary dragged horizontally. This replaces the former suspended-résumé visual world on `/`. The inherited PRODUCT.md describes that earlier concept and is historical context for this route; the supplied résumé remains an available document, not the page’s visual shell. The existing `/gym` route remains a separate beige paper utility, with its scoped guidance retained below.",
+    "keyCharacteristics": [
+      "Compact introduction beside a large camera-roll photograph.",
+      "Georgia throughout, with regular body text and quiet underlined links.",
+      "Black and white interface; color arrives through the photographs.",
+      "Luminance-sized colored diamond dots baked into image assets.",
+      "Unboxed work entries and a loose, staggered photo gallery.",
+      "One vertical boundary dragged horizontally to invert the viewport.",
+      "Responsive photo assets, normal mobile scrolling, and no runtime Canvas."
     ],
-    "dos": ["Do preserve the supplied PDF as the content source of truth.", "Do use the outlined SVG face to retain sharp browser zoom.", "Do retain the white slab, overhead light, fine edge, and diffuse shadow."],
-    "donts": ["Don't add marble, veins, grain, or a rasterized resume texture.", "Don't add a floor, pedestal, cards, or portfolio filler.", "Don't retype or reflow the resume contents."]
+    "rules": [
+      {
+        "name": "The Photograph Color Rule",
+        "body": "Keep page chrome neutral; retain sampled image color in the diamond halftones rather than adding decorative interface accents.",
+        "section": "colors"
+      },
+      {
+        "name": "The Inversion Rule",
+        "body": "A white overlay with `mix-blend-mode: difference` inverts the portion to the right of the boundary, including text and images together. Preserve this continuous spatial effect instead of substituting a theme toggle.",
+        "section": "colors"
+      },
+      {
+        "name": "The Quiet Name Rule",
+        "body": "Keep the name and prose compact so a large personal photograph can lead the first viewport.",
+        "section": "typography"
+      },
+      {
+        "name": "The Unboxed Page Rule",
+        "body": "Use typography, spacing, and imagery to group main-page content; do not surround work entries or photographs with panels.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do follow the pinned white, black, Georgia, colored-diamond direction on the main route.",
+      "Do let the large personal photograph and compact introduction share the opening.",
+      "Do preserve authentic photo content, captions, aspect ratios, and provenance.",
+      "Do precompute image effects and serve the mobile image variants at the documented breakpoint.",
+      "Do keep work and gallery content unboxed and normally scrollable.",
+      "Do preserve the inversion boundary’s keyboard support, focus visibility, and 44px grip.",
+      "Do retain résumé access and the existing private gym utility as separate functions."
+    ],
+    "donts": [
+      "Don't restore the suspended slab, beige void, paper-note panels, or stage dock to the redesigned main page.",
+      "Don't turn the photograph colors into decorative UI accents or a fixed rainbow palette.",
+      "Don't add rounded photo cards, shadows, badges, or ornamental navigation to the main route.",
+      "Don't replace the continuous inversion boundary with a theme toggle or autonomous animation.",
+      "Don't render photo dithering in a runtime canvas or shader.",
+      "Don't copy the reference site’s personal photographs, videos, or text.",
+      "Don't apply main-page styling to the retained gym utility without a separate scoped change."
+    ]
   }
 }
