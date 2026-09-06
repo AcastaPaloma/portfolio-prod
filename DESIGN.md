@@ -1,6 +1,6 @@
 ---
 name: Kuan Yi Wang — Words, Photographs, and Dots
-description: "A minimal personal page with Georgia type, colored diamond halftones, and a draggable inversion boundary."
+description: "A minimal personal page with full-color photo bentos, three dithered characters, and a draggable light/dark boundary."
 colors:
   paper: "#fff"
   ink: "#202020"
@@ -31,10 +31,6 @@ typography:
     fontWeight: 400
     lineHeight: "1.25"
     letterSpacing: "-0.02em"
-  caption:
-    fontFamily: "Georgia, Times New Roman, serif"
-    fontSize: "0.73rem"
-    lineHeight: "1.4"
   link-label:
     fontFamily: "Georgia, Times New Roman, serif"
     fontSize: "0.85rem"
@@ -45,17 +41,12 @@ rounded:
   gym-field: "0"
 spacing:
   paragraph: "1.35rem"
-  caption-top: "0.65rem"
   link-gap: "1.4rem"
   work-row: "1.5rem"
-  mobile-gallery-gap: "3rem"
+  photo-gap: "4px"
 components:
   text-link:
     textColor: "{colors.ink}"
-  caption:
-    textColor: "{colors.quiet-ink}"
-    typography: "{typography.caption}"
-    padding: "0.65rem 0 0"
   boundary-grip:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.boundary-ink}"
@@ -79,120 +70,52 @@ components:
 
 # Design System: Kuan Yi Wang — Words, Photographs, and Dots
 
-## Overview
+## Direction
 
-**Creative North Star: "Words, Photographs, and Dots"**
+One compact personal page: Georgia prose, full-color photographs, and three animated dither subjects. The user's September 6 revision supersedes the earlier all-dither gallery. Only the minifigure, piñata, and Agamemnon helmet receive the particle/dither treatment. The supplied Morgan globe is a normal full-color video. Arnold Francisca's Ink export supplies a small handwritten accent beside Around the dot.
 
-A personal page reduced to words, photographs, and dots. The main route opens on black with light Georgia type, compact personal writing, and a glossy minifigure turning in bright colored dither. Large personal halftone photographs follow. Work and camera-roll moments appear as an unboxed sequence; the images provide the visual expression while the interface recedes.
+The page begins in black. Compact identity copy and the minifigure share the opening; work follows beside the quiet particle helmet. People contains Piñata Pitch, Morgan Stanley, and Around the dot. Elsewhere preserves the earlier camera-roll selection. The calendar invitation belongs in the opening links, alongside résumé, LinkedIn, and email.
 
-The current main-page authority is the user-pinned Lance Yan direction recorded in the layout contract `2020df78-user-pinned-lance-dither`: white, black, Georgia, colored diamond halftones, one scrolling page, and a vertical inversion boundary dragged horizontally. This replaces the former suspended-résumé visual world on `/`. The inherited PRODUCT.md describes that earlier concept and is historical context for this route; the supplied résumé remains an available document, not the page’s visual shell. The existing `/gym` route remains a separate beige paper utility, with its scoped guidance retained below.
+The inherited PRODUCT.md and résumé scene describe the earlier route. The alternate branch's current main-page authority is the user's minimal Lance-inspired direction and subsequent refinements. The existing /gym utility stays separate.
 
-**Key Characteristics:**
+## Color and layering
 
-- Compact introduction beside a looping dithered minifigure.
-- Georgia throughout, with regular body text and quiet underlined links.
-- Black and white interface; color arrives through the animation and photographs.
-- Fixed-size bright diamonds in the animation; luminance-sized diamonds in photographs, all baked into media assets.
-- Unboxed work entries and a loose, staggered photo gallery.
-- One vertical boundary dragged horizontally to invert text and page background, preserving media colors.
-- Responsive photo assets, normal mobile scrolling, and no runtime Canvas.
+- The neutral page is white to the left of the dragged boundary and black to its right.
+- Text uses viewport-aligned dark/light gradients clipped to glyphs. Horizontal offsets are measured on mount and resize; dragging updates one CSS variable. This avoids dependence on fixed background attachment on mobile Safari.
+- Photographs and normal video have no color filters or inversion. Their full-color pixels remain unchanged across the slider.
+- The minifigure and piñata have transparent negative space and retain their source colors.
+- The white particle helmet and white Ink handwriting use difference blending against the page, becoming dark on white and light on black.
+- Text has a higher layer than the moving characters, so the piñata can pass behind the writing. Media has zero frame, border radius, internal padding, and margin.
 
-## Colors
+## Type and links
 
-The main interface is neutral. Its photographic colors are sampled from personal images rather than promoted to a fixed accent palette.
+Georgia body copy is 17px with 1.55 line height; the name is 2.2rem and section headings 1.3rem. At 48rem, body and name become 16px and 2rem. Work descriptions and profile links use .85rem. There are no image captions or subtitles.
 
-### Neutral
+Every underlined text link has a small preceding icon. Brand marks come from the organizations' official assets or the user's Piñata Pitch logo. Other symbols are simple authored SVGs. Profile organization links keep their icon with their words. All links retain visible keyboard focus. The top invitation reads: “join me for a workout. or a coffee.”
 
-- **Paper:** the underlying light page and inversion overlay, also the small handle and hint backing. The boundary begins at 0%, inverting the whole text/background layer into its night state.
-- **Ink:** main-page text and links.
-- **Quiet Ink:** project descriptions, photo captions, and small footer copy.
-- **Link Rule:** understated one-pixel underlines that become current text color on hover.
-- **Boundary Line:** the thin full-height marker of the split.
-- **Boundary Rule:** the grip’s fine outline.
-- **Boundary Ink:** the grip glyph and its focus ring.
+## Layout and spacing
 
-The `gym-*` frontmatter tokens belong exclusively to the retained utility: beige atmosphere, brown-black text, quiet labels, near-white panel, and fine paper rule. Do not apply them to the redesigned main page.
+Main photo groups and work occupy a 60rem maximum width, with 2.5rem minimum side space on desktop. The first section uses a 1.2:1 copy/art split and caps its minimum height at 52rem. Work occupies about 30rem in height, with the helmet in the right-hand negative space.
 
-**The Photograph Color Rule.** Keep page chrome neutral; retain sampled image color in the diamond halftones rather than adding decorative interface accents.
+Bento groups use four-pixel seams, square corners, and no card shells. Piñata Pitch uses three columns: tall event screen, selfie above the audience, tall physical piñata. Morgan's square globe and the two Around the dot photos share a desktop row. Their headings align. Elsewhere pairs portrait slots with wider landscape slots. Image proportions and focal positions preserve people; each photo opens its uncropped optimized image in a new tab.
 
-**The Inversion Rule.** A white overlay with `mix-blend-mode: difference` inverts text and the page background to the right of the boundary. Pictures and video occupy a higher layer and retain their original colors; captions remain part of the text layer.
+At 48rem, the introduction and work stack. The minifigure is capped to 42svh; the helmet is capped at 24rem. Photo groups retain a 1.5rem outer gutter, with inset headings to clear the slider. At 34rem, the Piñata grid becomes two columns, Morgan and Around the dot stack, and the six Elsewhere images become four compact rows. Around the dot retains a tiny handwriting sideline. The page scrolls normally, without pinned sections or full-screen image panels.
 
-## Typography
+## Motion and performance
 
-**Display Font:** Georgia, "Times New Roman", serif
-**Body Font:** Georgia, "Times New Roman", serif
+All dithering and particle shimmer are precomputed into video frames. TransparentLoop removes a black matte with one small WebGL pass, requested only when a new video frame arrives. The browser does not run image dithering or 3D rendering. The normal Morgan video uses native playback without a canvas.
 
-**Character:** Familiar serif typography makes the writing personal and immediate. The name is modestly larger than the body; the minifigure supplies scale. There is no oversized marketing slogan or separate decorative display face.
+The minifigure and helmet use 384px mobile video variants. The roaming piñata uses a 256px source and appears at 120–184px. Its three ballistic hops are sampled once into compositor transform keyframes: pauses, anticipation, curved flight, soft squash on landing, recovery. The route closes at its starting position after 22 seconds. It moves around the viewport as the visitor scrolls; it ignores pointer events and cannot block a link. Its separate 44px pause control remains fixed in the lower right.
 
-### Hierarchy
+The helmet shimmer uses periodic functions over eight seconds. Piñata footage uses a reversible burst/reassembly loop. Ink uses the actual tool's four-fps export, cropped and played forward/reverse to close smoothly. None uses a full-frame strobe.
 
-- **Name** (600, 2.2rem, 1.15 line-height): a compact identity heading with tight tracking.
-- **Section heading** (400, 1.3rem, 1.25 line-height): “A few things I’ve built.” and “Elsewhere.”
-- **Body** (regular, 17px, 1.55 line-height): short personal paragraphs, with the introduction limited to a 29rem column.
-- **Links and work descriptions** (regular, 0.85rem): quiet navigation and secondary project detail.
-- **Photo caption** (regular, 0.73rem, 1.4 line-height): a short title or moment and date directly below each photograph.
-- **Boundary hint** (regular, 0.7rem): vertical “drag to invert” text.
-- **Mobile body and name** (16px and 2rem): a small reduction at 48rem and below, preserving the same type family and hierarchy.
+All animations pause offscreen and in hidden tabs. Reduced-motion visitors see still posters until choosing Play. Roving movement follows the video's pause state. WebGL failure leaves a transparent poster. Full-color photos load lazily in optimized WebP, with 550px mobile sources and no EXIF or location metadata.
 
-**The Quiet Name Rule.** Keep the name and prose compact so the animated minifigure can lead the first viewport.
+## Inversion control
 
-## Layout
+The boundary is a one-pixel vertical line, with a 44px grip and interaction strip. It starts at 0% and follows pointer input through requestAnimationFrame. Arrow keys move two points, Page keys ten, Home/End reach the limits. Its announced value distinguishes photo colors from the inverted text/helmet/handwriting. The grip remains reachable 22px from either edge. Print removes the control and moving piñata.
 
-The main route is a single normally scrolling page. At desktop widths, the first section fills at least 100svh with columns of 1.2:1: compact copy at left and the dithered minifigure loop at right. The text column is min(100% - 5rem, 29rem), vertically centered with 6rem padding above and below. The video preserves its full aspect and stays within 80svh rather than cover-cropping.
-
-The work section is an unboxed two-column composition, min(100% - 5rem, 66rem), with an 8rem gap: a simple project list and a larger supplied LEGO photograph. The gallery widens to 72rem, with two equal columns, 5rem row gaps, 6rem column gaps, and a 7rem downward offset on even figures. Varied image proportions and the offset produce the rhythm; no tile backgrounds or card outlines are needed. The footer is a compact invitation and a small note after generous space.
-
-At 48rem and below, the introduction, work section, and gallery become single-column sequences. Copy precedes the hero; work copy precedes its image. The gallery removes its stagger and uses a 3rem gap. The right margin allows room for the inversion control; the mobile introduction uses 1.5rem left padding and 3.1rem right padding. Primary profile links have a 44px minimum height. The video preserves its full aspect and stays within 80svh. A 384px-wide MP4 is selected for mobile playback. Every photograph selects a 600px-wide `-small.webp` variant through a responsive picture source.
-
-### Retained Gym Utility
-
-`/gym` keeps its existing full-page beige surround and one near-white panel up to 68rem wide. Its “Training log” label, large “The work, counted.” heading, return link, unlock/setup states, and form/history layout remain a utility surface. At narrower widths, the form/history columns stack and unlock controls become full width. This is a scoped exception to the main page’s unboxed composition, not a reusable card system for `/`.
-
-## Elevation & Depth
-
-The main page is flat and has no content-card shadows. Depth comes from photo scale, alternating proportions, and generous white space. The inversion overlay is a fixed blend layer, not an elevated panel; its narrow line and circular grip identify a movable boundary. The retained gym panel alone uses the existing low warm paper shadow (0 1.25rem 3rem rgb(54 47 40 / 10%)).
-
-**The Unboxed Page Rule.** Use typography, spacing, and imagery to group main-page content; do not surround work entries or photographs with panels.
-
-## Shapes
-
-Photos are ordinary square-cornered rectangles at their source aspect ratios. The repeating mark is a diamond: fixed-size with a sharp opacity threshold in the animation, sized by sampled luminance in photographs. The sole circular shape in the main-page interface is the 44px inversion grip. The one-pixel boundary spans the viewport vertically, and its 44px interaction strip stays reachable even at either edge. Gym inputs and actions retain their existing square corners and thin rules.
-
-## Components
-
-### Text Links and Profile Navigation
-
-Links inherit text color, use a one-pixel underline with a 0.2em offset, and strengthen their underline on hover. Keyboard focus is a one-pixel current-color outline offset by 5px. The “résumé”, “linkedin”, and “email” navigation is a wrapping inline row with no ornamental navigation shell. Keep actual project links and the original résumé PDF accessible.
-
-### Work Entries
-
-A plain list presents project names followed by small gray descriptions. Entries use a 1.5rem separation, with no bullets, cards, badges, or additional controls. The built linked quantum project retains its link; the other project names remain plain text. Do not imply interactions on unlinked entries.
-
-### Captioned Camera-Roll Photos
-
-Use personal imagery documented in PHOTO-SOURCES.md. The dusk street photograph remains in the gallery. Photographs load lazily and decode asynchronously. Captions remain short and factual, beneath the image with 0.65rem top padding. Preserve the supplied image descriptions for assistive technology.
-
-The assets come from selected personal iPhone photographs plus the existing supplied LEGO image. PHOTO-SOURCES.md records the broad thumbnail survey and chosen originals; it does not claim that every photo was individually reviewed. The web assets have EXIF and precise-location metadata stripped. Resized `-original.webp` files support regeneration and are not loaded by the page. The reference informs the rendering direction; its photographs, videos, and text are not used.
-
-### Colored Diamond Halftones
-
-The build-time image script samples each source into 180 columns, with a six-pixel cell and dot radius proportional to the square root of density (one minus luminance). Very light samples below a 0.055 density threshold drop out; opacity is quantized into sixteenths. Source color receives the implemented 1.8 saturation adjustment and restrained quantization before paths are rendered to a white-backed WebP. The result preserves color and scene recognition while making the diamond texture legible.
-
-Generate the effect before serving the page. Full assets are lossless WebP; 600px mobile variants are separate optimized WebP files. No canvas, WebGL shader, animation loop, or per-frame image processing belongs in the browser for these photographs.
-
-### Dithered Minifigure Loop
-
-The introduction features a glossy green-cap, blue-shirt LEGO minifigure inspired by the owner’s Duolingo avatar, generated and animated in the owner’s Midjourney account. It is a complete turntable loop, not a rotating flat photograph. The diamond treatment is baked into every video frame before delivery: a black field, saturated highlights, a sharp luminance threshold, small local threshold variation, and sparse dot dropout. Playback is stepped at 12 fps. DITHER-RESEARCH.md records the reference analysis and the authored flicker additions. `MinifigureLoop` uses a muted inline MP4 with a still WebP poster and an explicit Play/Pause control. Playback pauses offscreen and in hidden tabs; reduced-motion visitors see the still unless they choose Play. The browser performs no per-frame dithering or 3D rendering. The retained camera-roll photographs follow in the gallery.
-
-### Color Inversion Boundary
-
-The control is a fixed vertical line with a 44px circular grip and the hint “drag to invert”. It starts at 0%, giving the page a black background and light text. Dragging right reveals the light page treatment to the left while media keeps its own colors. The control keeps a 44px-wide pointer area, uses pointer capture, and schedules movement through requestAnimationFrame; release updates the announced value. The blend overlay ignores pointer events so underlying links still work.
-
-The control has horizontal slider semantics, a descriptive accessible name, and a text value reporting the percentage inverted. Arrow keys move two percentage points, Page keys ten, and Home/End go to the limits. Its focused grip has a two-pixel outline offset by 4px. Keep the handle reachable with its center clamped 22px from either edge. There is no autonomous animation; the effect follows deliberate user input. Both the control and inversion overlay disappear when printing.
-
-### Footer Invitation
-
-Use the single external invitation “join me for a workout. or a coffee.” with “Photos, reduced to dots.” as subordinate text. The destination comes from `NEXT_PUBLIC_CAL_COM_URL` with `https://cal.com` as fallback; retain the external-link target and referrer attributes. Keep the footer unboxed.
+## Retained utility
 
 ### Private Gym Log
 
@@ -204,24 +127,12 @@ Use the single external invitation “join me for a workout. or a coffee.” wit
 
 Its square native fields, ink-filled primary actions, hover inversion, visible focus outlines, live status feedback, and low paper shadow remain scoped to `/gym`. Main-page inversion controls do not mount on that route.
 
-## Do's and Don'ts
 
-### Do:
+## Working rules
 
-- **Do** follow the pinned white, black, Georgia, colored-diamond direction on the main route.
-- **Do** let the animated minifigure and compact introduction share the opening.
-- **Do** preserve authentic photo content, captions, aspect ratios, and provenance.
-- **Do** precompute image effects and serve the mobile image variants at the documented breakpoint.
-- **Do** keep work and gallery content unboxed and normally scrollable.
-- **Do** preserve the inversion boundary’s keyboard support, focus visibility, and 44px grip.
-- **Do** retain résumé access and the existing private gym utility as separate functions.
-
-### Don't:
-
-- **Don't** restore the suspended slab, beige void, paper-note panels, or stage dock to the redesigned main page.
-- **Don't** turn the photograph colors into decorative UI accents or a fixed rainbow palette.
-- **Don't** add rounded photo cards, shadows, badges, or ornamental navigation to the main route.
-- **Don't** replace the continuous inversion boundary with a theme toggle or autonomous animation.
-- **Don't** render photo dithering in a runtime canvas or shader.
-- **Don't** copy the reference site’s personal photographs, videos, or text.
-- **Don't** apply main-page styling to the retained gym utility without a separate scoped change.
+- Preserve the compact, unboxed serif identity and authentic personal media.
+- Keep photos and the Morgan video in full color. Dither only the three requested subjects.
+- Keep the calendar invitation in the opening.
+- Use tight bento seams with no image captions, frames, or internal padding.
+- Keep text readable over motion, retain pause controls and reduced-motion behavior, and precompute expensive image work.
+- Record media provenance in PHOTO-SOURCES.md and ANIMATION-SOURCES.md.

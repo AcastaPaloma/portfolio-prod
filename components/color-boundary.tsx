@@ -16,6 +16,21 @@ export function ColorBoundary() {
   };
 
   useEffect(() => () => cancelAnimationFrame(frame.current), []);
+  useEffect(() => {
+    const surface = control.current?.closest<HTMLElement>(".dither-page");
+    let resizeFrame = 0;
+    // Resolve each ink gradient against the viewport without fixed backgrounds,
+    // which mobile Safari does not consistently support. Dragging only changes --split.
+    const measure = () => {
+      surface?.querySelectorAll<HTMLElement>(".ink").forEach(element => {
+        element.style.setProperty("--ink-left", `${element.getBoundingClientRect().left}px`);
+      });
+    };
+    const resized = () => { cancelAnimationFrame(resizeFrame); resizeFrame = requestAnimationFrame(measure); };
+    measure();
+    window.addEventListener("resize", resized);
+    return () => { window.removeEventListener("resize", resized); cancelAnimationFrame(resizeFrame); };
+  }, []);
 
   const move = (event: PointerEvent<HTMLDivElement>) => {
     if (!dragging.current) return;
@@ -44,7 +59,7 @@ export function ColorBoundary() {
     <div className="color-boundary" ref={control} role="slider" tabIndex={0}
       aria-label="Text and background inversion boundary" aria-orientation="horizontal"
       aria-valuemin={0} aria-valuemax={100} aria-valuenow={value}
-      aria-valuetext={`${100 - value} percent of the text and background inverted; images unchanged`}
+      aria-valuetext={`${100 - value} percent dark; text, helmet and handwriting follow the boundary; photo colors unchanged`}
       aria-describedby="color-boundary-help"
       onKeyDown={key}
       onPointerDown={(event) => { if (event.button !== 0) return; dragging.current = true; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.focus({ preventScroll: true }); }}

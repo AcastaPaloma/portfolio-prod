@@ -1,0 +1,9 @@
+{
+  "width": 672,
+  "height": 672,
+  "frames": 124,
+  "fps": 12,
+  "duration": 10.333333333333334,
+  "source": "pinata-source.mp4",
+  "technique": "Precomputed night-mode diamond dithering with local temporal threshold variation"
+}

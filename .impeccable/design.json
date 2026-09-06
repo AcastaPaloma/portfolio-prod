@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-05T06:39:34.038Z",
+  "generatedAt": "2026-09-06T04:14:42.460Z",
   "title": "Design System: Kuan Yi Wang — Words, Photographs, and Dots",
   "extensions": {
     "colorMeta": {
@@ -25,10 +25,6 @@
       "name": {
         "displayName": "Compact Name",
         "purpose": "Identity heading beside the animated minifigure."
-      },
-      "caption": {
-        "displayName": "Photo Caption",
-        "purpose": "Short factual photo titles and dates."
       }
     },
     "shadows": [],
@@ -42,6 +38,11 @@
         "name": "minifigure-turntable",
         "value": "Precomputed 12 fps night-dither video; pauses offscreen, hidden, or for reduced motion",
         "purpose": "A glossy personal LEGO figure turns through a full rotation with baked colored dithering."
+      },
+      {
+        "name": "roaming-pinata",
+        "value": "22-second compositor transform route; three ballistic hops and landing squash",
+        "purpose": "A small character inhabits the page; fixed pause control stops travel and source motion."
       }
     ],
     "breakpoints": [
@@ -59,14 +60,6 @@
       "description": "Understated links retain text color and visible keyboard focus.",
       "html": "<a class=\"ds-link\" href=\"#\">résumé</a>",
       "css": ".ds-link{color:#202020;font:17px/1.55 Georgia,\"Times New Roman\",serif;text-decoration-color:#969696;text-underline-offset:.2em;text-decoration-thickness:1px}.ds-link:hover{text-decoration-color:currentColor}.ds-link:focus-visible{outline:1px solid currentColor;outline-offset:5px}"
-    },
-    {
-      "name": "Photo Caption",
-      "kind": "custom",
-      "refersTo": "caption",
-      "description": "A short factual caption directly below an unboxed photograph.",
-      "html": "<p class=\"ds-caption\">After the rain. September 2026.</p>",
-      "css": ".ds-caption{margin:0;padding-top:.65rem;color:#666;font:.73rem/1.4 Georgia,\"Times New Roman\",serif}"
     },
     {
       "name": "Inversion Grip",
@@ -95,25 +88,24 @@
   ],
   "narrative": {
     "northStar": "Words, Photographs, and Dots",
-    "overview": "A personal page reduced to words, photographs, and dots. The main route opens on black with light Georgia type, compact personal writing, and a glossy minifigure turning in bright colored dither. Large personal halftone photographs follow. Work and camera-roll moments appear as an unboxed sequence; the images provide the visual expression while the interface recedes.\n\nThe current main-page authority is the user-pinned Lance Yan direction recorded in the layout contract `2020df78-user-pinned-lance-dither`: white, black, Georgia, colored diamond halftones, one scrolling page, and a vertical inversion boundary dragged horizontally. This replaces the former suspended-résumé visual world on `/`. The inherited PRODUCT.md describes that earlier concept and is historical context for this route; the supplied résumé remains an available document, not the page’s visual shell. The existing `/gym` route remains a separate beige paper utility, with its scoped guidance retained below.",
+    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, a roaming piñata, and a particle helmet. The calendar invitation is in the opening. The actual Ink export forms a small handwritten sideline.",
     "keyCharacteristics": [
-      "Compact introduction beside a looping dithered minifigure.",
-      "Georgia throughout, with regular body text and quiet underlined links.",
-      "Black and white interface; color arrives through the animation and photographs.",
-      "Fixed-size bright diamonds in the animation; luminance-sized diamonds in photographs, all baked into media assets.",
-      "Unboxed work entries and a loose, staggered photo gallery.",
-      "One vertical boundary dragged horizontally to invert text and page background, preserving media colors.",
-      "Responsive photo assets, normal mobile scrolling, and no runtime Canvas."
+      "Georgia prose and small icons before underlined text links.",
+      "Full-color personal photos in tight bento groups, without captions.",
+      "Dither limited to the minifigure, piñata, and helmet.",
+      "Normal Morgan photo globe video.",
+      "Independent text/background inversion preserves photo colors; the helmet and handwriting invert.",
+      "Compositor hops, precomputed dither, lazy media, pause controls, and reduced-motion stills."
     ],
     "rules": [
       {
         "name": "The Photograph Color Rule",
-        "body": "Keep page chrome neutral; retain sampled image color in the diamond halftones rather than adding decorative interface accents.",
+        "body": "Photographs and the Morgan globe retain their full original colors. No dither or inversion is applied to them.",
         "section": "colors"
       },
       {
         "name": "The Inversion Rule",
-        "body": "A white blend overlay inverts text and the page background. Images and video remain above this layer and keep their original colors.",
+        "body": "A split page background and glyph-clipped gradients invert page and text independently of media. Only the monochrome helmet and handwriting use difference blending.",
         "section": "colors"
       },
       {
@@ -130,7 +122,7 @@
     "dos": [
       "Do follow the pinned white, black, Georgia, colored-diamond direction on the main route.",
       "Do let the animated minifigure and compact introduction share the opening.",
-      "Do preserve authentic photo content, captions, aspect ratios, and provenance.",
+      "Do preserve authentic photo content, focal points, uncropped image access, and provenance.",
       "Do precompute image effects and serve the mobile image variants at the documented breakpoint.",
       "Do keep work and gallery content unboxed and normally scrollable.",
       "Do preserve the inversion boundary’s keyboard support, focus visibility, and 44px grip.",
