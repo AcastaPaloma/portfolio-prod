@@ -44,10 +44,17 @@ Created and downloaded from [Arnold Francisca's Ink tool](https://arnoldfrancisc
 
 ## Morgan globe
 
-Source supplied by the owner: `/Users/kuanw/Downloads/Bloop-orbitglobe-15s.mp4`. `scripts/prepare-globe-alpha.mjs` isolates connected gray matte regions offline and builds a separate alpha mask, preserving the RGB photo content. It packs color above alpha into `morgan-orbit-alpha.mp4` (600×1200, 24 fps, H.264 CRF 20) and `morgan-orbit-alpha-small.mp4` (384×768, CRF 22). The displayed image is square. The first frame supplies transparent `morgan-orbit-alpha-poster.webp`.
+The current globe uses two clean exports from the owner's saved Orbit Globe project in [Bloop](https://bloop.wtf/en), September 6, 2026:
 
-There is no visible pause button or native video control on the globe. Playback still pauses offscreen and in hidden tabs; reduced motion uses its still poster. The earlier opaque `morgan-orbit` files remain historical, unused assets.
+- `/Users/kuanw/Downloads/Bloop-orbitglobe-black-15s.mp4`
+- `/Users/kuanw/Downloads/Bloop-orbitglobe-white-15s.mp4`
 
-## Runtime transparency
+Both are 1080×1080, 15 seconds, 30 fps. The project retains the six selected photos, 50% globe size, 2.5% card gap, 27° tilt, 55% back fade, 133% card scale, 16:9 cards, corner radius 23, and XL shadows. Only the solid background differs. Bloop's export dialog offers MP4 rather than a transparent format.
 
-The two dither subjects and Ink use a tiny WebGL matte-removal pass on each decoded frame. Dithering and sparkle are already baked. `requestVideoFrameCallback` avoids unnecessary redraws; an 83ms timer is the fallback. The shader uses a soft near-black threshold, leaves colored pixels in their original color space, and writes premultiplied alpha. Morgan uses a second shader sampling its explicit packed alpha rather than chroma-keying photo colors at runtime; its fallback timer is 42ms. WebGL failure leaves the static alpha poster.
+`scripts/prepare-globe-pair.mjs black.mp4 white.mp4` normalizes the exports' nominal video black/white levels uniformly, then packs the white render above the black render in one file. Outputs are `morgan-bloop-pair.mp4` (600×1200), `morgan-bloop-pair-small.mp4` (384×768), and matching black/white WebP posters. Runtime displays a square. One decoder keeps both versions on the same frame; a tiny shader selects the appropriate original render on each side of the slider. The light render receives a 255/253 gain to make its encoded white meet the page's exact white. There is no chroma key, segmentation, alpha reconstruction, or removal of photo pixels.
+
+The earlier gray-background removal script and generated alpha assets were removed. No visible playback control appears on the globe. Offscreen, hidden-tab, reduced-motion, and poster fallback behavior remain.
+
+## Runtime rendering
+
+The minifigure, helmet, and Ink retain their existing near-black matte pass for their precomputed artwork. Morgan uses only the paired full-color render selector described above. `requestVideoFrameCallback` drives video redraws, with 83ms artwork and 33ms globe fallbacks. Slider movement reuses the last uploaded frame. The globe's still fallback also clips between its clean black/white posters, including when WebGL is unavailable.

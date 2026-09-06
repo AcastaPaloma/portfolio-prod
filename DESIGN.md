@@ -72,7 +72,7 @@ components:
 
 ## Direction
 
-One compact personal page: Georgia prose, full-color photographs, and two animated dither subjects. The user's September 6 revision supersedes the earlier all-dither gallery. Only the minifigure and Agamemnon helmet receive the particle/dither treatment. The roaming piñata is removed. The supplied Morgan globe is a full-color video with a transparent background and no visible playback control. Arnold Francisca's Ink export supplies a small handwritten accent beside Around the dot.
+One compact personal page: Georgia prose, full-color photographs, and two animated dither subjects. The user's September 6 revision supersedes the earlier all-dither gallery. Only the minifigure and Agamemnon helmet receive the particle/dither treatment. The roaming piñata is removed. The supplied Morgan globe is matching full-color Bloop renders on black and white, selected at the inversion boundary, with no visible playback control. Arnold Francisca's Ink export supplies a small handwritten accent beside Around the dot.
 
 The page begins in black. Compact identity copy, including current computer vision inference work at Reflex, and the minifigure share the opening; work follows beside the quiet particle helmet. People contains Piñata Pitch, Morgan Stanley, and Around the dot. Elsewhere preserves the earlier camera-roll selection. The calendar invitation belongs in the opening links, alongside résumé, LinkedIn, and email.
 
@@ -103,11 +103,11 @@ At 48rem, the introduction and work stack. The minifigure is capped to 42svh; th
 
 ## Motion and performance
 
-All dithering and particle shimmer are precomputed into video frames. TransparentLoop uses one small WebGL pass, requested only when a new video frame arrives. Dither subjects use a near-black matte; Morgan uses a separately prepared alpha mask packed beneath its original RGB frames. The browser does not run image dithering, 3D rendering, or background segmentation.
+All dithering and particle shimmer are precomputed into video frames. TransparentLoop uses one small WebGL pass, requested only when a new video frame arrives. Dither subjects use a near-black matte; Morgan uses matching white and black Bloop renders packed into one video; a boundary-aligned shader selects their unmasked RGB pixels. The browser does not run image dithering, 3D rendering, or background segmentation.
 
-The minifigure, helmet, and Morgan globe use 384px mobile video variants. The helmet has an eight-second closed wind cycle at 12 fps: crest bristles sway above a fixed metal root, with local particle dropout, traveling glints, and slow density pulses. There is no rotation or whole-object drift. Morgan plays at 24 fps without a visible pause button, as requested. Ink uses the actual tool's four-fps export, cropped and played forward/reverse to close smoothly. None uses a full-frame strobe.
+The minifigure, helmet, and Morgan globe use 384px mobile video variants. The helmet has an eight-second closed wind cycle at 12 fps: crest bristles sway above a fixed metal root, with local particle dropout, traveling glints, and slow density pulses. There is no rotation or whole-object drift. Morgan plays at 30 fps without a visible pause button, as requested. Ink uses the actual tool's four-fps export, cropped and played forward/reverse to close smoothly. None uses a full-frame strobe.
 
-All animations pause offscreen and in hidden tabs. Reduced-motion visitors see still posters; artwork with controls can be played explicitly. WebGL failure leaves a transparent poster. Full-color photos load lazily in optimized WebP, with 550px mobile sources and no EXIF or location metadata.
+All animations pause offscreen and in hidden tabs. Reduced-motion visitors see still posters; artwork with controls can be played explicitly. WebGL failure leaves the artwork posters; Morgan retains two clean stills clipped at the boundary. Full-color photos load lazily in optimized WebP, with 550px mobile sources and no EXIF or location metadata.
 
 ## Inversion control
 

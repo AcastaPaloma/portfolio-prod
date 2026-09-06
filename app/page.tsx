@@ -66,7 +66,7 @@ export default function Home() {
       <div className="people-secondary">
       <section className="people-group morgan-group" aria-labelledby="morgan-people">
         <h3 id="morgan-people" className="section-title text-layer ink"><InlineIcon name="morgan-stanley"/>Morgan Stanley</h3>
-        <TransparentLoop className="globe-art" name="Morgan Stanley photo globe" src="/animation/morgan-orbit-alpha.mp4" smallSrc="/animation/morgan-orbit-alpha-small.mp4" poster="/animation/morgan-orbit-alpha-poster.webp" width={600} height={600} packedAlpha controls={false}/>
+        <TransparentLoop className="globe-art" name="Morgan Stanley photo globe" src="/animation/morgan-bloop-pair.mp4" smallSrc="/animation/morgan-bloop-pair-small.mp4" poster="/animation/morgan-bloop-black-poster.webp" lightPoster="/animation/morgan-bloop-white-poster.webp" width={600} height={600} controls={false}/>
       </section>
       <section className="people-group" aria-labelledby="around-people">
         <div className="around-intro">

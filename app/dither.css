@@ -25,6 +25,7 @@
 .loop-art{position:absolute;inset:0;pointer-events:none}
 .loop-art img,.loop-art canvas{display:block;width:100%;height:100%;object-fit:contain;margin:0;padding:0;background:transparent}
 .loop-art canvas{position:absolute;inset:0}
+.light-loop-poster{position:absolute;inset:0;clip-path:inset(0 clamp(0px,calc(100% - var(--split-px,0px) + var(--media-left,0px)),100%) 0 0)}
 .loop-source{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .loop-toggle{position:absolute;z-index:4;right:0;bottom:0;width:44px;height:44px;padding:12px;border:0;color:#888;background:transparent;cursor:pointer;opacity:.8}
 .loop-toggle svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4}

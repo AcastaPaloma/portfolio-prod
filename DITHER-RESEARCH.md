@@ -30,8 +30,12 @@ Reference analysis and source checks continued September 5–6, 2026:
 | [Lance Yan, inspected live](https://www.lanceyan.com/) | Transparent scene backgrounds with a higher text layer allow motion behind prose. Our text and page backgrounds are independently split, keeping colored media intact. |
 | [Arnold Francisca Ink](https://arnoldfrancisca.com/tools/ink) | Actual handwritten animation export used as a restrained sideline; settings and source recorded in ANIMATION-SOURCES.md. |
 
-The latest user direction narrows dithering to the minifigure and helmet and removes the piñata animation. Photographs and the supplied Morgan globe are full color in compact bento groups. The white helmet and handwriting follow the inversion boundary; colored subjects and normal media retain their colors. The helmet uses a fixed silhouette below the crest, with coherent wind displacement in the bristles and local luminance pulses. Morgan now uses a separately prepared alpha mask so the gray backdrop disappears without runtime chroma-keying of photo colors.
+The latest user direction narrows dithering to the minifigure and helmet and removes the piñata animation. Photographs and the supplied Morgan globe are full color in compact bento groups. The white helmet and handwriting follow the inversion boundary; colored subjects and normal media retain their colors. The helmet uses a fixed silhouette below the crest, with coherent wind displacement in the bristles and local luminance pulses. Morgan now uses matching black/white renders exported directly from Bloop, with one synchronized video and no background removal.
 
 ## September 6 refinement
 
 [Lance’s butterfly scene](https://www.lanceyan.com/) was inspected playing live again. The intended energy comes from local moving detail crossing a sharp dither threshold; the new helmet applies that through crest wind and sparse particle variation, with no rotation. Its periodic displacement and brightness waves close over eight seconds. Expensive mask extraction and frame rendering remain offline.
+
+## Clean globe export correction
+
+The owner identified photo damage from the gray-matte extraction. The replacement uses [Bloop’s saved project and MP4 export](https://bloop.wtf/en) twice, with only the background changed to black or white. Both renders retain the original card edges, source photos, shadows, and back fade. A single packed video keeps their timing synchronized; the slider selects the matching source render. The segmentation pipeline has been deleted.

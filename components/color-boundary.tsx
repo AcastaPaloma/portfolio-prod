@@ -13,6 +13,8 @@ export function ColorBoundary() {
     position.current = Math.max(0, Math.min(100, next));
     const surface = control.current?.closest<HTMLElement>(".dither-page");
     surface?.style.setProperty("--split", `${position.current}%`);
+    surface?.style.setProperty("--split-px", `${window.innerWidth*position.current/100}px`);
+    window.dispatchEvent(new CustomEvent("portfolio-inversion",{detail:position.current/100}));
   };
 
   useEffect(() => () => cancelAnimationFrame(frame.current), []);
@@ -20,8 +22,9 @@ export function ColorBoundary() {
     const surface = control.current?.closest<HTMLElement>(".dither-page");
     let resizeFrame = 0;
     // Resolve each ink gradient against the viewport without fixed backgrounds,
-    // which mobile Safari does not consistently support. Dragging only changes --split.
+    // which mobile Safari does not consistently support. The paired globe follows the same boundary.
     const measure = () => {
+      surface?.style.setProperty("--split-px", `${window.innerWidth*position.current/100}px`);
       surface?.querySelectorAll<HTMLElement>(".ink").forEach(element => {
         element.style.setProperty("--ink-left", `${element.getBoundingClientRect().left}px`);
       });

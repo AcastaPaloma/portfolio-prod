@@ -88,12 +88,12 @@
   ],
   "narrative": {
     "northStar": "Words, Photographs, and Dots",
-    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, and a particle helmet. Current Reflex inference work and the calendar invitation are in the opening. The transparent Morgan globe preserves photo colors. The actual Ink export forms a small handwritten sideline.",
+    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, and a particle helmet. Current Reflex inference work and the calendar invitation are in the opening. Matching black/white Bloop exports preserve the globe’s photo detail without background removal. The actual Ink export forms a small handwritten sideline.",
     "keyCharacteristics": [
       "Georgia prose and small icons before underlined text links; all sections share one centered 60rem rail and symmetric gutters.",
       "Full-color personal photos in tight bento groups, without captions.",
       "Dither limited to the minifigure and helmet.",
-      "Transparent full-color Morgan photo globe video without a visible playback control.",
+      "Synchronized full-color Bloop globe exports follow the boundary without background removal or visible playback controls.",
       "Independent text/background inversion preserves photo colors; the helmet and handwriting invert.",
       "Precomputed crest wind and dither, lazy media, artwork pause controls, and reduced-motion stills."
     ],
