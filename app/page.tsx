@@ -1,7 +1,6 @@
 import { ColorBoundary } from "@/components/color-boundary";
 import { TransparentLoop } from "@/components/transparent-loop";
 import { InlineIcon } from "@/components/inline-icon";
-import { RovingPinata } from "@/components/roving-pinata";
 import "./dither.css";
 
 type Photo = { name:string; width:number; height:number; alt:string };
@@ -31,7 +30,7 @@ export default function Home() {
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
         <h1 id="name" className="ink">Kuan Yi Wang</h1>
-        <p className="ink">I’m a computer science student at the <a href="https://uwaterloo.ca/"><InlineIcon name="waterloo"/>University of Waterloo</a>. I’ve worked on agentic systems at <a href="https://www.morganstanley.com/"><InlineIcon name="morgan-stanley"/>Morgan Stanley</a> and medical imaging at <a href="https://neuro.polymtl.ca/"><InlineIcon name="neuropoly"/>NeuroPoly</a> (Mila).</p>
+        <p className="ink">I’m a computer science student at the <a href="https://uwaterloo.ca/"><span className="icon-word"><InlineIcon name="waterloo"/>University</span> of Waterloo</a>, now working on computer vision inference at <a href="https://reflex.inc/"><span className="icon-word"><InlineIcon name="reflex"/>Reflex</span></a>. Previously, I worked on agentic systems at <a href="https://www.morganstanley.com/"><span className="icon-word"><InlineIcon name="morgan-stanley"/>Morgan</span> Stanley</a> and medical imaging at <a href="https://neuro.polymtl.ca/"><span className="icon-word"><InlineIcon name="neuropoly"/>NeuroPoly</span></a> (Mila).</p>
         <p className="ink">I also co-founded <a href="https://www.pinatapitch.tech"><InlineIcon name="pinata"/>Piñata Pitch</a>, bringing people together to build things.</p>
         <p className="ink">Outside of that: a little German every day, the gym, and whatever my camera roll is turning into.</p>
         <nav className="dither-links ink" aria-label="Find me">
@@ -53,7 +52,7 @@ export default function Home() {
           <li className="ink">Multimodal Conversational Agent<span>A V-JEPA-inspired world model for conversation.</span></li>
         </ul>
       </div>
-      <TransparentLoop className="helmet-art" name="helmet particles" src="/animation/helmet-particles.mp4" smallSrc="/animation/helmet-particles-small.mp4" poster="/animation/helmet-particles-poster.webp" width={720} height={720} monochrome/>
+      <TransparentLoop className="helmet-art" name="helmet particles" src="/animation/helmet-wind.mp4" smallSrc="/animation/helmet-wind-small.mp4" poster="/animation/helmet-wind-poster.webp" width={720} height={720} monochrome/>
     </section>
 
     <section className="dither-people" aria-labelledby="people">
@@ -67,7 +66,7 @@ export default function Home() {
       <div className="people-secondary">
       <section className="people-group morgan-group" aria-labelledby="morgan-people">
         <h3 id="morgan-people" className="section-title text-layer ink"><InlineIcon name="morgan-stanley"/>Morgan Stanley</h3>
-        <TransparentLoop className="globe-art" name="Morgan Stanley photo globe" src="/animation/morgan-orbit.mp4" smallSrc="/animation/morgan-orbit-small.mp4" poster="/animation/morgan-orbit-poster.webp" width={720} height={720} removeMatte={false}/>
+        <TransparentLoop className="globe-art" name="Morgan Stanley photo globe" src="/animation/morgan-orbit-alpha.mp4" smallSrc="/animation/morgan-orbit-alpha-small.mp4" poster="/animation/morgan-orbit-alpha-poster.webp" width={600} height={600} packedAlpha controls={false}/>
       </section>
       <section className="people-group" aria-labelledby="around-people">
         <div className="around-intro">
@@ -83,7 +82,6 @@ export default function Home() {
       <h2 id="elsewhere" className="section-title text-layer ink">Elsewhere.</h2>
       <PhotoWall photos={moments} variant="moments"/>
     </section>
-    <RovingPinata/>
     <ColorBoundary/>
   </main>;
 }

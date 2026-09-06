@@ -17,7 +17,7 @@ The original video is 5.208 seconds and includes repeated full turns. Its frame 
 
 # Piñata, helmet, and Ink additions — September 2026
 
-The page now dithers only the minifigure, piñata, and helmet. Personal photographs and the Morgan globe use their original colors.
+The current page dithers only the minifigure and helmet. The piñata animation was removed in the latest September 6 refinement; its generation assets below remain archived and are not loaded. Personal photographs and the Morgan globe use their original colors.
 
 ## Piñata
 
@@ -28,13 +28,13 @@ Generated in the owner's signed-in Midjourney account: one image batch and one v
 - Source: `public/animation/pinata-source.mp4`.
 - Image direction: happy tactile donkey piñata, long ears, smiling face, tissue fringe in fuchsia, orange, and cobalt bands, full body on a white studio background. Video direction: joyful leap, tissue/confetti burst, and reassembly, fixed camera (`--motion high --raw --loop --bs 1`).
 - Processing: `scripts/dither-motion.mjs source.mp4 pinata-leap white` removes the neutral studio backdrop, renders colored diamond marks, and adds reversible particle dispersion. The forward/reverse source sequence closes the 124-frame, 12-fps loop.
-- The page plays `pinata-roam.mp4`, a 256px derivative of `pinata-leap.mp4`, encoded with H.264 CRF 24. `RovingPinata` adds three actual positional hops along periodic ballistic arcs, compositor transforms, and landing compression. Its fixed button pauses both travel and source playback.
+- Archived `pinata-roam.mp4` is a 256px derivative of `pinata-leap.mp4`, encoded with H.264 CRF 24. The roaming component and its control were deleted; no piñata animation is mounted.
 
 ## Agamemnon helmet
 
 The owner supplied a crested helmet reference and a particle-filter description. An image was generated with the built-in image-generation tool, preserving the three-quarter pose, crest, face opening, and rear ornaments. The requested style was white point-cloud particles, density-defined contours, sparse edge dispersion, and no typography or colored background.
 
-`public/animation/helmet-particles-source.png` preserves the generated source. `scripts/animate-helmet.mjs` removes its dark matte/checker pixels and renders an eight-second periodic particle shimmer, local glints, and a tiny closed drift. It writes transparent still, 720px video, and 384px mobile video. The entire displayed subject uses difference blending, so its particles invert at the same slider boundary as the page.
+`public/animation/helmet-particles-source.png` preserves the generated source. `scripts/animate-helmet.mjs` removes its dark matte/checker pixels and renders an eight-second periodic crest-wind cycle with local particle shimmer, sparse dropout, and traveling glints. The curved crest root anchors the motion: metal geometry never rotates or drifts. Current outputs are `helmet-wind-poster.webp`, `helmet-wind.mp4` (720px), and `helmet-wind-small.mp4` (384px). The entire displayed subject uses difference blending, so its particles invert at the same slider boundary as the page.
 
 ## Ink handwriting
 
@@ -44,8 +44,10 @@ Created and downloaded from [Arnold Francisca's Ink tool](https://arnoldfrancisc
 
 ## Morgan globe
 
-Source supplied by the owner: `/Users/kuanw/Downloads/Bloop-orbitglobe-15s.mp4`. `morgan-orbit.mp4` is a 720px, 30-fps, H.264 CRF 23 encode; `morgan-orbit-small.mp4` is the 480px CRF 24 variant. Both preserve the normal full-color video. The first frame supplies `morgan-orbit-poster.webp`. Native browser playback pauses offscreen, in hidden tabs, or for reduced-motion preferences.
+Source supplied by the owner: `/Users/kuanw/Downloads/Bloop-orbitglobe-15s.mp4`. `scripts/prepare-globe-alpha.mjs` isolates connected gray matte regions offline and builds a separate alpha mask, preserving the RGB photo content. It packs color above alpha into `morgan-orbit-alpha.mp4` (600×1200, 24 fps, H.264 CRF 20) and `morgan-orbit-alpha-small.mp4` (384×768, CRF 22). The displayed image is square. The first frame supplies transparent `morgan-orbit-alpha-poster.webp`.
+
+There is no visible pause button or native video control on the globe. Playback still pauses offscreen and in hidden tabs; reduced motion uses its still poster. The earlier opaque `morgan-orbit` files remain historical, unused assets.
 
 ## Runtime transparency
 
-The three dither subjects and Ink use a tiny WebGL matte-removal pass on each decoded frame. Dithering, sparkle, and confetti are already baked. `requestVideoFrameCallback` avoids unnecessary redraws; an 83ms timer is the fallback. The shader uses a soft near-black threshold, leaves colored pixels in their original color space, and writes premultiplied alpha. WebGL failure leaves the static alpha poster. The normal Morgan video bypasses this pass.
+The two dither subjects and Ink use a tiny WebGL matte-removal pass on each decoded frame. Dithering and sparkle are already baked. `requestVideoFrameCallback` avoids unnecessary redraws; an 83ms timer is the fallback. The shader uses a soft near-black threshold, leaves colored pixels in their original color space, and writes premultiplied alpha. Morgan uses a second shader sampling its explicit packed alpha rather than chroma-keying photo colors at runtime; its fallback timer is 42ms. WebGL failure leaves the static alpha poster.

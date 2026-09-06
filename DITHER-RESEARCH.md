@@ -30,4 +30,8 @@ Reference analysis and source checks continued September 5–6, 2026:
 | [Lance Yan, inspected live](https://www.lanceyan.com/) | Transparent scene backgrounds with a higher text layer allow motion behind prose. Our text and page backgrounds are independently split, keeping colored media intact. |
 | [Arnold Francisca Ink](https://arnoldfrancisca.com/tools/ink) | Actual handwritten animation export used as a restrained sideline; settings and source recorded in ANIMATION-SOURCES.md. |
 
-The final user direction narrows dithering to the minifigure, piñata, and helmet. Photographs and the supplied Morgan globe are full color in compact bento groups. The white helmet and handwriting follow the inversion boundary; colored subjects and normal media retain their colors. Roving piñata movement is a separate compositor animation with sampled ballistic arcs and a stationary pause control.
+The latest user direction narrows dithering to the minifigure and helmet and removes the piñata animation. Photographs and the supplied Morgan globe are full color in compact bento groups. The white helmet and handwriting follow the inversion boundary; colored subjects and normal media retain their colors. The helmet uses a fixed silhouette below the crest, with coherent wind displacement in the bristles and local luminance pulses. Morgan now uses a separately prepared alpha mask so the gray backdrop disappears without runtime chroma-keying of photo colors.
+
+## September 6 refinement
+
+[Lance’s butterfly scene](https://www.lanceyan.com/) was inspected playing live again. The intended energy comes from local moving detail crossing a sharp dither threshold; the new helmet applies that through crest wind and sparse particle variation, with no rotation. Its periodic displacement and brightness waves close over eight seconds. Expensive mask extraction and frame rendering remain offline.

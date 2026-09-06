@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-const brands:Record<string,string>={waterloo:"waterloo.svg","morgan-stanley":"morgan-stanley.webp",neuropoly:"neuropoly.webp",pinata:"pinata.webp"};
+const brands:Record<string,string>={waterloo:"waterloo.svg","morgan-stanley":"morgan-stanley.webp",neuropoly:"neuropoly.webp",pinata:"pinata.webp",reflex:"reflex.webp"};
 const paths:Record<string,ReactNode>={
  resume:<><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h4M9 12h6M9 16h6"/></>,
  linkedin:<><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M8 10v7M12 17v-7M12 13c0-4 5-4 5 0v4M8 7v.1"/></>,

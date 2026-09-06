@@ -40,9 +40,9 @@
         "purpose": "A glossy personal LEGO figure turns through a full rotation with baked colored dithering."
       },
       {
-        "name": "roaming-pinata",
-        "value": "22-second compositor transform route; three ballistic hops and landing squash",
-        "purpose": "A small character inhabits the page; fixed pause control stops travel and source motion."
+        "name": "helmet-crest-wind",
+        "value": "Precomputed 12 fps, eight-second closed wind cycle with fixed metal geometry",
+        "purpose": "Crest bristles sway while local particle pulses and glints give the helmet life without rotation."
       }
     ],
     "breakpoints": [
@@ -88,14 +88,14 @@
   ],
   "narrative": {
     "northStar": "Words, Photographs, and Dots",
-    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, a roaming piñata, and a particle helmet. The calendar invitation is in the opening. The actual Ink export forms a small handwritten sideline.",
+    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, and a particle helmet. Current Reflex inference work and the calendar invitation are in the opening. The transparent Morgan globe preserves photo colors. The actual Ink export forms a small handwritten sideline.",
     "keyCharacteristics": [
-      "Georgia prose and small icons before underlined text links.",
+      "Georgia prose and small icons before underlined text links; all sections share one centered 60rem rail and symmetric gutters.",
       "Full-color personal photos in tight bento groups, without captions.",
-      "Dither limited to the minifigure, piñata, and helmet.",
-      "Normal Morgan photo globe video.",
+      "Dither limited to the minifigure and helmet.",
+      "Transparent full-color Morgan photo globe video without a visible playback control.",
       "Independent text/background inversion preserves photo colors; the helmet and handwriting invert.",
-      "Compositor hops, precomputed dither, lazy media, pause controls, and reduced-motion stills."
+      "Precomputed crest wind and dither, lazy media, artwork pause controls, and reduced-motion stills."
     ],
     "rules": [
       {

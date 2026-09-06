@@ -34,6 +34,7 @@ The six previously selected Elsewhere images are regenerated from the retained, 
 
 - [Waterloo official icon](https://uwaterloo.ca/profiles/uw_base_profile/themes/uw_fdsu_theme_resp/icon.svg)
 - [Morgan Stanley official favicon](https://www.morganstanley.com/etc.clientlibs/msdotcomr4/clientlibs/components/site/resources/img/favicon-196x196.png)
+- [Reflex official favicon](https://reflex.inc/favicon-32x32.png), with the company domain verified through [its GitHub organization](https://github.com/reflex-inc).
 - [NeuroPoly official logo](https://neuro.polymtl.ca/_static/logo.png)
 - Piñata Pitch: owner-supplied `/Users/kuanw/Downloads/Pinata Pitch Logo Icon.png`.
 
