@@ -42,7 +42,7 @@ function PhotoWall({photos,variant}:{photos:Photo[];variant:string}) {
 }
 
 export default function Home() {
-  const bookingUrl=process.env.NEXT_PUBLIC_CAL_COM_URL||"https://cal.com";
+  const bookingUrl=process.env.NEXT_PUBLIC_CAL_COM_URL||"https://cal.com/kywaterloo";
   return <main className="dither-page">
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
