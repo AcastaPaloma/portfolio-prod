@@ -44,6 +44,8 @@ spacing:
   link-gap: "1.4rem"
   work-row: "1.5rem"
   photo-gap: "4px"
+  masonry-column-gap: "0.75rem"
+  masonry-item-gap: "1.25rem"
   section-space: "clamp(4rem, 7vw, 5.5rem)"
   location-gap: "0.4rem"
 components:
@@ -99,9 +101,11 @@ Every underlined text link has a small preceding icon. Brand marks come from the
 
 The intro, work, People, and Elsewhere all share one centered 60rem maximum-width rail with symmetric 2.75–3rem gutters. Headings, prose, links, and image groups share its left edge. The first section uses a 1.2:1 copy/art split with a 3rem gap and content-driven height. Work occupies about 26rem, with the helmet aligned to the rail’s right edge and an additional 1–2rem gap above the section. People and Elsewhere headings have 4–5.5rem of responsive space above them. Avoid independent section widths, asymmetric mobile padding, or viewport-height gaps before work.
 
-Bento groups use four-pixel seams, square corners, and no card shells. Piñata Pitch uses three columns: tall event screen, selfie above the audience, tall physical piñata. Morgan's square globe and the two Around the dot photos share a desktop row. Their headings align. Around the dot pairs the childhood blanket photograph with the inflatable dinosaur. Elsewhere has four columns and three compact rows, led by a two-column coastal view of Èze. Captions sit outside the images with a .4rem gap and reserved two-line height; rows have a 1rem gap. Image proportions and focal positions preserve people; each photo opens its uncropped optimized image in a new tab.
+Bento groups use four-pixel seams, square corners, and no card shells. Piñata Pitch uses three columns: tall event screen, selfie above the audience, tall physical piñata. Morgan's square globe and the two Around the dot photos share a desktop row. Their headings align. Around the dot pairs the childhood blanket photograph with the inflatable dinosaur.
 
-At 48rem, the introduction and work stack and Elsewhere uses three columns. The minifigure is capped to 42svh; the helmet is capped at 24rem. Every section retains the same symmetric gutter; photo groups and headings stay flush to that common rail. At 34rem, the Piñata grid becomes two columns, Morgan and Around the dot stack, and Elsewhere uses two columns with the coastal photograph spanning its first row. Location labels wrap naturally without overflowing at 320px. Around the dot retains a tiny handwriting sideline. The page scrolls normally, without pinned sections or full-screen image panels.
+Elsewhere follows the varied-height masonry direction of the owner's [Gallery 25 reference](https://www.shadcnblocks.com/block/gallery25). Four native CSS columns let each photograph keep its complete natural proportions. Columns have .75rem gutters, figures have 1.25rem of space below, and location labels sit .4rem beneath their images at their natural text height. Images and captions never split across columns. Source and keyboard order proceed down each column; no client layout library, image measurement, or extra animation is needed. The photographs remain full-color and square-cornered. Each still opens its complete optimized image in a new tab.
+
+At 48rem, the introduction and work stack and Elsewhere uses three masonry columns. The minifigure is capped to 42svh; the helmet is capped at 24rem. Every section retains the same symmetric gutter; photo groups and headings stay flush to that common rail. At 34rem, the Piñata grid becomes two columns, Morgan and Around the dot stack, and Elsewhere uses two masonry columns with .5rem gutters and 1rem between figures. Location labels wrap naturally without overflowing at 320px. Around the dot retains a tiny handwriting sideline. The page scrolls normally, without pinned sections or full-screen image panels.
 
 ## Motion and performance
 
@@ -133,6 +137,6 @@ Its square native fields, ink-filled primary actions, hover inversion, visible f
 - Preserve the compact, unboxed serif identity and authentic personal media.
 - Keep photos and the Morgan video in full color. Dither only the minifigure and helmet.
 - Keep the calendar invitation in the opening.
-- Use tight bento seams without frames or internal padding. Only owner-requested travel locations appear beneath the new Elsewhere images.
+- Keep People in tight bentos and Elsewhere in masonry at natural image proportions, without frames or internal padding. Only owner-requested travel locations appear beneath the new Elsewhere images.
 - Keep text readable over motion, retain artwork pause controls and reduced-motion behavior, and precompute expensive image work.
 - Record media provenance in PHOTO-SOURCES.md and ANIMATION-SOURCES.md.

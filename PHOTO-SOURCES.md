@@ -43,7 +43,7 @@ The following eight additions use owner-supplied location labels beneath their p
 | chinatown | `/Users/kuanw/Downloads/IMG_3954.jpg` | Chinatown, London |
 | platja-de-la-riera | `/Users/kuanw/Downloads/IMG_5444.HEIC` | Platja de la Riera, Spain |
 
-Bento slots use cover crops and selected focal positions; clicking any photograph opens its complete optimized image. People remains caption-free. Elsewhere's location labels wrap below the image on phones and invert with the surrounding text, leaving photo pixels unchanged.
+People's bento slots use cover crops and selected focal positions. Elsewhere uses responsive masonry columns and displays each photograph's complete natural proportions. Clicking any photograph opens its complete optimized image. People remains caption-free. Elsewhere's location labels wrap below the image on phones and invert with the surrounding text, leaving photo pixels unchanged.
 
 ## Inline brand marks
 

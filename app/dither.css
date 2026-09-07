@@ -65,9 +65,10 @@
 .ink-art .loop-toggle{right:-1rem;bottom:-.25rem}
 .bento-around{grid-template-columns:1fr 1.15fr;height:auto;aspect-ratio:1.3}
 .bento-around img{object-position:50% 45%}
-.bento-moments{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(16rem,28vw,21rem);row-gap:1rem}
-.bento-moments .photo-cell{grid-template-rows:minmax(0,1fr) 2.2rem;row-gap:.4rem}
-.bento-moments .photo-eze{grid-column:span 2}
+.masonry-moments{position:relative;z-index:2;column-count:4;column-gap:.75rem;width:100%;margin:0;padding:0}
+.masonry-moments .photo-cell{display:flow-root;break-inside:avoid;margin:0 0 1.25rem}
+.masonry-moments .people-photo,.masonry-moments picture,.masonry-moments img{height:auto}
+.masonry-moments .photo-location{margin-top:.4rem}
 .photo-location{margin:0;padding:0;font-size:.8125rem;line-height:1.35;text-wrap:pretty}
 .photo-circa-2026 img{object-position:50% 25%}
 .color-boundary{position:fixed;z-index:30;inset-block:0;left:clamp(22px,var(--split),calc(100% - 22px));width:44px;transform:translateX(-50%);cursor:ew-resize;touch-action:none;user-select:none;outline:none}
@@ -92,7 +93,7 @@
  .people-secondary{grid-template-columns:1fr 1.3fr;gap:1rem;margin-top:2rem}
  .people-secondary .section-title{font-size:1.05rem;height:5rem}
  .bento-pinata{grid-template-rows:11rem 11rem}
- .bento-moments{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(15rem,36vw,19rem)}
+ .masonry-moments{column-count:3}
  .ink-art{width:6.5rem;right:0;top:70%;opacity:.7}
  .around-intro .section-title{align-items:flex-start;padding-top:1.5rem}
  .boundary-hint{bottom:1.5rem}
@@ -106,7 +107,8 @@
  .around-intro .section-title{padding:0;align-items:center}
  .ink-art{width:8rem;top:50%}
  .bento-around{aspect-ratio:1.25}
- .bento-moments{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(13rem,57vw,19rem);row-gap:.6rem}
+ .masonry-moments{column-count:2;column-gap:.5rem}
+ .masonry-moments .photo-cell{margin-bottom:1rem}
  .photo-location{font-size:.75rem}
 }
 @media print{.color-boundary,.color-inversion,.loop-toggle{display:none}.ink{color:#202020;background:none}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}

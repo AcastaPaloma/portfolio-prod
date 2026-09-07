@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-07T15:08:14.300Z",
+  "generatedAt": "2026-09-07T15:15:39.627Z",
   "title": "Design System: Kuan Yi Wang — Words, Photographs, and Dots",
   "extensions": {
     "colorMeta": {
@@ -88,10 +88,10 @@
   ],
   "narrative": {
     "northStar": "Words, Photographs, and Dots",
-    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, and a particle helmet with stronger crest wind. Current Reflex inference work and the calendar invitation are in the opening. Matching black/white Bloop exports preserve the globe’s photo detail without background removal. The actual Ink export forms a small handwritten sideline. The travel grid adapts from four columns to three and two; location captions invert with text, while photographs retain their colors.",
+    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, and a particle helmet with stronger crest wind. Current Reflex inference work and the calendar invitation are in the opening. Matching black/white Bloop exports preserve the globe’s photo detail without background removal. The actual Ink export forms a small handwritten sideline. The travel masonry preserves natural photo proportions in four, three, or two native CSS columns; location captions invert with text, while photographs retain their colors.",
     "keyCharacteristics": [
       "Georgia prose and small icons before underlined text links; all sections share one centered 60rem rail and symmetric gutters, with added breathing room above work, People, and Elsewhere.",
-      "Full-color photos in tight bento groups. Eight new Elsewhere travel photographs have small, wrapping location labels beneath them; People remains caption-free.",
+      "Full-color photos: tight bento groups for People, natural-proportion masonry for Elsewhere. Eight travel photographs have wrapping location labels beneath them; People remains caption-free.",
       "Dither limited to the minifigure and helmet.",
       "Synchronized full-color Bloop globe exports follow the boundary without background removal or visible playback controls.",
       "Independent text/background inversion preserves photo colors; the helmet and handwriting invert.",

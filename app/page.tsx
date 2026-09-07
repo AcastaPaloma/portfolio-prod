@@ -28,7 +28,7 @@ const moments: Photo[] = [
   {name:"circa-2026",width:768,height:1024,alt:"Four LEGO figures lined up on a boardwalk at the beach"},
 ];
 function PhotoWall({photos,variant}:{photos:Photo[];variant:string}) {
-  return <div className={`photo-bento bento-${variant}`}>
+  return <div className={variant==="moments"?"masonry-moments":`photo-bento bento-${variant}`}>
     {photos.map(photo=><figure key={photo.name} className={`photo-cell photo-${photo.name}`}>
       <a className="people-photo" href={`/people/${photo.name}.webp`} target="_blank" rel="noreferrer">
         <picture>
