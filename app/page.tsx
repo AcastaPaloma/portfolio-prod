@@ -3,7 +3,7 @@ import { TransparentLoop } from "@/components/transparent-loop";
 import { InlineIcon } from "@/components/inline-icon";
 import "./dither.css";
 
-type Photo = { name:string; width:number; height:number; alt:string };
+type Photo = { name:string; width:number; height:number; alt:string; location?:string };
 const pinataPhotos: Photo[] = [
   {name:"pinata-1552",width:1100,height:1467,alt:"An event directory screen at Open House Montreal"},
   {name:"pinata-1225",width:1100,height:1467,alt:"Three friends smiling together with a Google sign"},
@@ -12,17 +12,34 @@ const pinataPhotos: Photo[] = [
 ];
 const aroundPhotos: Photo[] = [
   {name:"around-0752",width:1100,height:1467,alt:"A childhood photo, asleep under a red blanket"},
-  {name:"around-0738",width:1100,height:825,alt:"Two people together in a sunlit cloister garden"},
+  {name:"around-2721",width:738,height:1600,alt:"A person peeking out of an inflatable dinosaur costume"},
 ];
 const moments: Photo[] = [
+  {name:"eze",width:1100,height:619,alt:"A French flag above tiled rooftops overlooking the Mediterranean coastline",location:"Èze, France"},
+  {name:"villefranche",width:900,height:1600,alt:"A narrow stone stairway between colorful buildings at dusk",location:"Villefranche-sur-Mer, France"},
+  {name:"monte-carlo",width:1100,height:1467,alt:"A Spider-Man sculpture above a car beside a coral-colored building",location:"Monte Carlo, Monaco"},
+  {name:"saint-paul-de-vence",width:1100,height:1467,alt:"A figure suspended between sunlit stone buildings above a courtyard",location:"Saint-Paul-de-Vence, France"},
+  {name:"paris",width:1100,height:1467,alt:"The Arc de Triomphe beneath a cloud-streaked sky",location:"Paris, France"},
+  {name:"british-museum",width:1100,height:1467,alt:"A carved stone pig displayed in a museum case",location:"The British Museum, London"},
+  {name:"chinatown",width:1100,height:1467,alt:"A bubble waffle held beneath rows of red lanterns",location:"Chinatown, London"},
+  {name:"platja-de-la-riera",width:1100,height:1467,alt:"An orange sunset over the sea and a quiet beach",location:"Platja de la Riera, Spain"},
   {name:"after-rain",width:1100,height:1467,alt:"A rainy city street at dusk"},
   {name:"window",width:1100,height:1467,alt:"A window framing a turquoise waterfront between yellow walls"},
-  {name:"off-the-clock",width:1100,height:825,alt:"Friends striking improbable poses on a sunny beach"},
-  {name:"hills",width:1100,height:733,alt:"Two friends on a trail between green mountains"},
-  {name:"a-short-break",width:1100,height:1467,alt:"Lying on the grass beside a pool with arms outstretched"},
   {name:"circa-2026",width:768,height:1024,alt:"Four LEGO figures lined up on a boardwalk at the beach"},
 ];
-function PhotoWall({photos,variant}:{photos:Photo[];variant:string}) {return <div className={`photo-bento bento-${variant}`}>{photos.map(photo=><a key={photo.name} className={`people-photo photo-${photo.name}`} href={`/people/${photo.name}.webp`} target="_blank" rel="noreferrer"><picture><source media="(max-width:48rem)" srcSet={`/people/${photo.name}-small.webp`}/><img src={`/people/${photo.name}.webp`} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async"/></picture></a>)}</div>;}
+function PhotoWall({photos,variant}:{photos:Photo[];variant:string}) {
+  return <div className={`photo-bento bento-${variant}`}>
+    {photos.map(photo=><figure key={photo.name} className={`photo-cell photo-${photo.name}`}>
+      <a className="people-photo" href={`/people/${photo.name}.webp`} target="_blank" rel="noreferrer">
+        <picture>
+          <source media="(max-width:48rem)" srcSet={`/people/${photo.name}-small.webp`}/>
+          <img src={`/people/${photo.name}.webp`} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async"/>
+        </picture>
+      </a>
+      {photo.location&&<figcaption className="photo-location text-layer ink">{photo.location}</figcaption>}
+    </figure>)}
+  </div>;
+}
 
 export default function Home() {
   const bookingUrl=process.env.NEXT_PUBLIC_CAL_COM_URL||"https://cal.com";
@@ -31,8 +48,8 @@ export default function Home() {
       <div className="dither-intro-copy text-layer">
         <h1 id="name" className="ink">Kuan Yi Wang</h1>
         <p className="ink">I’m a computer science student at the <a href="https://uwaterloo.ca/"><span className="icon-word"><InlineIcon name="waterloo"/>University</span> of Waterloo</a>, now working on computer vision inference at <a href="https://reflex.inc/"><span className="icon-word"><InlineIcon name="reflex"/>Reflex</span></a>. Previously, I worked on agentic systems at <a href="https://www.morganstanley.com/"><span className="icon-word"><InlineIcon name="morgan-stanley"/>Morgan</span> Stanley</a> and medical imaging at <a href="https://neuro.polymtl.ca/"><span className="icon-word"><InlineIcon name="neuropoly"/>NeuroPoly</span></a> (Mila).</p>
-        <p className="ink">I also co-founded <a href="https://www.pinatapitch.tech"><InlineIcon name="pinata"/>Piñata Pitch</a>, bringing people together to build things.</p>
-        <p className="ink">Outside of that: a little German every day, the gym, and whatever my camera roll is turning into.</p>
+        <p className="ink">I also co-founded <a href="https://www.pinatapitch.tech"><InlineIcon name="pinata"/>Piñata Pitch</a>, turning 2000+ student ideas into startups.</p>
+        <p className="ink">Outside of that: a little German every day + the gym + reading.</p>
         <nav className="dither-links ink" aria-label="Find me">
           <a href="/resume/kuan-yi-wang-resume.pdf"><InlineIcon name="resume"/>résumé</a>
           <a href="https://www.linkedin.com/in/kuan-yi-wang-443871319/"><InlineIcon name="linkedin"/>linkedin</a>
@@ -48,11 +65,11 @@ export default function Home() {
         <h2 id="work" className="ink">A few things I’ve built.</h2>
         <ul>
           <li className="ink"><a href="https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction"><InlineIcon name="quantum"/>GNN Quantum Error Decoder</a><span>Quantum error correction. ISEF Silver Award.</span></li>
-          <li className="ink">Cortesol<span>Critical thinking over a knowledge graph. Hackthe6ix finalist.</span></li>
-          <li className="ink">Multimodal Conversational Agent<span>A V-JEPA-inspired world model for conversation.</span></li>
+          <li className="ink"><a href="https://cortesol.onrender.com/"><InlineIcon name="network"/>Cortesol</a><span>Critical thinking over a knowledge graph. Hackthe6ix finalist.</span></li>
+          <li className="ink"><a href="https://github.com/AcastaPaloma/MvPvP"><InlineIcon name="code"/>MvPvP</a><span>Competitive vibe coding. Build an MVP in five minutes.</span></li>
         </ul>
       </div>
-      <TransparentLoop className="helmet-art" name="helmet particles" src="/animation/helmet-wind.mp4" smallSrc="/animation/helmet-wind-small.mp4" poster="/animation/helmet-wind-poster.webp" width={720} height={720} monochrome/>
+      <TransparentLoop className="helmet-art" name="helmet particles" src="/animation/helmet-gust.mp4" smallSrc="/animation/helmet-gust-small.mp4" poster="/animation/helmet-gust-poster.webp" width={720} height={720} monochrome/>
     </section>
 
     <section className="dither-people" aria-labelledby="people">

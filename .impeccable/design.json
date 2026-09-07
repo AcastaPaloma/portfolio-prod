@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-06T04:14:42.460Z",
+  "generatedAt": "2026-09-07T15:08:14.300Z",
   "title": "Design System: Kuan Yi Wang — Words, Photographs, and Dots",
   "extensions": {
     "colorMeta": {
@@ -42,7 +42,7 @@
       {
         "name": "helmet-crest-wind",
         "value": "Precomputed 12 fps, eight-second closed wind cycle with fixed metal geometry",
-        "purpose": "Crest bristles sway while local particle pulses and glints give the helmet life without rotation."
+        "purpose": "Stronger gusts travel through crest bristles while local particle pulses and glints give the helmet life without rotation."
       }
     ],
     "breakpoints": [
@@ -88,10 +88,10 @@
   ],
   "narrative": {
     "northStar": "Words, Photographs, and Dots",
-    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, and a particle helmet. Current Reflex inference work and the calendar invitation are in the opening. Matching black/white Bloop exports preserve the globe’s photo detail without background removal. The actual Ink export forms a small handwritten sideline.",
+    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, and a particle helmet with stronger crest wind. Current Reflex inference work and the calendar invitation are in the opening. Matching black/white Bloop exports preserve the globe’s photo detail without background removal. The actual Ink export forms a small handwritten sideline. The travel grid adapts from four columns to three and two; location captions invert with text, while photographs retain their colors.",
     "keyCharacteristics": [
-      "Georgia prose and small icons before underlined text links; all sections share one centered 60rem rail and symmetric gutters.",
-      "Full-color personal photos in tight bento groups, without captions.",
+      "Georgia prose and small icons before underlined text links; all sections share one centered 60rem rail and symmetric gutters, with added breathing room above work, People, and Elsewhere.",
+      "Full-color photos in tight bento groups. Eight new Elsewhere travel photographs have small, wrapping location labels beneath them; People remains caption-free.",
       "Dither limited to the minifigure and helmet.",
       "Synchronized full-color Bloop globe exports follow the boundary without background removal or visible playback controls.",
       "Independent text/background inversion preserves photo colors; the helmet and handwriting invert.",

@@ -26,9 +26,24 @@ The September 6 revision explicitly removes dithering from all personal photogra
 | Piñata Pitch | pinata-0839 | `/Users/kuanw/Pictures/IMG_0839.JPG` |
 | Piñata Pitch | pinata-3876 | `/Users/kuanw/Pictures/DSC_3876.JPEG` |
 | Around the dot | around-0752 | `/Users/kuanw/Pictures/IMG_0752.HEIC` |
-| Around the dot | around-0738 | `/Users/kuanw/Pictures/IMG_0738.HEIC` |
+| Around the dot | around-2721 | `/Users/kuanw/Downloads/IMG_2721.PNG` |
 
-The six previously selected Elsewhere images are regenerated from the retained, stripped `public/photos/*-original.webp` sources. Bento slots use cover crops and selected focal positions; clicking any photograph opens its complete optimized image. There are no visible captions.
+The September 7 update replaces the cloister photograph in Around the dot with the owner's inflatable-dinosaur photograph. Elsewhere removes `hills`, `off-the-clock`, and `a-short-break`, retaining `after-rain`, `window`, and `circa-2026` from the stripped `public/photos/*-original.webp` sources.
+
+The following eight additions use owner-supplied location labels beneath their photographs. Names are normalized to Èze and Villefranche-sur-Mer. The requested `IMH_3954.jpg` resolves to the existing `IMG_3954.jpg`; Saint-Paul-de-Vence uses the available HEIC original. No locations were inferred for the three retained photographs.
+
+| Asset | Owner-selected source | Visible location |
+| --- | --- | --- |
+| eze | `/Users/kuanw/Downloads/IMG_8880.jpg` | Èze, France |
+| villefranche | `/Users/kuanw/Downloads/IMG_8856.jpg` | Villefranche-sur-Mer, France |
+| monte-carlo | `/Users/kuanw/Downloads/IMG_8743.jpg` | Monte Carlo, Monaco |
+| saint-paul-de-vence | `/Users/kuanw/Downloads/IMG_8648.heic` | Saint-Paul-de-Vence, France |
+| paris | `/Users/kuanw/Downloads/IMG_8444.jpg` | Paris, France |
+| british-museum | `/Users/kuanw/Downloads/IMG_3988.jpg` | The British Museum, London |
+| chinatown | `/Users/kuanw/Downloads/IMG_3954.jpg` | Chinatown, London |
+| platja-de-la-riera | `/Users/kuanw/Downloads/IMG_5444.HEIC` | Platja de la Riera, Spain |
+
+Bento slots use cover crops and selected focal positions; clicking any photograph opens its complete optimized image. People remains caption-free. Elsewhere's location labels wrap below the image on phones and invert with the surrounding text, leaving photo pixels unchanged.
 
 ## Inline brand marks
 
@@ -38,4 +53,4 @@ The six previously selected Elsewhere images are regenerated from the retained, 
 - [NeuroPoly official logo](https://neuro.polymtl.ca/_static/logo.png)
 - Piñata Pitch: owner-supplied `/Users/kuanw/Downloads/Pinata Pitch Logo Icon.png`.
 
-These become small optimized files in `public/icons/`. Résumé, email, LinkedIn, quantum, and coffee symbols are original small SVG drawings.
+These become small optimized files in `public/icons/`. Résumé, email, LinkedIn, quantum, coffee, Cortesol's network, and MvPvP's code symbols are original small SVG drawings.

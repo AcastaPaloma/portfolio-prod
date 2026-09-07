@@ -25,9 +25,49 @@
     "height": 1467
   },
   {
-    "name": "around-0738",
+    "name": "around-2721",
+    "width": 738,
+    "height": 1600
+  },
+  {
+    "name": "eze",
     "width": 1100,
-    "height": 825
+    "height": 619
+  },
+  {
+    "name": "villefranche",
+    "width": 900,
+    "height": 1600
+  },
+  {
+    "name": "monte-carlo",
+    "width": 1100,
+    "height": 1467
+  },
+  {
+    "name": "saint-paul-de-vence",
+    "width": 1100,
+    "height": 1467
+  },
+  {
+    "name": "paris",
+    "width": 1100,
+    "height": 1467
+  },
+  {
+    "name": "british-museum",
+    "width": 1100,
+    "height": 1467
+  },
+  {
+    "name": "chinatown",
+    "width": 1100,
+    "height": 1467
+  },
+  {
+    "name": "platja-de-la-riera",
+    "width": 1100,
+    "height": 1467
   },
   {
     "name": "after-rain",
@@ -35,22 +75,7 @@
     "height": 1467
   },
   {
-    "name": "off-the-clock",
-    "width": 1100,
-    "height": 825
-  },
-  {
-    "name": "hills",
-    "width": 1100,
-    "height": 733
-  },
-  {
     "name": "window",
-    "width": 1100,
-    "height": 1467
-  },
-  {
-    "name": "a-short-break",
     "width": 1100,
     "height": 1467
   },
