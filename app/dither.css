@@ -71,6 +71,16 @@
 .masonry-moments .photo-location{margin-top:.4rem}
 .photo-location{margin:0;padding:0;font-size:.8125rem;line-height:1.35;text-wrap:pretty}
 .photo-circa-2026 img{object-position:50% 25%}
+.webring-footer{position:relative;z-index:3;display:flex;justify-content:flex-end;width:min(calc(100% - 2 * var(--page-gutter)),var(--page-width));margin:var(--section-space) auto 0;padding-top:1.25rem}
+.webring-footer::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:#fff;opacity:.35;mix-blend-mode:difference}
+.webring-nav{display:flex;align-items:center}
+.webring-nav a{display:grid;place-items:center;width:44px;height:44px;color:#fff;text-decoration:none;mix-blend-mode:difference;transition:opacity 160ms ease,transform 160ms ease}
+.webring-nav a:hover{opacity:.55}
+.webring-nav a:first-child:hover{transform:translateX(-2px)}
+.webring-nav a:last-child:hover{transform:translateX(2px)}
+.webring-nav a:focus-visible{outline-color:currentColor;outline-offset:-2px}
+.webring-nav svg{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.webring-nav img{display:block;width:20px;height:20px}
 .color-boundary{position:fixed;z-index:30;inset-block:0;left:clamp(22px,var(--split),calc(100% - 22px));width:44px;transform:translateX(-50%);cursor:ew-resize;touch-action:none;user-select:none;outline:none}
 .boundary-line{position:absolute;inset-block:0;left:50%;width:1px;background:#858585}
 .boundary-grip{position:absolute;top:48%;left:0;width:44px;height:44px;display:grid;place-items:center;border:1px solid #656565;border-radius:50%;background:#fff;color:#222}
@@ -110,5 +120,7 @@
  .masonry-moments{column-count:2;column-gap:.5rem}
  .masonry-moments .photo-cell{margin-bottom:1rem}
  .photo-location{font-size:.75rem}
+ .webring-footer{justify-content:center}
 }
-@media print{.color-boundary,.color-inversion,.loop-toggle{display:none}.ink{color:#202020;background:none}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}
+@media(prefers-reduced-motion:reduce){.webring-nav a{transition:none}}
+@media print{.color-boundary,.color-inversion,.loop-toggle,.webring-footer{display:none}.ink{color:#202020;background:none}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}

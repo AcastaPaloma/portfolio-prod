@@ -1,6 +1,7 @@
 import { ColorBoundary } from "@/components/color-boundary";
 import { TransparentLoop } from "@/components/transparent-loop";
 import { InlineIcon } from "@/components/inline-icon";
+import Image from "next/image";
 import "./dither.css";
 
 type Photo = { name:string; width:number; height:number; alt:string; location?:string };
@@ -39,6 +40,21 @@ function PhotoWall({photos,variant}:{photos:Photo[];variant:string}) {
       {photo.location&&<figcaption className="photo-location text-layer ink">{photo.location}</figcaption>}
     </figure>)}
   </div>;
+}
+
+function WebringNav() {
+  const ringUrl="https://cs.uwatering.com/#https://www.kuant.space";
+  return <nav className="webring-nav" aria-label="University of Waterloo Computer Science webring">
+    <a href={`${ringUrl}?nav=prev`} aria-label="Previous site in the Waterloo CS webring">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
+    </a>
+    <a href={ringUrl} target="_blank" rel="noreferrer" aria-label="Open the Waterloo CS webring">
+      <Image src="https://cs.uwatering.com/icon.white.svg" alt="" width={24} height={24} unoptimized/>
+    </a>
+    <a href={`${ringUrl}?nav=next`} aria-label="Next site in the Waterloo CS webring">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
+    </a>
+  </nav>;
 }
 
 export default function Home() {
@@ -99,6 +115,7 @@ export default function Home() {
       <h2 id="elsewhere" className="section-title text-layer ink">Elsewhere.</h2>
       <PhotoWall photos={moments} variant="moments"/>
     </section>
+    <footer className="webring-footer"><WebringNav/></footer>
     <ColorBoundary/>
   </main>;
 }
