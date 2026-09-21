@@ -1,6 +1,7 @@
 import { ColorBoundary } from "@/components/color-boundary";
 import { TransparentLoop } from "@/components/transparent-loop";
 import { InlineIcon } from "@/components/inline-icon";
+import { getDuolingoProfile, DUOLINGO_PROFILE_URL } from "@/lib/duolingo";
 import Image from "next/image";
 import "./dither.css";
 
@@ -57,8 +58,10 @@ function WebringNav() {
   </nav>;
 }
 
-export default function Home() {
+export default async function Home() {
   const bookingUrl=process.env.NEXT_PUBLIC_CAL_COM_URL||"https://cal.com/kywaterloo";
+  const duolingo=await getDuolingoProfile();
+  const streakDays=duolingo.streak.toLocaleString("en-US");
   return <main className="dither-page">
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
@@ -70,6 +73,7 @@ export default function Home() {
           <a href="/resume/kuan-yi-wang-resume.pdf"><InlineIcon name="resume"/>résumé</a>
           <a href="https://www.linkedin.com/in/kuan-yi-wang-443871319/"><InlineIcon name="linkedin"/>linkedin</a>
           <a href="mailto:ky7wang@uwaterloo.ca"><InlineIcon name="email"/>email</a>
+          <a className="streak-link" href={DUOLINGO_PROFILE_URL} target="_blank" rel="noreferrer" aria-label={`Duolingo profile ${duolingo.username}, a ${streakDays} day streak`}><InlineIcon name="streak"/><span className="streak-days">{streakDays}</span> days of german, unbroken · @{duolingo.username.toLowerCase()}</a>
           <a className="booking-link" href={bookingUrl} target="_blank" rel="noreferrer"><InlineIcon name="coffee"/>join me for a workout. or a coffee.</a>
         </nav>
       </div>
