@@ -27,7 +27,7 @@
 .streak-card p{margin:0}
 .streak-card-label{font-size:.85rem}
 .streak-card-figure{display:flex;align-items:center;gap:.8rem;margin-top:.7rem}
-.streak-card-flag{flex:none;display:block;width:3.1rem;height:1.86rem;padding:2px;border-radius:5px;border:1px solid #8a8a8a;background:#fff;overflow:hidden}
+.streak-card-flag{flex:none;display:block;width:3.1rem;height:1.86rem;border-radius:5px;overflow:hidden}
 .streak-card-count{font-size:1.3rem;letter-spacing:-.02em}
 .streak-days{font-variant-numeric:tabular-nums;white-space:nowrap}
 .streak-card-avatar{flex:none;display:block;width:3.5rem;height:3.5rem;border-radius:50%;object-fit:cover}
