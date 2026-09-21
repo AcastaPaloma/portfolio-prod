@@ -4,8 +4,6 @@
 
 const USERNAME = "coini2";
 
-export const DUOLINGO_PROFILE_URL = `https://www.duolingo.com/profile/${USERNAME}`;
-
 export type DuolingoProfile = { username: string; streak: number; picture: string; fallback: boolean };
 
 type DuolingoResponse = { users?: Array<{ picture?: string | null; streak?: number; username?: string }> };
@@ -15,7 +13,7 @@ export async function getDuolingoProfile(): Promise<DuolingoProfile> {
     const url = new URL("https://www.duolingo.com/2017-06-30/users");
     url.searchParams.set("username", USERNAME);
     url.searchParams.set("fields", "users{username,picture,streak}");
-    const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 3600 }, signal: AbortSignal.timeout(4000) });
+    const response = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" }, next: { revalidate: 300 }, signal: AbortSignal.timeout(4000) });
     const data = await response.json() as DuolingoResponse;
     const user = data.users?.[0];
     if (!response.ok || !user || typeof user.streak !== "number") throw new Error("Incomplete profile");
@@ -27,7 +25,7 @@ export async function getDuolingoProfile(): Promise<DuolingoProfile> {
   } catch {
     try {
       // Public normalized API from marlonangeli/duolingo-streak-tracker.
-      const response = await fetch(`https://duolingo-streak-tracker.vercel.app/api/stats/${USERNAME}`, { next: { revalidate: 3600 }, signal: AbortSignal.timeout(4000) });
+      const response = await fetch(`https://duolingo-streak-tracker.vercel.app/api/stats/${USERNAME}`, { next: { revalidate: 300 }, signal: AbortSignal.timeout(4000) });
       const profile = await response.json() as { username?: string; streak?: number; avatarUrl?: string };
       if (!response.ok || typeof profile.streak !== "number") throw new Error("Incomplete tracker profile");
       return { username: profile.username ?? "Coini2", streak: profile.streak, picture: profile.avatarUrl?.startsWith("https://") ? profile.avatarUrl : "/resume/duolingo-avatar.webp", fallback: false };
