@@ -1,0 +1,66 @@
+{
+  "title": "Choose the portfolio's visual world",
+  "question": "A pale research folio with scroll-scrubbed dither specimens, an alternate, or a re-roll?",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Pale Specimen Ledger",
+      "kicker": "PROPOSED WORLD",
+      "lineage": "field-research folios, microscope contact sheets, and dithered motion studies",
+      "thesis": "A white field ledger where Kuan Yi's work is encountered as a sequence of live, glitching specimens.",
+      "palette": ["#f7f7f3", "#171717", "#5448ff", "#caff4d"],
+      "materials": ["matte paper", "scan grids", "pixel dither", "handwritten marginalia"],
+      "viewport": "A sparse nameplate and one animated llama specimen dominate an open white field; a precise line of text leads into the scroll.",
+      "risk": "Needs disciplined copy and generous silence so the experimental motion never becomes visual noise.",
+      "sketch": ".impeccable/sketches/assigned.png"
+    },
+    {
+      "id": "challenger-paper-cut",
+      "label": "Layered Paper Cut",
+      "kicker": "CHALLENGER",
+      "lineage": "hand-cut folk paper compositions",
+      "thesis": "Each project appears as a colored layer added to a folded composition.",
+      "palette": ["#f7f7f3", "#171717", "#5448ff", "#caff4d"],
+      "materials": ["cut paper", "flat ink", "fold seams"],
+      "viewport": "A symmetrical cut-out form opens around a personal introduction.",
+      "risk": "Fuses poorly with the requested glitch-image behavior; it would soften the technical, pixel-based character.",
+      "sketch": ".impeccable/sketches/challenger-paper-cut.png",
+      "hero": "https://impeccable.style/worlds/cards/craft-making-lowicz-layered-papercut-hero.webp"
+    },
+    {
+      "id": "challenger-shader-portal",
+      "label": "Shader Portal",
+      "kicker": "CHALLENGER",
+      "lineage": "experiential studio portals",
+      "thesis": "A full-screen generated field turns each project into a spatial world.",
+      "palette": ["#161616", "#f7f7f3", "#5448ff", "#caff4d"],
+      "materials": ["living pixels", "film grain", "distortion"],
+      "viewport": "A reactive scene fills the screen behind a minimal introduction.",
+      "risk": "Fuses poorly with the required pale, text-led restraint and can obscure professional proof.",
+      "sketch": ".impeccable/sketches/challenger-shader-portal.png",
+      "hero": "https://impeccable.style/worlds/cards/webgl-shader-portal-hero.webp"
+    },
+    {
+      "id": "challenger-wpa-poster",
+      "label": "Field Poster Series",
+      "kicker": "CHALLENGER",
+      "lineage": "WPA national-park posters",
+      "thesis": "The portfolio becomes a progression of bold travel-style posters for each pursuit.",
+      "palette": ["#f7f7f3", "#172b52", "#c96c44", "#3f8f76"],
+      "materials": ["silkscreen", "flat planes", "caption bars"],
+      "viewport": "A single illustrated pursuit occupies the page above a concise imperative.",
+      "risk": "Identifies with golf and exploration, but flattens the research and moving-image aspects into illustration.",
+      "sketch": ".impeccable/sketches/challenger-wpa-poster.png",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-wpa-park-poster-hero.webp"
+    }
+  ],
+  "reroll": true,
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A quiet, impeccable personal portfolio in the Ben Lafferty vein.",
+    "viewport": "Text-led introduction, concise project list, and clear contact links on a pale canvas.",
+    "sketch": ".impeccable/sketches/canon.png"
+  },
+  "steer": true
+}

@@ -1,0 +1,7 @@
+Use case: ui-mockup
+Asset type: high-fidelity desktop website design comp, 16:9, personal portfolio homepage
+Primary request: Design an outstanding yet very clean, light-mode personal portfolio for Kuan Yi Wang. Full viewport composition: a very pale warm-white paper surface; a hairline top navigation with links Work, Experiments, Contact; a massive left-aligned title Kuan Yi Wang in dark JetBrains Mono; a tiny handwritten annotation line; one concise factual supporting line “CS @ Waterloo · medtech · startups · golf”. On the right, a large code-native-looking animated specimen: an original friendly glitch-dither llama emerging from low-res ASCII glyphs, colored only in cobalt and acid lime. A thin lower strip previews three real areas: research, work, projects. The first fold must have no card UI.
+Style/medium: precise editorial web UI, visual research folio, real website layout.
+Composition/framing: sparse text-led page, 60% whitespace, one dominant dynamic artifact, controlled type hierarchy.
+Color palette: #f7f7f3 near-white, #171717 ink, cobalt #5448ff, acid lime #caff4d.
+Constraints: refined, minimal, no generic cards, no dark background, no decorative gradients, no rounded SaaS panels, no stock photos, no fake metrics, no watermark. Readable text limited to the supplied words.

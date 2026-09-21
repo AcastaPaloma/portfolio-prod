@@ -1,0 +1,7 @@
+Use case: ui-mockup
+Asset type: high-fidelity desktop website design comp, 16:9, personal portfolio homepage
+Primary request: Design an outstanding light-mode personal portfolio for Kuan Yi Wang as a modern paper-cut research folio. Full viewport: matte pale-paper background, minimal slim navigation Work / Experiments / Contact, large dark JetBrains Mono title Kuan Yi Wang in the left column, a small handwritten note, factual supporting line “CS @ Waterloo · medtech · startups · golf”. On the right, large precision-cut layers of paper assemble into a llama, a quantum orbit, an MRI slice, and a golf club with crisp clipped edges; cobalt, acid-lime, and faint graphite only. At the bottom, a narrow strip begins the Work / Research / Projects story with page-edge labels. The composition must feel physically layered but mostly white and text-led.
+Style/medium: high craft web UI, cut-paper depth only via overlap and gentle physical shadow, not illustration.
+Composition/framing: 16:9 website first viewport; no floating dashboard; strong silence around one layered hero object.
+Color palette: #f7f7f3, #171717, #5448ff, #caff4d, faint paper gray.
+Constraints: no generic cards, no gradients, no dark mode, no glossy 3D, no fake claims, no watermark. Readable text limited to the supplied words.
