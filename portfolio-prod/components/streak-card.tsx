@@ -29,12 +29,13 @@ export function StreakCard({ initial }: { initial: DuolingoProfile }) {
     <div className="streak-card-copy">
       <p className="streak-card-label ink">Current Streak</p>
       <div className="streak-card-figure">
-        {/* 5:3 is the flag's official ratio. The tile keeps a hairline so the black
-            band still bounds itself once the inversion boundary turns the page dark. */}
+        {/* 5:3 is the flag's official ratio. The black band is the page's ink rather
+            than pure black, so it still separates when the boundary turns the page
+            dark, without needing a frame the rest of the page does not have. */}
         <svg className="streak-card-flag" viewBox="0 0 5 3" role="img" aria-label="Flag of Germany">
           <rect width="5" height="3" fill="#ffce00"/>
           <rect width="5" height="2" fill="#dd0000"/>
-          <rect width="5" height="1" fill="#000"/>
+          <rect width="5" height="1" fill="#202020"/>
         </svg>
         <p className="streak-card-count ink"><span className="streak-days">{profile.streak.toLocaleString("en-US")}</span> days</p>
       </div>
