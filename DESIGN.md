@@ -31,12 +31,22 @@ typography:
     fontWeight: 400
     lineHeight: "1.25"
     letterSpacing: "-0.02em"
+  streak-count:
+    fontFamily: "Georgia, Times New Roman, serif"
+    fontSize: "1.3rem"
+    letterSpacing: "-0.02em"
+  streak-count-compact:
+    fontFamily: "Georgia, Times New Roman, serif"
+    fontSize: "1.15rem"
+    letterSpacing: "-0.02em"
   link-label:
     fontFamily: "Georgia, Times New Roman, serif"
     fontSize: "0.85rem"
     lineHeight: "1.55"
 rounded:
   image: "0"
+  streak-card: "14px"
+  streak-flag: "5px"
   boundary-grip: "50%"
   gym-field: "0"
 spacing:
@@ -95,7 +105,7 @@ The inherited PRODUCT.md and résumé scene describe the earlier route. The alte
 
 Georgia body copy is 17px with 1.55 line height; the name is 2.2rem and section headings 1.3rem. At 48rem, body and name become 16px and 2rem. Work descriptions and profile links use .85rem. Only the eight newly requested travel photographs have location captions: .8125rem desktop, .75rem on narrow phones, with 1.35 line height. These wrap beneath the images and follow text inversion. People and the three retained Elsewhere photographs have no captions.
 
-Every underlined text link has a small preceding icon. Brand marks come from the organizations' official assets or the user's Piñata Pitch logo. Other symbols are simple authored SVGs. Profile organization links keep the icon with the first word; longer names wrap naturally. The opening uses a 31rem measure and pretty paragraph wrapping. All links retain visible keyboard focus. The top invitation reads: “join me for a workout. or a coffee.” Beneath the profile links, a live Duolingo streak sits on its own row above the invitation: a flame icon, the day count in tabular figures, and the username linking to the public profile. It is rendered on the server and revalidated hourly, so the count never arrives as a flash or a layout shift, and a verified snapshot covers upstream outages. The flame is the row's single motion: it breathes from its base and holds still under reduced motion.
+Every underlined text link has a small preceding icon. Brand marks come from the organizations' official assets or the user's Piñata Pitch logo. Other symbols are simple authored SVGs. Profile organization links keep the icon with the first word; longer names wrap naturally. The opening uses a 31rem measure and pretty paragraph wrapping. All links retain visible keyboard focus. The top invitation reads: “join me for a workout. or a coffee.” Above the profile links sits a Duolingo streak panel: the label “Current Streak”, the German flag on a paper mat so its black band still reads once the boundary inverts the page, the day count in tabular figures, and the owner's Duolingo avatar as a circle on the right. It carries no link. The page server-renders the count so the panel never opens empty, then the client refetches /api/duolingo on mount and whenever the tab regains focus, so a lesson finished on the phone appears without a reload. A verified snapshot covers upstream outages. The panel is the one boxed element on the page, drawn at the owner's request; its shell stays a hairline that reads on both sides of the boundary, and below 34rem the flag, count, and avatar step down so the row never collides.
 
 ## Layout and spacing
 

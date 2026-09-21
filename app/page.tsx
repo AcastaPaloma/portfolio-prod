@@ -1,7 +1,8 @@
 import { ColorBoundary } from "@/components/color-boundary";
 import { TransparentLoop } from "@/components/transparent-loop";
 import { InlineIcon } from "@/components/inline-icon";
-import { getDuolingoProfile, DUOLINGO_PROFILE_URL } from "@/lib/duolingo";
+import { getDuolingoProfile } from "@/lib/duolingo";
+import { StreakCard } from "@/components/streak-card";
 import Image from "next/image";
 import "./dither.css";
 
@@ -61,7 +62,6 @@ function WebringNav() {
 export default async function Home() {
   const bookingUrl=process.env.NEXT_PUBLIC_CAL_COM_URL||"https://cal.com/kywaterloo";
   const duolingo=await getDuolingoProfile();
-  const streakDays=duolingo.streak.toLocaleString("en-US");
   return <main className="dither-page">
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
@@ -69,11 +69,11 @@ export default async function Home() {
         <p className="ink">I’m a computer science student at the <a href="https://uwaterloo.ca/"><span className="icon-word"><InlineIcon name="waterloo"/>University</span> of Waterloo</a>, now working on computer vision inference at <a href="https://reflex.inc/"><span className="icon-word"><InlineIcon name="reflex"/>Reflex</span></a>. Previously, I worked on agentic systems at <a href="https://www.morganstanley.com/"><span className="icon-word"><InlineIcon name="morgan-stanley"/>Morgan</span> Stanley</a> and medical imaging at <a href="https://neuro.polymtl.ca/"><span className="icon-word"><InlineIcon name="neuropoly"/>NeuroPoly</span></a> (Mila).</p>
         <p className="ink">I also co-founded <a href="https://www.pinatapitch.tech"><InlineIcon name="pinata"/>Piñata Pitch</a>, turning 2000+ student ideas into startups.</p>
         <p className="ink">Outside of that: a little German every day + the gym + reading.</p>
+        <StreakCard initial={duolingo}/>
         <nav className="dither-links ink" aria-label="Find me">
           <a href="/resume/kuan-yi-wang-resume.pdf"><InlineIcon name="resume"/>résumé</a>
           <a href="https://www.linkedin.com/in/kuan-yi-wang-443871319/"><InlineIcon name="linkedin"/>linkedin</a>
           <a href="mailto:ky7wang@uwaterloo.ca"><InlineIcon name="email"/>email</a>
-          <a className="streak-link" href={DUOLINGO_PROFILE_URL} target="_blank" rel="noreferrer" aria-label={`Duolingo profile ${duolingo.username}, a ${streakDays} day streak`}><InlineIcon name="streak"/><span className="streak-days">{streakDays}</span> days of german, unbroken · @{duolingo.username.toLowerCase()}</a>
           <a className="booking-link" href={bookingUrl} target="_blank" rel="noreferrer"><InlineIcon name="coffee"/>join me for a workout. or a coffee.</a>
         </nav>
       </div>
