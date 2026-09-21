@@ -21,6 +21,12 @@
 .dither-intro-copy p{text-wrap:pretty}
 .dither-links{display:flex;flex-wrap:wrap;column-gap:1.4rem;row-gap:.8rem;margin-top:2rem;font-size:.85rem}
 .booking-link{flex-basis:100%}
+.streak-link{flex-basis:100%}
+.streak-days{font-variant-numeric:tabular-nums}
+/* The flame breathes from its base: one small authored moment, not a scattered effect. */
+.streak-link .streak-flame{transform-box:view-box;transform-origin:12px 20.5px;animation:streak-flicker 3.6s ease-in-out infinite}
+@keyframes streak-flicker{0%,100%{transform:scale(1,1)}35%{transform:scale(.965,1.055)}70%{transform:scale(1.025,.975)}}
+@media (prefers-reduced-motion:reduce){.streak-link .streak-flame{animation:none}}
 .transparent-loop{position:relative;z-index:2;min-width:0;margin:0;padding:0;max-width:100%}
 .loop-art{position:absolute;inset:0;pointer-events:none}
 .loop-art img,.loop-art canvas{display:block;width:100%;height:100%;object-fit:contain;margin:0;padding:0;background:transparent}
