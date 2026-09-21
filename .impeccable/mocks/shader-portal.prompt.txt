@@ -1,0 +1,7 @@
+Use case: ui-mockup
+Asset type: high-fidelity desktop website design comp, 16:9, personal portfolio homepage
+Primary request: Design an experimental but light-mode personal portfolio for Kuan Yi Wang. Full viewport: pale warm-white background dominates. A very thin black navigation with Work, Experiments, Contact sits at the top. Huge typography on left: Kuan Yi Wang; compact factual supporting line “CS @ Waterloo · medtech · startups · golf”. The right half is a precisely bounded luminous pixel portal: a white-on-white field of code-like particles and sparse ASCII fragments containing an animated original llama silhouette, with cobalt and acid-lime interference glints. The portal has a subtle square edge and reveals a second distortion field as if it responds to scroll. A narrow bottom story rail presents Research / Work / Projects. Keep the page 80% light paper and typographic restraint.
+Style/medium: high-craft browser-first UI; shader artifact made of crisply resolved pixels, not a videogame interface.
+Composition/framing: 16:9 desktop homepage, confident asymmetry, no hero card, one spatial motion system.
+Color palette: #f7f7f3, #171717, #5448ff, #caff4d, translucent silver-gray.
+Constraints: no dark background, no gradients, no glassmorphism, no bento cards, no fake metrics, no watermark. Readable text limited to the supplied words.
