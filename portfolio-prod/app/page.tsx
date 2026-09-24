@@ -63,6 +63,9 @@ export default async function Home() {
   const bookingUrl=process.env.NEXT_PUBLIC_CAL_COM_URL||"https://cal.com/kywaterloo";
   const duolingo=await getDuolingoProfile();
   return <main className="dither-page">
+    <div className="announcement-banner text-layer">
+      <a className="ink" href="https://acastapaloma.github.io/genie/">Check out my write-up on Google&apos;s foundation Genie model - easy, complete breakdown.</a>
+    </div>
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
         <h1 id="name" className="ink">Kuan Yi Wang</h1>
