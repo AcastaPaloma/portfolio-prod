@@ -8,8 +8,9 @@
 .dither-page a{color:inherit;text-decoration-color:#888;text-underline-offset:.2em;text-decoration-thickness:1px}
 .dither-page a:hover{text-decoration-thickness:2px}
 .dither-page a:focus-visible{outline:1px solid #999;outline-offset:5px}
-.announcement-banner{display:flex;justify-content:center;align-items:center;min-height:2.75rem;padding:.55rem var(--page-gutter);background:#000;text-align:center;font-size:.85rem;line-height:1.4}
-.announcement-banner a{max-width:100%;color:#fff;text-decoration-color:#fff;text-wrap:pretty}
+.announcement-banner{display:flex;justify-content:center;align-items:center;min-height:2.75rem;padding:.55rem var(--page-gutter);border-bottom:1px solid #858585;text-align:center;font-size:.85rem;line-height:1.4}
+.announcement-banner a{max-width:100%;text-wrap:pretty}
+.announcement-banner a.ink{color:transparent;background-image:linear-gradient(to right,#202020 0 calc(var(--split) - var(--ink-left,0px)),#fff calc(var(--split) - var(--ink-left,0px)) 100%)}
 .inline-icon{display:inline-block;width:1em;height:1em;margin:0 .32em 0 .04em;padding:0;vertical-align:-.1em;object-fit:contain;color:#888;flex:none}
 .brand-icon{width:1.08em;height:1.08em;vertical-align:-.16em}
 .brand-icon[src="/icons/reflex.webp"]{background:#000}
