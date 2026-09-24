@@ -64,7 +64,7 @@ export default async function Home() {
   const duolingo=await getDuolingoProfile();
   return <main className="dither-page">
     <div className="announcement-banner text-layer">
-      <a className="ink" href="https://acastapaloma.github.io/genie/">Check out my write-up on Google&apos;s foundation Genie model - easy, complete breakdown.</a>
+      <a className="ink" href="https://acastapaloma.github.io/genie/">Check out my write-up on Google&apos;s Genie foundation world model - easy, complete breakdown.</a>
     </div>
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
