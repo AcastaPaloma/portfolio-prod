@@ -84,6 +84,7 @@ export default async function Home() {
       <div className="work-copy text-layer">
         <h2 id="work" className="ink">A few things I’ve built.</h2>
         <ul>
+          <li className="ink"><a href="https://acastapaloma.github.io/genie/"><InlineIcon name="world"/>Genie Doom World Model</a><span>Playable, action-conditioned Doom video from unlabeled footage.</span></li>
           <li className="ink"><a href="https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction"><InlineIcon name="quantum"/>GNN Quantum Error Decoder</a><span>Quantum error correction. ISEF Silver Award.</span></li>
           <li className="ink"><a href="https://cortesol.onrender.com/"><InlineIcon name="network"/>Cortesol</a><span>Critical thinking over a knowledge graph. Hackthe6ix finalist.</span></li>
           <li className="ink"><a href="https://github.com/AcastaPaloma/MvPvP"><InlineIcon name="code"/>MvPvP</a><span>Competitive vibe coding. Build an MVP in five minutes.</span></li>
