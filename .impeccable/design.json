@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T17:57:31.254Z",
+  "generatedAt": "2026-10-02T18:01:12.715Z",
   "title": "Design System: Kuan Yi Wang — Words, Photographs, and Dots",
   "extensions": {
     "colorMeta": {
@@ -15,6 +15,10 @@
       "quiet-ink": {
         "role": "neutral",
         "displayName": "Quiet Ink"
+      },
+      "sponsor-blue": {
+        "role": "primary",
+        "displayName": "Jane Street Bright Blue"
       }
     },
     "typographyMeta": {

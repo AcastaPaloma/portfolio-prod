@@ -50,6 +50,7 @@
 .work-copy li>a{white-space:nowrap}
 .work-copy li+li{margin-top:1.5rem}
 .work-copy li span{display:block;margin-top:.18rem;font-size:.85rem}
+.work-copy .jane-street{color:#0070f3;font-weight:inherit}
 .helmet-art{position:absolute;right:0;top:50%;transform:translateY(-50%);width:min(46vw,30rem);mix-blend-mode:difference}
 .helmet-art .loop-art{opacity:.65}
 .dither-people,.dither-gallery{position:relative;padding:0}
