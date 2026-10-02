@@ -31,7 +31,7 @@ const moments: Photo[] = [
   {name:"window",width:1100,height:1467,alt:"A window framing a turquoise waterfront between yellow walls",location:"Menton, France"},
   {name:"circa-2026",width:768,height:1024,alt:"Four LEGO figures lined up on a boardwalk at the beach",location:"???"},
   {name:"aurora",width:1100,height:1467,alt:"Colorful auroras and stars above a lake and silhouetted trees",location:"???"},
-  {name:"luray-caverns",width:1100,height:1467,alt:"Illuminated stalactites and tall rock formations inside a cavern",location:<>Luray Caverns, <span className="location-united">United</span>{" "}<span className="location-states-of">States of</span>{" "}<span className="location-america">America</span></>},
+  {name:"luray-caverns",width:1100,height:1467,alt:"Illuminated stalactites and tall rock formations inside a cavern",location:<>Luray Caverns, <span className="location-united">U</span>{" "}<span className="location-states-of">S</span>{" "}<span className="location-america">A</span></>},
   {name:"new-zealand",width:1100,height:1271,alt:"A coastal rock formation and beachgoers seen beneath a rock arch",location:"Cathedral Cove, New Zealand"},
 ];
 function PhotoWall({photos,variant}:{photos:Photo[];variant:string}) {
