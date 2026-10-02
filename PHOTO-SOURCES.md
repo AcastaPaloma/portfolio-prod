@@ -60,7 +60,6 @@ The owner subsequently identified `window` as Menton, France. Its caption replac
 - [Waterloo official icon](https://uwaterloo.ca/profiles/uw_base_profile/themes/uw_fdsu_theme_resp/icon.svg)
 - [Morgan Stanley official favicon](https://www.morganstanley.com/etc.clientlibs/msdotcomr4/clientlibs/components/site/resources/img/favicon-196x196.png)
 - [Reflex official favicon](https://reflex.inc/favicon-32x32.png), with the company domain verified through [its GitHub organization](https://github.com/reflex-inc).
-- [RBC Borealis official favicon](https://rbcborealis.com/wp-content/uploads/2024/10/cropped-rbc-borealis-favicon_908091.png?w=192), from the icon declared by [its official website](https://rbcborealis.com/).
 - [NeuroPoly official logo](https://neuro.polymtl.ca/_static/logo.png)
 - Piñata Pitch: owner-supplied `/Users/kuanw/Downloads/Pinata Pitch Logo Icon.png`.
 
