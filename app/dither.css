@@ -83,6 +83,9 @@
 .masonry-moments .people-photo,.masonry-moments picture,.masonry-moments img{height:auto}
 .masonry-moments .photo-location{margin-top:.4rem}
 .photo-location{margin:0;padding:0;font-size:.8125rem;line-height:1.35;text-wrap:pretty}
+.photo-location .location-united{color:#0070f3}
+.photo-location .location-states-of{color:#ff0000}
+.photo-location .location-america{color:#fff}
 .photo-circa-2026 img{object-position:50% 25%}
 .webring-footer{position:relative;z-index:3;display:flex;justify-content:flex-end;width:min(calc(100% - 2 * var(--page-gutter)),var(--page-width));margin:var(--section-space) auto 0;padding-top:1.25rem}
 .webring-footer::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:#fff;opacity:.35;mix-blend-mode:difference}

@@ -6,6 +6,7 @@ colors:
   ink: "#202020"
   quiet-ink: "#666"
   sponsor-blue: "#0070f3"
+  location-red: "#ff0000"
   link-rule: "#969696"
   boundary-line: "#858585"
   boundary-rule: "#656565"
@@ -101,6 +102,7 @@ The inherited PRODUCT.md and résumé scene describe the earlier route. The alte
 - The minifigure has transparent negative space and retains its source colors.
 - The white particle helmet and white Ink handwriting use difference blending against the page, becoming dark on white and light on black.
 - The Jane Street sponsor mention stays bright blue on both sides of the boundary, at the owner’s request.
+- The Luray Caverns caption reads “Luray Caverns, United States of America”: “United” stays sponsor-blue, “States of” stays location-red, and “America” stays paper-white, at the owner's request.
 - Text has a higher layer than animated artwork. Media has zero frame, border radius, internal padding, and margin.
 
 ## Type and links

@@ -50,8 +50,10 @@ The October 2 update adds three owner-supplied Downloads photographs, with the s
 | Asset | Owner-selected source | Visible location |
 | --- | --- | --- |
 | aurora | `/Users/kuanw/Downloads/2f11395eab96f27aa063159376a0f66c.JPEG` | ??? |
-| luray-caverns | `/Users/kuanw/Downloads/IMG_0083.JPEG` | Luray Caverns |
-| new-zealand | `/Users/kuanw/Downloads/IMG_8394.JPEG` | New Zealand |
+| luray-caverns | `/Users/kuanw/Downloads/IMG_0083.JPEG` | Luray Caverns, United States of America |
+| new-zealand | `/Users/kuanw/Downloads/IMG_8394.JPEG` | Cathedral Cove, New Zealand |
+
+The owner subsequently identified `window` as Menton, France. Its caption replaces `???`. The Luray Caverns country name uses fixed word colors at the owner's request: “United” blue, “States of” red, and “America” white.
 
 ## Inline brand marks
 
