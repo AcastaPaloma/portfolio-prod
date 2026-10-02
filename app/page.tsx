@@ -85,8 +85,8 @@ export default async function Home() {
         <h2 id="work" className="ink">A few things I’ve built.</h2>
         <ul>
           <li className="ink"><a href="https://acastapaloma.github.io/genie/"><InlineIcon name="world"/>Genie Doom World Model</a><span>Playable, action-conditioned Doom video from unlabeled footage.</span></li>
-          <li className="ink"><a href="https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction"><InlineIcon name="quantum"/>GNN Quantum Error Decoder</a><span>ISEF Silver · Physics &amp; Astronomy · Team Canada. Quantum error correction; sponsored by <b className="jane-street">Jane Street</b>.</span></li>
-          <li className="ink"><a href="https://github.com/fiona-cai/ampitup"><InlineIcon name="code"/>Allot (1st 🏆 · Ramp × UW Blueprint)</a><span>Hackathon winner. Calendar and event-based budgets for companies</span></li>
+          <li className="ink"><a href="https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction"><InlineIcon name="quantum"/>GNN Quantum Error Decoder</a><span>ISEF Silver · Physics &amp; Astronomy · Team Canada. <br /> Quantum error correction; sponsored by <b className="jane-street">Jane Street</b>.</span></li>
+          <li className="ink"><a href="https://github.com/fiona-cai/ampitup"><InlineIcon name="code"/>Allot (1st 🏆 · Ramp × UW Blueprint)</a><span>Hackathon winner. Calendar and event-based budgets for companies.</span></li>
           <li className="ink"><a href="https://cortesol.onrender.com/"><InlineIcon name="network"/>Cortesol (HackThe6ix finalist)</a><span>Critical thinking over a knowledge graph.</span></li>
           <li className="ink"><a href="https://github.com/AcastaPaloma/MvPvP"><InlineIcon name="code"/>MvPVP (McHacks)</a><span>Competitive vibe coding. Build an MVP in five minutes.</span></li>
         </ul>
