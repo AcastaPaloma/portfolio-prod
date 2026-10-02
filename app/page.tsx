@@ -66,7 +66,7 @@ export default async function Home() {
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
         <h1 id="name" className="ink">Kuan Yi Wang</h1>
-        <p className="ink">I’m a computer science student at the <a href="https://uwaterloo.ca/"><span className="icon-word"><InlineIcon name="waterloo"/>University</span> of Waterloo</a>, now working on computer vision inference at <a href="https://reflex.inc/"><span className="icon-word"><InlineIcon name="reflex"/>Reflex</span></a>. Previously, I worked on agentic systems at <a href="https://www.morganstanley.com/"><span className="icon-word"><InlineIcon name="morgan-stanley"/>Morgan</span> Stanley</a> and medical imaging at <a href="https://neuro.polymtl.ca/"><span className="icon-word"><InlineIcon name="neuropoly"/>NeuroPoly</span></a> (Mila).</p>
+        <p className="ink">I’m a computer science student at the <a href="https://uwaterloo.ca/"><span className="icon-word"><InlineIcon name="waterloo"/>University</span> of Waterloo</a>, now working on computer vision inference at <a href="https://reflex.inc/"><span className="icon-word"><InlineIcon name="reflex"/>Reflex</span></a> and representation learning at <a href="https://rbcborealis.com/"><span className="icon-word"><InlineIcon name="network"/>RBC</span> Borealis</a>. Previously, I worked on agentic systems at <a href="https://www.morganstanley.com/"><span className="icon-word"><InlineIcon name="morgan-stanley"/>Morgan</span> Stanley</a> and medical imaging at <a href="https://neuro.polymtl.ca/"><span className="icon-word"><InlineIcon name="neuropoly"/>NeuroPoly</span></a> (Mila).</p>
         <p className="ink">I also co-founded <a href="https://www.pinatapitch.tech"><InlineIcon name="pinata"/>Piñata Pitch</a>, turning 2000+ student ideas into startups.</p>
         <p className="ink">Outside of that: a little German every day + the gym + reading.</p>
         <StreakCard initial={duolingo}/>
@@ -85,9 +85,10 @@ export default async function Home() {
         <h2 id="work" className="ink">A few things I’ve built.</h2>
         <ul>
           <li className="ink"><a href="https://acastapaloma.github.io/genie/"><InlineIcon name="world"/>Genie Doom World Model</a><span>Playable, action-conditioned Doom video from unlabeled footage.</span></li>
-          <li className="ink"><a href="https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction"><InlineIcon name="quantum"/>GNN Quantum Error Decoder</a><span>Quantum error correction. ISEF Silver Award.</span></li>
-          <li className="ink"><a href="https://cortesol.onrender.com/"><InlineIcon name="network"/>Cortesol</a><span>Critical thinking over a knowledge graph. Hackthe6ix finalist.</span></li>
-          <li className="ink"><a href="https://github.com/AcastaPaloma/MvPvP"><InlineIcon name="code"/>MvPvP</a><span>Competitive vibe coding. Build an MVP in five minutes.</span></li>
+          <li className="ink"><a href="https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction"><InlineIcon name="quantum"/>GNN Quantum Error Decoder (ISEF Silver · Team Canada)</a><span>Quantum error correction. Physics &amp; Astronomy; sponsored by Jane Street.</span></li>
+          <li className="ink"><a href="https://github.com/fiona-cai/ampitup"><InlineIcon name="code"/>Allot (1st · Ramp × UW Blueprint Hackathon)</a><span>Calendar-based budgets and event-specific spending limits.</span></li>
+          <li className="ink"><a href="https://cortesol.onrender.com/"><InlineIcon name="network"/>Cortesol (HackThe6ix finalist)</a><span>Critical thinking over a knowledge graph.</span></li>
+          <li className="ink"><a href="https://github.com/AcastaPaloma/MvPvP"><InlineIcon name="code"/>MvPVP (McHacks)</a><span>Competitive vibe coding. Build an MVP in five minutes.</span></li>
         </ul>
       </div>
       <TransparentLoop className="helmet-art" name="helmet particles" src="/animation/helmet-gust.mp4" smallSrc="/animation/helmet-gust-small.mp4" poster="/animation/helmet-gust-poster.webp" width={720} height={720} monochrome/>
