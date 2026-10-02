@@ -1,4 +1,4 @@
-.dither-page{--split:0%;--page-gutter:clamp(2.75rem,5vw,3rem);--page-width:60rem;--section-space:clamp(4rem,7vw,5.5rem);position:relative;isolation:isolate;min-height:100svh;overflow:clip;background:#fff;color:#202020;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:5rem}
+.dither-page{--page-gutter:clamp(2.75rem,5vw,3rem);--page-width:60rem;--default-split:min(6rem,calc((100vw - min(calc(100vw - 2 * var(--page-gutter)),var(--page-width))) / 4));--split:var(--default-split);--split-px:var(--split);--section-space:clamp(4rem,7vw,5.5rem);position:relative;isolation:isolate;min-height:100svh;overflow:clip;background:#fff;color:#202020;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:5rem}
 .dither-page *,.dither-page *::before,.dither-page *::after{box-sizing:border-box}
 /* Page, photographs and ink are independent: colored media never gets inverted. */
 .color-inversion{position:fixed;z-index:0;inset:0 0 0 var(--split);background:#000;pointer-events:none}

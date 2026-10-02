@@ -7,6 +7,7 @@ export function ColorBoundary() {
   const position = useRef(0);
   const frame = useRef(0);
   const dragging = useRef(false);
+  const interacted = useRef(false);
   const control = useRef<HTMLDivElement>(null);
 
   const apply = (next: number) => {
@@ -21,18 +22,28 @@ export function ColorBoundary() {
   useEffect(() => {
     const surface = control.current?.closest<HTMLElement>(".dither-page");
     let resizeFrame = 0;
+    let valueFrame = 0;
     // Resolve each ink gradient against the viewport without fixed backgrounds,
     // which mobile Safari does not consistently support. The paired globe follows the same boundary.
     const measure = () => {
+      if (surface && !interacted.current) {
+        // Let CSS place the initial boundary inside the empty left gutter.
+        surface.style.removeProperty("--split");
+        const initialLeft = surface.querySelector<HTMLElement>(".color-inversion")?.getBoundingClientRect().left ?? 0;
+        position.current = initialLeft / window.innerWidth * 100;
+        cancelAnimationFrame(valueFrame);
+        valueFrame = requestAnimationFrame(() => setValue(Math.round(position.current)));
+      }
       surface?.style.setProperty("--split-px", `${window.innerWidth*position.current/100}px`);
       surface?.querySelectorAll<HTMLElement>(".ink").forEach(element => {
         element.style.setProperty("--ink-left", `${element.getBoundingClientRect().left}px`);
       });
+      window.dispatchEvent(new CustomEvent("portfolio-inversion", { detail: position.current / 100 }));
     };
     const resized = () => { cancelAnimationFrame(resizeFrame); resizeFrame = requestAnimationFrame(measure); };
     measure();
     window.addEventListener("resize", resized);
-    return () => { window.removeEventListener("resize", resized); cancelAnimationFrame(resizeFrame); };
+    return () => { window.removeEventListener("resize", resized); cancelAnimationFrame(resizeFrame); cancelAnimationFrame(valueFrame); };
   }, []);
 
   const move = (event: PointerEvent<HTMLDivElement>) => {
@@ -53,6 +64,7 @@ export function ColorBoundary() {
     const steps: Record<string, number> = { ArrowLeft: -2, ArrowRight: 2, ArrowDown: -2, ArrowUp: 2, PageDown: -10, PageUp: 10 };
     if (!(event.key in steps) && event.key !== "Home" && event.key !== "End") return;
     event.preventDefault();
+    interacted.current = true;
     apply(event.key === "Home" ? 0 : event.key === "End" ? 100 : position.current + steps[event.key]);
     setValue(Math.round(position.current));
   };
@@ -65,7 +77,7 @@ export function ColorBoundary() {
       aria-valuetext={`${100 - value} percent dark; text, helmet and handwriting follow the boundary; photo colors unchanged`}
       aria-describedby="color-boundary-help"
       onKeyDown={key}
-      onPointerDown={(event) => { if (event.button !== 0) return; dragging.current = true; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.focus({ preventScroll: true }); }}
+      onPointerDown={(event) => { if (event.button !== 0) return; interacted.current = true; apply(position.current); dragging.current = true; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.focus({ preventScroll: true }); }}
       onPointerMove={move} onPointerUp={finish} onPointerCancel={finish}
       onLostPointerCapture={() => { dragging.current = false; }}>
       <span className="boundary-line" />
