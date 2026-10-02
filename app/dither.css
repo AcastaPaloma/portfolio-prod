@@ -47,6 +47,7 @@
 .work-copy{width:100%;padding:3rem 0}
 .work-copy ul{width:min(52%,29rem);list-style:none;margin:0;padding:0}
 .work-copy h2{max-width:28rem}
+.work-copy li>a{white-space:nowrap}
 .work-copy li+li{margin-top:1.5rem}
 .work-copy li span{display:block;margin-top:.18rem;font-size:.85rem}
 .helmet-art{position:absolute;right:0;top:50%;transform:translateY(-50%);width:min(46vw,30rem);mix-blend-mode:difference}
@@ -120,6 +121,7 @@
  .boundary-hint{bottom:1.5rem}
 }
 @media(max-width:34rem){
+ .work-copy li>a{font-size:.85rem}
  .bento-pinata{grid-template-columns:1fr 1fr;grid-template-rows:9rem 9rem 9rem;grid-template-areas:"a b" "a d" "c c"}
  .people-secondary{grid-template-columns:1fr;gap:1.5rem}
  .people-secondary .section-title{height:4rem;font-size:1.2rem}
