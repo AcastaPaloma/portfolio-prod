@@ -26,9 +26,12 @@ const moments: Photo[] = [
   {name:"british-museum",width:1100,height:1467,alt:"A carved stone pig displayed in a museum case",location:"The British Museum, London"},
   {name:"chinatown",width:1100,height:1467,alt:"A bubble waffle held beneath rows of red lanterns",location:"Chinatown, London"},
   {name:"platja-de-la-riera",width:1100,height:1467,alt:"An orange sunset over the sea and a quiet beach",location:"Platja de la Riera, Spain"},
-  {name:"after-rain",width:1100,height:1467,alt:"A rainy city street at dusk"},
-  {name:"window",width:1100,height:1467,alt:"A window framing a turquoise waterfront between yellow walls"},
-  {name:"circa-2026",width:768,height:1024,alt:"Four LEGO figures lined up on a boardwalk at the beach"},
+  {name:"after-rain",width:1100,height:1467,alt:"A rainy city street at dusk",location:"???"},
+  {name:"window",width:1100,height:1467,alt:"A window framing a turquoise waterfront between yellow walls",location:"???"},
+  {name:"circa-2026",width:768,height:1024,alt:"Four LEGO figures lined up on a boardwalk at the beach",location:"???"},
+  {name:"aurora",width:1100,height:1467,alt:"Colorful auroras and stars above a lake and silhouetted trees",location:"???"},
+  {name:"luray-caverns",width:1100,height:1467,alt:"Illuminated stalactites and tall rock formations inside a cavern",location:"Luray Caverns"},
+  {name:"new-zealand",width:1100,height:1271,alt:"A coastal rock formation and beachgoers seen beneath a rock arch",location:"New Zealand"},
 ];
 function PhotoWall({photos,variant}:{photos:Photo[];variant:string}) {
   return <div className={variant==="moments"?"masonry-moments":`photo-bento bento-${variant}`}>

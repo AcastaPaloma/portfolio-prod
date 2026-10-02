@@ -45,6 +45,14 @@ The following eight additions use owner-supplied location labels beneath their p
 
 People's bento slots use cover crops and selected focal positions. Elsewhere uses responsive masonry columns and displays each photograph's complete natural proportions. Clicking any photograph opens its complete optimized image. People remains caption-free. Elsewhere's location labels wrap below the image on phones and invert with the surrounding text, leaving photo pixels unchanged.
 
+The October 2 update adds three owner-supplied Downloads photographs, with the same full-color optimization and mobile variants. The owner supplied Luray Caverns and tentatively identified the coastal rock photograph as New Zealand. The aurora and the previously unlabeled `after-rain`, `window`, and `circa-2026` photographs display `???` at the owner's request.
+
+| Asset | Owner-selected source | Visible location |
+| --- | --- | --- |
+| aurora | `/Users/kuanw/Downloads/2f11395eab96f27aa063159376a0f66c.JPEG` | ??? |
+| luray-caverns | `/Users/kuanw/Downloads/IMG_0083.JPEG` | Luray Caverns |
+| new-zealand | `/Users/kuanw/Downloads/IMG_8394.JPEG` | New Zealand |
+
 ## Inline brand marks
 
 - [Waterloo official icon](https://uwaterloo.ca/profiles/uw_base_profile/themes/uw_fdsu_theme_resp/icon.svg)

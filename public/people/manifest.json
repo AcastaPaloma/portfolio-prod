@@ -83,5 +83,20 @@
     "name": "circa-2026",
     "width": 768,
     "height": 1024
+  },
+  {
+    "name": "aurora",
+    "width": 1100,
+    "height": 1467
+  },
+  {
+    "name": "luray-caverns",
+    "width": 1100,
+    "height": 1467
+  },
+  {
+    "name": "new-zealand",
+    "width": 1100,
+    "height": 1271
   }
 ]

@@ -13,6 +13,8 @@ const downloads=[
  ['IMG_8743.jpg','monte-carlo'],['IMG_8648.heic','saint-paul-de-vence'],
  ['IMG_8444.jpg','paris'],['IMG_3988.jpg','british-museum'],
  ['IMG_3954.jpg','chinatown'],['IMG_5444.HEIC','platja-de-la-riera'],
+ ['2f11395eab96f27aa063159376a0f66c.JPEG','aurora'],
+ ['IMG_0083.JPEG','luray-caverns'],['IMG_8394.JPEG','new-zealand'],
 ];
 const selected=[
  ...pictures.map(([file,name])=>[`/Users/kuanw/Pictures/${file}`,name]),
