@@ -1,0 +1,20 @@
+{
+  "reference": "https://hascodexratelimitreset.today/",
+  "originalVideo": "https://cdn.openai.com/ctf-cdn/floral_a.mp4",
+  "treatment": "Original six-second motion stored as hue-shifted blue H.264 film; CSS grayscale(1) neutralizes film and poster. The owner\u2019s final dark-only revision applies the prior grayscale inverse across the whole viewport; pink tint and interactive boundary are removed.",
+  "desktop": {
+    "size": [
+      1600,
+      1600
+    ],
+    "fps": 30
+  },
+  "mobile": {
+    "size": [
+      768,
+      768
+    ],
+    "fps": 30
+  },
+  "details": "ASCII glyph motion adapted from the reference app.js, rendered in neutral gray ink."
+}

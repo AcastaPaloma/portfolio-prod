@@ -1,24 +1,260 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T22:36:38.474Z",
+  "generatedAt": "2026-10-07T04:56:35.327874Z",
   "title": "Design System: Kuan Yi Wang — Words, Photographs, and Dots",
   "extensions": {
     "colorMeta": {
       "paper": {
         "role": "neutral",
-        "displayName": "Paper"
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Ink"
-      },
-      "quiet-ink": {
-        "role": "neutral",
-        "displayName": "Quiet Ink"
+        "displayName": "Light Foreground Ink",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
       },
       "sponsor-blue": {
         "role": "primary",
-        "displayName": "Jane Street Bright Blue"
+        "displayName": "Jane Street Bright Blue",
+        "tonalRamp": [
+          "oklch(15% 0.2 258)",
+          "oklch(27% 0.2 258)",
+          "oklch(39% 0.2 258)",
+          "oklch(51% 0.2 258)",
+          "oklch(63% 0.2 258)",
+          "oklch(75% 0.2 258)",
+          "oklch(87% 0.2 258)",
+          "oklch(95% 0.2 258)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Neutral Surface",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "dark-fallback": {
+        "role": "neutral",
+        "displayName": "Dark Backdrop Fallback",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "dark-backdrop-wash": {
+        "role": "neutral",
+        "displayName": "Dark Backdrop Wash",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "glyph-ink": {
+        "role": "neutral",
+        "displayName": "Gray Background Glyphs",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "glyph-ink-active": {
+        "role": "neutral",
+        "displayName": "Cursor-Reactive Gray Glyphs",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "print-ink": {
+        "role": "neutral",
+        "displayName": "Print Ink",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "link-rule": {
+        "role": "neutral",
+        "displayName": "Link Decoration",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "focus-ring": {
+        "role": "neutral",
+        "displayName": "Visible Focus",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "streak-rule": {
+        "role": "neutral",
+        "displayName": "Streak Hairline",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "location-red": {
+        "role": "secondary",
+        "displayName": "Location Red",
+        "tonalRamp": [
+          "oklch(15% 0.2 29)",
+          "oklch(27% 0.2 29)",
+          "oklch(39% 0.2 29)",
+          "oklch(51% 0.2 29)",
+          "oklch(63% 0.2 29)",
+          "oklch(75% 0.2 29)",
+          "oklch(87% 0.2 29)",
+          "oklch(95% 0.2 29)"
+        ]
+      },
+      "gym-void": {
+        "role": "neutral",
+        "displayName": "Gym Warm Void",
+        "tonalRamp": [
+          "oklch(15% 0.02 75)",
+          "oklch(27% 0.02 75)",
+          "oklch(39% 0.02 75)",
+          "oklch(51% 0.02 75)",
+          "oklch(63% 0.02 75)",
+          "oklch(75% 0.02 75)",
+          "oklch(87% 0.02 75)",
+          "oklch(95% 0.02 75)"
+        ]
+      },
+      "gym-ink": {
+        "role": "neutral",
+        "displayName": "Gym Ink",
+        "tonalRamp": [
+          "oklch(15% 0.02 75)",
+          "oklch(27% 0.02 75)",
+          "oklch(39% 0.02 75)",
+          "oklch(51% 0.02 75)",
+          "oklch(63% 0.02 75)",
+          "oklch(75% 0.02 75)",
+          "oklch(87% 0.02 75)",
+          "oklch(95% 0.02 75)"
+        ]
+      },
+      "gym-quiet-ink": {
+        "role": "neutral",
+        "displayName": "Gym Quiet Ink",
+        "tonalRamp": [
+          "oklch(15% 0.02 75)",
+          "oklch(27% 0.02 75)",
+          "oklch(39% 0.02 75)",
+          "oklch(51% 0.02 75)",
+          "oklch(63% 0.02 75)",
+          "oklch(75% 0.02 75)",
+          "oklch(87% 0.02 75)",
+          "oklch(95% 0.02 75)"
+        ]
+      },
+      "gym-surface": {
+        "role": "neutral",
+        "displayName": "Gym Paper Surface",
+        "tonalRamp": [
+          "oklch(15% 0.02 75)",
+          "oklch(27% 0.02 75)",
+          "oklch(39% 0.02 75)",
+          "oklch(51% 0.02 75)",
+          "oklch(63% 0.02 75)",
+          "oklch(75% 0.02 75)",
+          "oklch(87% 0.02 75)",
+          "oklch(95% 0.02 75)"
+        ]
+      },
+      "gym-rule": {
+        "role": "neutral",
+        "displayName": "Gym Rule",
+        "tonalRamp": [
+          "oklch(15% 0.02 75)",
+          "oklch(27% 0.02 75)",
+          "oklch(39% 0.02 75)",
+          "oklch(51% 0.02 75)",
+          "oklch(63% 0.02 75)",
+          "oklch(75% 0.02 75)",
+          "oklch(87% 0.02 75)",
+          "oklch(95% 0.02 75)"
+        ]
       }
     },
     "typographyMeta": {
@@ -29,15 +265,28 @@
       "name": {
         "displayName": "Compact Name",
         "purpose": "Identity heading beside the animated minifigure."
+      },
+      "activity-body": {
+        "displayName": "Activity Caption",
+        "purpose": "Compact GitHub calendar panel at .8125rem/1.5."
+      },
+      "activity-heading": {
+        "displayName": "Activity Heading",
+        "purpose": "Quiet regular-weight GitHub heading at .85rem/1.5."
+      },
+      "activity-label": {
+        "displayName": "Activity Label",
+        "purpose": "Past-year label and dated saved-calendar note at .75rem with inherited 1.5 line height."
       }
     },
-    "shadows": [],
-    "motion": [
+    "shadows": [
       {
-        "name": "direct-inversion",
-        "value": "requestAnimationFrame during pointer movement; no autonomous animation",
-        "purpose": "Start inside the empty left gutter, halfway to the content edge and capped at 6rem; move the boundary horizontally in response to deliberate input."
-      },
+        "name": "gym-paper",
+        "value": "0 1.25rem 3rem rgb(54 47 40 / 10%)",
+        "purpose": "Retained low paper shadow on the /gym tracker only; the main page has no card shadows."
+      }
+    ],
+    "motion": [
       {
         "name": "minifigure-turntable",
         "value": "Precomputed 12 fps night-dither video; pauses offscreen, hidden, or for reduced motion",
@@ -47,9 +296,28 @@
         "name": "helmet-crest-wind",
         "value": "Precomputed 12 fps, eight-second closed wind cycle with fixed metal geometry",
         "purpose": "Stronger gusts travel through crest bristles while local particle pulses and glints give the helmet life without rotation."
+      },
+      {
+        "name": "grayscale-floral-film",
+        "value": "Native H.264, six-second loop at 30 fps; 1600 × 1600 desktop and 768 × 768 at max-width:48rem; film and poster filtered with grayscale(1) contrast(.96) brightness(1.16)",
+        "purpose": "Preserve the hascodexratelimitreset.today floral motion and texture in grayscale beneath a neutral white wash and one fixed full-viewport invert(1) shade with a 14% dark wash. Blue source filenames retain the stored hue treatment; CSS supplies the grayscale presentation. Foreground media retains its colors. Hidden tabs pause playback, reduced motion starts on the filtered poster, playback failure keeps that poster, with no visible playback controls."
+      },
+      {
+        "name": "gray-glyph-field",
+        "value": "Canvas glyph rendering at 30 fps; 22px grid with 13px glyphs, 18px grid with 12px glyphs below 720px; pixel ratio capped at 1.5",
+        "purpose": "Reproduce the reference’s space, dot, colon, plus, asterisk, o, O, and hash vocabulary, waves, drift, and eased cursor pull with neutral gray ink. Pause with the film in hidden tabs; keep a static field under reduced motion. No visible playback controls."
+      },
+      {
+        "name": "morgan-black-render",
+        "value": "One paired full-color Bloop video; black bottom half sampled on each new frame; 33ms redraw fallback",
+        "purpose": "Keep the original globe photos and Bloop appearance on a black background, with a black poster, no visible playback control, and offscreen, hidden-tab, reduced-motion, and WebGL fallback behavior."
       }
     ],
     "breakpoints": [
+      {
+        "name": "compact-activity",
+        "value": "64rem"
+      },
       {
         "name": "mobile",
         "value": "48rem"
@@ -65,17 +333,9 @@
       "name": "Text Link",
       "kind": "nav",
       "refersTo": "text-link",
-      "description": "Understated links retain text color and visible keyboard focus.",
+      "description": "Understated underlined links use solid light ink on the dark field; visible keyboard focus is retained.",
       "html": "<a class=\"ds-link\" href=\"#\">résumé</a>",
-      "css": ".ds-link{color:#202020;font:17px/1.55 Georgia,\"Times New Roman\",serif;text-decoration-color:#888;text-underline-offset:.2em;text-decoration-thickness:1px}.ds-link:hover{text-decoration-thickness:2px}.ds-link:focus-visible{outline:1px solid #999;outline-offset:5px}"
-    },
-    {
-      "name": "Inversion Grip",
-      "kind": "custom",
-      "refersTo": "boundary-grip",
-      "description": "Visual specimen of the 44px inversion slider grip; the application provides pointer capture and Arrow/Page/Home/End keyboard behavior.",
-      "html": "<div class=\"ds-grip\" role=\"slider\" tabindex=\"0\" aria-label=\"Text and background inversion boundary\" aria-orientation=\"horizontal\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"0\"><svg viewBox=\"0 0 32 16\" aria-hidden=\"true\"><path d=\"m8 4-4 4 4 4M24 4l4 4-4 4M13 3v10M19 3v10\"/></svg></div>",
-      "css": ".ds-grip{width:44px;height:44px;display:grid;place-items:center;border:1px solid #656565;border-radius:50%;background:#fff;color:#222;cursor:ew-resize}.ds-grip svg{width:28px;height:16px;fill:none;stroke:currentColor;stroke-width:1}.ds-grip:focus-visible{outline:2px solid #222;outline-offset:4px}"
+      "css": ".ds-link{color:#f2f2f2;font:17px/1.55 Georgia,\"Times New Roman\",serif;text-decoration-color:#888;text-underline-offset:.2em;text-decoration-thickness:1px}.ds-link:hover{text-decoration-thickness:2px}.ds-link:focus-visible{outline:1px solid #999;outline-offset:5px}"
     },
     {
       "name": "Gym Field",
@@ -92,18 +352,26 @@
       "description": "Retained square ink action, scoped to /gym.",
       "html": "<button class=\"ds-gym-action\">Save workout</button>",
       "css": ".ds-gym-action{min-height:2.45rem;padding:.5rem .85rem;border:1px solid #28231f;border-radius:0;background:#28231f;color:#fff;font:italic .76rem/1 Georgia,\"Times New Roman\",serif;cursor:pointer}.ds-gym-action:hover{background:#fff;color:#28231f}.ds-gym-action:focus-visible{outline:2px solid #28231f;outline-offset:3px}"
+    },
+    {
+      "name": "Public GitHub Activity",
+      "kind": "custom",
+      "refersTo": "github-activity",
+      "description": "Open top-right contribution year above the desktop minifigure; the entire panel is hidden through 64rem with no reserved mobile track. This static specimen preserves the real AcastaPaloma calendar snapshot verified on 2026-10-07, with all 368 days and 924 contributions from 2025-10-05 through 2026-10-07. The shipped widget uses one solid light-ink SVG, server-renders initial content, skips client refresh while compact, and resumes when the viewport widens. The public calendar request is cached for 300 seconds and retains a dated verified saved fallback.",
+      "html": "<aside class=\"ds-github-activity\" aria-labelledby=\"ds-github-heading\"><div class=\"ds-github-heading\"><h2 id=\"ds-github-heading\"><a href=\"https://github.com/AcastaPaloma\" target=\"_blank\" rel=\"noreferrer\"><svg class=\"ds-github-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m8 6-6 6 6 6m8-12 6 6-6 6m-3-14-2 16\"/></svg>GitHub</a></h2><span>past year</span></div><a class=\"ds-github-graph-link\" href=\"https://github.com/AcastaPaloma\" target=\"_blank\" rel=\"noreferrer\" aria-label=\"View my contribution graph on GitHub\"><svg class=\"ds-github-graph\" role=\"img\" aria-label=\"924 contributions over the past year\" viewBox=\"0 0 369 47\" width=\"369\" height=\"47\"><rect x=\"0\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on October 5, 2025</title></rect><rect x=\"0\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 6, 2025</title></rect><rect x=\"0\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>6 contributions on October 7, 2025</title></rect><rect x=\"0\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 8, 2025</title></rect><rect x=\"0\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 9, 2025</title></rect><rect x=\"0\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 10, 2025</title></rect><rect x=\"0\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 11, 2025</title></rect><rect x=\"7\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 12, 2025</title></rect><rect x=\"7\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 13, 2025</title></rect><rect x=\"7\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 14, 2025</title></rect><rect x=\"7\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 15, 2025</title></rect><rect x=\"7\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on October 16, 2025</title></rect><rect x=\"7\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 17, 2025</title></rect><rect x=\"7\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 18, 2025</title></rect><rect x=\"14\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 19, 2025</title></rect><rect x=\"14\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 20, 2025</title></rect><rect x=\"14\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 21, 2025</title></rect><rect x=\"14\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 22, 2025</title></rect><rect x=\"14\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 23, 2025</title></rect><rect x=\"14\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 24, 2025</title></rect><rect x=\"14\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 25, 2025</title></rect><rect x=\"21\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 26, 2025</title></rect><rect x=\"21\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 27, 2025</title></rect><rect x=\"21\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 28, 2025</title></rect><rect x=\"21\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 29, 2025</title></rect><rect x=\"21\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 30, 2025</title></rect><rect x=\"21\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 31, 2025</title></rect><rect x=\"21\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 1, 2025</title></rect><rect x=\"28\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>12 contributions on November 2, 2025</title></rect><rect x=\"28\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on November 3, 2025</title></rect><rect x=\"28\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 4, 2025</title></rect><rect x=\"28\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on November 5, 2025</title></rect><rect x=\"28\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 6, 2025</title></rect><rect x=\"28\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 7, 2025</title></rect><rect x=\"28\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 8, 2025</title></rect><rect x=\"35\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>5 contributions on November 9, 2025</title></rect><rect x=\"35\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 10, 2025</title></rect><rect x=\"35\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on November 11, 2025</title></rect><rect x=\"35\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on November 12, 2025</title></rect><rect x=\"35\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 13, 2025</title></rect><rect x=\"35\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 14, 2025</title></rect><rect x=\"35\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 15, 2025</title></rect><rect x=\"42\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 16, 2025</title></rect><rect x=\"42\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 17, 2025</title></rect><rect x=\"42\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on November 18, 2025</title></rect><rect x=\"42\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 19, 2025</title></rect><rect x=\"42\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 20, 2025</title></rect><rect x=\"42\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 21, 2025</title></rect><rect x=\"42\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 22, 2025</title></rect><rect x=\"49\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 23, 2025</title></rect><rect x=\"49\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 24, 2025</title></rect><rect x=\"49\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 25, 2025</title></rect><rect x=\"49\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 26, 2025</title></rect><rect x=\"49\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 27, 2025</title></rect><rect x=\"49\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 28, 2025</title></rect><rect x=\"49\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 29, 2025</title></rect><rect x=\"56\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on November 30, 2025</title></rect><rect x=\"56\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 1, 2025</title></rect><rect x=\"56\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 2, 2025</title></rect><rect x=\"56\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 3, 2025</title></rect><rect x=\"56\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 4, 2025</title></rect><rect x=\"56\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 5, 2025</title></rect><rect x=\"56\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 6, 2025</title></rect><rect x=\"63\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 7, 2025</title></rect><rect x=\"63\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 8, 2025</title></rect><rect x=\"63\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 9, 2025</title></rect><rect x=\"63\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 10, 2025</title></rect><rect x=\"63\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 11, 2025</title></rect><rect x=\"63\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 12, 2025</title></rect><rect x=\"63\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 13, 2025</title></rect><rect x=\"70\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 14, 2025</title></rect><rect x=\"70\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 15, 2025</title></rect><rect x=\"70\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 16, 2025</title></rect><rect x=\"70\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 17, 2025</title></rect><rect x=\"70\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 18, 2025</title></rect><rect x=\"70\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on December 19, 2025</title></rect><rect x=\"70\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on December 20, 2025</title></rect><rect x=\"77\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on December 21, 2025</title></rect><rect x=\"77\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on December 22, 2025</title></rect><rect x=\"77\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on December 23, 2025</title></rect><rect x=\"77\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on December 24, 2025</title></rect><rect x=\"77\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on December 25, 2025</title></rect><rect x=\"77\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>10 contributions on December 26, 2025</title></rect><rect x=\"77\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on December 27, 2025</title></rect><rect x=\"84\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 28, 2025</title></rect><rect x=\"84\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on December 29, 2025</title></rect><rect x=\"84\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 30, 2025</title></rect><rect x=\"84\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on December 31, 2025</title></rect><rect x=\"84\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 1, 2026</title></rect><rect x=\"84\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on January 2, 2026</title></rect><rect x=\"84\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 3, 2026</title></rect><rect x=\"91\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 4, 2026</title></rect><rect x=\"91\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 5, 2026</title></rect><rect x=\"91\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 6, 2026</title></rect><rect x=\"91\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 7, 2026</title></rect><rect x=\"91\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 8, 2026</title></rect><rect x=\"91\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 9, 2026</title></rect><rect x=\"91\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 10, 2026</title></rect><rect x=\"98\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on January 11, 2026</title></rect><rect x=\"98\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on January 12, 2026</title></rect><rect x=\"98\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>16 contributions on January 13, 2026</title></rect><rect x=\"98\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>8 contributions on January 14, 2026</title></rect><rect x=\"98\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on January 15, 2026</title></rect><rect x=\"98\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>8 contributions on January 16, 2026</title></rect><rect x=\"98\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>28 contributions on January 17, 2026</title></rect><rect x=\"105\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>25 contributions on January 18, 2026</title></rect><rect x=\"105\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 19, 2026</title></rect><rect x=\"105\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 20, 2026</title></rect><rect x=\"105\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on January 21, 2026</title></rect><rect x=\"105\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 22, 2026</title></rect><rect x=\"105\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 23, 2026</title></rect><rect x=\"105\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 24, 2026</title></rect><rect x=\"112\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>25 contributions on January 25, 2026</title></rect><rect x=\"112\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>10 contributions on January 26, 2026</title></rect><rect x=\"112\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on January 27, 2026</title></rect><rect x=\"112\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on January 28, 2026</title></rect><rect x=\"112\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on January 29, 2026</title></rect><rect x=\"112\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on January 30, 2026</title></rect><rect x=\"112\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>6 contributions on January 31, 2026</title></rect><rect x=\"119\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 1, 2026</title></rect><rect x=\"119\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 2, 2026</title></rect><rect x=\"119\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 3, 2026</title></rect><rect x=\"119\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on February 4, 2026</title></rect><rect x=\"119\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 5, 2026</title></rect><rect x=\"119\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on February 6, 2026</title></rect><rect x=\"119\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 7, 2026</title></rect><rect x=\"126\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 8, 2026</title></rect><rect x=\"126\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on February 9, 2026</title></rect><rect x=\"126\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>8 contributions on February 10, 2026</title></rect><rect x=\"126\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>30 contributions on February 11, 2026</title></rect><rect x=\"126\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>8 contributions on February 12, 2026</title></rect><rect x=\"126\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>10 contributions on February 13, 2026</title></rect><rect x=\"126\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>6 contributions on February 14, 2026</title></rect><rect x=\"133\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>5 contributions on February 15, 2026</title></rect><rect x=\"133\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on February 16, 2026</title></rect><rect x=\"133\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 17, 2026</title></rect><rect x=\"133\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>9 contributions on February 18, 2026</title></rect><rect x=\"133\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on February 19, 2026</title></rect><rect x=\"133\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on February 20, 2026</title></rect><rect x=\"133\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.72\"><title>40 contributions on February 21, 2026</title></rect><rect x=\"140\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on February 22, 2026</title></rect><rect x=\"140\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 23, 2026</title></rect><rect x=\"140\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on February 24, 2026</title></rect><rect x=\"140\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 25, 2026</title></rect><rect x=\"140\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 26, 2026</title></rect><rect x=\"140\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on February 27, 2026</title></rect><rect x=\"140\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on February 28, 2026</title></rect><rect x=\"147\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>18 contributions on March 1, 2026</title></rect><rect x=\"147\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on March 2, 2026</title></rect><rect x=\"147\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 3, 2026</title></rect><rect x=\"147\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 4, 2026</title></rect><rect x=\"147\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on March 5, 2026</title></rect><rect x=\"147\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>10 contributions on March 6, 2026</title></rect><rect x=\"147\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>6 contributions on March 7, 2026</title></rect><rect x=\"154\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>6 contributions on March 8, 2026</title></rect><rect x=\"154\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 9, 2026</title></rect><rect x=\"154\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on March 10, 2026</title></rect><rect x=\"154\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on March 11, 2026</title></rect><rect x=\"154\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 12, 2026</title></rect><rect x=\"154\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on March 13, 2026</title></rect><rect x=\"154\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on March 14, 2026</title></rect><rect x=\"161\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on March 15, 2026</title></rect><rect x=\"161\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 16, 2026</title></rect><rect x=\"161\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on March 17, 2026</title></rect><rect x=\"161\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on March 18, 2026</title></rect><rect x=\"161\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 19, 2026</title></rect><rect x=\"161\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 20, 2026</title></rect><rect x=\"161\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on March 21, 2026</title></rect><rect x=\"168\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>11 contributions on March 22, 2026</title></rect><rect x=\"168\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 23, 2026</title></rect><rect x=\"168\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 24, 2026</title></rect><rect x=\"168\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 25, 2026</title></rect><rect x=\"168\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 26, 2026</title></rect><rect x=\"168\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 27, 2026</title></rect><rect x=\"168\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 28, 2026</title></rect><rect x=\"175\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 29, 2026</title></rect><rect x=\"175\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 30, 2026</title></rect><rect x=\"175\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on March 31, 2026</title></rect><rect x=\"175\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 1, 2026</title></rect><rect x=\"175\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 2, 2026</title></rect><rect x=\"175\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>6 contributions on April 3, 2026</title></rect><rect x=\"175\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on April 4, 2026</title></rect><rect x=\"182\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 5, 2026</title></rect><rect x=\"182\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on April 6, 2026</title></rect><rect x=\"182\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 7, 2026</title></rect><rect x=\"182\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on April 8, 2026</title></rect><rect x=\"182\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on April 9, 2026</title></rect><rect x=\"182\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 10, 2026</title></rect><rect x=\"182\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on April 11, 2026</title></rect><rect x=\"189\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 12, 2026</title></rect><rect x=\"189\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 13, 2026</title></rect><rect x=\"189\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 14, 2026</title></rect><rect x=\"189\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 15, 2026</title></rect><rect x=\"189\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 16, 2026</title></rect><rect x=\"189\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 17, 2026</title></rect><rect x=\"189\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 18, 2026</title></rect><rect x=\"196\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 19, 2026</title></rect><rect x=\"196\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 20, 2026</title></rect><rect x=\"196\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on April 21, 2026</title></rect><rect x=\"196\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 22, 2026</title></rect><rect x=\"196\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 23, 2026</title></rect><rect x=\"196\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 24, 2026</title></rect><rect x=\"196\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 25, 2026</title></rect><rect x=\"203\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 26, 2026</title></rect><rect x=\"203\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 27, 2026</title></rect><rect x=\"203\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>5 contributions on April 28, 2026</title></rect><rect x=\"203\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 29, 2026</title></rect><rect x=\"203\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on April 30, 2026</title></rect><rect x=\"203\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 1, 2026</title></rect><rect x=\"203\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 2, 2026</title></rect><rect x=\"210\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 3, 2026</title></rect><rect x=\"210\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 4, 2026</title></rect><rect x=\"210\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 5, 2026</title></rect><rect x=\"210\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on May 6, 2026</title></rect><rect x=\"210\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 7, 2026</title></rect><rect x=\"210\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 8, 2026</title></rect><rect x=\"210\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on May 9, 2026</title></rect><rect x=\"217\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 10, 2026</title></rect><rect x=\"217\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on May 11, 2026</title></rect><rect x=\"217\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on May 12, 2026</title></rect><rect x=\"217\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 13, 2026</title></rect><rect x=\"217\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 14, 2026</title></rect><rect x=\"217\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 15, 2026</title></rect><rect x=\"217\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 16, 2026</title></rect><rect x=\"224\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 17, 2026</title></rect><rect x=\"224\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 18, 2026</title></rect><rect x=\"224\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 19, 2026</title></rect><rect x=\"224\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 20, 2026</title></rect><rect x=\"224\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on May 21, 2026</title></rect><rect x=\"224\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 22, 2026</title></rect><rect x=\"224\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>5 contributions on May 23, 2026</title></rect><rect x=\"231\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on May 24, 2026</title></rect><rect x=\"231\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 25, 2026</title></rect><rect x=\"231\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 26, 2026</title></rect><rect x=\"231\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on May 27, 2026</title></rect><rect x=\"231\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on May 28, 2026</title></rect><rect x=\"231\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on May 29, 2026</title></rect><rect x=\"231\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on May 30, 2026</title></rect><rect x=\"238\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on May 31, 2026</title></rect><rect x=\"238\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on June 1, 2026</title></rect><rect x=\"238\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on June 2, 2026</title></rect><rect x=\"238\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on June 3, 2026</title></rect><rect x=\"238\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on June 4, 2026</title></rect><rect x=\"238\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on June 5, 2026</title></rect><rect x=\"238\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on June 6, 2026</title></rect><rect x=\"245\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on June 7, 2026</title></rect><rect x=\"245\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on June 8, 2026</title></rect><rect x=\"245\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on June 9, 2026</title></rect><rect x=\"245\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on June 10, 2026</title></rect><rect x=\"245\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on June 11, 2026</title></rect><rect x=\"245\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on June 12, 2026</title></rect><rect x=\"245\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 13, 2026</title></rect><rect x=\"252\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on June 14, 2026</title></rect><rect x=\"252\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 15, 2026</title></rect><rect x=\"252\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 16, 2026</title></rect><rect x=\"252\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 17, 2026</title></rect><rect x=\"252\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 18, 2026</title></rect><rect x=\"252\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 19, 2026</title></rect><rect x=\"252\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>10 contributions on June 20, 2026</title></rect><rect x=\"259\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on June 21, 2026</title></rect><rect x=\"259\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on June 22, 2026</title></rect><rect x=\"259\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 23, 2026</title></rect><rect x=\"259\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on June 24, 2026</title></rect><rect x=\"259\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 25, 2026</title></rect><rect x=\"259\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 26, 2026</title></rect><rect x=\"259\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on June 27, 2026</title></rect><rect x=\"266\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>4 contributions on June 28, 2026</title></rect><rect x=\"266\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 29, 2026</title></rect><rect x=\"266\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on June 30, 2026</title></rect><rect x=\"266\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on July 1, 2026</title></rect><rect x=\"266\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 2, 2026</title></rect><rect x=\"266\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 3, 2026</title></rect><rect x=\"266\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>5 contributions on July 4, 2026</title></rect><rect x=\"273\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on July 5, 2026</title></rect><rect x=\"273\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on July 6, 2026</title></rect><rect x=\"273\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on July 7, 2026</title></rect><rect x=\"273\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 8, 2026</title></rect><rect x=\"273\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 9, 2026</title></rect><rect x=\"273\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 10, 2026</title></rect><rect x=\"273\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 11, 2026</title></rect><rect x=\"280\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 12, 2026</title></rect><rect x=\"280\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on July 13, 2026</title></rect><rect x=\"280\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 14, 2026</title></rect><rect x=\"280\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 15, 2026</title></rect><rect x=\"280\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 16, 2026</title></rect><rect x=\"280\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on July 17, 2026</title></rect><rect x=\"280\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"1\"><title>63 contributions on July 18, 2026</title></rect><rect x=\"287\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>8 contributions on July 19, 2026</title></rect><rect x=\"287\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on July 20, 2026</title></rect><rect x=\"287\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>14 contributions on July 21, 2026</title></rect><rect x=\"287\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on July 22, 2026</title></rect><rect x=\"287\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on July 23, 2026</title></rect><rect x=\"287\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on July 24, 2026</title></rect><rect x=\"287\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>17 contributions on July 25, 2026</title></rect><rect x=\"294\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 26, 2026</title></rect><rect x=\"294\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 27, 2026</title></rect><rect x=\"294\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 28, 2026</title></rect><rect x=\"294\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on July 29, 2026</title></rect><rect x=\"294\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>14 contributions on July 30, 2026</title></rect><rect x=\"294\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.72\"><title>46 contributions on July 31, 2026</title></rect><rect x=\"294\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>19 contributions on August 1, 2026</title></rect><rect x=\"301\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on August 2, 2026</title></rect><rect x=\"301\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 3, 2026</title></rect><rect x=\"301\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 4, 2026</title></rect><rect x=\"301\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 5, 2026</title></rect><rect x=\"301\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 6, 2026</title></rect><rect x=\"301\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on August 7, 2026</title></rect><rect x=\"301\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on August 8, 2026</title></rect><rect x=\"308\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 9, 2026</title></rect><rect x=\"308\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 10, 2026</title></rect><rect x=\"308\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 11, 2026</title></rect><rect x=\"308\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 12, 2026</title></rect><rect x=\"308\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 13, 2026</title></rect><rect x=\"308\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 14, 2026</title></rect><rect x=\"308\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 15, 2026</title></rect><rect x=\"315\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on August 16, 2026</title></rect><rect x=\"315\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>6 contributions on August 17, 2026</title></rect><rect x=\"315\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on August 18, 2026</title></rect><rect x=\"315\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 19, 2026</title></rect><rect x=\"315\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 20, 2026</title></rect><rect x=\"315\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 21, 2026</title></rect><rect x=\"315\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.5\"><title>21 contributions on August 22, 2026</title></rect><rect x=\"322\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 23, 2026</title></rect><rect x=\"322\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 24, 2026</title></rect><rect x=\"322\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 25, 2026</title></rect><rect x=\"322\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 26, 2026</title></rect><rect x=\"322\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 27, 2026</title></rect><rect x=\"322\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 28, 2026</title></rect><rect x=\"322\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 29, 2026</title></rect><rect x=\"329\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 30, 2026</title></rect><rect x=\"329\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on August 31, 2026</title></rect><rect x=\"329\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on September 1, 2026</title></rect><rect x=\"329\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 2, 2026</title></rect><rect x=\"329\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 3, 2026</title></rect><rect x=\"329\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 4, 2026</title></rect><rect x=\"329\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on September 5, 2026</title></rect><rect x=\"336\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on September 6, 2026</title></rect><rect x=\"336\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on September 7, 2026</title></rect><rect x=\"336\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 8, 2026</title></rect><rect x=\"336\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>3 contributions on September 9, 2026</title></rect><rect x=\"336\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 10, 2026</title></rect><rect x=\"336\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>5 contributions on September 11, 2026</title></rect><rect x=\"336\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on September 12, 2026</title></rect><rect x=\"343\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>10 contributions on September 13, 2026</title></rect><rect x=\"343\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on September 14, 2026</title></rect><rect x=\"343\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>6 contributions on September 15, 2026</title></rect><rect x=\"343\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>5 contributions on September 16, 2026</title></rect><rect x=\"343\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 17, 2026</title></rect><rect x=\"343\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 18, 2026</title></rect><rect x=\"343\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>14 contributions on September 19, 2026</title></rect><rect x=\"350\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on September 20, 2026</title></rect><rect x=\"350\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on September 21, 2026</title></rect><rect x=\"350\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on September 22, 2026</title></rect><rect x=\"350\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>2 contributions on September 23, 2026</title></rect><rect x=\"350\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>8 contributions on September 24, 2026</title></rect><rect x=\"350\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 25, 2026</title></rect><rect x=\"350\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 26, 2026</title></rect><rect x=\"357\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 27, 2026</title></rect><rect x=\"357\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 28, 2026</title></rect><rect x=\"357\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 29, 2026</title></rect><rect x=\"357\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on September 30, 2026</title></rect><rect x=\"357\" y=\"28\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>11 contributions on October 1, 2026</title></rect><rect x=\"357\" y=\"35\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>15 contributions on October 2, 2026</title></rect><rect x=\"357\" y=\"42\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 3, 2026</title></rect><rect x=\"364\" y=\"0\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 4, 2026</title></rect><rect x=\"364\" y=\"7\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>1 contribution on October 5, 2026</title></rect><rect x=\"364\" y=\"14\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.3\"><title>7 contributions on October 6, 2026</title></rect><rect x=\"364\" y=\"21\" width=\"5\" height=\"5\" rx=\"0.8\" fill=\"currentColor\" opacity=\"0.1\"><title>0 contributions on October 7, 2026</title></rect></svg></a></aside>",
+      "css": ".ds-github-activity{width:min(100%,20rem);align-self:flex-end;font:.8125rem/1.5 Georgia,\"Times New Roman\",serif;color:#f2f2f2}.ds-github-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.75rem}.ds-github-heading h2{margin:0;font-size:.85rem;line-height:1.5;letter-spacing:0;font-weight:400}.ds-github-heading>span{font-size:.75rem}.ds-github-activity a{color:inherit;text-decoration:none;text-decoration-color:#888;text-underline-offset:.2em;text-decoration-thickness:1px}.ds-github-heading a:hover{text-decoration:underline;text-decoration-thickness:1px}.ds-github-activity a:focus-visible{outline:1px solid #999;outline-offset:5px}.ds-github-icon{display:inline-block;width:1em;height:1em;margin:0 .32em 0 .04em;vertical-align:-.1em;color:#888}.ds-github-graph-link{position:relative;display:block;min-height:44px}.ds-github-graph{display:block;width:100%;height:auto;color:#f2f2f2}.ds-github-note{margin:.7rem 0 0;font-size:.75rem}@media(max-width:64rem){.ds-github-activity{display:none}}"
     }
   ],
   "narrative": {
     "northStar": "Words, Photographs, and Dots",
-    "overview": "A compact black-and-white personal page with full-color photo bentos, a dithered minifigure, and a particle helmet with stronger crest wind. Current Reflex inference work, representation learning at RBC Borealis, and the calendar invitation are in the opening. Matching black/white Bloop exports preserve the globe’s photo detail without background removal. The actual Ink export forms a small handwritten sideline. The travel masonry preserves natural photo proportions in four, three, or two native CSS columns; location captions invert with text, while photographs retain their colors. A server-rendered Duolingo streak panel with a German flag and avatar sits above the profile links; it refreshes when the tab regains focus.",
+    "overview": "One compact personal page: Georgia prose, full-color photographs, and two animated dither subjects over the floral film and cursor-reactive characters from the user-approved hascodexratelimitreset.today reference. The owner’s final October 7 refinement keeps the dark grayscale presentation across the whole viewport and a graph-only GitHub panel, while preserving the existing typography, composition, content, and foreground colors. Only the minifigure and Agamemnon helmet receive the particle/dither treatment. The roaming piñata is removed. The supplied Morgan globe consistently displays the black-background half of its original full-color Bloop pair, with a black poster and no visible playback control. Arnold Francisca's Ink export supplies a small handwritten accent beside Around the dot.\n\nThe page opens on a black and charcoal floral field. Compact identity copy, including current computer vision inference work at Reflex and Piñata Pitch's 2000+ student ideas, and the minifigure share the opening; work follows beside the particle helmet. Projects appear in order: Genie Doom World Model, GNN Quantum Error Decoder, Allot, Cortesol, and MvPVP. Awards are condensed beside project names where they fit; the quantum project’s ISEF Silver, Physics & Astronomy, Team Canada, and Jane Street sponsorship appear in the description. People contains Piñata Pitch, Morgan Stanley, and Around the dot. Elsewhere combines eleven owner-selected travel photographs with three retained camera-roll images. The calendar invitation belongs in the opening links, alongside résumé, LinkedIn, and email.\n\nThe inherited PRODUCT.md and résumé scene describe the earlier route. The current main-page authority is the user's minimal Lance-inspired direction and subsequent refinements. The existing /gym utility stays separate. The desktop introduction’s top-right column contains an open public GitHub contribution calendar above the minifigure. The entire panel is hidden through 64rem; narrow layouts retain name, biography, and figure without an activity gap.",
     "keyCharacteristics": [
-      "Georgia prose and small icons before underlined text links; all sections share one centered 60rem rail and symmetric gutters, with added breathing room above work, People, and Elsewhere. Project title links stay on one line and use the compact link size below 34rem; longer quantum award details live in its description.",
-      "Full-color photos: tight bento groups for People, natural-proportion masonry for Elsewhere. Eight travel photographs have wrapping location labels beneath them; People remains caption-free.",
-      "Dither limited to the minifigure and helmet.",
-      "Synchronized full-color Bloop globe exports follow the boundary without background removal or visible playback controls.",
-      "Independent text/background inversion preserves photo colors; the helmet and handwriting invert.",
-      "Precomputed crest wind and dither, lazy media, artwork pause controls, and reduced-motion stills."
+      "Compact Georgia identity and prose on one centered rail with symmetric gutters.",
+      "Authentic full-color photographs, tight People bentos, and natural-proportion Elsewhere masonry.",
+      "Dither limited to the minifigure and helmet; the globe and handwriting retain their established media treatments.",
+      "A full-viewport dark grayscale floral film with small cursor-reactive glyphs and solid light foreground ink.",
+      "One authentic neutral GitHub contribution calendar on larger displays; complete removal on smaller displays.",
+      "Precomputed artwork, native floral motion, visible focus, and reduced-motion stills."
     ],
     "rules": [
       {
@@ -112,35 +380,40 @@
         "section": "colors"
       },
       {
-        "name": "The Inversion Rule",
-        "body": "A split page background and glyph-clipped gradients invert page and text independently of media. Only the monochrome helmet and handwriting use difference blending.",
+        "name": "The Dark Field Rule",
+        "body": "The grayscale floral film and neutral glyphs share one fixed dark treatment across the whole viewport. Foreground text and calendar cells use solid light Ink; the backdrop shade does not filter foreground media. Only the monochrome helmet and handwriting use their own difference blending.",
         "section": "colors"
       },
       {
         "name": "The Quiet Name Rule",
-        "body": "Keep the name and prose compact so a animated minifigure can lead the first viewport.",
+        "body": "Keep the name and prose compact so the animated minifigure can lead the first viewport.",
         "section": "typography"
       },
       {
         "name": "The Unboxed Page Rule",
-        "body": "Use typography, spacing, and imagery to group main-page content; do not surround work entries or photographs with panels. The owner-requested Duolingo streak panel is the single boxed exception.",
+        "body": "Use typography, spacing, and imagery to group main-page content; do not surround work entries or photographs with panels. The owner-requested Duolingo streak panel is the boxed exception; GitHub’s calendar panel stays open and shadow-free.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do follow the pinned white, black, Georgia, colored-diamond direction on the main route.",
+      "Do follow the pinned dark grayscale floral film, Georgia, full-color photographs, and colored-diamond direction on the main route.",
       "Do let the animated minifigure and compact introduction share the opening.",
-      "Do preserve authentic photo content, focal points, uncropped image access, and provenance.",
+      "Do preserve authentic photo content, focal points, uncropped image access, and provenance in PHOTO-SOURCES.md and ANIMATION-SOURCES.md.",
       "Do precompute image effects and serve the mobile image variants at the documented breakpoint.",
-      "Do keep work and gallery content unboxed and normally scrollable.",
-      "Do preserve the inversion boundary’s keyboard support, focus visibility, and 44px grip.",
-      "Do retain résumé access and the existing private gym utility as separate functions."
+      "Do keep work and gallery content unboxed and normally scrollable, with People in tight bentos and Elsewhere in natural-proportion masonry with location captions.",
+      "Do preserve visible keyboard focus on links and functional controls.",
+      "Do retain résumé access, the opening calendar invitation, and the existing private gym utility as separate functions.",
+      "Do retain the original film, grayscale treatment, white wash, neutral glyphs, and fixed full-viewport dark shade, with solid light foreground ink.",
+      "Do keep the open GitHub panel above the desktop figure with one authentic neutral full-year calendar, profile links, day labels, 300-second caching, and a dated verified fallback.",
+      "Do hide the entire GitHub panel through 64rem, omit its mobile grid track, skip client refresh while compact, and resume refresh when the viewport becomes wide.",
+      "Do retain automatic offscreen and hidden-tab pausing and reduced-motion stills, without visible playback buttons."
     ],
     "donts": [
       "Don't restore the suspended slab, beige void, paper-note panels, or stage dock to the redesigned main page.",
       "Don't turn the photograph colors into decorative UI accents or a fixed rainbow palette.",
       "Don't add rounded photo cards, shadows, badges, or ornamental navigation to the main route.",
-      "Don't replace the continuous inversion boundary with a theme toggle or autonomous animation.",
+      "Don't surround GitHub with a card shell or change its neutral graph to a decorative accent color.",
+      "Don't add theme switches, a movable color boundary, or alternate light-side tints to the dark background.",
       "Don't render photo dithering in a runtime canvas or shader.",
       "Don't copy the reference site’s personal photographs, videos, or text.",
       "Don't apply main-page styling to the retained gym utility without a separate scoped change."

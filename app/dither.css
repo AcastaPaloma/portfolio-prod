@@ -1,9 +1,16 @@
-.dither-page{--page-gutter:clamp(2.75rem,5vw,3rem);--page-width:60rem;--default-split:min(6rem,calc((100vw - min(calc(100vw - 2 * var(--page-gutter)),var(--page-width))) / 4));--split:var(--default-split);--split-px:var(--split);--section-space:clamp(4rem,7vw,5.5rem);position:relative;isolation:isolate;min-height:100svh;overflow:clip;background:#fff;color:#202020;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:5rem}
+.dither-page{--page-gutter:clamp(2.75rem,5vw,3rem);--page-width:60rem;--section-space:clamp(4rem,7vw,5.5rem);position:relative;isolation:isolate;min-height:100svh;overflow:clip;background:#151515;color:#f2f2f2;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:5rem}
 .dither-page *,.dither-page *::before,.dither-page *::after{box-sizing:border-box}
-/* Page, photographs and ink are independent: colored media never gets inverted. */
-.color-inversion{position:fixed;z-index:0;inset:0 0 0 var(--split);background:#000;pointer-events:none}
+/* The original grayscale dark treatment now fills the whole viewport. */
+.gradient-backdrop{position:fixed;z-index:0;inset:0;overflow:hidden;pointer-events:none;background:#eee}
+.gradient-film{position:absolute;inset:0;background:url("/background/floral-blue-poster.webp") center/cover;filter:grayscale(1) contrast(.96) brightness(1.16);transform:scale(1.03)}
+.gradient-film video{display:block;width:100%;height:100%;object-fit:cover}
+.gradient-backdrop::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgb(255 255 255 / 42%),transparent 26%),linear-gradient(180deg,rgb(255 255 255 / 38%),rgb(255 255 255 / 40%) 52%,rgb(255 255 255 / 46%))}
+.gradient-details{position:absolute;z-index:1;inset:0;width:100%;height:100%;mix-blend-mode:multiply;opacity:.82}
+/* The dark backdrop treatment preserves foreground photograph and artwork colors. */
+.gradient-shade{position:fixed;z-index:1;inset:0;background:#151515;pointer-events:none}
+@supports ((backdrop-filter:invert(1)) or (-webkit-backdrop-filter:invert(1))){.gradient-shade{background:rgb(21 21 21 / 14%);-webkit-backdrop-filter:invert(1);backdrop-filter:invert(1)}}
 .text-layer{position:relative;z-index:3}
-.ink{color:transparent;background-image:linear-gradient(to right,#202020 0 calc(var(--split) - var(--ink-left,0px)),#dfdfdf calc(var(--split) - var(--ink-left,0px)) 100%);background-size:100vw 100%;background-position:0 0;background-repeat:no-repeat;-webkit-background-clip:text;background-clip:text}
+.ink{color:#f2f2f2}
 .ink::selection,.ink ::selection{color:#fff;background:#555}
 .dither-page a{color:inherit;text-decoration-color:#888;text-underline-offset:.2em;text-decoration-thickness:1px}
 .dither-page a:hover{text-decoration-thickness:2px}
@@ -15,8 +22,18 @@
 .dither-page h2,.dither-page h3{margin:0 0 1.5rem;font-size:1.3rem;line-height:1.25;font-weight:400;letter-spacing:-.02em}
 .dither-page p{margin:0 0 1.35rem}
 .dither-intro,.dither-work,.dither-people,.dither-gallery{width:min(calc(100% - 2 * var(--page-gutter)),var(--page-width));margin-inline:auto}
-.dither-intro{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;column-gap:3rem;padding:4.5rem 0 2rem}
+.dither-intro{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:start;column-gap:3rem;padding:4.5rem 0 2rem}
 .dither-intro-copy{width:100%;max-width:31rem;margin:0;padding:0}
+.dither-intro-visual{display:flex;flex-direction:column;align-items:center;gap:1.5rem;min-width:0;margin-top:-2.75rem}
+.github-activity{width:min(100%,20rem);align-self:flex-end;font-size:.8125rem;line-height:1.5}
+.github-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.75rem}
+.dither-page .github-heading h2{margin:0;font-size:.85rem;line-height:1.5;letter-spacing:0;font-weight:400}
+.github-heading>span{font-size:.75rem}
+.dither-page .github-activity a{text-decoration:none}
+.github-heading a:hover{text-decoration:underline;text-decoration-thickness:1px}
+.github-graph-link{position:relative;display:block;min-height:44px}
+.github-graph{display:block;width:100%;height:auto;color:#f2f2f2}
+.dither-page .github-note{margin:.7rem 0 0;font-size:.75rem}
 .icon-word{white-space:nowrap}
 .dither-intro-copy p{text-wrap:pretty}
 .dither-links{display:flex;flex-wrap:wrap;column-gap:1.4rem;row-gap:.8rem;margin-top:2rem;font-size:.85rem}
@@ -36,13 +53,8 @@
 .loop-art{position:absolute;inset:0;pointer-events:none}
 .loop-art img,.loop-art canvas{display:block;width:100%;height:100%;object-fit:contain;margin:0;padding:0;background:transparent}
 .loop-art canvas{position:absolute;inset:0}
-.light-loop-poster{position:absolute;inset:0;clip-path:inset(0 clamp(0px,calc(100% - var(--split-px,0px) + var(--media-left,0px)),100%) 0 0)}
 .loop-source{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.loop-toggle{position:absolute;z-index:4;right:0;bottom:0;width:44px;height:44px;padding:12px;border:0;color:#888;background:transparent;cursor:pointer;opacity:.8}
-.loop-toggle svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4}
-.loop-toggle:hover,.loop-toggle:focus-visible{opacity:1}
-.loop-toggle:focus-visible{outline:1px solid #999;outline-offset:2px}
-.minifigure-art{width:min(100%,70svh * 768/1032);justify-self:center}
+.minifigure-art{width:min(100%,18rem);justify-self:center}
 .dither-work{position:relative;min-height:26rem;display:flex;align-items:center;margin-top:clamp(1rem,3vw,2rem)}
 .work-copy{width:100%;padding:3rem 0}
 .work-copy ul{width:min(52%,29rem);list-style:none;margin:0;padding:0}
@@ -75,7 +87,6 @@
 .around-intro{position:relative;height:5rem}
 .ink-art{position:absolute;right:0;top:50%;transform:translateY(-50%) rotate(-8deg);width:10rem;mix-blend-mode:difference}
 .ink-art .loop-art{opacity:.2}
-.ink-art .loop-toggle{right:-1rem;bottom:-.25rem}
 .bento-around{grid-template-columns:1fr 1.15fr;height:auto;aspect-ratio:1.3}
 .bento-around img{object-position:50% 45%}
 .masonry-moments{position:relative;z-index:2;column-count:4;column-gap:.75rem;width:100%;margin:0;padding:0}
@@ -97,20 +108,16 @@
 .webring-nav a:focus-visible{outline-color:currentColor;outline-offset:-2px}
 .webring-nav svg{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
 .webring-nav img{display:block;width:20px;height:20px}
-.color-boundary{position:fixed;z-index:30;inset-block:0;left:clamp(22px,var(--split),calc(100% - 22px));width:44px;transform:translateX(-50%);cursor:ew-resize;touch-action:none;user-select:none;outline:none}
-.boundary-line{position:absolute;inset-block:0;left:50%;width:1px;background:#858585}
-.boundary-grip{position:absolute;top:48%;left:0;width:44px;height:44px;display:grid;place-items:center;border:1px solid #656565;border-radius:50%;background:#fff;color:#222}
-.boundary-grip svg{width:28px;height:16px;fill:none;stroke:currentColor;stroke-width:1}
-.color-boundary:focus-visible .boundary-grip{outline:2px solid #888;outline-offset:4px}
-.boundary-hint{position:absolute;right:10px;bottom:2rem;writing-mode:vertical-rl;transform:rotate(180deg);padding:.5rem .2rem;background:#fff;color:#666;font-size:.7rem;white-space:nowrap}
+@media(max-width:64rem){.github-activity{display:none}.dither-intro-visual{margin-top:0}}
 @media(max-width:48rem){
  .dither-page{font-size:16px;padding-bottom:4rem}
- .dither-intro{display:flex;flex-direction:column;gap:1rem;padding:3.5rem 0 1rem}
- .dither-intro-copy{max-width:none}
- .dither-page h1{font-size:2rem}
+ .dither-intro{grid-template-columns:minmax(0,1fr);grid-template-areas:"identity" "biography" "figure";row-gap:2rem;padding:3.5rem 0 1rem}
+ .dither-intro-copy,.dither-intro-visual{display:contents}
+ .dither-intro-body{grid-area:biography}
+ .dither-page h1{grid-area:identity;font-size:2rem;margin:0}
  .dither-links{column-gap:1.2rem;row-gap:0;margin-top:1.5rem}
  .dither-links a{min-height:44px;display:inline-flex;align-items:center}
- .minifigure-art{width:min(74vw,42svh * 768/1032);align-self:center}
+ .minifigure-art{grid-area:figure;width:min(74vw,42svh * 768/1032);align-self:center}
  .dither-work{min-height:0;display:grid;grid-template-columns:1fr;align-items:stretch}
  .work-copy{padding:2.5rem 0 1rem}
  .work-copy ul{width:100%}
@@ -122,7 +129,6 @@
  .masonry-moments{column-count:3}
  .ink-art{width:6.5rem;right:0;top:70%;opacity:.7}
  .around-intro .section-title{align-items:flex-start;padding-top:1.5rem}
- .boundary-hint{bottom:1.5rem}
 }
 @media(max-width:34rem){
  .work-copy li>a{font-size:.85rem}
@@ -140,4 +146,4 @@
  .webring-footer{justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.webring-nav a{transition:none}}
-@media print{.color-boundary,.color-inversion,.loop-toggle,.webring-footer{display:none}.ink{color:#202020;background:none}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}
+@media print{.gradient-backdrop,.gradient-shade,.webring-footer{display:none}.dither-page{background:#fff;color:#202020}.ink,.github-graph{color:#202020}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}

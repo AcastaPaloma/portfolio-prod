@@ -58,3 +58,20 @@ The earlier gray-background removal script and generated alpha assets were remov
 ## Runtime rendering
 
 The minifigure, helmet, and Ink retain their existing near-black matte pass for their precomputed artwork. Morgan uses only the paired full-color render selector described above. `requestVideoFrameCallback` drives video redraws, with 83ms artwork and 33ms globe fallbacks. Slider movement reuses the last uploaded frame. The globe's still fallback also clips between its clean black/white posters, including when WebGL is unavailable.
+
+# Blue floral backdrop — October 2026
+
+The owner requested the evolving background and character details from [Did Codex Reset Today?](https://hascodexratelimitreset.today/), changing purple to blue while retaining the portfolio's draggable inversion boundary.
+
+- Original film: [OpenAI CDN floral_a.mp4](https://cdn.openai.com/ctf-cdn/floral_a.mp4), the exact video used by the reference. Its original six-second motion and texture are preserved.
+- Treatment: hue shifted −35 degrees, encoded as H.264 at 30 fps with 1600×1600 desktop and 768×768 mobile sources. Local files and a still poster live in `public/background/`; `source.json` records provenance and processing.
+- Character field: adapted from the reference's `app.js`, preserving its glyph vocabulary, grid spacing, waves, drift, and eased cursor pull. Neutral gray ink supersedes the earlier blue treatment; drawing is capped at 30 fps and device pixel ratio 1.5.
+- Runtime: one native film supplies the normal light-gray side and clipped dark inverse. Foreground photographs retain their original pixels. Video and character updates pause in hidden tabs or through the background pause control. Reduced-motion visitors start with the poster and a static character field.
+
+The owner’s October 7 revision supersedes the blue presentation: CSS grayscale(1) removes color from the film and its poster, the character field uses neutral gray ink, and the continuous inversion uses neutral light and dark surfaces. The stored film remains unchanged.
+
+The subsequent October 7 refinement adds a clipped pink tint to the light side only. The grayscale film, synchronized dark inverse, neutral character field, and all foreground media remain the same.
+
+The latest October 7 simplification keeps only the dark grayscale presentation across the viewport. The pink tint and slider are removed. Morgan uses the black-background half of its existing paired Bloop video and the black still poster.
+
+The final October 7 publication removes every visible play/pause button at the owner’s request, including the background, minifigure, helmet, and handwriting. Automatic playback, offscreen/hidden-tab pausing, reduced-motion stills, and poster fallbacks remain.

@@ -12,12 +12,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <span hidden data-design-contract="2020df78-user-pinned-lance-dither">
+        <span hidden data-design-contract="2020df78-user-pinned-black-floral-dither">
           THESIS: A personal page reduced to words, photographs, and dots.
-          OWN-WORLD: White, black, Georgia, colored diamond halftones; no panels or ornamental navigation.
+          OWN-WORLD: Georgia, full-color photographs, colored diamond halftones, and a black grayscale floral film with cursor-reactive characters.
           STORY: Meet Kuan Yi through his work and his own camera roll, then get in touch.
           FIRST VIEWPORT: A compact introduction on the left and a large glossy minifigure turning in colored dither on the right.
-          FORM: User-pinned Lance Yan reference; one scrolling page and a vertical color-inversion boundary.
+          FORM: Existing personal-page composition; one dark grayscale floral background covers the page, with a compact public GitHub contribution graph on larger displays.
           FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
         </span>
         {children}
