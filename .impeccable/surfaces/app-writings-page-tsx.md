@@ -21,3 +21,5 @@ Copyediting: preserve the supplied vocabulary, paragraph order, voice, meaning a
 
 
 The supplied extensionless eeao file is a valid 1967×1371 PNG, copied to public/writings/joy-multiverse-transparent.png. It appears after the bagel paragraph, just before the final debate about whether everything matters. Preserve its full proportions and original colors; clicking opens the original for reading small labels. The owner replaced it with a transparent Excalidraw export. Preserve alpha, original pixels, and proportions. A diffuse beige #d8d0c3 backdrop behind this illustration keeps its dark arrows visible without a hard white rectangle. This beige is the established gym-void token; larger title sizes are owner-requested. Hook advisories about heading steps are intentional route roles; no suppressions are needed.
+
+The post title must remain on one line at all viewport widths. Use the full header width and container-responsive Georgia sizing min(3.65rem, 6cqi), with white-space:nowrap; the body stays 17px.
