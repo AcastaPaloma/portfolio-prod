@@ -1,0 +1,237 @@
+.page {
+  --page-gutter: clamp(1.5rem, 5vw, 3rem);
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  width: min(calc(100% - 2 * var(--page-gutter)), var(--page-width));
+  margin-inline: auto;
+}
+
+.page:has(.post)::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: rgb(21 21 21 / 48%);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  font-size: .85rem;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.indexHeader {
+  padding-top: clamp(3rem, 8vw, 6rem);
+}
+
+.page .indexHeader h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+}
+
+.quoteBanner {
+  margin: 2.5rem 0 4rem;
+  width: 100%;
+}
+
+.quoteImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Crop the screenshot's matte to the actual rounded message silhouette. */
+  clip-path: inset(6% 0 2% round 999px);
+}
+
+.mobileQuote {
+  display: none;
+}
+
+.writingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.writingList li {
+  border-top: 1px solid rgb(242 242 242 / 30%);
+}
+
+.writingList li:last-child {
+  border-bottom: 1px solid rgb(242 242 242 / 30%);
+}
+
+.page .writingLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding-block: 2rem;
+  text-decoration: none;
+}
+
+.page .writingLink h2 {
+  margin: 0 0 .55rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  text-wrap: balance;
+}
+
+.page .writingLink p {
+  margin: 0;
+  color: #ccc;
+  font-size: .9rem;
+  max-width: 52ch;
+}
+
+.writingLink:hover h2 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+
+.linkArrow {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+}
+
+.postHeader {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.post {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.post .nav {
+  font-size: inherit;
+}
+
+.page .postHeader h1 {
+  width: min(100%, 65ch);
+  margin: 0 auto 2.5rem;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: inherit;
+  letter-spacing: normal;
+}
+
+.filmBanner {
+  margin: 0 0 clamp(2.5rem, 6vw, 4rem);
+  background: #111;
+  /* The original frame's soft darkness meets the floral field at its edges. */
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+
+.filmBanner picture,
+.filmBanner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prose {
+  width: min(100%, 65ch);
+  margin-inline: auto;
+  font-size: inherit;
+  line-height: inherit;
+  overflow-wrap: break-word;
+}
+
+.page .prose p {
+  margin: 0 0 1.75rem;
+}
+
+.prose hr {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid rgb(242 242 242 / 35%);
+  margin: 4rem 0;
+}
+
+.articleDiagram {
+  margin: 2.5rem 0;
+}
+
+.articleDiagram a,
+.articleDiagram img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.translationPair {
+  padding-block: .5rem;
+}
+
+.page .translationPair > p:first-child {
+  margin-bottom: 1.25rem;
+}
+
+.page .translation {
+  max-width: 54ch;
+  margin: 0 0 2.25rem 1.5rem;
+  font-size: inherit;
+  line-height: inherit;
+  color: #ddd;
+}
+
+.postFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  width: min(100%, 65ch);
+  margin: 4rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(242 242 242 / 30%);
+  font-size: inherit;
+}
+
+.postFooter a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+@media (max-width: 34rem) {
+  .quoteImage {
+    display: none;
+  }
+
+  .mobileQuote {
+    display: block;
+    margin: 0;
+    border-radius: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: #3b3b3b;
+    color: #e4e4e4;
+    font: 500 1.25rem/1.35 system-ui, sans-serif;
+  }
+
+  .quoteBanner {
+    margin: 2rem 0 3rem;
+  }
+
+  .writingLink {
+    gap: 1rem;
+  }
+
+  .page .translation {
+    margin-left: .75rem;
+  }
+}

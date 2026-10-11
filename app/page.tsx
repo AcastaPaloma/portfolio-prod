@@ -6,6 +6,7 @@ import { StreakCard } from "@/components/streak-card";
 import { GitHubActivity } from "@/components/github-activity";
 import { getGitHubActivity } from "@/lib/github";
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import "./dither.css";
 
@@ -70,6 +71,9 @@ export default async function Home() {
   const [duolingo,github]=await Promise.all([getDuolingoProfile(),getGitHubActivity()]);
   return <main className="dither-page">
     <GradientBackground/>
+    <nav className="home-writings text-layer ink" aria-label="Writings">
+      <Link href="/writings">writings: tnt</Link>
+    </nav>
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
         <h1 id="name" className="ink text-layer">Kuan Yi Wang</h1>

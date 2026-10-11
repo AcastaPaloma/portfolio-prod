@@ -35,6 +35,8 @@
 .github-graph{display:block;width:100%;height:auto;color:#f2f2f2}
 .dither-page .github-note{margin:.7rem 0 0;font-size:.75rem}
 .icon-word{white-space:nowrap}
+.home-writings{display:flex;justify-content:center;padding:1.25rem var(--page-gutter) 0;font-size:1.05rem}
+.home-writings a{display:inline-block;min-height:44px;padding-block:.5rem;text-decoration-skip-ink:none}
 .dither-intro-copy p{text-wrap:pretty}
 .dither-links{display:flex;flex-wrap:wrap;column-gap:1.4rem;row-gap:.8rem;margin-top:2rem;font-size:.85rem}
 .booking-link{flex-basis:100%}
