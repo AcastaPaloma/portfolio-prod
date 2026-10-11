@@ -46,9 +46,9 @@ export default function FirstBlogPost() {
           <p>I’d argue it’s even fairly realistic. I’d say pissing yourself or swallowing toads to hop between multiverses is very well written—much more so than entering a 4D-tesseract to sneakily interact behind a bookshelf with your daughter in the past (plz get the ref).</p>
           <p>I’d even go so far as saying that, if I could fit into Evelyn’s shoes, I’d probably be stumped. I’d probably want the bagel (if it tastes better than Fairmount)—hopefully my current life goal justifies this.</p>
           <figure className={styles.articleDiagram}>
-            <a href="/writings/joy-multiverse.png" target="_blank" rel="noreferrer" aria-label="Open the Joy multiverse diagram at full size">
+            <a href="/writings/joy-multiverse-transparent.png" target="_blank" rel="noreferrer" aria-label="Open the Joy multiverse diagram at full size">
               <Image
-                src="/writings/joy-multiverse.png"
+                src="/writings/joy-multiverse-transparent.png"
                 alt="A multiverse diagram of Joy: normal Joy branches into versions ranging from normal to infected Joy, with a connection back only through memories."
                 width={1967}
                 height={1371}

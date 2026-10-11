@@ -84,7 +84,7 @@
 
 .page .writingLink h2 {
   margin: 0 0 .55rem;
-  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
   text-wrap: balance;
 }
 
@@ -121,13 +121,14 @@
 }
 
 .page .postHeader h1 {
-  width: min(100%, 65ch);
+  width: min(100%, 46rem);
   margin: 0 auto 2.5rem;
   font-family: inherit;
-  font-size: inherit;
+  font-size: clamp(2.2rem, 5.5vw, 3.65rem);
   font-weight: 400;
-  line-height: inherit;
-  letter-spacing: normal;
+  line-height: 1.12;
+  letter-spacing: -.025em;
+  text-wrap: balance;
 }
 
 .filmBanner {
@@ -164,7 +165,20 @@
 }
 
 .articleDiagram {
-  margin: 2.5rem 0;
+  position: relative;
+  isolation: isolate;
+  margin: 3.5rem 0;
+}
+
+.articleDiagram::before {
+  content: "";
+  position: absolute;
+  inset: -.5rem;
+  z-index: -1;
+  border-radius: 15%;
+  background: #d8d0c3;
+  filter: blur(24px);
+  pointer-events: none;
 }
 
 .articleDiagram a,
