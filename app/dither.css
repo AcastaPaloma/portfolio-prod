@@ -35,6 +35,10 @@
 .github-graph{display:block;width:100%;height:auto;color:#f2f2f2}
 .dither-page .github-note{margin:.7rem 0 0;font-size:.75rem}
 .icon-word{white-space:nowrap}
+.pi-banner{display:flex;justify-content:center;padding:0 var(--page-gutter);font-size:.8rem;text-align:center;text-wrap:balance}
+.pi-banner::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:#fff;opacity:.2;mix-blend-mode:difference}
+.dither-page .pi-banner a{display:inline-block;padding-block:.55rem;text-decoration:none}
+.dither-page .pi-banner a:hover{text-decoration:underline;text-decoration-thickness:1px}
 .home-writings{display:flex;justify-content:center;padding:1.25rem var(--page-gutter) 0;font-size:1.05rem}
 .home-writings a{display:inline-block;min-height:44px;padding-block:.5rem;text-decoration-skip-ink:none}
 .dither-intro-copy p{text-wrap:pretty}

@@ -71,6 +71,9 @@ export default async function Home() {
   const [duolingo,github]=await Promise.all([getDuolingoProfile(),getGitHubActivity()]);
   return <main className="dither-page">
     <GradientBackground/>
+    <aside className="pi-banner text-layer ink" aria-label="New writing">
+      <a href="https://acastapaloma.github.io/pi/"><span aria-hidden="true">🥧</span> Check out my complete breakdown of Physical Intelligence’s π0.7! <span aria-hidden="true">🥧</span></a>
+    </aside>
     <nav className="home-writings text-layer ink" aria-label="Writings">
       <Link href="/writings">writings: tnt</Link>
     </nav>

@@ -34,6 +34,15 @@ export default function WritingsPage() {
 
       <ul className={styles.writingList} aria-label="Writings">
         <li>
+          <a className={styles.writingLink} href="https://acastapaloma.github.io/pi/">
+            <div>
+              <h2>Physical Intelligence’s π0.7</h2>
+              <p>π0.7 at runtime: two SO-101 arms, three models, and one inference timeline, block by block.</p>
+            </div>
+            <span className={styles.linkArrow} aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
           <Link className={styles.writingLink} href="/writings/everything-everywhere-all-at-once">
             <div>
               <h2>Everything Everywhere all at Once</h2>
