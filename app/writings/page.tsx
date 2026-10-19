@@ -36,6 +36,7 @@ export default function WritingsPage() {
         <li>
           <a className={styles.writingLink} href="https://acastapaloma.github.io/pi/">
             <div>
+              <time className={styles.writingDate} dateTime="2026-10-18">Oct 18, 2026</time>
               <h2>Physical Intelligence’s π0.7</h2>
               <p>π0.7 at runtime: two SO-101 arms, three models, and one inference timeline, block by block.</p>
             </div>
@@ -45,6 +46,7 @@ export default function WritingsPage() {
         <li>
           <Link className={styles.writingLink} href="/writings/everything-everywhere-all-at-once">
             <div>
+              <time className={styles.writingDate} dateTime="2026-10-10">Oct 10, 2026</time>
               <h2>Everything Everywhere all at Once</h2>
               <p>A short interpretation + some thoughts, one day after watching.</p>
             </div>
@@ -54,6 +56,7 @@ export default function WritingsPage() {
         <li>
           <a className={styles.writingLink} href="https://acastapaloma.github.io/genie/">
             <div>
+              <time className={styles.writingDate} dateTime="2026-09-24">Sep 24, 2026</time>
               <h2>Genie Doom World Model</h2>
               <p>Playable, action-conditioned Doom video from unlabeled footage.</p>
             </div>

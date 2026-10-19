@@ -95,6 +95,20 @@
   max-width: 52ch;
 }
 
+.page .writingDate {
+  display: block;
+  margin-bottom: .5rem;
+  color: #aaa;
+  font-size: .8rem;
+  letter-spacing: .04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.postHeader .writingDate {
+  margin-bottom: 1rem;
+  font-size: .9rem;
+}
+
 .writingLink:hover h2 {
   text-decoration: underline;
   text-decoration-thickness: 1px;

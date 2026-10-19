@@ -17,6 +17,7 @@ export default function FirstBlogPost() {
       </nav>
       <article>
         <header className={styles.postHeader}>
+          <time className={styles.writingDate} dateTime="2026-10-10">Oct 10, 2026</time>
           <h1>Everything Everywhere all at Once</h1>
           <figure className={styles.filmBanner}>
             <picture>
