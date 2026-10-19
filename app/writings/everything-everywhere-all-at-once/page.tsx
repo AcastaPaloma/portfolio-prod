@@ -70,7 +70,7 @@ export default function FirstBlogPost() {
       </article>
       <footer className={styles.postFooter}>
         <Link href="/writings">← All writings</Link>
-        <a href="https://acastapaloma.github.io/genie/">Genie Doom World Model ↗</a>
+        <a href="/genie/">Genie Doom World Model ↗</a>
       </footer>
     </main>
   );

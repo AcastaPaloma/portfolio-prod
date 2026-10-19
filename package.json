@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/sync-projects.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "sync:projects": "node scripts/sync-projects.mjs"
   },
   "dependencies": {
     "@paper-design/shaders-react": "0.0.80",

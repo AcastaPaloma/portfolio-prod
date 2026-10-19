@@ -7,3 +7,7 @@ out/
 .env.local
 .codex/qa/
 .vercel
+
+# Synced from the project repos by scripts/sync-projects.mjs
+/public/genie/
+/public/pi/

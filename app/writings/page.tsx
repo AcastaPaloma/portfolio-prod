@@ -34,7 +34,7 @@ export default function WritingsPage() {
 
       <ul className={styles.writingList} aria-label="Writings">
         <li>
-          <a className={styles.writingLink} href="https://acastapaloma.github.io/pi/">
+          <a className={styles.writingLink} href="/pi/">
             <div>
               <time className={styles.writingDate} dateTime="2026-10-18">Oct 18, 2026</time>
               <h2>Physical Intelligence’s π0.7</h2>
@@ -54,7 +54,7 @@ export default function WritingsPage() {
           </Link>
         </li>
         <li>
-          <a className={styles.writingLink} href="https://acastapaloma.github.io/genie/">
+          <a className={styles.writingLink} href="/genie/">
             <div>
               <time className={styles.writingDate} dateTime="2026-09-24">Sep 24, 2026</time>
               <h2>Genie Doom World Model</h2>
