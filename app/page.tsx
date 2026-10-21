@@ -88,7 +88,7 @@ export default async function Home() {
         <nav className="dither-links ink" aria-label="Find me">
           <a href="/resume/kuan-yi-wang-resume.pdf"><InlineIcon name="resume"/>résumé</a>
           <a href="https://www.linkedin.com/in/kuan-yi-wang-443871319/"><InlineIcon name="linkedin"/>linkedin</a>
-          <a href="https://x.com/kuan_yiii"><InlineIcon name="x"/>x</a>
+          <a href="https://x.com/kuan_yiii"><InlineIcon name="x"/>twitter</a>
           <a href="mailto:ky7wang@uwaterloo.ca"><InlineIcon name="email"/>email</a>
           <a className="booking-link" href={bookingUrl} target="_blank" rel="noreferrer"><InlineIcon name="coffee"/>join me for a workout. or a coffee.</a>
         </nav>
