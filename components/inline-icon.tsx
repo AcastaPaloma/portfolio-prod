@@ -4,6 +4,7 @@ const brands:Record<string,string>={waterloo:"waterloo.svg","morgan-stanley":"mo
 const paths:Record<string,ReactNode>={
  resume:<><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h4M9 12h6M9 16h6"/></>,
  linkedin:<><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M8 10v7M12 17v-7M12 13c0-4 5-4 5 0v4M8 7v.1"/></>,
+ x:<><path d="M5 4l14 16M19 4 5 20"/></>,
  email:<><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></>,
  quantum:<><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(55 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-55 12 12)"/></>,
  world:<><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></>,
