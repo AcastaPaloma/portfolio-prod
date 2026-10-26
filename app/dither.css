@@ -164,9 +164,11 @@
 
 /* /projects: a fixed bento. Hairlines cut the whole screen; each tile filters the background behind it. */
 .projects-page{padding:0}
-.bento{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(12,7rem);gap:clamp(16px,2.4vw,34px);padding:clamp(16px,2.4vw,34px);width:100%}
-.bento-tile{position:relative;overflow:hidden;border-radius:10px;display:flex;flex-direction:column;min-width:0;min-height:0;text-decoration:none;color:#fff}
-.bento-wash{position:absolute;inset:0;z-index:2;mix-blend-mode:screen;pointer-events:none}
+.bento{--line:rgb(255 255 255 / 92%);position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(12,7rem);width:100%;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.bento-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;min-width:0;min-height:0;text-decoration:none;color:#fff}
+.bento-tile::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line)}
+.bento-wash{position:absolute;inset:0;z-index:2;mix-blend-mode:multiply;pointer-events:none}
+.bento-wash--invert{background:#fff;mix-blend-mode:difference}
 .bento-tile>.bento-fit,.bento-tile>.bento-face,.bento-tile>.bento-loop,.bento-tile>.bento-cover{z-index:3}
 .bento-tile>.bento-detail-pane{z-index:4}
 .bento-fit{position:absolute;inset:0;display:block;padding:1.1rem 1.3rem;overflow:hidden;font-weight:normal;line-height:.92;letter-spacing:-.02em;white-space:normal;text-wrap:balance;text-shadow:0 1px 14px rgb(0 0 0 / 55%)}

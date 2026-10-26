@@ -10,7 +10,7 @@ import type { Project } from "@/lib/projects";
 type Rect = { x: number; y: number; w: number; h: number };
 const PLACE: Record<string, Rect> = {
   rose: { x: 0, y: 0, w: 2, h: 3 },
-  genie: { x: 2, y: 0, w: 2, h: 3 },
+  quantum: { x: 2, y: 0, w: 2, h: 3 },
   title: { x: 4, y: 0, w: 4, h: 3 },
   helmet: { x: 3, y: 3, w: 2, h: 6 },
   pi: { x: 0, y: 3, w: 3, h: 3 },
@@ -18,25 +18,17 @@ const PLACE: Record<string, Rect> = {
   cortesol: { x: 0, y: 6, w: 3, h: 3 },
   mvpvp: { x: 5, y: 6, w: 3, h: 3 },
   home: { x: 0, y: 9, w: 4, h: 3 },
-  quantum: { x: 4, y: 9, w: 4, h: 2 },
-  aurora: { x: 4, y: 11, w: 2, h: 1 },
+  genie: { x: 4, y: 9, w: 2, h: 3 },
+  aurora: { x: 6, y: 9, w: 2, h: 2 },
   allot: { x: 6, y: 11, w: 2, h: 1 },
 };
 
 // The background stays black, so every tile carries its own solid colour. Text flips between black and white to suit it.
+// Only Projects and back-home carry colour. They invert the background behind them and tint it pink.
+// Projects and back-home invert the background behind them, then tint the result pink.
 const COLOUR: Record<string, string> = {
-  rose: "#ff2e88",     // hot pink
-  genie: "#1fd6ff",    // cyan
-  title: "#ff3d9a",    // pink
-  helmet: "#7c4dff",   // violet
-  pi: "#ff7a1a",       // orange
-  stars: "#2f6bff",    // electric blue
-  cortesol: "#00e08a", // mint
-  mvpvp: "#ff3ea5",    // magenta
-  home: "#ff6fb5",     // light pink
-  aurora: "#14120f",   // only shows if the image fails to load
-  allot: "#ff5c35",    // red-orange
-  quantum: "#3ee07a",  // green
+  title: "#ff3d9a",
+  home: "#ff6fb5",
 };
 
 function ink(hex: string) {
@@ -48,11 +40,16 @@ function ink(hex: string) {
   return luminance > 0.36 ? "#0b0b0b" : "#fff";
 }
 
-const tileStyle = (id: string): CSSProperties => ({ color: ink(COLOUR[id]) });
+const tileStyle = (): CSSProperties => ({ color: "#fff" });
 
 // The wash is the box's colour, screened over the background so the gradient and numbers show through it.
+// Difference with white inverts the background. Multiply with pink then tints the inverted gradient.
 function Wash({ id }: { id: string }) {
-  return <span className="bento-wash" aria-hidden="true" style={{ background: COLOUR[id] }} />;
+  if (!COLOUR[id]) return null;
+  return <>
+    <span className="bento-wash bento-wash--invert" aria-hidden="true" />
+    <span className="bento-wash" aria-hidden="true" style={{ background: COLOUR[id] }} />
+  </>;
 }
 
 function FitText({ children, className }: { children: string; className?: string }) {
@@ -80,9 +77,9 @@ function FitText({ children, className }: { children: string; className?: string
 function ProjectTile({ project, id }: { project: Project; id: string }) {
   const external = project.href && !project.href.startsWith("/") ? { target: "_blank", rel: "noreferrer" } : {};
   const Tag = project.href ? "a" : "div";
-  const style: CSSProperties = { ...tile(id), ...tileStyle(id) };
+  const style: CSSProperties = { ...tile(id), ...tileStyle() };
   return <Tag className="bento-tile bento-project" href={project.href} style={style} {...external}>
-    <Wash id={id} />
+    
     <span className="bento-face bento-name"><FitText>{project.title}</FitText></span>
     <span className="bento-face bento-detail-pane">
       <img src={project.image} alt="" loading="lazy" decoding="async" />
@@ -99,11 +96,11 @@ function tile(id: string): CSSProperties {
 export function ProjectsBento({ projects, rose, aurora }: { projects: Project[]; rose: string; aurora: string }) {
   const byId = (slug: string) => projects.find(p => p.slug === slug)!;
   return <div className="bento">
-    <div className="bento-tile bento-title" style={{ ...tile("title"), ...tileStyle("title") }}><Wash id="title" /><FitText>Projects</FitText></div>
-    <Link href="/" className="bento-tile bento-home" style={{ ...tile("home"), ...tileStyle("home") }}><Wash id="home" /><FitText>← back home</FitText></Link>
-    <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle("rose") }}><Wash id="rose" /><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-tight-poster.webp" width={650} height={812} /></div>
-    <div className="bento-tile bento-media" style={{ ...tile("helmet"), ...tileStyle("helmet") }}><Wash id="helmet" /><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-diamond-small.mp4" smallSrc="/animation/helmet-diamond-small.mp4" poster="/animation/helmet-diamond-poster.webp" width={540} height={851} /></div>
-    <div className="bento-tile bento-media" style={{ ...tile("aurora"), ...tileStyle("aurora") }}><Wash id="aurora" /><img className="bento-cover" src={aurora} alt="Aurora borealis" /></div>
+    <div className="bento-tile bento-title" style={{ ...tile("title"), ...tileStyle() }}><Wash id="title" /><FitText>Projects</FitText></div>
+    <Link href="/" className="bento-tile bento-home" style={{ ...tile("home"), ...tileStyle() }}><Wash id="home" /><FitText>← back home</FitText></Link>
+    <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-tight-poster.webp" width={650} height={812} /></div>
+    <div className="bento-tile bento-media" style={{ ...tile("helmet"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-diamond-small.mp4" smallSrc="/animation/helmet-diamond-small.mp4" poster="/animation/helmet-diamond-poster.webp" width={540} height={851} /></div>
+    <div className="bento-tile bento-media" style={{ ...tile("aurora"), ...tileStyle() }}><img className="bento-cover" src={aurora} alt="Aurora borealis" /></div>
     <ProjectTile project={byId("genie")} id="genie" />
     <ProjectTile project={byId("pi")} id="pi" />
     <ProjectTile project={byId("among-the-stars")} id="stars" />
