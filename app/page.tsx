@@ -1,6 +1,7 @@
 import { GradientBackground } from "@/components/gradient-background";
 import { TransparentLoop } from "@/components/transparent-loop";
 import { InlineIcon } from "@/components/inline-icon";
+import { LiquidGlass } from "@/components/liquid-glass";
 import { getDuolingoProfile } from "@/lib/duolingo";
 import { StreakCard } from "@/components/streak-card";
 import { GitHubActivity } from "@/components/github-activity";
@@ -77,18 +78,16 @@ const work:Work[]=[
   {area:"mvpvp",icon:"code",title:"MvPVP",tag:"McHacks",href:"https://github.com/AcastaPaloma/MvPvP",desc:"Competitive vibe coding. Build an MVP in five minutes."},
 ];
 function WorkCard({item}:{item:Work}) {
-  const content=<>
-    {item.thumb&&<img src={item.thumb} alt="" loading="lazy" decoding="async"/>}
+  const external=item.href&&!item.href.startsWith("/")?{target:"_blank",rel:"noreferrer"}:{};
+  return <LiquidGlass as={item.href?"a":"div"} href={item.href} {...external}
+    className={`work-card work-card--${item.area}${item.thumb?" work-card--media":""}`}
+    underlay={item.thumb&&<img src={item.thumb} alt="" loading="lazy" decoding="async"/>}>
     <span className="work-card-copy">
       <h3><InlineIcon name={item.icon}/>{item.title}</h3>
       {item.tag&&<span className="work-card-tag">{item.tag}</span>}
       <span className="work-card-desc">{item.desc}</span>
     </span>
-  </>;
-  const className=`work-card work-card--${item.area}${item.thumb?"":" work-card--placeholder"}`;
-  return item.href
-    ? <a className={className} href={item.href} {...(item.href.startsWith("/")?{}:{target:"_blank",rel:"noreferrer"})}>{content}</a>
-    : <div className={className}>{content}</div>;
+  </LiquidGlass>;
 }
 
 export default async function Home() {
@@ -129,9 +128,9 @@ export default async function Home() {
       <h2 id="work" className="section-title text-layer ink">A few things I’ve built.</h2>
       <div className="work-grid">
         {work.slice(0,3).map(item=><WorkCard key={item.area} item={item}/>)}
-        <div className="work-tile work-tile--helmet">
+        <LiquidGlass className="work-tile work-tile--helmet">
           <TransparentLoop className="helmet-art" name="helmet particles" src="/animation/helmet-gust.mp4" smallSrc="/animation/helmet-gust-small.mp4" poster="/animation/helmet-gust-poster.webp" width={720} height={720} monochrome/>
-        </div>
+        </LiquidGlass>
         {work.slice(3).map(item=><WorkCard key={item.area} item={item}/>)}
       </div>
     </section>
