@@ -163,9 +163,12 @@
 @media print{.gradient-backdrop,.gradient-shade,.webring-footer{display:none}.dither-page{background:#fff;color:#202020}.ink,.github-graph{color:#202020}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}
 
 /* /projects: a fixed bento. Hairlines cut the whole screen; each tile filters the background behind it. */
-.projects-page{padding:0;background:#000}
-.bento{--line:rgb(255 255 255 / 45%);position:relative;z-index:3;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(12,7rem);width:100%;border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.bento-tile{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;min-width:0;min-height:0;text-decoration:none;color:#fff}
+.projects-page{padding:0}
+.bento{--line:rgb(255 255 255 / 45%);position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(12,7rem);width:100%;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.bento-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;min-width:0;min-height:0;text-decoration:none;color:#fff}
+.bento-wash{position:absolute;inset:0;z-index:2;mix-blend-mode:screen;pointer-events:none}
+.bento-tile>.bento-fit,.bento-tile>.bento-face,.bento-tile>.bento-loop,.bento-tile>.bento-cover{z-index:3}
+.bento-tile>.bento-detail-pane{z-index:4}
 .bento-tile::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line)}
 .bento-fit{position:absolute;inset:0;display:block;padding:1.1rem 1.3rem;overflow:hidden;font-weight:normal;line-height:.92;letter-spacing:-.02em;white-space:normal;text-wrap:balance;text-shadow:0 1px 14px rgb(0 0 0 / 55%)}
 .bento-title .bento-fit{text-align:right;padding-bottom:1.2rem}
@@ -173,8 +176,7 @@
 .bento-home{justify-content:flex-end}
 .bento-project{cursor:pointer}
 .bento-face{position:absolute;inset:0;transition:transform .8s cubic-bezier(.7,0,.2,1)}
-.bento-name{z-index:2}
-.bento-detail-pane{z-index:3;transform:translateY(100%);background:#050505}
+.bento-detail-pane{transform:translateY(100%);background:#050505}
 .bento-detail-pane img{display:block;width:100%;height:100%;object-fit:cover}
 .bento-detail{position:absolute;left:0;right:0;bottom:0;display:grid;gap:.35rem;padding:3rem 1.2rem 1.1rem;background:linear-gradient(to top,rgb(0 0 0 / 90%),rgb(0 0 0 / 55%) 60%,transparent)}
 .bento-detail-title{font-size:1.25rem;line-height:1.15;color:#fff}
@@ -186,7 +188,6 @@
 .bento-loop{position:absolute;inset:0;z-index:0;width:100%!important;height:100%!important;aspect-ratio:auto!important}
 .bento-loop .loop-art img,.bento-loop .loop-art canvas{object-fit:contain}
 .bento-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.bento-tile{transition:filter .4s ease}
 @media (max-width:48rem){
 .bento{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
 .bento>*{grid-column:auto!important;grid-row:auto!important;min-height:18rem}

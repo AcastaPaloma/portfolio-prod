@@ -12,10 +12,10 @@ const PLACE: Record<string, Rect> = {
   rose: { x: 0, y: 0, w: 2, h: 3 },
   genie: { x: 2, y: 0, w: 2, h: 3 },
   title: { x: 4, y: 0, w: 4, h: 3 },
-  helmet: { x: 0, y: 3, w: 2, h: 6 },
-  pi: { x: 2, y: 3, w: 3, h: 3 },
+  helmet: { x: 3, y: 3, w: 2, h: 6 },
+  pi: { x: 0, y: 3, w: 3, h: 3 },
   stars: { x: 5, y: 3, w: 3, h: 3 },
-  cortesol: { x: 2, y: 6, w: 3, h: 3 },
+  cortesol: { x: 0, y: 6, w: 3, h: 3 },
   mvpvp: { x: 5, y: 6, w: 3, h: 3 },
   home: { x: 0, y: 9, w: 4, h: 3 },
   aurora: { x: 4, y: 9, w: 2, h: 3 },
@@ -48,7 +48,12 @@ function ink(hex: string) {
   return luminance > 0.36 ? "#0b0b0b" : "#fff";
 }
 
-const tileStyle = (id: string): CSSProperties => ({ background: COLOUR[id], color: ink(COLOUR[id]) });
+const tileStyle = (id: string): CSSProperties => ({ color: ink(COLOUR[id]) });
+
+// The wash is the box's colour, screened over the background so the gradient and numbers show through it.
+function Wash({ id }: { id: string }) {
+  return <span className="bento-wash" aria-hidden="true" style={{ background: COLOUR[id] }} />;
+}
 
 function FitText({ children, className }: { children: string; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -77,6 +82,7 @@ function ProjectTile({ project, id }: { project: Project; id: string }) {
   const Tag = project.href ? "a" : "div";
   const style: CSSProperties = { ...tile(id), ...tileStyle(id) };
   return <Tag className="bento-tile bento-project" href={project.href} style={style} {...external}>
+    <Wash id={id} />
     <span className="bento-face bento-name"><FitText>{project.title}</FitText></span>
     <span className="bento-face bento-detail-pane">
       <img src={project.image} alt="" loading="lazy" decoding="async" />
@@ -93,11 +99,11 @@ function tile(id: string): CSSProperties {
 export function ProjectsBento({ projects, rose, aurora }: { projects: Project[]; rose: string; aurora: string }) {
   const byId = (slug: string) => projects.find(p => p.slug === slug)!;
   return <div className="bento">
-    <div className="bento-tile bento-title" style={{ ...tile("title"), ...tileStyle("title") }}><FitText>Projects</FitText></div>
-    <Link href="/" className="bento-tile bento-home" style={{ ...tile("home"), ...tileStyle("home") }}><FitText>← back home</FitText></Link>
-    <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle("rose") }}><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-tight-poster.webp" width={650} height={812} /></div>
-    <div className="bento-tile bento-media" style={{ ...tile("helmet"), ...tileStyle("helmet") }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-diamond-small.mp4" smallSrc="/animation/helmet-diamond-small.mp4" poster="/animation/helmet-diamond-poster.webp" width={540} height={851} /></div>
-    <div className="bento-tile bento-media" style={{ ...tile("aurora"), ...tileStyle("aurora") }}><img className="bento-cover" src={aurora} alt="Aurora borealis" /></div>
+    <div className="bento-tile bento-title" style={{ ...tile("title"), ...tileStyle("title") }}><Wash id="title" /><FitText>Projects</FitText></div>
+    <Link href="/" className="bento-tile bento-home" style={{ ...tile("home"), ...tileStyle("home") }}><Wash id="home" /><FitText>← back home</FitText></Link>
+    <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle("rose") }}><Wash id="rose" /><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-tight-poster.webp" width={650} height={812} /></div>
+    <div className="bento-tile bento-media" style={{ ...tile("helmet"), ...tileStyle("helmet") }}><Wash id="helmet" /><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-diamond-small.mp4" smallSrc="/animation/helmet-diamond-small.mp4" poster="/animation/helmet-diamond-poster.webp" width={540} height={851} /></div>
+    <div className="bento-tile bento-media" style={{ ...tile("aurora"), ...tileStyle("aurora") }}><Wash id="aurora" /><img className="bento-cover" src={aurora} alt="Aurora borealis" /></div>
     <ProjectTile project={byId("genie")} id="genie" />
     <ProjectTile project={byId("pi")} id="pi" />
     <ProjectTile project={byId("among-the-stars")} id="stars" />
