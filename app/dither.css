@@ -78,8 +78,8 @@
 .work-card-tag{font-size:.75rem;font-style:italic;color:#d9d2c7}
 .work-card-desc{font-size:.8rem;line-height:1.4;color:#e8e2d9;text-wrap:pretty}
 .work-card-desc .jane-street{color:#4da3ff;font-weight:inherit}
-.work-tile--helmet{grid-area:helmet;align-items:center;justify-content:center;padding:1.25rem}
-.work-tile--helmet .helmet-art{width:100%;max-width:26rem;margin:auto}
+.work-tile--helmet{grid-area:helmet;align-items:center;justify-content:center;padding:0}
+.work-tile--helmet .helmet-art{width:100%;margin:auto;transform:scale(1.22)}
 .work-tile--helmet .loop-art{opacity:.65}
 .dither-people,.dither-gallery{position:relative;padding:0}
 .section-title{margin:0 0 1.5rem!important;padding:0}
@@ -137,7 +137,8 @@
  .work-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:none}
  .work-grid>*{grid-area:auto}
  .work-card{min-height:12rem}
- .work-tile--helmet{min-height:0;padding:1rem}
+ .work-tile--helmet{min-height:0}
+ .work-tile--helmet .helmet-art{transform:scale(1.1)}
  .people-intro{padding:0}
  .people-secondary{grid-template-columns:1fr 1.3fr;gap:1rem;margin-top:2rem}
  .people-secondary .section-title{font-size:1.05rem;height:5rem}
