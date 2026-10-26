@@ -84,8 +84,8 @@
 .work-card-tag{font-size:.75rem;font-style:italic;color:#d9d2c7}
 .work-card-desc{font-size:.8rem;line-height:1.4;color:#e8e2d9;text-wrap:pretty}
 .work-card-desc .jane-street{color:#4da3ff;font-weight:inherit}
-.work-tile--helmet{grid-area:helmet;align-items:center;justify-content:center}
-.work-tile--helmet .lg-content{align-items:center;justify-content:center}
+.work-tile--helmet{grid-area:helmet}
+.work-tile--helmet .lg-content{justify-content:center}
 .work-tile--helmet .helmet-art{width:100%;margin:auto;transform:scale(1.22)}
 .work-tile--helmet .loop-art{opacity:.65}
 .dither-people,.dither-gallery{position:relative;padding:0}

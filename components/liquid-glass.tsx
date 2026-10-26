@@ -15,10 +15,13 @@ type Props = {
   displacement?: number;
 };
 
-// A rim-weighted displacement map: pixels near an edge push their sample inward,
-// so the glass bends what is behind it the way a lens does. Flat in the middle.
+// Two effects in one map. The whole pane leans toward its centre, so content
+// is magnified a little, like a lens. The rim adds a bend that pushes samples
+// inward at the edges. Channel R carries x and channel G carries y, with 0.5 as flat.
 const MAP_SIZE = 256;
-const BEZEL = 0.3;
+const BEZEL = 0.2;
+const MAGNIFY = 0.35;
+const RIM = 0.55;
 let mapUrl: string | null = null;
 function displacementMap() {
   if (mapUrl) return mapUrl;
@@ -27,17 +30,19 @@ function displacementMap() {
   const ctx = canvas.getContext("2d");
   if (!ctx) return null;
   const image = ctx.createImageData(MAP_SIZE, MAP_SIZE);
+  const clamp = (v: number) => Math.max(0, Math.min(255, Math.round(v)));
   for (let y = 0; y < MAP_SIZE; y++) {
     for (let x = 0; x < MAP_SIZE; x++) {
       const u = (x + 0.5) / MAP_SIZE, v = (y + 0.5) / MAP_SIZE;
+      // Lens: sample from a little toward the centre, which magnifies.
+      let dx = -(u - 0.5) * 2 * MAGNIFY, dy = -(v - 0.5) * 2 * MAGNIFY;
+      // Rim: near an edge, sample from further inside, which bends the light.
       const ex = Math.min(u, 1 - u), ey = Math.min(v, 1 - v);
-      let dx = 0, dy = 0, t: number;
-      if (ex < ey) { t = ex / BEZEL; dx = u < 0.5 ? 1 : -1; }
-      else { t = ey / BEZEL; dy = v < 0.5 ? 1 : -1; }
-      const m = t < 1 ? (1 - t) * (1 - t) : 0;
+      if (ex < ey) { const t = ex / BEZEL; if (t < 1) dx += (u < 0.5 ? 1 : -1) * RIM * (1 - t) * (1 - t); }
+      else { const t = ey / BEZEL; if (t < 1) dy += (v < 0.5 ? 1 : -1) * RIM * (1 - t) * (1 - t); }
       const i = (y * MAP_SIZE + x) * 4;
-      image.data[i] = 128 + 127 * dx * m;
-      image.data[i + 1] = 128 + 127 * dy * m;
+      image.data[i] = clamp(128 + 127 * Math.max(-1, Math.min(1, dx)));
+      image.data[i + 1] = clamp(128 + 127 * Math.max(-1, Math.min(1, dy)));
       image.data[i + 2] = 128;
       image.data[i + 3] = 255;
     }
@@ -51,7 +56,7 @@ const subscribeNone = () => () => {};
 const mapIfSupported = (filterId: string) => () =>
   typeof CSS !== "undefined" && CSS.supports("backdrop-filter", `url(#${filterId})`) ? displacementMap() : null;
 
-export function LiquidGlass({ as = "div", href, target, rel, className = "", underlay, children, displacement = 120 }: Props) {
+export function LiquidGlass({ as = "div", href, target, rel, className = "", underlay, children, displacement = 70 }: Props) {
   const rawId = useId().replace(/[^a-zA-Z0-9]/g, "");
   const filterId = `lg-${rawId}`;
   // Chromium supports SVG filters inside backdrop-filter. Elsewhere the glass
@@ -60,7 +65,7 @@ export function LiquidGlass({ as = "div", href, target, rel, className = "", und
   const refract = map !== null;
 
   const Tag = as;
-  const backdrop = refract ? { backdropFilter: `url(#${filterId}) blur(1px) saturate(190%)` } : undefined;
+  const backdrop = refract ? { backdropFilter: `url(#${filterId}) blur(0.4px) saturate(120%)` } : undefined;
   const s = displacement;
 
   return <Tag className={`liquid-glass ${className}`} href={href} target={target} rel={rel}>
@@ -68,14 +73,7 @@ export function LiquidGlass({ as = "div", href, target, rel, className = "", und
       <defs>
         <filter id={filterId} x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
           <feImage href={map} x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="map" />
-          <feDisplacementMap in="SourceGraphic" in2="map" scale={s} xChannelSelector="R" yChannelSelector="G" result="dR" />
-          <feColorMatrix in="dR" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="R" />
-          <feDisplacementMap in="SourceGraphic" in2="map" scale={s * 0.93} xChannelSelector="R" yChannelSelector="G" result="dG" />
-          <feColorMatrix in="dG" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="G" />
-          <feDisplacementMap in="SourceGraphic" in2="map" scale={s * 0.86} xChannelSelector="R" yChannelSelector="G" result="dB" />
-          <feColorMatrix in="dB" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="B" />
-          <feComposite in="R" in2="G" operator="arithmetic" k2="1" k3="1" result="RG" />
-          <feComposite in="RG" in2="B" operator="arithmetic" k2="1" k3="1" />
+          <feDisplacementMap in="SourceGraphic" in2="map" scale={s} xChannelSelector="R" yChannelSelector="G" />
         </filter>
       </defs>
     </svg>}
