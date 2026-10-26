@@ -177,13 +177,13 @@
 .bento-home{justify-content:flex-end}
 .bento-project{cursor:pointer}
 .bento-face{position:absolute;inset:0;transition:transform .8s cubic-bezier(.7,0,.2,1)}
-.bento-detail-pane{transform:translateY(100%);background:#050505}
+.bento-detail-pane{transform:translate(var(--from-x,0),var(--from-y,100%));background:#050505}
 .bento-detail-pane img{display:block;width:100%;height:100%;object-fit:contain;background:#050505}
 .bento-detail{position:absolute;left:0;right:0;bottom:0;display:grid;gap:.35rem;padding:3rem 1.2rem 1.1rem;background:linear-gradient(to top,rgb(0 0 0 / 90%),rgb(0 0 0 / 55%) 60%,transparent)}
 .bento-detail-title{font-size:1.25rem;line-height:1.15;color:#fff}
 .bento-detail-desc{font-size:.9rem;line-height:1.4;color:#f1ece4}
-.bento-project:hover .bento-name,.bento-project:focus-visible .bento-name{transform:translateY(-100%)}
-.bento-project:hover .bento-detail-pane,.bento-project:focus-visible .bento-detail-pane{transform:translateY(0)}
+.bento-project[data-open] .bento-name{transform:translate(calc(var(--from-x,0px) * -1),calc(var(--from-y,0px) * -1))}
+.bento-project[data-open] .bento-detail-pane{transform:translate(0,0)}
 .bento-project:focus-visible{outline:2px solid #fff;outline-offset:-4px}
 .bento-media{z-index:1}
 .bento-loop{position:absolute;inset:0;z-index:0;width:100%!important;height:100%!important;aspect-ratio:auto!important}

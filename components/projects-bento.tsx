@@ -73,12 +73,47 @@ function FitText({ children, className }: { children: string; className?: string
   return <span ref={ref} className={`bento-fit ${className ?? ""}`}>{children}</span>;
 }
 
+// The image and description slide in from one of four sides. Each open picks one at random, never the one before it.
+const SIDES: Record<string, [string, string]> = {
+  top: ["0px", "-100%"],
+  bottom: ["0px", "100%"],
+  left: ["-100%", "0px"],
+  right: ["100%", "0px"],
+};
+
+// Opening picks a new side only when the pane is at rest. A quick re-hover mid-slide keeps its path instead of snapping.
+function slide(tile: HTMLElement, open: boolean) {
+  if (!open) {
+    tile.removeAttribute("data-open");
+    return;
+  }
+  if (tile.hasAttribute("data-open")) return;
+  const pane = tile.querySelector<HTMLElement>(".bento-detail-pane")!;
+  if (pane.getAnimations().length === 0) {
+    const sides = Object.keys(SIDES).filter(side => side !== tile.dataset.from);
+    const side = sides[Math.floor(Math.random() * sides.length)];
+    const [x, y] = SIDES[side];
+    tile.dataset.from = side;
+    // Move the pane to its new start without animating, so it does not sweep across the tile on the way.
+    pane.style.transition = "none";
+    tile.style.setProperty("--from-x", x);
+    tile.style.setProperty("--from-y", y);
+    void pane.offsetWidth;
+    pane.style.transition = "";
+  }
+  tile.setAttribute("data-open", "");
+}
+
 function ProjectTile({ project, id }: { project: Project; id: string }) {
   const external = project.href && !project.href.startsWith("/") ? { target: "_blank", rel: "noreferrer" } : {};
   const Tag = project.href ? "a" : "div";
   const style: CSSProperties = { ...tile(id), ...tileStyle() };
-  return <Tag className="bento-tile bento-project" href={project.href} style={style} {...external}>
-    
+  return <Tag className="bento-tile bento-project" href={project.href} style={style} {...external}
+    onPointerEnter={e => slide(e.currentTarget, true)}
+    onPointerLeave={e => slide(e.currentTarget, false)}
+    onFocus={e => slide(e.currentTarget, true)}
+    onBlur={e => slide(e.currentTarget, false)}>
+
     <span className="bento-face bento-name"><FitText>{project.title}</FitText></span>
     <span className="bento-face bento-detail-pane">
       <img src={project.image} alt="" loading="lazy" decoding="async" />
