@@ -12,7 +12,9 @@ import path from 'node:path';
 const [mode, source, name, columnArg] = process.argv.slice(2);
 const loopColumns = Number(columnArg) || 96;
 const ffmpeg = process.env.PORTFOLIO_FFMPEG || 'ffmpeg';
-const cell = 6, saturation = Number(process.env.DIAMOND_SATURATION) || 2.1, threshold = 0.12;
+const cell = 6, saturation = Number(process.env.DIAMOND_SATURATION) || 2.1, threshold = Number(process.env.DIAMOND_THRESHOLD) || 0.12;
+const matteRadius = Number(process.env.DIAMOND_MATTE) || 30;
+const tint = process.env.DIAMOND_TINT ? [1, 3, 5].map(i => parseInt(process.env.DIAMOND_TINT.slice(i, i + 2), 16)) : null;
 const quantize = value => Math.max(0, Math.min(255, Math.round(value / 24) * 24));
 
 async function diamondSvg(pixels, info, { shine = false, matte = false } = {}) {
@@ -26,7 +28,7 @@ async function diamondSvg(pixels, info, { shine = false, matte = false } = {}) {
     const channel = offset => border.map(p => pixels[p + offset]).sort((a, b) => a - b)[Math.floor(border.length / 2)];
     backdrop = [channel(0), channel(1), channel(2)];
   }
-  const isBackdrop = p => backdrop && Math.hypot(pixels[p] - backdrop[0], pixels[p + 1] - backdrop[1], pixels[p + 2] - backdrop[2]) < 30;
+  const isBackdrop = p => backdrop && Math.hypot(pixels[p] - backdrop[0], pixels[p + 1] - backdrop[1], pixels[p + 2] - backdrop[2]) < matteRadius;
   // Stretch each frame's brightness between its 2nd and 98th percentile, so dots span the full size range.
   const luminances = [];
   for (let p = 0; p < pixels.length; p += 3) if (!isBackdrop(p)) luminances.push((0.299 * pixels[p] + 0.587 * pixels[p + 1] + 0.114 * pixels[p + 2]) / 255);
@@ -41,7 +43,10 @@ async function diamondSvg(pixels, info, { shine = false, matte = false } = {}) {
     const luminance = Math.min(1, Math.max(0, (raw - low) / (high - low)));
     if (luminance < threshold) continue;
     const average = (red + green + blue) / 3;
-    const key = [red, green, blue].map(channel => quantize(average + (channel - average) * saturation)).join(',');
+    // Optional gradient map: DIAMOND_TINT blends each dot from the tint (shadows) toward white (highlights).
+    const key = tint
+      ? tint.map(channel => quantize(channel + (255 - channel) * Math.pow(luminance, 2.6))).join(',')
+      : [red, green, blue].map(channel => quantize(average + (channel - average) * saturation)).join(',');
     // Brightness drives size with a steep curve, so dim dots shrink away and bright dots stay sharp diamonds.
     const radius = (Math.pow(luminance, 0.9) * cell * 0.5).toFixed(2);
     const cx = (x + 0.5) * cell, cy = (y + 0.5) * cell;

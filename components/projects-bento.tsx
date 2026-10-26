@@ -9,17 +9,17 @@ import type { Project } from "@/lib/projects";
 // Projects sits top-right and back-home bottom-left, as always.
 type Rect = { x: number; y: number; w: number; h: number };
 const PLACE: Record<string, Rect> = {
-  rose: { x: 0, y: 0, w: 2, h: 3 },
+  rose: { x: 0, y: 0, w: 2, h: 6 },
   quantum: { x: 2, y: 0, w: 2, h: 3 },
   title: { x: 4, y: 0, w: 4, h: 3 },
+  pi: { x: 2, y: 3, w: 1, h: 6 },
   helmet: { x: 3, y: 3, w: 2, h: 6 },
-  pi: { x: 0, y: 3, w: 3, h: 3 },
   stars: { x: 5, y: 3, w: 3, h: 3 },
-  genie: { x: 0, y: 6, w: 3, h: 3 },
-  allot: { x: 5, y: 6, w: 3, h: 3 },
+  mvpvp: { x: 5, y: 6, w: 3, h: 3 },
+  genie: { x: 0, y: 6, w: 2, h: 3 },
   home: { x: 0, y: 9, w: 4, h: 3 },
   cortesol: { x: 4, y: 9, w: 2, h: 3 },
-  mvpvp: { x: 6, y: 9, w: 2, h: 3 },
+  allot: { x: 6, y: 9, w: 2, h: 3 },
 };
 
 // The background stays black, so every tile carries its own solid colour. Text flips between black and white to suit it.
@@ -98,7 +98,7 @@ export function ProjectsBento({ projects, rose }: { projects: Project[]; rose: s
     <div className="bento-tile bento-title" style={{ ...tile("title"), ...tileStyle() }}><Wash id="title" /><FitText>Projects</FitText></div>
     <Link href="/" className="bento-tile bento-home" style={{ ...tile("home"), ...tileStyle() }}><Wash id="home" /><FitText>← back home</FitText></Link>
     <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-color-poster.webp" width={960} height={1440} /></div>
-    <div className="bento-tile bento-media bento-helmet" style={{ ...tile("helmet"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-diamond-small.mp4" smallSrc="/animation/helmet-diamond-small.mp4" poster="/animation/helmet-diamond-poster.webp" width={540} height={851} /></div>
+    <div className="bento-tile bento-media bento-helmet" style={{ ...tile("helmet"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-original-crop.mp4" smallSrc="/animation/helmet-original-crop.mp4" poster="/animation/helmet-original-crop-poster.webp" width={396} height={624} monochrome /></div>
     <ProjectTile project={byId("genie")} id="genie" />
     <ProjectTile project={byId("pi")} id="pi" />
     <ProjectTile project={byId("among-the-stars")} id="stars" />
