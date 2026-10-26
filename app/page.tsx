@@ -76,6 +76,7 @@ export default async function Home() {
     </aside>
     <nav className="home-writings text-layer ink" aria-label="Writings">
       <Link href="/writings">writings: tnt</Link>
+      <span className="home-nav-divider" aria-hidden="true" />
       <Link href="/projects">projects</Link>
     </nav>
     <section className="dither-intro" aria-labelledby="name">
