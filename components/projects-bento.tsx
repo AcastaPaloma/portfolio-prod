@@ -12,10 +12,10 @@ const PLACE: Record<string, Rect> = {
   rose: { x: 0, y: 0, w: 2, h: 6 },
   quantum: { x: 2, y: 0, w: 2, h: 3 },
   title: { x: 4, y: 0, w: 4, h: 3 },
-  pi: { x: 2, y: 3, w: 1, h: 6 },
+  pi: { x: 5, y: 3, w: 3, h: 3 },
   helmet: { x: 3, y: 3, w: 2, h: 6 },
-  stars: { x: 5, y: 3, w: 3, h: 3 },
-  mvpvp: { x: 5, y: 6, w: 3, h: 3 },
+  stars: { x: 5, y: 6, w: 3, h: 3 },
+  mvpvp: { x: 2, y: 3, w: 1, h: 6 },
   genie: { x: 0, y: 6, w: 2, h: 3 },
   home: { x: 0, y: 9, w: 4, h: 3 },
   cortesol: { x: 4, y: 9, w: 2, h: 3 },
@@ -98,7 +98,7 @@ export function ProjectsBento({ projects, rose }: { projects: Project[]; rose: s
     <div className="bento-tile bento-title" style={{ ...tile("title"), ...tileStyle() }}><Wash id="title" /><FitText>Projects</FitText></div>
     <Link href="/" className="bento-tile bento-home" style={{ ...tile("home"), ...tileStyle() }}><Wash id="home" /><FitText>← back home</FitText></Link>
     <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-color-poster.webp" width={960} height={1440} /></div>
-    <div className="bento-tile bento-media bento-helmet" style={{ ...tile("helmet"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-original-crop.mp4" smallSrc="/animation/helmet-original-crop.mp4" poster="/animation/helmet-original-crop-poster.webp" width={396} height={624} monochrome /></div>
+    <div className="bento-tile bento-media bento-helmet" style={{ ...tile("helmet"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-full.mp4" smallSrc="/animation/helmet-full.mp4" poster="/animation/helmet-full-poster.webp" width={544} height={708} monochrome /></div>
     <ProjectTile project={byId("genie")} id="genie" />
     <ProjectTile project={byId("pi")} id="pi" />
     <ProjectTile project={byId("among-the-stars")} id="stars" />

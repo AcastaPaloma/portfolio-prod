@@ -190,12 +190,12 @@
 .bento-loop .loop-art img,.bento-loop .loop-art canvas{object-fit:contain}
 .bento-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#050505}
 .bento-helmet{container-type:size}
-.bento-helmet .bento-loop{top:50%;left:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:min(59cqw,calc(59cqh * 396 / 624))!important;height:auto!important;aspect-ratio:396/624!important}
+.bento-helmet .bento-loop{top:50%;left:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:min(59cqw,calc(59cqh * 544 / 708))!important;height:auto!important;aspect-ratio:544/708!important}
 @media (max-width:48rem){
 .bento{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
 .bento>*{grid-column:auto!important;grid-row:auto!important;min-height:18rem}
 .bento-helmet{min-height:30rem}
-.bento-helmet .bento-loop{width:min(78cqw,calc(78cqh * 396 / 624))!important}
+.bento-helmet .bento-loop{width:min(78cqw,calc(78cqh * 544 / 708))!important}
 .bento-title{order:-1;min-height:10rem}
 .bento-home{order:99;min-height:10rem}
 }
