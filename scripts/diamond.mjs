@@ -12,7 +12,7 @@ import path from 'node:path';
 const [mode, source, name, columnArg] = process.argv.slice(2);
 const loopColumns = Number(columnArg) || 96;
 const ffmpeg = process.env.PORTFOLIO_FFMPEG || 'ffmpeg';
-const cell = 6, saturation = 2.1, threshold = 0.12;
+const cell = 6, saturation = Number(process.env.DIAMOND_SATURATION) || 2.1, threshold = 0.12;
 const quantize = value => Math.max(0, Math.min(255, Math.round(value / 24) * 24));
 
 async function diamondSvg(pixels, info, { shine = false, matte = false } = {}) {

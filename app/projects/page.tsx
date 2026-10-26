@@ -9,6 +9,6 @@ export const metadata: Metadata = { title: "Projects — Kuan Yi Wang" };
 export default function ProjectsPage() {
   return <main className="dither-page projects-page">
     <GradientBackground />
-    <ProjectsBento projects={projects} rose="/animation/roses-tight-small.mp4" aurora="/work/aurora.gif" />
+    <ProjectsBento projects={projects} rose="/animation/roses-color-small.mp4" />
   </main>;
 }

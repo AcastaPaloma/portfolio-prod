@@ -19,8 +19,7 @@ const PLACE: Record<string, Rect> = {
   allot: { x: 5, y: 6, w: 3, h: 3 },
   home: { x: 0, y: 9, w: 4, h: 3 },
   cortesol: { x: 4, y: 9, w: 2, h: 3 },
-  mvpvp: { x: 6, y: 9, w: 2, h: 2 },
-  aurora: { x: 6, y: 11, w: 2, h: 1 },
+  mvpvp: { x: 6, y: 9, w: 2, h: 3 },
 };
 
 // The background stays black, so every tile carries its own solid colour. Text flips between black and white to suit it.
@@ -93,14 +92,13 @@ function tile(id: string): CSSProperties {
   return { gridColumn: `${at.x + 1} / span ${at.w}`, gridRow: `${at.y + 1} / span ${at.h}` };
 }
 
-export function ProjectsBento({ projects, rose, aurora }: { projects: Project[]; rose: string; aurora: string }) {
+export function ProjectsBento({ projects, rose }: { projects: Project[]; rose: string }) {
   const byId = (slug: string) => projects.find(p => p.slug === slug)!;
   return <div className="bento">
     <div className="bento-tile bento-title" style={{ ...tile("title"), ...tileStyle() }}><Wash id="title" /><FitText>Projects</FitText></div>
     <Link href="/" className="bento-tile bento-home" style={{ ...tile("home"), ...tileStyle() }}><Wash id="home" /><FitText>← back home</FitText></Link>
-    <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-tight-poster.webp" width={650} height={812} /></div>
+    <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-color-poster.webp" width={960} height={1440} /></div>
     <div className="bento-tile bento-media bento-helmet" style={{ ...tile("helmet"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-diamond-small.mp4" smallSrc="/animation/helmet-diamond-small.mp4" poster="/animation/helmet-diamond-poster.webp" width={540} height={851} /></div>
-    <div className="bento-tile bento-media" style={{ ...tile("aurora"), ...tileStyle() }}><img className="bento-cover" src={aurora} alt="Aurora borealis" /></div>
     <ProjectTile project={byId("genie")} id="genie" />
     <ProjectTile project={byId("pi")} id="pi" />
     <ProjectTile project={byId("among-the-stars")} id="stars" />
