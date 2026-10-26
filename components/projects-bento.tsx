@@ -23,24 +23,32 @@ const PLACE: Record<string, Rect> = {
   quantum: { x: 6, y: 11, w: 2, h: 1 },
 };
 
-// Each tile filters the background behind it. Sepia builds a tone, saturate pushes it to full colour,
-// and hue-rotate sets the colour. Brightness lifts the dark backdrop so the colour reads.
-const FILTER: Record<string, string> = {
-  rose: "hue-rotate(290deg)",     // hot pink
-  genie: "hue-rotate(150deg)",    // aqua
-  title: "hue-rotate(60deg)",     // acid lime
-  helmet: "hue-rotate(228deg)",   // violet
-  pi: "hue-rotate(-14deg)",       // orange
-  stars: "hue-rotate(180deg)",    // electric blue
-  cortesol: "hue-rotate(115deg)", // mint
-  mvpvp: "hue-rotate(300deg)",    // magenta
-  home: "hue-rotate(20deg)",      // gold
-  aurora: "hue-rotate(250deg)",   // indigo
-  allot: "hue-rotate(335deg)",    // rose
-  quantum: "hue-rotate(95deg)",   // green
+// The background stays black, so every tile carries its own solid colour. Text flips between black and white to suit it.
+const COLOUR: Record<string, string> = {
+  rose: "#ff2e88",     // hot pink
+  genie: "#1fd6ff",    // cyan
+  title: "#ffd21f",    // gold
+  helmet: "#7c4dff",   // violet
+  pi: "#ff7a1a",       // orange
+  stars: "#2f6bff",    // electric blue
+  cortesol: "#00e08a", // mint
+  mvpvp: "#ff3ea5",    // magenta
+  home: "#c6ff3d",     // acid lime
+  aurora: "#14120f",   // only shows if the image fails to load
+  allot: "#ff5c35",    // red-orange
+  quantum: "#3ee07a",  // green
 };
 
-const tileFilter = (id: string) => `sepia(1) saturate(7) brightness(1.55) contrast(1.1) ${FILTER[id]}`;
+function ink(hex: string) {
+  const channel = (i: number) => {
+    const c = parseInt(hex.slice(1 + i * 2, 3 + i * 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  const luminance = 0.2126 * channel(0) + 0.7152 * channel(1) + 0.0722 * channel(2);
+  return luminance > 0.36 ? "#0b0b0b" : "#fff";
+}
+
+const tileStyle = (id: string): CSSProperties => ({ background: COLOUR[id], color: ink(COLOUR[id]) });
 
 function FitText({ children, className }: { children: string; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -67,7 +75,7 @@ function FitText({ children, className }: { children: string; className?: string
 function ProjectTile({ project, id }: { project: Project; id: string }) {
   const external = project.href && !project.href.startsWith("/") ? { target: "_blank", rel: "noreferrer" } : {};
   const Tag = project.href ? "a" : "div";
-  const style: CSSProperties = { gridColumn: `${PLACE[id].x + 1} / span ${PLACE[id].w}`, gridRow: `${PLACE[id].y + 1} / span ${PLACE[id].h}`, backdropFilter: tileFilter(id), WebkitBackdropFilter: tileFilter(id) };
+  const style: CSSProperties = { ...tile(id), ...tileStyle(id) };
   return <Tag className="bento-tile bento-project" href={project.href} style={style} {...external}>
     <span className="bento-face bento-name"><FitText>{project.title}</FitText></span>
     <span className="bento-face bento-detail-pane">
@@ -79,17 +87,17 @@ function ProjectTile({ project, id }: { project: Project; id: string }) {
 
 function tile(id: string): CSSProperties {
   const at = PLACE[id];
-  return { gridColumn: `${at.x + 1} / span ${at.w}`, gridRow: `${at.y + 1} / span ${at.h}`, backdropFilter: tileFilter(id), WebkitBackdropFilter: tileFilter(id) };
+  return { gridColumn: `${at.x + 1} / span ${at.w}`, gridRow: `${at.y + 1} / span ${at.h}` };
 }
 
 export function ProjectsBento({ projects, rose, aurora }: { projects: Project[]; rose: string; aurora: string }) {
   const byId = (slug: string) => projects.find(p => p.slug === slug)!;
   return <div className="bento">
-    <div className="bento-tile bento-title" style={tile("title")}><FitText>Projects</FitText></div>
-    <Link href="/" className="bento-tile bento-home" style={tile("home")}><FitText>← back home</FitText></Link>
-    <div className="bento-tile bento-media" style={tile("rose")}><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-tight-poster.webp" width={650} height={812} /></div>
-    <div className="bento-tile bento-media" style={tile("helmet")}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-tight-small.mp4" smallSrc="/animation/helmet-tight-small.mp4" poster="/animation/helmet-tight-poster.webp" width={396} height={624} monochrome /></div>
-    <div className="bento-tile bento-media" style={tile("aurora")}><img className="bento-cover" src={aurora} alt="Aurora borealis" /></div>
+    <div className="bento-tile bento-title" style={{ ...tile("title"), ...tileStyle("title") }}><FitText>Projects</FitText></div>
+    <Link href="/" className="bento-tile bento-home" style={{ ...tile("home"), ...tileStyle("home") }}><FitText>← back home</FitText></Link>
+    <div className="bento-tile bento-media" style={{ ...tile("rose"), ...tileStyle("rose") }}><TransparentLoop className="bento-loop" name="roses in halftone" src={rose} smallSrc={rose} poster="/animation/roses-tight-poster.webp" width={650} height={812} /></div>
+    <div className="bento-tile bento-media" style={{ ...tile("helmet"), ...tileStyle("helmet") }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-diamond-small.mp4" smallSrc="/animation/helmet-diamond-small.mp4" poster="/animation/helmet-diamond-poster.webp" width={540} height={851} /></div>
+    <div className="bento-tile bento-media" style={{ ...tile("aurora"), ...tileStyle("aurora") }}><img className="bento-cover" src={aurora} alt="Aurora borealis" /></div>
     <ProjectTile project={byId("genie")} id="genie" />
     <ProjectTile project={byId("pi")} id="pi" />
     <ProjectTile project={byId("among-the-stars")} id="stars" />

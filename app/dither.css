@@ -163,7 +163,7 @@
 @media print{.gradient-backdrop,.gradient-shade,.webring-footer{display:none}.dither-page{background:#fff;color:#202020}.ink,.github-graph{color:#202020}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}
 
 /* /projects: a fixed bento. Hairlines cut the whole screen; each tile filters the background behind it. */
-.projects-page{padding:0}
+.projects-page{padding:0;background:#000}
 .bento{--line:rgb(255 255 255 / 45%);position:relative;z-index:3;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(12,7rem);width:100%;border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .bento-tile{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;min-width:0;min-height:0;text-decoration:none;color:#fff}
 .bento-tile::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line)}
@@ -186,6 +186,7 @@
 .bento-loop{position:absolute;inset:0;z-index:0;width:100%!important;height:100%!important;aspect-ratio:auto!important}
 .bento-loop .loop-art img,.bento-loop .loop-art canvas{object-fit:contain}
 .bento-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bento-tile{transition:filter .4s ease}
 @media (max-width:48rem){
 .bento{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
 .bento>*{grid-column:auto!important;grid-row:auto!important;min-height:18rem}
