@@ -18,22 +18,22 @@ const PLACE: Record<string, Rect> = {
   cortesol: { x: 0, y: 6, w: 3, h: 3 },
   mvpvp: { x: 5, y: 6, w: 3, h: 3 },
   home: { x: 0, y: 9, w: 4, h: 3 },
-  aurora: { x: 4, y: 9, w: 2, h: 3 },
-  allot: { x: 6, y: 9, w: 2, h: 2 },
-  quantum: { x: 6, y: 11, w: 2, h: 1 },
+  quantum: { x: 4, y: 9, w: 4, h: 2 },
+  aurora: { x: 4, y: 11, w: 2, h: 1 },
+  allot: { x: 6, y: 11, w: 2, h: 1 },
 };
 
 // The background stays black, so every tile carries its own solid colour. Text flips between black and white to suit it.
 const COLOUR: Record<string, string> = {
   rose: "#ff2e88",     // hot pink
   genie: "#1fd6ff",    // cyan
-  title: "#ffd21f",    // gold
+  title: "#ff3d9a",    // pink
   helmet: "#7c4dff",   // violet
   pi: "#ff7a1a",       // orange
   stars: "#2f6bff",    // electric blue
   cortesol: "#00e08a", // mint
   mvpvp: "#ff3ea5",    // magenta
-  home: "#c6ff3d",     // acid lime
+  home: "#ff6fb5",     // light pink
   aurora: "#14120f",   // only shows if the image fails to load
   allot: "#ff5c35",    // red-orange
   quantum: "#3ee07a",  // green
