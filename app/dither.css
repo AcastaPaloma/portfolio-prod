@@ -63,13 +63,13 @@
 .minifigure-art{width:min(100%,18rem);justify-self:center}
 .dither-work{position:relative;margin-top:clamp(1rem,3vw,2rem)}
 .dither-work>.section-title{padding-top:var(--section-space)}
-.work-grid{display:grid;gap:6px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(12.5rem,1fr));grid-template-areas:"genie helmet pi" "stars helmet quantum" "allot cortesol mvpvp";width:100%}
-.work-card,.work-tile{position:relative;display:flex;min-width:0;min-height:0;overflow:hidden;border:1px solid rgb(255 255 255 / 12%);background:#1d1b19;color:#f2f2f2;text-decoration:none}
+.work-grid{position:relative;z-index:3;display:grid;gap:6px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(12.5rem,1fr));grid-template-areas:"genie helmet pi" "stars helmet quantum" "allot cortesol mvpvp";width:100%}
+.work-card,.work-tile{position:relative;display:flex;min-width:0;min-height:0;overflow:hidden;border:1px solid rgb(255 255 255 / 16%);background:transparent;color:#f2f2f2;text-decoration:none}
 .work-card--genie{grid-area:genie}.work-card--pi{grid-area:pi}.work-card--stars{grid-area:stars}.work-card--quantum{grid-area:quantum}.work-card--allot{grid-area:allot}.work-card--cortesol{grid-area:cortesol}.work-card--mvpvp{grid-area:mvpvp}
 .work-card{flex-direction:column;justify-content:flex-end}
 .work-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 500ms ease}
 .work-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgb(0 0 0 / 88%) 8%,rgb(0 0 0 / 25%) 62%,rgb(0 0 0 / 5%))}
-.work-card--placeholder{background:repeating-linear-gradient(135deg,#1d1b19 0 14px,#24211e 14px 28px)}
+.work-card--placeholder{background:rgb(255 255 255 / 3%)}
 .work-card:hover img{transform:scale(1.04)}
 .work-card:focus-visible{outline:2px solid #fff;outline-offset:-3px}
 .work-card-copy{position:relative;z-index:1;display:grid;gap:.25rem;padding:1rem 1.1rem}
@@ -78,7 +78,7 @@
 .work-card-tag{font-size:.75rem;font-style:italic;color:#d9d2c7}
 .work-card-desc{font-size:.8rem;line-height:1.4;color:#e8e2d9;text-wrap:pretty}
 .work-card-desc .jane-street{color:#4da3ff;font-weight:inherit}
-.work-tile--helmet{grid-area:helmet;align-items:center;justify-content:center;padding:1.25rem;background:#151515}
+.work-tile--helmet{grid-area:helmet;align-items:center;justify-content:center;padding:1.25rem}
 .work-tile--helmet .helmet-art{width:100%;max-width:26rem;margin:auto}
 .work-tile--helmet .loop-art{opacity:.65}
 .dither-people,.dither-gallery{position:relative;padding:0}
