@@ -65,17 +65,7 @@
 .dither-work{position:relative;margin-top:clamp(1rem,3vw,2rem)}
 .dither-work>.section-title{padding-top:var(--section-space)}
 .work-grid{position:relative;z-index:3;display:grid;gap:6px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(15.5rem,1fr));grid-template-areas:"genie helmet pi" "stars helmet quantum" "allot cortesol mvpvp";width:100%}
-.liquid-glass{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;isolation:isolate;border-radius:24px;border:1px solid rgb(255 255 255 / 30%);color:#f2f2f2;text-decoration:none;box-shadow:0 18px 44px rgb(0 0 0 / 38%),0 2px 6px rgb(0 0 0 / 22%);transition:box-shadow 400ms ease,transform 400ms ease}
-.liquid-glass:hover{box-shadow:0 24px 56px rgb(0 0 0 / 46%),0 2px 8px rgb(0 0 0 / 26%)}
-.liquid-glass:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.lg-underlay,.lg-backdrop,.lg-sheen{position:absolute;inset:0;border-radius:inherit;pointer-events:none}
-.lg-underlay{z-index:0;overflow:hidden}
-.lg-underlay img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 600ms ease}
-.liquid-glass:hover .lg-underlay img{transform:scale(1.14)}
-.lg-backdrop{z-index:1;backdrop-filter:blur(12px) saturate(180%);-webkit-backdrop-filter:blur(12px) saturate(180%)}
-.lg-sheen{z-index:2;background:linear-gradient(135deg,rgb(255 255 255 / 7%),transparent 40%,rgb(255 255 255 / 4%));box-shadow:inset 2px 2px 0 rgb(255 255 255 / 60%),inset -2px -2px 0 rgb(255 255 255 / 22%),inset 0 0 0 1px rgb(255 255 255 / 25%),inset 0 0 28px rgb(255 255 255 / 18%)}
 .work-card--media .lg-sheen{background:linear-gradient(to top,rgb(0 0 0 / 70%) 6%,rgb(0 0 0 / 12%) 60%,transparent),linear-gradient(135deg,rgb(255 255 255 / 12%),transparent 45%)}
-.lg-content{position:relative;z-index:3;display:flex;flex-direction:column;flex:1;min-width:0;min-height:0}
 .work-card--genie{grid-area:genie}.work-card--pi{grid-area:pi}.work-card--stars{grid-area:stars}.work-card--quantum{grid-area:quantum}.work-card--allot{grid-area:allot}.work-card--cortesol{grid-area:cortesol}.work-card--mvpvp{grid-area:mvpvp}
 .work-card .lg-content{justify-content:flex-end}
 .work-card:hover .lg-underlay img{transform:scale(1.14)}
@@ -172,39 +162,33 @@
 @media(prefers-reduced-motion:reduce){.webring-nav a{transition:none}}
 @media print{.gradient-backdrop,.gradient-shade,.webring-footer{display:none}.dither-page{background:#fff;color:#202020}.ink,.github-graph{color:#202020}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}
 
-/* /projects: one full-bleed bento. Hairlines cut the whole screen, tiles are transparent, and the background shows through everything. */
-.projects-page{padding:0 0 clamp(2rem,4vw,3rem)}
-.projects-grid{--line:rgb(255 255 255 / 42%);position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:15rem;grid-auto-flow:dense;width:100%;margin:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.projects-grid .liquid-glass{border:0;border-radius:0;box-shadow:none;background:transparent;isolation:auto;overflow:hidden;transition:none}
-.projects-grid .liquid-glass::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line)}
-.projects-grid .lg-backdrop,.projects-grid .lg-sheen,.projects-grid .lg-underlay{display:none}
-.projects-grid .lg-content{position:relative;z-index:3;height:100%;justify-content:flex-end}
-.project-tile--wide{grid-column:span 2}
-.project-tile--big{grid-column:span 2;grid-row:span 2}
-.project-loop{position:absolute;inset:0;z-index:0;width:100%!important;height:100%!important;aspect-ratio:auto!important}
-.project-loop .loop-art img,.project-loop .loop-art canvas{object-fit:contain}
-.project-tile-desc{position:relative;z-index:2;margin:auto 0 0;padding:0 1.1rem 1rem;font-size:.95rem;line-height:1.4;color:#fff;text-shadow:0 1px 3px rgb(0 0 0 / 90%),0 0 12px rgb(0 0 0 / 70%);text-wrap:pretty}
-.projects-title-tile{grid-column:3 / span 2;grid-row:1}
-.projects-title-tile .lg-content{justify-content:flex-end;align-items:flex-end}
-.projects-title-tile h1{margin:0;padding:0 1.4rem 1rem;font-size:clamp(3.2rem,8.5vw,7rem);font-weight:normal;line-height:.9;letter-spacing:-.03em;color:#fff;text-align:right;text-shadow:0 2px 14px rgb(0 0 0 / 60%)}
-.project-tile--loop{grid-column:1 / span 2;grid-row:1 / span 2}
-.project-tile--helmet{grid-column:2 / span 2;grid-row:3 / span 2}
-.projects-home-tile{grid-column:1 / -1;min-height:14rem}
-.projects-home-tile .lg-content{align-items:flex-start;justify-content:flex-end}
-.projects-home-tile span{padding:0 1.4rem 1.2rem;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1;letter-spacing:-.02em;color:#fff;text-shadow:0 2px 14px rgb(0 0 0 / 60%)}
-.projects-home-tile:hover span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em}
-@media (max-width:64rem){
-.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}
-.projects-grid>*{grid-column:auto;grid-row:auto;min-height:16rem}
-.project-tile--wide,.project-tile--big,.projects-title-tile,.project-tile--loop,.project-tile--helmet,.projects-home-tile{grid-column:1 / -1}
-.projects-title-tile{min-height:12rem}
-.project-tile--loop,.project-tile--helmet{min-height:26rem}
-}
-@media (max-width:34rem){
-.projects-grid{grid-template-columns:minmax(0,1fr)}
-.projects-grid>*{grid-column:auto;grid-row:auto;min-height:15rem}
-.projects-title-tile{min-height:9rem}
-.project-tile--loop,.project-tile--helmet{min-height:20rem}
-.projects-home-tile{min-height:9rem}
-.project-tile-desc{font-size:.9rem}
+/* /projects: a fixed bento. Hairlines cut the whole screen; each tile filters the background behind it. */
+.projects-page{padding:0}
+.bento{--line:rgb(255 255 255 / 45%);position:relative;z-index:3;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(12,7rem);width:100%;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.bento-tile{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;min-width:0;min-height:0;text-decoration:none;color:#fff}
+.bento-tile::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line)}
+.bento-fit{position:absolute;inset:0;display:block;padding:1.1rem 1.3rem;overflow:hidden;font-weight:normal;line-height:.92;letter-spacing:-.02em;white-space:normal;text-wrap:balance;text-shadow:0 1px 14px rgb(0 0 0 / 55%)}
+.bento-title .bento-fit{text-align:right;padding-bottom:1.2rem}
+.bento-home .bento-fit{text-align:left;padding-bottom:1.2rem}
+.bento-home{justify-content:flex-end}
+.bento-project{cursor:pointer}
+.bento-face{position:absolute;inset:0;transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.bento-name{z-index:2}
+.bento-detail-pane{z-index:3;transform:translateY(100%);background:#050505}
+.bento-detail-pane img{display:block;width:100%;height:100%;object-fit:cover}
+.bento-detail{position:absolute;left:0;right:0;bottom:0;display:grid;gap:.35rem;padding:3rem 1.2rem 1.1rem;background:linear-gradient(to top,rgb(0 0 0 / 90%),rgb(0 0 0 / 55%) 60%,transparent)}
+.bento-detail-title{font-size:1.25rem;line-height:1.15;color:#fff}
+.bento-detail-desc{font-size:.9rem;line-height:1.4;color:#f1ece4}
+.bento-project:hover .bento-name,.bento-project:focus-visible .bento-name{transform:translateY(-100%)}
+.bento-project:hover .bento-detail-pane,.bento-project:focus-visible .bento-detail-pane{transform:translateY(0)}
+.bento-project:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.bento-media{z-index:1}
+.bento-loop{position:absolute;inset:0;z-index:0;width:100%!important;height:100%!important;aspect-ratio:auto!important}
+.bento-loop .loop-art img,.bento-loop .loop-art canvas{object-fit:contain}
+.bento-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (max-width:48rem){
+.bento{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+.bento>*{grid-column:auto!important;grid-row:auto!important;min-height:18rem}
+.bento-title{order:-1;min-height:10rem}
+.bento-home{order:99;min-height:10rem}
 }
