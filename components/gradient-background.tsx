@@ -104,8 +104,11 @@ export function GradientBackground() {
       if (disposed) return;
       const shouldPlay = !document.hidden && !reduce.matches;
       if (!shouldPlay) { stop(); return; }
+      // A disposed copy must not pause the shared film: React's development double-mount
+      // leaves a stale play() promise behind, and it would otherwise stop the live copy.
       void film.play().then(() => {
-        if (disposed || document.hidden || reduce.matches) {
+        if (disposed) return;
+        if (document.hidden || reduce.matches) {
           stop();
           return;
         }
@@ -113,7 +116,9 @@ export function GradientBackground() {
           active = true;
           frame = window.requestAnimationFrame(render);
         }
-      }).catch(stop);
+      }).catch(() => {
+        if (!disposed) stop();
+      });
     };
 
     const move = (event: PointerEvent) => {
