@@ -39,7 +39,7 @@
 .pi-banner::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:#fff;opacity:.2;mix-blend-mode:difference}
 .dither-page .pi-banner a{display:inline-block;padding-block:.65rem;text-decoration:none}
 .dither-page .pi-banner a:hover{text-decoration:underline;text-decoration-thickness:1px}
-.home-writings{display:flex;justify-content:center;padding:1.25rem var(--page-gutter) 0;font-size:1.05rem}
+.home-writings{display:flex;justify-content:center;align-items:center;gap:clamp(3.5rem,14vw,9rem);padding:1.25rem var(--page-gutter) 0;font-size:1.05rem}
 .home-writings a{display:inline-block;min-height:44px;padding-block:.5rem;text-decoration-skip-ink:none}
 .dither-intro-copy p{text-wrap:pretty}
 .dither-links{display:flex;flex-wrap:wrap;column-gap:1.4rem;row-gap:.8rem;margin-top:2rem;font-size:.85rem}
@@ -171,27 +171,36 @@
 @media(prefers-reduced-motion:reduce){.webring-nav a{transition:none}}
 @media print{.gradient-backdrop,.gradient-shade,.webring-footer{display:none}.dither-page{background:#fff;color:#202020}.ink,.github-graph{color:#202020}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}
 
-/* /projects: one bento with hairline seams. Tiles share the 1px gap, so every boundary is a single thin line. */
-.projects-wrap{position:relative;z-index:3;width:min(calc(100% - 2 * var(--page-gutter)),72rem);margin:0 auto;padding:clamp(2.5rem,6vw,4.5rem) 0 4rem}
-.projects-wrap h1{margin:0 0 1.75rem;font-size:clamp(2rem,4.5vw,2.75rem);font-weight:normal}
-.projects-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:15rem;grid-auto-flow:dense;gap:1px;padding:0;background:rgb(255 255 255 / 26%);border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgb(0 0 0 / 45%),inset 0 0 0 1px rgb(255 255 255 / 26%)}
-.projects-grid .liquid-glass{border:0;border-radius:0;box-shadow:none;background:rgb(12 11 10 / 40%)}
-.projects-grid .liquid-glass:hover{box-shadow:inset 0 0 0 1px rgb(255 255 255 / 40%)}
+/* /projects: the whole page is one bento. 1px seams are the only lines, and every tile is a box. */
+.projects-page{min-height:100svh;padding:clamp(1rem,3vw,2rem) 0 clamp(2rem,5vw,4rem)}
+.projects-grid{position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:14rem;grid-auto-flow:dense;gap:1px;width:min(calc(100% - 2 * var(--page-gutter)),78rem);margin:0 auto;background:rgb(255 255 255 / 30%);border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgb(0 0 0 / 50%)}
+.projects-grid .liquid-glass{border:0;border-radius:0;box-shadow:none;background:rgb(0 0 0 / 55%);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%)}
+.projects-grid .liquid-glass:hover{box-shadow:inset 0 0 0 1px rgb(255 255 255 / 45%)}
 .project-tile--wide{grid-column:span 2}
 .project-tile--tall{grid-row:span 2}
 .project-tile--big{grid-column:span 2;grid-row:span 2}
 .project-tile .lg-content{justify-content:flex-end}
-.project-tile .lg-underlay img{opacity:.92}
-.project-tile--helmet .lg-content{justify-content:center}
-.project-tile--helmet .helmet-art{width:100%;transform:scale(1.15)}
-.project-tile-copy{position:relative;z-index:1;display:grid;gap:.3rem;margin:auto .75rem .75rem;padding:.85rem 1rem;border-radius:14px;background:rgb(14 13 12 / 72%);-webkit-backdrop-filter:blur(12px) saturate(140%);backdrop-filter:blur(12px) saturate(140%);border:1px solid rgb(255 255 255 / 16%);box-shadow:inset 0 1px 0 rgb(255 255 255 / 20%),0 8px 24px rgb(0 0 0 / 35%)}
-.project-tile-copy h2{display:flex;align-items:center;gap:.45rem;margin:0;font-size:1.05rem;font-weight:normal;line-height:1.25;color:#fff;text-shadow:0 1px 2px rgb(0 0 0 / 60%)}
-.project-tile-copy h2 .inline-icon{flex:none}
-.project-tile-copy p{margin:0;font-size:.86rem;line-height:1.45;color:#f4efe6;text-wrap:pretty}
-.project-tile-tags{display:flex;flex-wrap:wrap;gap:.3rem}
-.project-tile-tags span{padding:.1rem .45rem;border:1px solid rgb(255 255 255 / 26%);border-radius:999px;font-size:.7rem;font-style:italic;color:#eadfcb}
-@media (max-width:64rem){.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:34rem){.projects-grid{grid-template-columns:minmax(0,1fr);grid-auto-rows:16rem}.project-tile--wide,.project-tile--big,.project-tile--tall{grid-column:auto;grid-row:auto}}
+.project-tile .lg-underlay img{width:100%;height:100%;object-fit:cover;transform:none;opacity:.95}
+.project-tile-desc{position:relative;z-index:1;margin:auto 1rem 1rem;padding:.9rem 1.05rem;border-radius:12px;background:rgb(0 0 0 / 62%);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:.92rem;line-height:1.45;color:#f4efe6;text-wrap:pretty}
+.projects-title-tile{grid-column:3 / span 2;grid-row:1}
+.projects-title-tile .lg-content{justify-content:flex-end}
+.projects-title-tile h1{margin:0;padding:1rem 1.4rem 1.1rem;font-size:clamp(3.2rem,8.5vw,7rem);font-weight:normal;line-height:.9;letter-spacing:-.03em;color:#fff;text-align:right}
+.project-tile--loop{grid-column:1 / span 2;grid-row:1 / span 2}
 .project-tile--loop .lg-content{justify-content:center}
 .project-tile--loop .loop-tile-art{width:100%;height:100%}
 .project-tile--loop .loop-art img,.project-tile--loop .loop-art canvas{object-fit:contain}
+.project-tile--helmet .lg-content{justify-content:center}
+.project-tile--helmet .helmet-art{width:100%;transform:scale(1.15)}
+.projects-home-tile{grid-column:1 / -1;min-height:14rem;text-decoration:none}
+.projects-home-tile .lg-content{align-items:flex-start;justify-content:flex-end}
+.projects-home-tile span{padding:1rem 1.4rem;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1;letter-spacing:-.02em;color:#fff}
+.projects-home-tile:hover span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.12em}
+@media (max-width:64rem){.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.projects-title-tile{grid-column:1 / -1;grid-row:auto}.project-tile--loop{grid-column:1 / -1;grid-row:span 2}.project-tile--big,.project-tile--wide{grid-column:auto}}
+@media (max-width:34rem){
+.projects-grid{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}
+.projects-grid>*{grid-column:auto;grid-row:auto;min-height:14rem}
+.projects-title-tile{min-height:9rem}
+.project-tile--loop{min-height:20rem}
+.projects-home-tile{min-height:9rem}
+.project-tile-desc{font-size:.88rem}
+}
