@@ -1,7 +1,6 @@
 import { GradientBackground } from "@/components/gradient-background";
 import { TransparentLoop } from "@/components/transparent-loop";
 import { InlineIcon } from "@/components/inline-icon";
-import { LiquidGlass } from "@/components/liquid-glass";
 import { getDuolingoProfile } from "@/lib/duolingo";
 import { StreakCard } from "@/components/streak-card";
 import { GitHubActivity } from "@/components/github-activity";
@@ -67,29 +66,6 @@ function WebringNav() {
   </nav>;
 }
 
-type Work={area:string;icon:string;title:string;tag?:string;href?:string;thumb?:string;desc:ReactNode};
-const work:Work[]=[
-  {area:"genie",icon:"world",title:"Genie Doom World Model",href:"/genie/",thumb:"/work/genie.jpg",desc:"Playable, action-conditioned Doom video from unlabeled footage."},
-  {area:"pi",icon:"network",title:"π0.7 Recreation",href:"/pi/",thumb:"/work/pi.jpg",desc:"A full breakdown and rebuild of Physical Intelligence’s π0.7."},
-  {area:"stars",icon:"code",title:"Among the Stars",tag:"3rd SOON hacky",thumb:"/work/among-the-stars.jpg",desc:"A simulation of humanity taking over space, from Mars in 2040 to 10,000 years out. Coming soon."},
-  {area:"quantum",icon:"quantum",title:"GNN Quantum Error Decoder",thumb:"/work/isef.jpg",href:"https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction",desc:<>ISEF Silver · Physics &amp; Astronomy · Team Canada. Quantum error correction; sponsored by <b className="jane-street">Jane Street</b>.</>},
-  {area:"allot",icon:"code",title:"Allot",tag:"1st 🏆 · Ramp × UW Blueprint",thumb:"/work/allot.jpg",href:"https://github.com/fiona-cai/ampitup",desc:"Hackathon winner. Calendar and event-based budgets for companies."},
-  {area:"cortesol",icon:"network",title:"Cortesol",tag:"HackThe6ix finalist",thumb:"/work/cortesol.jpg",href:"https://cortesol.onrender.com/",desc:"Critical thinking over a knowledge graph."},
-  {area:"mvpvp",icon:"code",title:"MvPVP",tag:"McHacks",thumb:"/work/mvpvp.jpg",href:"https://github.com/AcastaPaloma/MvPvP",desc:"Competitive vibe coding. Build an MVP in five minutes."},
-];
-function WorkCard({item}:{item:Work}) {
-  const external=item.href&&!item.href.startsWith("/")?{target:"_blank",rel:"noreferrer"}:{};
-  return <LiquidGlass as={item.href?"a":"div"} href={item.href} {...external}
-    className={`work-card work-card--${item.area}${item.thumb?" work-card--media":""}`}
-    underlay={item.thumb&&<img src={item.thumb} alt="" loading="lazy" decoding="async"/>}>
-    <span className="work-card-copy">
-      <h3><InlineIcon name={item.icon}/>{item.title}</h3>
-      {item.tag&&<span className="work-card-tag">{item.tag}</span>}
-      <span className="work-card-desc">{item.desc}</span>
-    </span>
-  </LiquidGlass>;
-}
-
 export default async function Home() {
   const bookingUrl=process.env.NEXT_PUBLIC_CAL_COM_URL||"https://cal.com/kywaterloo";
   const [duolingo,github]=await Promise.all([getDuolingoProfile(),getGitHubActivity()]);
@@ -100,6 +76,8 @@ export default async function Home() {
     </aside>
     <nav className="home-writings text-layer ink" aria-label="Writings">
       <Link href="/writings">writings: tnt</Link>
+      <span aria-hidden="true"> · </span>
+      <Link href="/projects">projects</Link>
     </nav>
     <section className="dither-intro" aria-labelledby="name">
       <div className="dither-intro-copy text-layer">
@@ -124,16 +102,6 @@ export default async function Home() {
       </div>
     </section>
 
-    <section className="dither-work" aria-labelledby="work">
-      <h2 id="work" className="section-title text-layer ink">A few things I’ve built.</h2>
-      <div className="work-grid">
-        {work.slice(0,3).map(item=><WorkCard key={item.area} item={item}/>)}
-        <LiquidGlass className="work-tile work-tile--helmet">
-          <TransparentLoop className="helmet-art" name="helmet particles" src="/animation/helmet-gust.mp4" smallSrc="/animation/helmet-gust-small.mp4" poster="/animation/helmet-gust-poster.webp" width={720} height={720} monochrome/>
-        </LiquidGlass>
-        {work.slice(3).map(item=><WorkCard key={item.area} item={item}/>)}
-      </div>
-    </section>
 
     <section className="dither-people" aria-labelledby="people">
       <h2 id="people" className="section-title text-layer ink">People.</h2>

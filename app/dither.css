@@ -170,3 +170,28 @@
 }
 @media(prefers-reduced-motion:reduce){.webring-nav a{transition:none}}
 @media print{.gradient-backdrop,.gradient-shade,.webring-footer{display:none}.dither-page{background:#fff;color:#202020}.ink,.github-graph{color:#202020}.monochrome-loop{filter:invert(1);mix-blend-mode:normal}}
+
+/* /projects: one bento with hairline seams. Tiles share the 1px gap, so every boundary is a single thin line. */
+.projects-wrap{position:relative;z-index:3;width:min(calc(100% - 2 * var(--page-gutter)),72rem);margin:0 auto;padding:clamp(2.5rem,6vw,4.5rem) 0 4rem}
+.projects-wrap h1{margin:0 0 1.75rem;font-size:clamp(2rem,4.5vw,2.75rem);font-weight:normal}
+.projects-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:15rem;grid-auto-flow:dense;gap:1px;padding:0;background:rgb(255 255 255 / 26%);border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgb(0 0 0 / 45%),inset 0 0 0 1px rgb(255 255 255 / 26%)}
+.projects-grid .liquid-glass{border:0;border-radius:0;box-shadow:none;background:rgb(12 11 10 / 40%)}
+.projects-grid .liquid-glass:hover{box-shadow:inset 0 0 0 1px rgb(255 255 255 / 40%)}
+.project-tile--wide{grid-column:span 2}
+.project-tile--tall{grid-row:span 2}
+.project-tile--big{grid-column:span 2;grid-row:span 2}
+.project-tile .lg-content{justify-content:flex-end}
+.project-tile .lg-underlay img{opacity:.92}
+.project-tile--helmet .lg-content{justify-content:center}
+.project-tile--helmet .helmet-art{width:100%;transform:scale(1.15)}
+.project-tile-copy{position:relative;z-index:1;display:grid;gap:.3rem;margin:auto .75rem .75rem;padding:.85rem 1rem;border-radius:14px;background:rgb(14 13 12 / 72%);-webkit-backdrop-filter:blur(12px) saturate(140%);backdrop-filter:blur(12px) saturate(140%);border:1px solid rgb(255 255 255 / 16%);box-shadow:inset 0 1px 0 rgb(255 255 255 / 20%),0 8px 24px rgb(0 0 0 / 35%)}
+.project-tile-copy h2{display:flex;align-items:center;gap:.45rem;margin:0;font-size:1.05rem;font-weight:normal;line-height:1.25;color:#fff;text-shadow:0 1px 2px rgb(0 0 0 / 60%)}
+.project-tile-copy h2 .inline-icon{flex:none}
+.project-tile-copy p{margin:0;font-size:.86rem;line-height:1.45;color:#f4efe6;text-wrap:pretty}
+.project-tile-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.project-tile-tags span{padding:.1rem .45rem;border:1px solid rgb(255 255 255 / 26%);border-radius:999px;font-size:.7rem;font-style:italic;color:#eadfcb}
+@media (max-width:64rem){.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:34rem){.projects-grid{grid-template-columns:minmax(0,1fr);grid-auto-rows:16rem}.project-tile--wide,.project-tile--big,.project-tile--tall{grid-column:auto;grid-row:auto}}
+.project-tile--loop .lg-content{justify-content:center}
+.project-tile--loop .loop-tile-art{width:100%;height:100%}
+.project-tile--loop .loop-art img,.project-tile--loop .loop-art canvas{object-fit:contain}
