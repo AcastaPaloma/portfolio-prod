@@ -71,11 +71,11 @@ type Work={area:string;icon:string;title:string;tag?:string;href?:string;thumb?:
 const work:Work[]=[
   {area:"genie",icon:"world",title:"Genie Doom World Model",href:"/genie/",thumb:"/work/genie.jpg",desc:"Playable, action-conditioned Doom video from unlabeled footage."},
   {area:"pi",icon:"network",title:"π0.7 Recreation",href:"/pi/",thumb:"/work/pi.jpg",desc:"A full breakdown and rebuild of Physical Intelligence’s π0.7."},
-  {area:"stars",icon:"code",title:"Among the Stars",tag:"3rd SOON hacky",desc:"A simulation of humanity taking over space, from Mars in 2040 to 10,000 years out. Coming soon."},
-  {area:"quantum",icon:"quantum",title:"GNN Quantum Error Decoder",href:"https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction",desc:<>ISEF Silver · Physics &amp; Astronomy · Team Canada. Quantum error correction; sponsored by <b className="jane-street">Jane Street</b>.</>},
-  {area:"allot",icon:"code",title:"Allot",tag:"1st 🏆 · Ramp × UW Blueprint",href:"https://github.com/fiona-cai/ampitup",desc:"Hackathon winner. Calendar and event-based budgets for companies."},
-  {area:"cortesol",icon:"network",title:"Cortesol",tag:"HackThe6ix finalist",href:"https://cortesol.onrender.com/",desc:"Critical thinking over a knowledge graph."},
-  {area:"mvpvp",icon:"code",title:"MvPVP",tag:"McHacks",href:"https://github.com/AcastaPaloma/MvPvP",desc:"Competitive vibe coding. Build an MVP in five minutes."},
+  {area:"stars",icon:"code",title:"Among the Stars",tag:"3rd SOON hacky",thumb:"/work/among-the-stars.jpg",desc:"A simulation of humanity taking over space, from Mars in 2040 to 10,000 years out. Coming soon."},
+  {area:"quantum",icon:"quantum",title:"GNN Quantum Error Decoder",thumb:"/work/isef.jpg",href:"https://isef.net/project/phys061t-sparse-gnn-decoders-for-quantum-error-correction",desc:<>ISEF Silver · Physics &amp; Astronomy · Team Canada. Quantum error correction; sponsored by <b className="jane-street">Jane Street</b>.</>},
+  {area:"allot",icon:"code",title:"Allot",tag:"1st 🏆 · Ramp × UW Blueprint",thumb:"/work/allot.jpg",href:"https://github.com/fiona-cai/ampitup",desc:"Hackathon winner. Calendar and event-based budgets for companies."},
+  {area:"cortesol",icon:"network",title:"Cortesol",tag:"HackThe6ix finalist",thumb:"/work/cortesol.jpg",href:"https://cortesol.onrender.com/",desc:"Critical thinking over a knowledge graph."},
+  {area:"mvpvp",icon:"code",title:"MvPVP",tag:"McHacks",thumb:"/work/mvpvp.jpg",href:"https://github.com/AcastaPaloma/MvPvP",desc:"Competitive vibe coding. Build an MVP in five minutes."},
 ];
 function WorkCard({item}:{item:Work}) {
   const external=item.href&&!item.href.startsWith("/")?{target:"_blank",rel:"noreferrer"}:{};

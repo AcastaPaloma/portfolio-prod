@@ -18,7 +18,7 @@ type Props = {
 // A rim-weighted displacement map: pixels near an edge push their sample inward,
 // so the glass bends what is behind it the way a lens does. Flat in the middle.
 const MAP_SIZE = 256;
-const BEZEL = 0.24;
+const BEZEL = 0.3;
 let mapUrl: string | null = null;
 function displacementMap() {
   if (mapUrl) return mapUrl;
@@ -51,7 +51,7 @@ const subscribeNone = () => () => {};
 const mapIfSupported = (filterId: string) => () =>
   typeof CSS !== "undefined" && CSS.supports("backdrop-filter", `url(#${filterId})`) ? displacementMap() : null;
 
-export function LiquidGlass({ as = "div", href, target, rel, className = "", underlay, children, displacement = 64 }: Props) {
+export function LiquidGlass({ as = "div", href, target, rel, className = "", underlay, children, displacement = 120 }: Props) {
   const rawId = useId().replace(/[^a-zA-Z0-9]/g, "");
   const filterId = `lg-${rawId}`;
   // Chromium supports SVG filters inside backdrop-filter. Elsewhere the glass
@@ -60,7 +60,7 @@ export function LiquidGlass({ as = "div", href, target, rel, className = "", und
   const refract = map !== null;
 
   const Tag = as;
-  const backdrop = refract ? { backdropFilter: `url(#${filterId}) blur(0.6px) saturate(170%)` } : undefined;
+  const backdrop = refract ? { backdropFilter: `url(#${filterId}) blur(1px) saturate(190%)` } : undefined;
   const s = displacement;
 
   return <Tag className={`liquid-glass ${className}`} href={href} target={target} rel={rel}>
