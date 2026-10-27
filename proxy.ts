@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// The write-ups in public/genie and public/pi load their assets by relative path, so /genie and /pi must gain a
-// trailing slash. A next.config redirect can't express this: its sources treat the trailing slash as optional
+// The static pages in public/genie, public/pi and public/privacy load their assets by relative path, so /genie,
+// /pi and /privacy must gain a trailing slash. A next.config redirect can't express this: its sources treat the trailing slash as optional
 // and would loop on /genie/.
 export function proxy(request: NextRequest) {
   // A plain URL, because NextURL strips the trailing slash again when formatted.
@@ -13,5 +13,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/genie", "/pi"],
+  matcher: ["/genie", "/pi", "/privacy"],
 };

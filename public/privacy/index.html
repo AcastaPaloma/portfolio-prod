@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfbfa">
+  <meta name="description" content="A live dashboard of an ongoing research program on privacy-preserving video: every obfuscation run, its action and privacy scores against retrained attackers, training curves, the machines running it, and the research journal.">
+  <title>Privacy-preserving video · live research · Kuan Yi Wang</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css?v=20261027-d">
+  <script type="module" src="./app.js?v=20261027-d"></script>
+</head>
+<body>
+  <a class="skip-link" href="#reader">Skip to the experiment list</a>
+  <main class="workspace" id="workspace">
+    <section class="stage" aria-label="Results">
+      <div class="stage-bar">
+        <div class="crumbs" id="crumbs"></div>
+        <div class="stage-switch" role="group" aria-label="What the results panel shows"><button type="button" id="view-results" aria-pressed="true">Results</button><button type="button" id="view-figures" aria-pressed="false">Figures</button></div>
+      </div>
+      <div class="stage-scroll" id="stage" tabindex="-1">
+        <div class="stage-inner" id="stage-inner"><p class="stage-note">Loading the latest results…</p></div>
+      </div>
+    </section>
+    <aside class="notes" aria-label="Experiments, machines and journal">
+      <div class="reading-nav">
+        <div class="page-tabs" role="tablist" aria-label="Dashboard sections">
+          <button type="button" role="tab" id="tab-experiments" aria-controls="panel-experiments" aria-selected="true">Experiments</button><button type="button" role="tab" id="tab-live" aria-controls="panel-live" aria-selected="false" tabindex="-1">Live</button><button type="button" role="tab" id="tab-journal" aria-controls="panel-journal" aria-selected="false" tabindex="-1">Journal</button>
+        </div>
+        <div class="sync" id="sync">
+          <span class="sync-dot" id="sync-dot" aria-hidden="true"></span>
+          <span class="sync-label" id="sync-label">loading</span>
+          <button type="button" class="sync-refresh" id="refresh" aria-label="Refresh now" title="Refresh now"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9"/><path d="M12.2 1.8v2.6H9.6"/></svg></button>
+        </div>
+      </div>
+      <div class="reader" id="reader" tabindex="0" aria-label="Experiments, machines and journal">
+        <article id="article">
+          <header class="dash-head">
+            <p class="dash-kicker">Ongoing research · learned video obfuscation</p>
+            <h1>Privacy-preserving video: live research dashboard</h1>
+            <p class="dash-status" id="status" aria-live="polite"></p>
+          </header>
+          <section class="panel" id="panel-experiments" role="tabpanel" aria-labelledby="tab-experiments"></section>
+          <section class="panel" id="panel-live" role="tabpanel" aria-labelledby="tab-live" hidden></section>
+          <section class="panel" id="panel-journal" role="tabpanel" aria-labelledby="tab-journal" hidden></section>
+        </article>
+      </div>
+    </aside>
+  </main>
+  <footer class="site-footer">Made by <a href="https://www.kuant.space" target="_blank" rel="noopener">Kuan Yi Wang</a> with <span role="img" aria-label="love">❤️</span></footer>
+  <dialog class="lightbox" id="lightbox" aria-label="Figure">
+    <div class="lightbox-bar"><span id="lightbox-title"></span><span class="lightbox-tools"><button type="button" id="lightbox-prev" aria-label="Previous figure">←</button><button type="button" id="lightbox-next" aria-label="Next figure">→</button><a id="lightbox-open" target="_blank" rel="noopener">Full size</a><button type="button" id="lightbox-close" aria-label="Close">×</button></span></div>
+    <img id="lightbox-img" alt="">
+  </dialog>
+  <noscript><div class="no-script">This dashboard needs JavaScript to load the live results.</div></noscript>
+</body>
+</html>
