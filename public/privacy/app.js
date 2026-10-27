@@ -8,6 +8,7 @@ import { addSplitter } from './splitter.mjs?v=20261027-d';
 const DATA_URL = 'https://raw.githubusercontent.com/AcastaPaloma/openlatent/privacy-research/research/privacy-obfuscation/results/dashboard.json';
 const REFRESH_MS = 2 * 60 * 1000;
 const TABS = ['experiments', 'live', 'journal'];
+const VIEWS = ['results', 'figures', 'motion'];
 
 const C = { action: '#3b5bb5', frame: '#b8860b', video: '#b0472c', entropy: '#2f7d4f', sigma: '#7a5c99', grey: '#8b8b84', extra: ['#4f8a9e', '#a0527a', '#6b6b2f', '#c06a2b'] };
 const FAMILY_COLORS = { raw: '#1a1a1a', controls: '#8b8b84', 'fixed filters': '#b8860b', 'person removal': '#7a5c99', 'BDQ (learned)': '#3b5bb5', '3D U-Net (learned)': '#2f7d4f', 'frozen VAE + latent edit': '#b0472c' };
@@ -60,10 +61,12 @@ const advColor = (name, i) => { const m = model(name); return i < 2 ? (m.kind ==
 const prettySplit = s => s ? (SPLITS[s] ?? `${s} split`) : '';
 const num = v => typeof v === 'number' ? (Math.abs(v) < 0.01 && v !== 0 ? v.toExponential(0) : String(+v.toPrecision(4))) : String(v);
 function prettyFigure(name) {
-  let base = String(name).replace(/\.png$/i, '');
+  const isGallery = /^gallery_/.test(String(name));
+  let base = String(name).replace(/\.png$/i, '').replace(/^gallery_/, '');
   const ds = Object.keys(DATASETS).sort((a, b) => b.length - a.length).find(k => base.startsWith(`${k}_`));
   if (!ds) return base.replace(/_/g, ' ');
   base = base.slice(ds.length + 1).replace(/^(\w+?)_v_\1_/, '$1 ');
+  if (isGallery) return `${dsInfo(ds).name} · all runs, page ${base.slice(ds.length + 1)}`;
   return `${dsInfo(ds).name} · ${base.replace(/_/g, ' ')}`;
 }
 function relTime(iso) {
@@ -132,13 +135,13 @@ function readHash() {
   const p = new URLSearchParams(location.hash.slice(1));
   state.run = p.get('run') || null;
   state.tab = TABS.includes(p.get('tab')) ? p.get('tab') : state.tab;
-  state.view = p.get('view') === 'figures' ? 'figures' : 'results';
+  state.view = VIEWS.includes(p.get('view')) ? p.get('view') : 'results';
 }
 function writeHash() {
   const p = new URLSearchParams();
   if (state.run) p.set('run', state.run);
   if (state.tab !== 'experiments') p.set('tab', state.tab);
-  if (state.view === 'figures') p.set('view', 'figures');
+  if (state.view !== 'results') p.set('view', state.view);
   const next = p.toString();
   if (location.hash.slice(1) !== next) history.replaceState(null, '', next ? `#${next}` : location.pathname + location.search);
 }
@@ -306,6 +309,7 @@ function renderJournal() {
 function renderCrumbs(r) {
   const crumbs = $('crumbs');
   if (state.view === 'figures') { crumbs.innerHTML = `<span class="crumb-here">Figures · original vs every technique</span>`; return; }
+  if (state.view === 'motion') { crumbs.innerHTML = `<span class="crumb-here">Motion · every technique as released, animated</span>`; return; }
   if (!r) { crumbs.innerHTML = '<span class="crumb-here">Overview · all runs</span>'; return; }
   crumbs.innerHTML = `<button type="button" class="crumb-parent" data-action="overview">Overview</button><span class="crumb-sep" aria-hidden="true">/</span><span class="crumb-here">${esc(r.name)}</span>`;
 }
@@ -313,6 +317,7 @@ function renderStage() {
   const inner = $('stage-inner');
   $('view-results').setAttribute('aria-pressed', String(state.view === 'results'));
   $('view-figures').setAttribute('aria-pressed', String(state.view === 'figures'));
+  $('view-motion').setAttribute('aria-pressed', String(state.view === 'motion'));
   if (!state.data) {
     renderCrumbs(null);
     inner.innerHTML = state.error
@@ -324,6 +329,7 @@ function renderStage() {
   renderCrumbs(r);
   inner.replaceChildren();
   if (state.view === 'figures') return renderFiguresView(inner);
+  if (state.view === 'motion') return renderMotionView(inner);
   if (!r) return renderOverview(inner);
   renderRun(inner, r);
 }
@@ -361,6 +367,30 @@ function renderFiguresView(inner) {
     s.append(gallery(figs.filter(f => f.dataset === ds), true));
   }
 }
+function renderMotionView(inner) {
+  const head = document.createElement('header'); head.className = 'run-head';
+  head.innerHTML = `<p class="run-label">Motion</p><h2 class="run-title">Every obfuscation, as the attackers see it</h2><p class="run-lede">Each tile loops the same four test clips through one finished run's release path, frame for frame at the attackers' frame rate, 8-bit as released. Stills hide what the strongest attackers use: silhouettes and gait over time. Tiles are ordered from most to least leaky; the numbers are action accuracy and the best retrained attacker's privacy score. Click a tile to open the run.</p>`;
+  inner.append(head);
+  const g = state.data.gifs ?? {};
+  const dss = Object.keys(g).filter(ds => g[ds]?.runs?.length);
+  if (!dss.length) { inner.insertAdjacentHTML('beforeend', '<p class="stage-note">No animations in this snapshot yet.</p>'); return; }
+  for (const ds of dss) {
+    const info = dsInfo(ds), clips = (g[ds].clips ?? []).map(c => c.action).filter(Boolean);
+    const s = section(inner, info.name, clips.length ? `Clips, left to right and top to bottom: ${esc(clips.join(', '))}.` : '');
+    const grid = document.createElement('div'); grid.className = 'motion';
+    for (const e of g[ds].runs) {
+      if (!/^https:\/\//.test(e.url ?? '')) continue;
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'motion-tile'; b.dataset.run = e.run;
+      const img = document.createElement('img'); img.loading = 'lazy'; img.decoding = 'async'; img.src = e.url;
+      img.alt = `${e.run}: four test clips after obfuscation, animated`;
+      const split = e.split && !['ilic', 's1'].includes(e.split) ? ` · ${esc(prettySplit(e.split))}` : '';
+      const cap = document.createElement('span');
+      cap.innerHTML = `<b>${esc(e.run)}</b>${split}<br>action ${fmt(e.action)} · ${esc(info.privacy)} ${fmt(e.privacy)}${finite(e.leakage) ? ` · leak ${fmt(e.leakage, 0)}%` : ''}`;
+      b.append(img, cap); grid.append(b);
+    }
+    s.append(grid);
+  }
+}
 function datasets() {
   const ref = Object.keys(state.data.reference?.raw ?? {});
   const seen = [...new Set(runList().filter(r => r.status === 'done').map(r => r.dataset))];
@@ -387,7 +417,8 @@ function scatter(ds) {
 function figuresFor(ds) {
   return (state.data.figures ?? []).map((f, i) => {
     const name = String(f.name ?? f.url ?? '');
-    const dataset = Object.keys(DATASETS).sort((a, b) => b.length - a.length).find(k => name.startsWith(`${k}_`)) ?? null;
+    const bare = name.replace(/^gallery_/, '');
+    const dataset = Object.keys(DATASETS).sort((a, b) => b.length - a.length).find(k => bare.startsWith(`${k}_`)) ?? null;
     return { url: f.url, name, label: prettyFigure(name), dataset, i };
   }).filter(f => /^https:\/\//.test(f.url ?? '') && (!ds || f.dataset === ds));
 }
@@ -610,6 +641,7 @@ document.querySelector('.page-tabs').addEventListener('keydown', event => {
 });
 $('view-results').addEventListener('click', () => { state.view = 'results'; writeHash(); renderStage(); });
 $('view-figures').addEventListener('click', () => { state.view = 'figures'; writeHash(); renderStage(); $('stage').scrollTo({ top: 0 }); });
+$('view-motion').addEventListener('click', () => { state.view = 'motion'; writeHash(); renderStage(); $('stage').scrollTo({ top: 0 }); });
 $('lightbox-close').addEventListener('click', () => $('lightbox').close());
 $('lightbox-prev').addEventListener('click', () => stepFigure(-1));
 $('lightbox-next').addEventListener('click', () => stepFigure(1));
