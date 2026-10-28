@@ -15,6 +15,7 @@ const FAMILY_COLORS = { raw: '#1a1a1a', controls: '#8b8b84', 'fixed filters': '#
 const DATASETS = {
   kth: { name: 'KTH', privacy: 'identity top-1', privacyLong: 'identity top-1 (which of 25 people)', floorLabel: 'chance', classes: ['boxing', 'handclapping', 'handwaving', 'jogging', 'running', 'walking'] },
   ucf101_vp: { name: 'VP-UCF101', privacy: 'attribute cMAP', privacyLong: 'attribute cMAP over five private attributes', floorLabel: 'blind floor', attrs: ['face', 'skin colour', 'gender', 'nudity', 'relationship'] },
+  hmdb51_vp: { name: 'VP-HMDB51', privacy: 'attribute cMAP', privacyLong: 'attribute cMAP over five private attributes', floorLabel: 'blind floor', attrs: ['face', 'skin colour', 'gender', 'nudity', 'relationship'] },
 };
 const dsInfo = ds => DATASETS[ds] ?? { name: ds ?? 'unknown', privacy: 'privacy', privacyLong: 'privacy score', floorLabel: 'floor' };
 const SPLITS = { ilic: 'Ilic split', scenario: 'scenario split', seq: 'sequence split', s1: 'split 1' };
