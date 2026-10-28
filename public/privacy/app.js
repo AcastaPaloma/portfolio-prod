@@ -15,6 +15,7 @@ const FAMILY_COLORS = { raw: '#1a1a1a', controls: '#8b8b84', 'fixed filters': '#
 const DATASETS = {
   kth: { name: 'KTH', privacy: 'identity top-1', privacyLong: 'identity top-1 (which of 25 people)', floorLabel: 'chance', classes: ['boxing', 'handclapping', 'handwaving', 'jogging', 'running', 'walking'] },
   ucf101_vp: { name: 'VP-UCF101', privacy: 'attribute cMAP', privacyLong: 'attribute cMAP over five private attributes', floorLabel: 'blind floor', attrs: ['face', 'skin colour', 'gender', 'nudity', 'relationship'] },
+  charades: { name: 'Charades', privacy: 'identity top-1', privacyLong: 'identity top-1 (which of 90 people, filmed in their own homes)', floorLabel: 'chance', action: 'action mAP (157 classes)' },
   hmdb51_vp: { name: 'VP-HMDB51', privacy: 'attribute cMAP', privacyLong: 'attribute cMAP over five private attributes', floorLabel: 'blind floor', attrs: ['face', 'skin colour', 'gender', 'nudity', 'relationship'] },
 };
 const dsInfo = ds => DATASETS[ds] ?? { name: ds ?? 'unknown', privacy: 'privacy', privacyLong: 'privacy score', floorLabel: 'floor' };
@@ -411,7 +412,7 @@ function scatter(ds) {
   return scatterChart({
     title: '', points: pts, selected: state.run, onSelect: name => selectRun(name),
     refs: [{ x: ref.raw?.[ds], label: 'raw video' }, { x: ref.floor?.[ds], label: dsInfo(ds).floorLabel }],
-    xLabel: `${dsInfo(ds).privacy} (%) of the best retrained attacker  ← more private`, yLabel: 'action top-1 (%) ↑',
+    xLabel: `${dsInfo(ds).privacy} (%) of the best retrained attacker  ← more private`, yLabel: `${dsInfo(ds).action ?? 'action top-1'} (%) ↑`,
     legendItems: fams.map(f => ({ label: f ?? 'other', color: FAMILY_COLORS[f] ?? C.grey, kind: 'dot' })),
   });
 }
