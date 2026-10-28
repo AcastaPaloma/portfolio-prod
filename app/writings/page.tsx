@@ -34,6 +34,16 @@ export default function WritingsPage() {
 
       <ul className={styles.writingList} aria-label="Writings">
         <li>
+          <a className={styles.writingLink} href="/kuangrad/">
+            <div>
+              <time className={styles.writingDate} dateTime="2026-10-28">Oct 28, 2026</time>
+              <h2>kuangrad: an autograd engine</h2>
+              <p>Backprop from scratch, one Python object per number, trained on 1,000 digits I drew by hand.</p>
+            </div>
+            <span className={styles.linkArrow} aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
           <a className={styles.writingLink} href="/pi/">
             <div>
               <time className={styles.writingDate} dateTime="2026-10-18">Oct 18, 2026</time>
