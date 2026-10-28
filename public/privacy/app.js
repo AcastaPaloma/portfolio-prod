@@ -16,7 +16,7 @@ const DATASETS = {
   kth: { name: 'KTH', privacy: 'identity top-1', privacyLong: 'identity top-1 (which of 25 people)', floorLabel: 'chance', classes: ['boxing', 'handclapping', 'handwaving', 'jogging', 'running', 'walking'] },
   ucf101_vp: { name: 'VP-UCF101', privacy: 'attribute cMAP', privacyLong: 'attribute cMAP over five private attributes', floorLabel: 'blind floor', attrs: ['face', 'skin colour', 'gender', 'nudity', 'relationship'] },
   charades: { name: 'Charades', privacy: 'identity top-1', privacyLong: 'identity top-1 (which of 90 people, filmed in their own homes)', floorLabel: 'chance', action: 'action mAP (157 classes)' },
-  utdmhad: { name: 'UTD-MHAD', privacy: 'identity top-1', privacyLong: 'identity top-1 (which of 8 people, same lab and backdrop)', floorLabel: 'chance' },
+  utdmhad: { name: 'UTD-MHAD', privacy: 'identity top-1', privacyLong: 'identity top-1 (which of 8 people; one lab, but each person recorded in a separate session)', floorLabel: 'chance' },
   hmdb51_vp: { name: 'VP-HMDB51', privacy: 'attribute cMAP', privacyLong: 'attribute cMAP over five private attributes', floorLabel: 'blind floor', attrs: ['face', 'skin colour', 'gender', 'nudity', 'relationship'] },
 };
 const dsInfo = ds => DATASETS[ds] ?? { name: ds ?? 'unknown', privacy: 'privacy', privacyLong: 'privacy score', floorLabel: 'floor' };
