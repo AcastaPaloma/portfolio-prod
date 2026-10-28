@@ -1,4 +1,4 @@
-// Copies the Genie and π0.7 write-ups into public/ so they are served at kuant.space/genie/ and kuant.space/pi/.
+// Copies the Genie, π0.7 and kuangrad write-ups into public/ so they are served at kuant.space/genie/, /pi/ and /kuangrad/.
 // Their sources stay in their own repos; this runs before every build. By default it takes a shallow sparse
 // clone of each repo's main branch. `--local` copies from the sibling checkouts in ../../_learn instead, for
 // previewing unpushed edits.
@@ -12,6 +12,8 @@ const projects=[
  {name:'genie',repo:'https://github.com/AcastaPaloma/genie',checkout:'../../_learn/genie3',dir:'docs',skip:[]},
  // Matches what the pi repo's Pages workflow used to publish: the reader, not the editor or its tooling.
  {name:'pi',repo:'https://github.com/AcastaPaloma/pi',checkout:'../../_learn/pi',dir:'writeup',skip:['editor.css','editor.mjs','editor-server.mjs','author-copy.json','package.json','README.md','RESEARCH.md','VERIFICATION.md','scripts','tests']},
+ // The reader only: the snippet generator and README stay in the kuangrad repo.
+ {name:'kuangrad',repo:'https://github.com/AcastaPaloma/kuangrad',checkout:'../../_learn/kuangrad',dir:'writeup',skip:['README.md','scripts']},
 ];
 const git=args=>execFileSync('git',args,{stdio:['ignore','ignore','inherit']});
 const scratch=await mkdtemp(join(tmpdir(),'portfolio-projects-'));

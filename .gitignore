@@ -11,3 +11,4 @@ out/
 # Synced from the project repos by scripts/sync-projects.mjs
 /public/genie/
 /public/pi/
+/public/kuangrad/
