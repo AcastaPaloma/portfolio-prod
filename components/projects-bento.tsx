@@ -17,7 +17,8 @@ const PLACE: Record<string, Rect> = {
   stars: { x: 5, y: 6, w: 3, h: 3 },
   cortesol: { x: 2, y: 3, w: 1, h: 6 },
   genie: { x: 0, y: 6, w: 2, h: 3 },
-  home: { x: 0, y: 9, w: 4, h: 3 },
+  home: { x: 0, y: 9, w: 2, h: 3 },
+  kuangrad: { x: 2, y: 9, w: 2, h: 3 },
   mvpvp: { x: 4, y: 9, w: 2, h: 3 },
   allot: { x: 6, y: 9, w: 2, h: 3 },
 };
@@ -136,6 +137,7 @@ export function ProjectsBento({ projects, rose }: { projects: Project[]; rose: s
     <div className="bento-tile bento-media bento-helmet" style={{ ...tile("helmet"), ...tileStyle() }}><TransparentLoop className="bento-loop" name="helmet particles" src="/animation/helmet-full.mp4" smallSrc="/animation/helmet-full.mp4" poster="/animation/helmet-full-poster.webp" width={544} height={708} monochrome /></div>
     <ProjectTile project={byId("genie")} id="genie" />
     <ProjectTile project={byId("pi")} id="pi" />
+    <ProjectTile project={byId("kuangrad")} id="kuangrad" />
     <ProjectTile project={byId("among-the-stars")} id="stars" />
     <ProjectTile project={byId("quantum")} id="quantum" />
     <ProjectTile project={byId("allot")} id="allot" />
