@@ -11,7 +11,7 @@ const TABS = ['experiments', 'live', 'journal'];
 const VIEWS = ['results', 'figures', 'motion'];
 
 const C = { action: '#3b5bb5', frame: '#b8860b', video: '#b0472c', entropy: '#2f7d4f', sigma: '#7a5c99', grey: '#8b8b84', extra: ['#4f8a9e', '#a0527a', '#6b6b2f', '#c06a2b'] };
-const FAMILY_COLORS = { raw: '#1a1a1a', controls: '#8b8b84', 'fixed filters': '#b8860b', 'person removal': '#7a5c99', 'BDQ (learned)': '#3b5bb5', '3D U-Net (learned)': '#2f7d4f', 'frozen VAE + latent edit': '#b0472c' };
+const FAMILY_COLORS = { raw: '#1a1a1a', controls: '#8b8b84', 'fixed filters': '#b8860b', 'person removal': '#7a5c99', 'BDQ (learned)': '#3b5bb5', '3D U-Net (learned)': '#2f7d4f', 'frozen VAE + latent edit': '#b0472c', 'task mask (DINOv2)': '#4f8a9e', 'pose (stick figures)': '#a0527a', chained: '#6b6b2f' };
 const DATASETS = {
   kth: { name: 'KTH', privacy: 'identity top-1', privacyLong: 'identity top-1 (which of 25 people)', floorLabel: 'chance', classes: ['boxing', 'handclapping', 'handwaving', 'jogging', 'running', 'walking'] },
   ucf101_vp: { name: 'VP-UCF101', privacy: 'attribute cMAP', privacyLong: 'attribute cMAP over five private attributes', floorLabel: 'blind floor', attrs: ['face', 'skin colour', 'gender', 'nudity', 'relationship'] },
@@ -22,7 +22,7 @@ const DATASETS = {
 const dsInfo = ds => DATASETS[ds] ?? { name: ds ?? 'unknown', privacy: 'privacy', privacyLong: 'privacy score', floorLabel: 'floor' };
 const SPLITS = { ilic: 'Ilic split', scenario: 'scenario split', seq: 'sequence split', s1: 'split 1' };
 const ANON = { raw: 'raw video', blur: 'Gaussian blur', down: 'downsample', pixelate: 'pixelate', diff: 'frame difference', bdq: 'BDQ (learned)', bdq_fixed: 'fixed BDQ',
-  unet3d: '3D U-Net (learned)', vae_latent: 'frozen VAE + latent edit', bg_median: 'scene only (temporal median)', fg_only: 'person only (foreground mask)', person_box: 'person box' };
+  unet3d: '3D U-Net (learned)', vae_latent: 'frozen VAE + latent edit', bg_median: 'scene only (temporal median)', fg_only: 'person only (foreground mask)', person_box: 'person box', taskmask: 'task mask (DINOv2, background removed)', pose: 'pose (stick figures)', chain: 'chained' };
 const MODELS = { r2p1d: ['video', 'R(2+1)D-18'], r3d: ['video', 'R3D-18'], frame_r50: ['frame', 'ResNet-50'], frame_r18: ['frame', 'ResNet-18'] };
 const TASKS = { action: 'Action', person: 'Identity', attr: 'Attributes' };
 
