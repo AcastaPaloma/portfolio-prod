@@ -14,11 +14,11 @@ const PLACE: Record<string, Rect> = {
   title: { x: 4, y: 0, w: 4, h: 3 },
   pi: { x: 5, y: 3, w: 3, h: 3 },
   helmet: { x: 3, y: 3, w: 2, h: 6 },
-  stars: { x: 5, y: 6, w: 3, h: 3 },
+  kuangrad: { x: 5, y: 6, w: 3, h: 3 },
   cortesol: { x: 2, y: 3, w: 1, h: 6 },
   genie: { x: 0, y: 6, w: 2, h: 3 },
   home: { x: 0, y: 9, w: 2, h: 3 },
-  kuangrad: { x: 2, y: 9, w: 2, h: 3 },
+  stars: { x: 2, y: 9, w: 2, h: 3 },
   mvpvp: { x: 4, y: 9, w: 2, h: 3 },
   allot: { x: 6, y: 9, w: 2, h: 3 },
 };
