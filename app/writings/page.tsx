@@ -34,6 +34,16 @@ export default function WritingsPage() {
 
       <ul className={styles.writingList} aria-label="Writings">
         <li>
+          <a className={styles.writingLink} href="/pseudo-jepa/">
+            <div>
+              <time className={styles.writingDate} dateTime="2026-11-08">Nov 8, 2026</time>
+              <h2>pseudo-jepa: photos and captions from scratch</h2>
+              <p>A CLIP with a predictor, one real forward pass animated block by block, running live in your browser. Plus the JEPA I build next.</p>
+            </div>
+            <span className={styles.linkArrow} aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
           <a className={styles.writingLink} href="/kuangrad/">
             <div>
               <time className={styles.writingDate} dateTime="2026-10-28">Oct 28, 2026</time>

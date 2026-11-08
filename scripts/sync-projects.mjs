@@ -1,4 +1,5 @@
-// Copies the Genie, π0.7 and kuangrad write-ups into public/ so they are served at kuant.space/genie/, /pi/ and /kuangrad/.
+// Copies the Genie, π0.7, kuangrad and pseudo-jepa write-ups into public/ so they are served at kuant.space/genie/, /pi/,
+// /kuangrad/ and /pseudo-jepa/.
 // Their sources stay in their own repos; this runs before every build. By default it takes a shallow sparse
 // clone of each repo's main branch. `--local` copies from the sibling checkouts in ../../_learn instead, for
 // previewing unpushed edits.
@@ -14,6 +15,8 @@ const projects=[
  {name:'pi',repo:'https://github.com/AcastaPaloma/pi',checkout:'../../_learn/pi',dir:'writeup',skip:['editor.css','editor.mjs','editor-server.mjs','author-copy.json','package.json','README.md','RESEARCH.md','VERIFICATION.md','scripts','tests']},
  // The reader only: the snippet generator and README stay in the kuangrad repo.
  {name:'kuangrad',repo:'https://github.com/AcastaPaloma/kuangrad',checkout:'../../_learn/kuangrad',dir:'writeup',skip:['README.md','scripts']},
+ // The repo is named kuanjepa on GitHub; the local checkout is _learn/jepa. The reader only, not its export scripts.
+ {name:'pseudo-jepa',repo:'https://github.com/AcastaPaloma/kuanjepa',checkout:'../../_learn/jepa',dir:'writeup',skip:['README.md','scripts']},
 ];
 const git=args=>execFileSync('git',args,{stdio:['ignore','ignore','inherit']});
 const scratch=await mkdtemp(join(tmpdir(),'portfolio-projects-'));
