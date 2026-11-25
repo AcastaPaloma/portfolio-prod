@@ -45,14 +45,14 @@ function rateLine(r) {
 export function groupedBars(host, groups, {highlight = null, height = 300} = {}) {
   host.classList.add('chart');
   host.append(legend());
-  const W = 640, H = height, top = 22, bottom = 46, left = 34, right = 6;
+  const W = 640, H = height, top = 24, bottom = 50, left = 36, right = 6;
   const svg = el('svg', {viewBox: `0 0 ${W} ${H}`, role: 'img'});
   host.append(svg);
   const tip = tooltip(host);
   const plotH = H - top - bottom, y = v => top + plotH * (1 - v / 100);
   for (const v of [0, 20, 40, 60, 80, 100]) {
     el('line', {x1: left, x2: W - right, y1: y(v), y2: y(v), stroke: v ? '#e7e6e1' : '#b9b8b2', 'stroke-width': v ? 1 : 1.2}, svg);
-    el('text', {x: left - 7, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#5a5a5a'}, svg).textContent = v;
+    el('text', {x: left - 7, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 12.5, fill: '#5a5a5a'}, svg).textContent = v;
   }
   const gw = (W - left - right) / groups.length, bw = Math.min(46, gw / 3.8), gap = 2;
   const desc = [];
@@ -65,7 +65,7 @@ export function groupedBars(host, groups, {highlight = null, height = 300} = {})
       const path = `M${x},${y(0)} V${yy + rr} Q${x},${yy} ${x + rr},${yy} H${x + bw - rr} Q${x + bw},${yy} ${x + bw},${yy + rr} V${y(0)} Z`;
       const bar = el('path', {d: path, fill: p.color, class: 'bar', tabindex: 0,
         'aria-label': `${g.label}${g.sub ? ' ' + g.sub : ''}, ${p.name}: ${r.p.toFixed(1)} percent`}, gEl);
-      el('text', {x: x + bw / 2, y: yy - 5, 'text-anchor': 'middle', 'font-size': 11.5, fill: '#1a1a1a'}, gEl).textContent = r.p.toFixed(0);
+      el('text', {x: x + bw / 2, y: yy - 5, 'text-anchor': 'middle', 'font-size': 13, fill: '#1a1a1a'}, gEl).textContent = r.p.toFixed(0);
       const show = () => {
         const box = bar.getBoundingClientRect(), hb = host.getBoundingClientRect();
         tip.show(`<div>${g.label}${g.sub ? ` <span class="tip-sub">${g.sub}</span>` : ''}</div><div>${p.name} · ${p.long.toLowerCase()}</div>${rateLine(r)}`,
@@ -77,18 +77,23 @@ export function groupedBars(host, groups, {highlight = null, height = 300} = {})
       bar.addEventListener('blur', () => tip.hide());
       desc.push(`${g.label} ${g.sub || ''} ${p.name} ${r.p.toFixed(1)}%`);
     });
-    const t = el('text', {x: gx, y: H - bottom + 18, 'text-anchor': 'middle', 'font-size': 12.5, fill: '#1a1a1a'}, gEl);
+    const t = el('text', {x: gx, y: H - bottom + 18, 'text-anchor': 'middle', 'font-size': 14, fill: '#1a1a1a'}, gEl);
     t.textContent = g.label;
-    if (g.sub) el('text', {x: gx, y: H - bottom + 34, 'text-anchor': 'middle', 'font-size': 11.5, fill: '#5a5a5a'}, gEl).textContent = g.sub;
+    if (g.sub) el('text', {x: gx, y: H - bottom + 34, 'text-anchor': 'middle', 'font-size': 13, fill: '#5a5a5a'}, gEl).textContent = g.sub;
   });
   el('title', {}, svg).textContent = desc.join('; ');
   return host;
 }
 
-const shade = p => {                       // one hue, light -> dark (sequential), paper to the navy accent
+const shadeRGB = p => {                    // one hue, light -> dark (sequential), paper to the navy accent
   const a = [238, 241, 248], b = [31, 58, 138], t = Math.pow(p / 100, 0.9);
-  return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',')})`;
+  return a.map((v, i) => Math.round(v + (b[i] - v) * t));
 };
+const shade = p => `rgb(${shadeRGB(p).join(',')})`;
+// WCAG relative luminance; white text needs L <= 0.183 and black text L >= 0.175 for 4.5:1, so this always passes.
+const lum = rgb => rgb.map(c => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; })
+  .reduce((s, c, i) => s + c * [0.2126, 0.7152, 0.0722][i], 0);
+const inkOn = p => (lum(shadeRGB(p)) > 0.179 ? '#000' : '#fff');
 
 /** Per-task heatmap: columns are (run x policy). runs: [{run, label}]. */
 export function heatmap(host, runs, {highlightTask = null, tasks = TASKS} = {}) {
@@ -102,10 +107,9 @@ export function heatmap(host, runs, {highlightTask = null, tasks = TASKS} = {}) 
   const cell = (run, p, ts, label, foot) => {
     const r = rate(run, p.key, ts);
     const best = Math.max(...POLICIES.map(q => rate(run, q.key, ts).p));
-    const dark = r.p > 58;
     const txt = foot ? r.p.toFixed(1) : r.p.toFixed(0);
     return `<td class="cell" tabindex="0" data-tip="${encodeURIComponent(`<div>${label} · ${ts.length === 1 ? TASK_NAMES[ts[0]] : 'all tasks'}</div><div>${p.name} · ${p.long.toLowerCase()}</div>${rateLine(r)}`)}"
-      style="background:${shade(r.p)};color:${dark ? '#fff' : '#1a1a1a'};${Math.abs(r.p - best) < 1e-9 ? 'font-weight:700' : ''}">${txt}</td>`;
+      style="background:${shade(r.p)};color:${inkOn(r.p)};${Math.abs(r.p - best) < 1e-9 ? 'font-weight:700' : ''}">${txt}</td>`;
   };
   const rows = tasks.map(t => `<tr class="${t === highlightTask ? 'is-hl' : ''}"><td class="task">${TASK_NAMES[t]}</td>${runs.map((r, i) =>
     `${i ? '<td class="gap"></td>' : ''}${POLICIES.map(p => cell(r.run, p, [t], r.label)).join('')}`).join('')}</tr>`).join('');

@@ -250,7 +250,7 @@ export function dots(root, {a, b, labelA, labelB, caption: cap}) {
   host.append(svg);
   const tip = tooltip(host);
   TASKS.forEach((t, ti) => {
-    const tt = svgEl('text', {x: left - 10, y: top + ti * cell + cell / 2 + 4, 'text-anchor': 'end', 'font-size': 11.5, fill: '#1a1a1a'}, svg);
+    const tt = svgEl('text', {x: left - 10, y: top + ti * cell + cell / 2 + 4, 'text-anchor': 'end', 'font-size': 12.5, fill: '#1a1a1a'}, svg);
     tt.textContent = TASK_NAMES[t];
   });
   r.cells.forEach((c, i) => {

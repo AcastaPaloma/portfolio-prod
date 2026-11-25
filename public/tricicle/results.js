@@ -69,8 +69,8 @@ function drawCompare() {
   }
   dots(out, {a: [A.world, A.model, A.policy], b: [B.world, B.model, B.policy], labelA: 'A', labelB: 'B'});
   const ra = rate(getRun(A.world, A.model), A.policy), rb = rate(getRun(B.world, B.model), B.policy);
-  const line = (tag, col, s, r) => `<div class="stat-card" style="border-left:4px solid ${col}"><div class="big num">${r.p.toFixed(1)}<small>%</small></div>
-    <p><b style="color:#1a1a1a">${tag}</b> · ${describe(s)}<br>${r.k} of ${r.n} scenes · 95% interval ${r.lo.toFixed(0)}–${r.hi.toFixed(0)}%</p></div>`;
+  const line = (tag, col, s, r) => `<div class="stat-card"><div class="big num">${r.p.toFixed(1)}<small>%</small></div>
+    <p><i class="swatch" style="--c:${col}"></i><b style="color:#1a1a1a">${tag}</b> · ${describe(s)}<br>${r.k} of ${r.n} scenes · 95% interval ${r.lo.toFixed(0)}–${r.hi.toFixed(0)}%</p></div>`;
   $('cmp-rates').innerHTML = `<div class="cards" style="grid-template-columns:1fr">${line('A', '#2a78d6', A, ra)}${line('B', '#eb6834', B, rb)}</div>`;
 }
 for (const key of ['a', 'b']) {
