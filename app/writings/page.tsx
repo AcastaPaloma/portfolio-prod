@@ -34,6 +34,16 @@ export default function WritingsPage() {
 
       <ul className={styles.writingList} aria-label="Writings">
         <li>
+          <a className={styles.writingLink} href="/tricicle/">
+            <div>
+              <time className={styles.writingDate} dateTime="2026-11-25">Nov 25, 2026</time>
+              <h2>TRICICLE: three arms, one language model</h2>
+              <p>I rebuilt the BiCICLe paper for three robot arms and got the opposite answer. Side-by-side videos, and every score, scene by scene.</p>
+            </div>
+            <span className={styles.linkArrow} aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
           <a className={styles.writingLink} href="/pseudo-jepa/">
             <div>
               <time className={styles.writingDate} dateTime="2026-11-08">Nov 8, 2026</time>

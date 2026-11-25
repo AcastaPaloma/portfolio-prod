@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfbfa">
+  <meta name="description" content="TRICICLE videos: the same scene under different policies, models and worlds, side by side.">
+  <title>Videos · TRICICLE · Kuan Yi Wang</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page-nav">
+      <span class="wordmark"><code>tricicle</code><span>· videos</span></span>
+      <nav class="page-tabs" aria-label="Pages"><a href="./">Write-up</a><a href="results.html">Results</a><a href="videos.html" aria-current="page">Videos</a></nav>
+    </header>
+    <main class="page-main">
+      <h1>Videos</h1>
+      <p class="intro">Every clip replays an attempt that was actually scored: the simulator reruns with the model's logged
+        answers, and the outcome is checked against the log. Panels in one video share a clock and the same starting
+        scene. When an attempt ends, its panel freezes under a green <b>SUCCESS</b> or red <b>FAIL</b> banner. Short
+        attempts play at real speed, long ones at 2× (the title bar says which).</p>
+      <div class="video-grid">
+        <article class="video-card wide" id="gallery">
+          <div class="video-frame"><video src="videos/gallery.mp4" poster="videos/gallery.jpg" muted loop playsinline controls preload="none"></video></div>
+          <h3>All 13 tasks</h3>
+          <p>One successful attempt per task: the BiCICLe paper's two-arm tasks, rebuilt for three Franka Panda arms in MuJoCo
+            (leader-follower chain, Claude Sonnet 5.5, demos without pauses).</p>
+        </article>
+        <article class="video-card" id="methods_lift_tray">
+          <div class="video-frame"><video src="videos/methods_lift_tray.mp4" poster="videos/methods_lift_tray.jpg" muted loop playsinline controls preload="none"></video></div>
+          <h3>Three policies, one scene: lift tray</h3>
+          <p>One agent for all arms, independent agents, and the chain (Claude Sonnet 5.5, TWIN-3). The independent arms lift
+            at different moments and the tray tips past 15°.</p>
+        </article>
+        <article class="video-card" id="methods_buttons">
+          <div class="video-frame"><video src="videos/methods_buttons.mp4" poster="videos/methods_buttons.jpg" muted loop playsinline controls preload="none"></video></div>
+          <h3>Three policies, one scene: press buttons</h3>
+          <p>All three buttons must go down within 0.3 seconds of each other. With independent agents, one arm misses the
+            window.</p>
+        </article>
+        <article class="video-card" id="jitter_tray">
+          <div class="video-frame"><video src="videos/jitter_tray.mp4" poster="videos/jitter_tray.jpg" muted loop playsinline controls preload="none"></video></div>
+          <h3>Random pauses in the demos: lift tray</h3>
+          <p>Independent agents, same scene. Only the examples in the prompt differ: with random pauses the tray tips,
+            without them it comes up level.</p>
+        </article>
+        <article class="video-card" id="jitter_buttons">
+          <div class="video-frame"><video src="videos/jitter_buttons.mp4" poster="videos/jitter_buttons.jpg" muted loop playsinline controls preload="none"></video></div>
+          <h3>Random pauses in the demos: press buttons</h3>
+          <p>The same comparison on the button task. With pauses, two arms miss the 0.3-second window.</p>
+        </article>
+        <article class="video-card" id="weak_model_ball">
+          <div class="video-frame"><video src="videos/weak_model_ball.mp4" poster="videos/weak_model_ball.jpg" muted loop playsinline controls preload="none"></video></div>
+          <h3>The paper's small model needs the chain</h3>
+          <p>Qwen 2.5 7B on lift ball, demos without pauses. One agent and independent agents drop the ball; the chain lifts
+            it.</p>
+        </article>
+        <article class="video-card" id="strong_vs_weak">
+          <div class="video-frame"><video src="videos/strong_vs_weak.mp4" poster="videos/strong_vs_weak.jpg" muted loop playsinline controls preload="none"></video></div>
+          <h3>Same policy, two models</h3>
+          <p>One agent for all arms, the same scene: Claude Sonnet 5.5 lifts the ball, Qwen 2.5 7B drops it.</p>
+        </article>
+        <article class="video-card" id="triplet_plate">
+          <div class="video-frame"><video src="videos/triplet_plate.mp4" poster="videos/triplet_plate.jpg" muted loop playsinline controls preload="none"></video></div>
+          <h3>Cameras and noise hurt the chain more</h3>
+          <p>Pick up plate, Claude Sonnet 5.5: the chain with exact positions, the chain with cameras and noise (the plate
+            tips), and one agent with cameras and noise.</p>
+        </article>
+      </div>
+    </main>
+  </div>
+  <footer class="site-footer">Made by <a href="https://www.kuant.space" target="_blank" rel="noopener">Kuan Yi Wang</a> with <span role="img" aria-label="love">❤️</span></footer>
+  <script>
+    // Play a clip while it's on screen, pause it when it scrolls away.
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting && !matchMedia('(prefers-reduced-motion: reduce)').matches) { v.preload = 'auto'; v.play().catch(() => {}); }
+      else v.pause();
+    }), {threshold: 0.5});
+    document.querySelectorAll('video').forEach(v => io.observe(v));
+  </script>
+</body>
+</html>

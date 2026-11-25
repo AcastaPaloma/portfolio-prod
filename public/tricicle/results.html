@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfbfa">
+  <meta name="description" content="Every TRICICLE result: success per task, model and policy, and a scene-by-scene comparison of any two policies.">
+  <title>Results · TRICICLE · Kuan Yi Wang</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./results.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="page-nav">
+      <span class="wordmark"><code>tricicle</code><span>· results</span></span>
+      <nav class="page-tabs" aria-label="Pages"><a href="./">Write-up</a><a href="results.html" aria-current="page">Results</a><a href="videos.html">Videos</a></nav>
+    </header>
+    <main class="page-main">
+      <h1>Results</h1>
+      <p class="intro">Every number from the write-up, computed in your browser from the <span id="n-attempts">7,800</span> scored attempts (each
+        policy, model and world ran the same 13 tasks × 20 scenes). Hover any bar or cell for the exact count.
+        The <a href="tricicle-report.pdf">PDF version</a> has the same tables in paper style.</p>
+
+      <h2>At a glance</h2>
+      <p class="note">Average success over the 13 tasks. <span class="pol sa">SA</span> is one LLM call for all arms,
+        <span class="pol da">DA</span> one independent call per arm, <span class="pol bic">BiCICLe</span> the paper's
+        leader-follower chain.</p>
+      <div class="chart-grid">
+        <section><h3>The paper's own two-arm test</h3><div id="c-replica"></div></section>
+        <section><h3>Three arms, four models (TWIN-3)</h3><div id="c-models"></div></section>
+        <section><h3>With and without random pauses in the demos</h3><div id="c-pauses"></div></section>
+        <section><h3>Cameras and noise (TRIPLET)</h3><div id="c-triplet"></div></section>
+      </div>
+
+      <h2>Every score, task by task</h2>
+      <p class="note">Success per task (%). Bold marks the best policy for each model; darker cells are higher. Each of my
+        cells is 20 scenes, so one scene is worth 5 points: single cells are noisy, the averages are not.</p>
+      <div class="controls">
+        <div class="seg" role="group" aria-label="World" id="world-seg"></div>
+        <span id="model-boxes"></span>
+      </div>
+      <p class="note" id="world-note"></p>
+      <div class="heat-wrap" id="heat"></div>
+
+      <h2>Compare any two</h2>
+      <p class="note">Pick two policies. Within the paper's test, or across my three three-arm worlds, every run used the same
+        13 tasks × 20 scenes, so the comparison is scene by scene: the dots show where each one succeeded, and the
+        <i>p</i>-value asks whether the split could be luck.</p>
+      <div class="compare">
+        <div class="panel" id="side-a"><p class="panel-title"><i class="swatch" style="--c:#2a78d6"></i>Side A</p></div>
+        <div class="panel" id="side-b"><p class="panel-title"><i class="swatch" style="--c:#eb6834"></i>Side B</p></div>
+      </div>
+      <div class="compare-out">
+        <div id="cmp-dots"></div>
+        <div id="cmp-rates"></div>
+      </div>
+    </main>
+  </div>
+  <footer class="site-footer">Made by <a href="https://www.kuant.space" target="_blank" rel="noopener">Kuan Yi Wang</a> with <span role="img" aria-label="love">❤️</span></footer>
+  <noscript><div class="no-script">This page needs JavaScript. The <a href="tricicle-report.pdf">PDF version</a> has every table.</div></noscript>
+</body>
+</html>
